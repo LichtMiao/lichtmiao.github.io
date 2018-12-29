@@ -1,0 +1,874 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>LichtMiao&#39;s Blog</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://lichtmiao.github.io/"/>
+  <updated>2018-12-29T02:56:58.468Z</updated>
+  <id>https://lichtmiao.github.io/</id>
+  
+  <author>
+    <name>Juan Peng</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2018年工作总结</title>
+    <link href="https://lichtmiao.github.io/2018/12/28/%E7%94%9F%E6%B4%BB%E2%80%94%E2%80%942018%E5%B9%B4%E5%B7%A5%E4%BD%9C%E6%80%BB%E7%BB%93/"/>
+    <id>https://lichtmiao.github.io/2018/12/28/生活——2018年工作总结/</id>
+    <published>2018-12-28T03:40:46.000Z</published>
+    <updated>2018-12-29T02:56:58.468Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-写了六份报告"><a href="#1-写了六份报告" class="headerlink" title="1.    写了六份报告"></a>1.    写了六份报告</h2><p><img src="https://user-images.githubusercontent.com/26324355/50503436-f18be380-0aa1-11e9-9215-239765b84278.png" alt="1545910999"></p>
+<h2 id="2-论文"><a href="#2-论文" class="headerlink" title="2.    论文"></a>2.    论文</h2><p><strong>投稿</strong>：一篇A类会议Globecom2018，一篇二区期刊Transactions on Vehicular Technology，一篇三区期刊Access。<br><strong>审稿</strong>：一篇A类会议Globecom2018，三篇A类会议ICC2019。</p>
+<h2 id="3-找工作"><a href="#3-找工作" class="headerlink" title="3.    找工作"></a>3.    找工作</h2><p><strong>互联网</strong>：为了找互联网的工作突击了一个月Java，由于没有Java开发的经验，而且准备的时间不足面试过程并不顺利。整理的一部分Java开发内容如下（嗯1.73GB）：</p>
+<p><img src="https://user-images.githubusercontent.com/26324355/50504573-74646c80-0aa9-11e9-8ae1-46d599e87259.png" alt="1545977070"></p>
+<p><strong>通信</strong>：中间复习了一周通信知识，面试过程超顺利。这也让我意识到，要找自己有优势的工作。<br><strong>研究所</strong>：研究所对论文还是比价看重的，薪资还可以。</p>
+<h2 id="4-Contribuion"><a href="#4-Contribuion" class="headerlink" title="4.    Contribuion"></a>4.    Contribuion</h2><p>今年的contribution主要在Java的代码练习和博客更新的学习笔记上。</p>
+<p><img src="https://user-images.githubusercontent.com/26324355/50532343-fc528100-0b52-11e9-9e8c-b8552a63e3a3.png" alt="1545978343"></p>
+<p><strong>代码练习</strong>：</p>
+<p><img src="https://user-images.githubusercontent.com/26324355/50503934-2188b600-0aa5-11e9-8286-e8f7beb7040a.png" alt="java_20181228133213"></p>
+<p><strong>博客内容</strong>：</p>
+<p><img src="https://user-images.githubusercontent.com/26324355/50532344-fe1c4480-0b52-11e9-9abb-8b9549adb236.png" alt="blog_20181228133105"></p>
+<ul>
+<li>CSS(1)</li>
+<li>HTML(1)</li>
+<li>JDBC(6)</li>
+<li>JavaScript(1)</li>
+<li>Java基础(15)</li>
+<li>Java并发(1)</li>
+<li>Java程序员面试宝典(12)</li>
+<li>Java虚拟机(5)</li>
+<li>Linux(3)</li>
+<li>Software(4)</li>
+<li>操作系统(6)</li>
+<li>数据库(6)</li>
+<li>生活(3)</li>
+<li>笔试面试(6)</li>
+<li>算法与数据结构(47)</li>
+<li>综合(2)</li>
+<li>英语(6)</li>
+<li>计算机网络(13)</li>
+<li>设计模式(8)</li>
+<li>随笔(2)</li>
+</ul>
+<h2 id="5-出国参会"><a href="#5-出国参会" class="headerlink" title="5.    出国参会"></a>5.    出国参会</h2><p>由于论文被接收，需要在会议上作报告，12月GC参会。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;1-写了六份报告&quot;&gt;&lt;a href=&quot;#1-写了六份报告&quot; class=&quot;headerlink&quot; title=&quot;1.    写了六份报告&quot;&gt;&lt;/a&gt;1.    写了六份报告&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://user-images.githubus
+    
+    </summary>
+    
+      <category term="生活" scheme="https://lichtmiao.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>GC参会</title>
+    <link href="https://lichtmiao.github.io/2018/12/27/%E7%94%9F%E6%B4%BB%E2%80%94%E2%80%94GC%E5%8F%82%E4%BC%9A/"/>
+    <id>https://lichtmiao.github.io/2018/12/27/生活——GC参会/</id>
+    <published>2018-12-27T02:23:33.000Z</published>
+    <updated>2018-12-29T02:57:13.803Z</updated>
+    
+    <content type="html"><![CDATA[<p>由于参加IEEE GLOBECOM 2018，9-13 Dec. 2018，Abu Dhabi，公费出国游玩了阿联酋的两大城市Abu Dhabi和Dubai。<br>8号从成都出发，13号晚上返程。中途由于在香港的转机时间较长，在香港玩了挺久的。<br>总而言之不虚此行，每天在会场听大佬的报告，然后蹭吃蹭喝，游览了Abu Dhabi和Dubai的一些著名的旅游景点。作为内陆孩纸第一次见到了大海，还是那种海天一色，蓝得不行的蓝，特别干净。是一个值得再去一次的地方。</p>
+<p>放个vlog链接：<a href="https://www.bilibili.com/video/av38412148" target="_blank" rel="external">阿布扎比迪拜vlog</a><br>官方发布了一些照片，总共14G，由于是共享链接，限时失效，所以下载了一部分到网盘：<a href="https://pan.baidu.com/disk/home?#/all?vmode=list&amp;path=%2FMy%20pictures%2FGLOBECOM2018%20PHOTOS" target="_blank" rel="external">GLOBECOM2018 PHOTOS</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;由于参加IEEE GLOBECOM 2018，9-13 Dec. 2018，Abu Dhabi，公费出国游玩了阿联酋的两大城市Abu Dhabi和Dubai。&lt;br&gt;8号从成都出发，13号晚上返程。中途由于在香港的转机时间较长，在香港玩了挺久的。&lt;br&gt;总而言之不虚此行，每
+    
+    </summary>
+    
+      <category term="生活" scheme="https://lichtmiao.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>英语——日常</title>
+    <link href="https://lichtmiao.github.io/2018/11/23/%E8%8B%B1%E8%AF%AD%E2%80%94%E2%80%94%E6%97%A5%E5%B8%B8/"/>
+    <id>https://lichtmiao.github.io/2018/11/23/英语——日常/</id>
+    <published>2018-11-23T03:37:30.000Z</published>
+    <updated>2018-11-26T03:09:28.091Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-工具"><a href="#1-工具" class="headerlink" title="1. 工具"></a>1. 工具</h2><p>clip/klɪp/剪，回形针n.v.<br>scraper /‘skreɪpə/刮刀；守财奴<br>screwdriver螺丝刀；screw v.n.旋转，螺旋；吝啬鬼<br>nail file指甲锉；file/faɪl/文件n.；把…归档；提出，锉，琢磨v.</p>
+<h2 id="2-utile和unless"><a href="#2-utile和unless" class="headerlink" title="2. utile和unless"></a>2. utile和unless</h2><p>not util直到…才…<br>1）当Not until位于句首时,句子要倒装。其结构为:Not until+从句/表时间的词+助动词+(主句)主语+谓语+…。如:</p>
+<p>①Not until the teacher came in did the students stop talking.直到老师进来学生们才停止讲话。<br>②Not until next week will the sports meet be held.直到下周才开运动会。<br>2）not until的强调结构为:It is / was not until+从句/表时间的词+that+…。上面两句改为强调句为:</p>
+<p>③It was not until the teacher came in that the students stopped talking.<br>④It is not until next week that the sports meet will be held.</p>
+<h2 id="3-食材（ingredient）"><a href="#3-食材（ingredient）" class="headerlink" title="3. 食材（ingredient）"></a>3. 食材（ingredient）</h2><p>knead/niːd/；dough/dəʊ/生面团；knead the dough<br>brush egg liquid刷蛋液<br>microwave微波炉<br>cabbage/ˈkæbɪdʒ/卷心菜，包心菜<br>saute /soʊˈteɪ/炒<br>feeler触角；试探n.<br>chop砍，剁碎n.vt.<br>slice ginger姜切碎<br>rosemary迷迭香<br>berries浆果类<br>goji枸杞</p>
+<h2 id="4-数学符号"><a href="#4-数学符号" class="headerlink" title="4. 数学符号"></a>4. 数学符号</h2><p><a href="https://wenku.baidu.com/view/8065dfa802768e9950e73846.html" target="_blank" rel="external">“加减乘除”及各种符号标点的英文表达</a><br>1+1:1 plus 1<br>2-1:2 minus 1<br>-3:minus 3或negative 3<br>+-1（加或减号）：plus or minus 1<br>2*3:2 multiplied by 3或2 times 3<br>4/2：4 divide的 by 2<br>1+1=2:1 plus 1 equals 2.或1 plus 1 is equal to 2.<br>不等号：is not equal to<br>全等：congruent to<br>约等：approximately to<br>小于：is less than<br>大于：is greater than<br>不小于：is not less than<br>不大于：is not greater than<br>小于或等于：is less than or equal to<br>大于或等于：is greater than or equal to<br>10%：10 percent<br>千分之10：10 per thousand；millesimal /mɪ’lesɪm(ə)l/千分之一<br>根号下16=4：the squre root of 16 is 4<br>根号下27=3：the cube root of 27 is 3<br>since/because因为；hence/therefore所以<br>angle/‘æŋg(ə)l/角；angel/‘eɪndʒ(ə)l/天使<br>triangle三角形<br>求和符号x：the summation of x<br>积分符号x：the integral of x<br>圆括号：round brackets /‘brækɪt/；parenthsis（复数parentheses）<br>方括号：square brackets<br>左括号：open parenthesis<br>右括号：close parenthsis</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;1-工具&quot;&gt;&lt;a href=&quot;#1-工具&quot; class=&quot;headerlink&quot; title=&quot;1. 工具&quot;&gt;&lt;/a&gt;1. 工具&lt;/h2&gt;&lt;p&gt;clip/klɪp/剪，回形针n.v.&lt;br&gt;scraper /‘skreɪpə/刮刀；守财奴&lt;br&gt;screwdriv
+    
+    </summary>
+    
+      <category term="英语" scheme="https://lichtmiao.github.io/categories/%E8%8B%B1%E8%AF%AD/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>英语——雅思单词</title>
+    <link href="https://lichtmiao.github.io/2018/11/19/%E8%8B%B1%E8%AF%AD%E2%80%94%E2%80%94%E9%9B%85%E6%80%9D%E5%8D%95%E8%AF%8D/"/>
+    <id>https://lichtmiao.github.io/2018/11/19/英语——雅思单词/</id>
+    <published>2018-11-19T12:51:31.000Z</published>
+    <updated>2018-11-19T12:53:54.438Z</updated>
+    
+    <content type="html"><![CDATA[<p>optimistic乐观的；optimal最优的；scandal丑闻；cereal加工而成的谷物，谷物；</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;optimistic乐观的；optimal最优的；scandal丑闻；cereal加工而成的谷物，谷物；&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="英语" scheme="https://lichtmiao.github.io/categories/%E8%8B%B1%E8%AF%AD/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>雅思——剑9单词</title>
+    <link href="https://lichtmiao.github.io/2018/11/12/%E9%9B%85%E6%80%9D%E2%80%94%E2%80%94%E5%89%919%E5%8D%95%E8%AF%8D/"/>
+    <id>https://lichtmiao.github.io/2018/11/12/雅思——剑9单词/</id>
+    <published>2018-11-12T03:08:45.000Z</published>
+    <updated>2018-11-23T04:45:16.786Z</updated>
+    
+    <content type="html"><![CDATA[<p>听力，先慢听听懂，再加快速度。</p>
+<h1 id="Test1"><a href="#Test1" class="headerlink" title="Test1"></a>Test1</h1><h2 id="Section1"><a href="#Section1" class="headerlink" title="Section1"></a>Section1</h2><p>vacant空闲的adj.，vacancy空闲n.</p>
+<p><font style="" color="red">sort of有几分，稍微</font><br>EU national欧盟国家，permit许可<br>tutor辅导，约束；导师助教<br>branch分支<br>recruit /rɪ’kruːt/ n.v. 招聘，补充，征募；使恢复健康<br>£4.45读法：4 pounds 45<br>fringe/frɪn(d)ʒ/ n.adj.v. 边缘的；附加的</p>
+<p><font style="" color="red">perk v.振作；n.消费，额外收入</font><br>refree /refə’riː/ 裁判员，仲裁</p>
+<h2 id="Section2"><a href="#Section2" class="headerlink" title="Section2"></a>Section2</h2><p>preview预览<br>ultimate最终的<br>retail零售；retailing零售业<br>minimalist极简主义n.adj.<br>champion n.冠军，战士；adj.优胜的；vt.支持，拥护<br>signature/‘sɪgnətʃə/签名；信号<br>stock股份，股票；存活<br>devoted to专心于；献身于<br>midday正午<br>autograph/‘ɔːtəgrɑːf/亲笔签名；手稿，sign autograph签名<br>entrant新会员；参赛者<br>fixture设备；固定装置<br>fitness适合；健康<br>cardiac /‘kɑːdɪæk/强心剂n.心脏的adj.<br>tone/təʊn/语气；色调；音色<br>qualify限定，修饰；使有资格</p>
+<h2 id="Section3"><a href="#Section3" class="headerlink" title="Section3"></a>Section3</h2><p>semester /sɪ’mestə/学期，半年<br>seminar/‘semɪnɑː/讨论会，讲座<br>overall style整体风格<br>in relation to关于，涉及<br>tutorial 辅导的，家教的；个别指导n.<br>frankly坦白得，真诚地<br>relief /rɪ’liːf/ 救济，减轻，解除，安慰<br>sense of satisfaction满足感<br>colloquialism /kə’ləʊkwɪəlɪz(ə)m/白话，口语体<br>make sense of搞清楚<br>frustrated /frʌ’streɪtɪd/ adj. v.失意，受挫/disappointed失望的，使沮丧<br>psychologically speaking从心理学上讲<br>research assignments研究成果，assignment作业；分配</p>
+<h2 id="Section4"><a href="#Section4" class="headerlink" title="Section4"></a>Section4</h2><p>military adj.n.军事的；军队，军人<br>ashore /ə’ʃɔː/ adj.adv.在岸上；向岸<br>whale /weɪl/ v.猛揍；n.鲸，巨大的东西<br>swim ashore from the sea right onto the beach<br>mass strandings集体搁浅，<span style="background-color:yellow">strand v.搁浅</span><br>tide潮汐；趋势<br>go out出去；过时；熄灭<br>parasite寄生虫<br>infest v.骚扰；寄生于<br>infect vt.感染；infection n.干扰，传染<br>for instance例如<br>worm n.虫，蠕虫；v.蠕动，是缓慢前行<br>marine /mə’riːn/船舶的，海生的；海运业<br>submarine潜水艇，海底生物n.；海底的adj.<br>mammal哺乳动物<br>territory领土，范围/‘terɪt(ə)rɪ/<br>terrestrial陆生的/tə’restrɪəl/<br>potential n.adj.<br>toxin /‘tɒksɪn/毒素，poison<br>saxintoxin蛤蚌毒素<br>certain某一；确信的<br>accidentally意外地<br>ingest /ɪn’dʒest/吸收；接待<br>plant工厂；植物<br>humpback /‘hʌm(p)bæk/驼背，座头鲸<br>chase追捕<br>pilot /‘paɪlət/飞行员，领航员<br>polite /pə’laɪt/有礼貌的<br>squid/skwɪd/鱿鱼，乌贼<br>pinpoint adj.vt.精确的<br>inevitable /ɪn’evɪtəb(ə)l/不可避免的<br>phenomenon现象；杰出的人才<br>coincide with符合，与…一样 /,kəʊɪn’saɪd/<br>spread out展开，铺开<br>whereas然而，反之/weər’æz/<br>consistent/kən’sɪst(ə)nt/一致的，坚持的<br>aid in/eɪd/ vt. 帮助；帮助（在…给予帮助）</p>
+<h1 id="Test2"><a href="#Test2" class="headerlink" title="Test2"></a>Test2</h1><h2 id="Section1-1"><a href="#Section1-1" class="headerlink" title="Section1"></a>Section1</h2><p>arrange accommodation安排住宿<br>resident 居住的；居民<br>hall of residence学校住宿，holl n. 过道，门厅，走廊；会堂；食堂；学生宿舍；大厅，前厅；娱乐中心，会所<br>fill in填充，填写，代替<br>so forth等等，forth向前adv.<br>catering/‘keɪtərɪŋ/n. 给养；承办酒席；提供饮食及服务，cater vi.<br>full board全食宿，包三餐<br>half board半食宿（提供早餐和一顿主餐的膳宿）<br>opt/ɒpt/ vi. 选择，option<br>diet/‘daɪət/饮食，节食<br>grant /grɑːnt/授予，承认v.；拨款n.<br>You should grant/allow them access only to the resources they require.<br>grand宏伟的，壮丽的<br>tremendous极大的，巨大的<br>generous慷慨的<br>bedsit /bed’sɪt/卧室兼起居室<br>put down记下；镇压；贬低<br>jot down草草记下<br>mature/mə’tʃʊə/adj.v.成熟<br>slightly轻微地，些许地<br>socialize使社会化</p>
+<h2 id="section2"><a href="#section2" class="headerlink" title="section2"></a>section2</h2><p>delighted to高兴去，兴高采烈做，delighted高兴的<br>flow into流入<br>be noted as/for因…而著名<br>willow /‘wɪləʊ/柳树<br>commercial商业的，commercially；commerce商业<br>current现在的；流通的，currency货币，流通<br>concurrency并发性<br>basket篮子，转入篮，basket-making制作篮子<br>craft工艺，手艺；ancient craft传统工艺<br>replica /‘replɪkə/复制品<br>bear/beə/n.熊；vt.忍受，承受；结果实；bear in mind记住，考虑<br>herb香草，草药，草本植物<br>dye/daɪ/染料；using them as color dyes for cloth用他们作为布料的彩色染料<br>illustrated有插图的；给…制作插图<br>expert专家，人才<br>ranger /‘reɪn(d)ʒə/突击队员，漫游者，骑警<br>a few days ahead几天前<br>turn up出现；发生；开大<br>keen to /kiːn/热衷于，渴望…<br>knee /niː/膝盖<br>all sorts of activities各种各样的活动<br>hedge /hedʒ/树篱<br>litter/‘lɪtə/垃圾，garbage<br>luggage/package行李<br>tear撕裂；流泪-tore /tɔː(r)/-torn /tɔːn/<br>wear穿着，损耗-wore/wɔː(r)/ -worn<br>slide滑动；幻灯片<br>fairly相当地；公平地；简直；literally<br>fairy仙女，小精灵<br>refreshment茶点；提神的东西<br>south of it/southern part of it<br>lead off衍生；lead领导，导致；leading off from the path /pɑːθ/从小路出发<br>derive from衍生自，源自于，来源于，获得<br>wooded adj.草木茂盛的；wooden adj.木制的，僵硬的，死板的</p>
+<h2 id="Section3-1"><a href="#Section3-1" class="headerlink" title="Section3"></a>Section3</h2><p>self-access center自选学生中心<br>from one’s point of view依某人看来<br>variation /veərɪ’eɪʃ(ə)n/变化；变异<br>routine /ruː’tiːn/n.adj.程序，日常工作<br>one each各一个，there aren’t enough for one each at the moment.<br>relocate重新安置<br>incorporate /ɪn’kɔːpəreɪt/包含，合并，吸收<br>corporate adj.法人的，公司的，公共的，社团的<br>get on with继续干；与某人相处<br>facility /fə’sɪləti/设备；容易，技巧<br>It’s not so much the expense that I’m worried about.费用并不是我担心的问题。<br>timetabling/timetable /taɪm,teblɪŋ/时间表<br>schedule时间表，安排，计划 /ˈʃedju:l/英；/ˈskedʒʊl; skɛdʒʊl/美<br>cramp /kræmp/狭窄的adj.；束缚vt.；痉挛，绞痛n.<br>take up开始从事；占据（时间）；拿起<br>be appropriate for适合<br>break up打碎；解散<br>laminate /‘læmɪneɪt/分成薄片v.n.；plastic laminate塑料薄片<br>invest in投资于；stock股票<br>invoke调用；祈求<br>put in提出；提交；就职</p>
+<h2 id="section4"><a href="#section4" class="headerlink" title="section4"></a>section4</h2><p>belief信任，信念；beliefs（belief的复数）<br>in the hand, control is in the hand of one控制在一个人手里<br>take the form of…表现为；communication takes the form of conversation交流表现为对话<br>memo /‘meməʊ/备忘录<br>have ability to有能力…<br>respond回答；承担责任<br>no-one else没有其他人<br>There’s no-one else can influence them.<br>specialize专门研究；使专业化，深入<br>maintenance维护，维修；生活费用<br>coordinated调节，使协调<br>senior manager/‘mænɪdʒə/高级经理，高级管理人员<br>sets of一套，一组<br>discipline /‘dɪsɪplɪn/学科，记录，训练<br>expertise/,ekspɜː’tiːz/专门技术，专业知识<br>react vi.作出反应<br>orient/‘ɔːrɪənt; ‘ɒr-/使适应；东方n.adj.vi.<br>life-span寿命<br>delegate代表<br>exercise可执行，运用<br>little day-to-day control is exercised from the top很少有来自高层的日常控制</p>
+<h1 id="Test3"><a href="#Test3" class="headerlink" title="Test3"></a>Test3</h1><h2 id="Section1-2"><a href="#Section1-2" class="headerlink" title="Section1"></a>Section1</h2><p>Greek希腊的；希腊语，希腊人<br>recommend推荐<br>apartment公寓，房间<br>studio工作室，studio flat/apartment一居室公寓房<br>jot down简要记下<br>bay /beɪ/海湾；吠叫<br>attraction吸引力；吸引人的事物<br>energetic精力充沛的<br>terrace/‘terəs/平台，阶梯，an closed terrace on the roof屋顶封闭的阳台<br>balcony/‘bælkənɪ/阳台<br>settle解决；定居n.v.<br>barbecue烤肉n.vt.<br>rather相当；宁可；rather well-equipped装备相当好<br>water-skiing滑水运动<br>kite surfing /kaɪt/风筝冲浪<br>satellite /‘sætəlaɪt/卫星<br>within budget在预算范围内<br>brochure /‘brəʊʃə; brɒ’ʃʊə/小册子，手册<br>get a minute有时间<br>a couple of points几点，一系列观点<br>insurance保险，赔偿金<br>resort /rɪ’zɔːt/手段，凭借；度假胜地<br>consult咨询v.<br>sensible明智的，合乎情理的<br>It’s sensible to have good cover.有好的掩护是明智的。<br>representative代表n.；典型的adj.<br>belonging /bɪ’lɒŋɪŋ/所有物，行李，附属物<br>switchboard接线总机<br>direct直接的adj.；管理，指挥v.；直接地，正好adv.<br>Not unless you insure it separately.除非你单独投保。</p>
+<h2 id="Section2-1"><a href="#Section2-1" class="headerlink" title="Section2"></a>Section2</h2><p>co-founder共同创立者<br>acre/‘eɪkə/土地，地产，英亩<br>settle down定居，安定下来<br>miniature/‘mɪnɪtʃə/微型的；缩图<br>track轨道；追踪；on the track在轨道上<br>locomotive /ləʊkə’məʊtɪv/火车头<br>theme /ləʊkə’məʊtɪv/<br>dry-drest/drest/<br>miserable悲惨的，痛苦的<br>be onto a winner称为赢家；onto在…之上<br>a million and half一百五十万<br>We have had to expand our operation.我们不得不扩大我们的业务。<br>retired adj.；retirement n.退休，退役<br>mechanical adj.机械的，呆板的，手动的；mechanical side of things机械方面的事情<br>recruit /rɪ’kruːt/ n.v.招聘，新成员；补充，聘用<br>squadron of一中队的；squadron /‘skwɒdrən/n.vt.空军中队，一群，分遣队；把…编成中队<br>stalwart /‘stɔːlwət; ‘stæl-/坚定的，健壮的adj.；坚定分子n.<br>in charge of负责，主管<br>retail /‘riːteɪl/零售<br>enormous /ɪ’nɔːməs/庞大的，巨大的<br>tremendous /trɪ’mendəs/极大的，巨大的，惊人的<br>souvenir /,suːvə’nɪə/<br>geology /dʒɪ’ɒlədʒɪ/地质学，地址情况；geography地理，地形<br>dig tunnel /‘tʌnl/挖隧道<br>arena /ə’riːnə/舞台，竞技场<br>1 square metres in area面积是1平方米<br>kart /kɑːt/小型赛车，卡丁车<br>mound /maʊnd/n.v.土堆；堆起<br>level the mounds on the track把铁轨上的土堆推平<br>formula公式，准则，配方<br>break out爆发，突发<br>fight to break out over who gets it为谁得到它而战<br>lanscape风景画n.；美化v.</p>
+<h2 id="Section3-2"><a href="#Section3-2" class="headerlink" title="Section3"></a>Section3</h2><p>tutor辅导，家教；约束</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;听力，先慢听听懂，再加快速度。&lt;/p&gt;
+&lt;h1 id=&quot;Test1&quot;&gt;&lt;a href=&quot;#Test1&quot; class=&quot;headerlink&quot; title=&quot;Test1&quot;&gt;&lt;/a&gt;Test1&lt;/h1&gt;&lt;h2 id=&quot;Section1&quot;&gt;&lt;a href=&quot;#Section1&quot; 
+    
+    </summary>
+    
+      <category term="英语" scheme="https://lichtmiao.github.io/categories/%E8%8B%B1%E8%AF%AD/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>英语——阿蟹阿虾</title>
+    <link href="https://lichtmiao.github.io/2018/11/09/%E8%8B%B1%E8%AF%AD%E2%80%94%E2%80%94%E9%98%BF%E8%9F%B9%E9%98%BF%E8%99%BE/"/>
+    <id>https://lichtmiao.github.io/2018/11/09/英语——阿蟹阿虾/</id>
+    <published>2018-11-09T14:32:59.000Z</published>
+    <updated>2018-11-23T02:00:21.590Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-点咖啡"><a href="#1-点咖啡" class="headerlink" title="1.点咖啡"></a>1.点咖啡</h2><p>iced加冰块，icy冰冻<br>cappuccino热牛奶咖啡/,kæpʊ’tʃiːnəʊ/<br>embarrassed尴尬的<br>tall中杯，grande大杯 /‘ɡrændə; ‘ɡrɑŋdi/重大的，显要的，venti超大杯/‘ventɪ/<br>matcha latte抹茶拿铁/ˈmætʃ.ə/ ‘læteɪ/，blacktea latte<br>matcha latte with vanilla抹茶拿铁加香草，matcha latte without matcha抹茶拿铁不加抹茶<br>cocoa 可可粉/‘kəʊkəʊ/，caramel焦糖，shot浓缩，cinnamon肉桂粉，toffee太妃，hazelnut榛果/‘heɪz(ə)lnʌt/<br>本身不含糖：latte，soymilk latte豆奶拿铁，cappuccino卡布基诺，flat white馥芮白（拿铁奶味加微苦,而馥芮白苦味略带奶味），americano美式，brewed coffee冷萃咖啡/bruː/酿造，mocha摩卡，coffee grounds咖啡渣</p>
+<h2 id="2-前后鼻音"><a href="#2-前后鼻音" class="headerlink" title="2.前后鼻音"></a>2.前后鼻音</h2><p>/n/舌头顶住上颚 /ŋ/舌头和上颚间有空隙<br>thin，thing<br>win，wing<br>been，being</p>
+<h2 id="3-培养英文思维"><a href="#3-培养英文思维" class="headerlink" title="3.    培养英文思维"></a>3.    培养英文思维</h2><p>发音（pronunciation）正确，语法正确<br>step1：Start with vocabulary, especially high frequency vocabulary.<br>fridge/regfridgerator<br>step2: Express your feelings in simple sentences.<br>step3: Talk to yourself in conversations.</p>
+<h2 id="4-化妆品"><a href="#4-化妆品" class="headerlink" title="4.    化妆品"></a>4.    化妆品</h2><p>cosmetic化妆品：cleansing gel洁面乳、洁面膏，facial mask面膜，toner /‘təʊnə/化妆水/爽肤水，essence /‘es(ə)ns/精华液，lotion /‘ləʊʃ(ə)n/乳液，moisturizer/‘mɒɪstʃəraɪzə(r)/保湿霜，face cream面霜，hair gel发胶，primer妆前乳，foundation粉底，eyeliner眼线笔，eye shadow眼影，curler/‘kɝlɚ/睫毛夹，mascara/mæ’skɑːrə/睫毛膏，blush腮红，lipstick口红，bitten lips咬唇妆，perfume香水，sponge海绵/beauty blender美妆蛋，contour/‘kɒntʊə/阴影，轮廓，highlight高光，brush刷子，loose powder/‘paʊdə/散粉，glitter/glitter/闪粉；vi.n.闪烁，concealer/kən’siːlə/遮瑕膏</p>
+<p>eyelash/‘aɪlæʃ/睫毛，eyebrow /‘aɪbraʊ/眉毛,dark circles黑眼圈，lips嘴唇<br>This is the concealer I use. 遮瑕膏<br>I’m gonna cover my dark circles.<br>Now I’m gonna to use this mascara to put on my eyelashes.</p>
+<h2 id="5-连读"><a href="#5-连读" class="headerlink" title="5.    连读"></a>5.    连读</h2><p>辅音+辅音：前一个不吐气，后面的吐气<br>辅音+元音：连一起可能变音，I’m sick of it.<br>元音+元音：lawyer，可能变音</p>
+<h2 id="6-及物与不及物"><a href="#6-及物与不及物" class="headerlink" title="6.    及物与不及物"></a>6.    及物与不及物</h2><p>查词看例句，看这个词怎么用。及物动词后面可以直接跟名词性成分，而不及物动词后面不能直接跟名词性成分。<br>hatred恨意，wrist手腕<br>be dying for超级想要<br>complement /‘kɒmplɪm(ə)nt/补语，补给品<br>compliment/‘kɒmplɪm(ə)nt/ 赞赏，complimentary赞赏的，赠送的<br>mc: microphone controller<br>I don’t get the <font style="" color="red">punchline</font>. /‘pʌn(t)ʃlaɪn/ 我不懂这个梗。<br>rhyme n.押韵，v.使押韵/raɪm/<br>rhythm n.节奏，韵律；rhythmed adj.有节奏的<br>DJ, drop the beat. DJ来点节奏。drop me a line. 给我写信/留言。<br>hate <font style="" color="red">doing sth.</font> 讨厌做某事，<font style="" color="red">强调习惯、兴趣爱好</font><br>hate <font style="" color="red">to do sth.</font> 不愿意去做某事，<font style="" color="red">强调想法</font></p>
+<h2 id="7-哈利波特里的一些咒语（拉丁语）"><a href="#7-哈利波特里的一些咒语（拉丁语）" class="headerlink" title="7.    哈利波特里的一些咒语（拉丁语）"></a>7.    哈利波特里的一些咒语（拉丁语）</h2><p>wingardium leviosa 漂浮咒<br>alohomora开锁咒<br>pertrificus totalus石化咒<br>expecto patronus呼神护卫咒<br>expelliarmus除你武器咒<br>avada kedavra阿瓦达索命咒<br>engorgio速速变大咒</p>
+<h2 id="8-出境"><a href="#8-出境" class="headerlink" title="8.    出境"></a>8.    出境</h2><p>transfers（中转）分为domestic transfers（国内中转）和international transfers（国际中转）<br>duty free shop免税店<br>baggage/luggage claim行李领取处<br>boarding登机中<br>delayed延误<br>在国外的飞机上会填arrival card（入境卡）/landing card<br>国外海关：护照和入境卡，酒店和回程机票的订单。<br>China/ˈtʃaɪnə/<br>How much currency are you carrying？ 你身上带了多少现金？<font style="" color="red">currency货币，通货</font><br>How can I get to …<br>restroom/toilet/washroom洗手间，hotel酒店，motel汽车旅馆，hospital医院，clinic诊所，subway station/metro station地铁站，bus station公车站，airport机场，shopping mall商场，square广场，police office警察局，entrance入口，exit出口<br>go straight直走，go along this street沿着这条路直走，crossroad十字路口，block街区，corner拐角处</p>
+<h2 id="9-吃饭"><a href="#9-吃饭" class="headerlink" title="9.    吃饭"></a>9.    吃饭</h2><p>Did you make a reservation?<br>under the name of sb. / I need a table for two.<br>by the window<br>Any recommendation？ 有什么推荐的吗？<br>What’s your signature dish? 你们的招牌菜是什么？signature /‘sɪgnətʃə/签名，署名<br>Sorry, I need a minute. 不好意思，让我看一下。<br>Excuse me, I’m ready to order. 不好意思，我准备点餐了。<br>starter/appetizers前菜/开胃菜，soup汤类，salad沙拉，main course主菜，dessert(s)甜点，drinks &amp; beverage饮料，grilled烧烤，stewed/braised炖，fried炸的，pan fried煎炸，stir fried翻炒，barbecue烧烤（类似韩式烤肉），rare一分熟，medium rare三分熟，medium五分熟，medium well七分熟，well done全熟<br>rare /reə/稀有的，杰出的，半熟的<br>Excuse me, check, please.<br>Excuse me, can I get the bill?<br>账单中如果有including service fee（包含服务费）/service charge（服务费），就说明总金额里已经包含小费了。给小费一般是总消费金额的10~15%<br>This is it for you. 或直接不说，点个头就可以了。<br>给小费的场合：泊车员，进出酒店搬行李的行李员，服务员，出租车司机。在餐厅可以把小费夹在账单里，在酒店可以放在床头，给第二天打扫的服务生。</p>
+<h2 id="10-酒店入住"><a href="#10-酒店入住" class="headerlink" title="10.    酒店入住"></a>10.    酒店入住</h2><p>I have a reservation under the name of …. 递上护照和打印的酒店订单。<br>What’s the reception number?</p>
+<h2 id="11-购物"><a href="#11-购物" class="headerlink" title="11.    购物"></a>11.    购物</h2><p>shopping mall/shopping center商场，department store百货商场<br>buy one get one free买一赠一，special offer特价，discount/sale打折，big sale大甩卖，final sale最后甩卖，final clear out清仓大甩卖<br>save up to 80%最多节省80%（即二折起），up to 80% off低至二折<br>May I help you? What do you need? Are you looking for something?<br>Thank you, I’m just looking. Thank you, I’m good.<br>I need … I’m looking for …<br>fitting room试衣间<br>Do you have any other colors? Could you show me any other color?<br>creamy white米白色，beige米黄色，pale brown浅棕色，lilac/orchid淡紫色，hazel淡褐色，navy blue海军蓝，army green军绿色<br>light，black<br>plain colored纯色的，striped条纹的，plaid格子的，camouflage迷彩，plain平的，简单的<br>small小码，medium中码，large大码，X/extra加，<br>What’s size do you wear?<br>I wear large. My size is large.<br>It’s too big/small. I need a bigger size.<br>I wear size 43. Euro size欧码，US size美码<br>Is it made of leather? or synthetic?是真皮吗？还是人造皮？<br>Does it shrink? or fade? 会缩水吗？会褪色吗？<br>cashier收银台，cash现金，credit card信用卡，debit card借记卡，membership card会员卡，loyalty card积分卡</p>
+<h2 id="12-Macao"><a href="#12-Macao" class="headerlink" title="12.    Macao"></a>12.    Macao</h2><p>Welcome to the Premier Inn Abu Dhabi Capital Centre.<br>Thank you. I have a reservation under the name of …<br>You want to check in, right?<br>Yeah.<br>May I have your passport?<br>Passport.<br>Under …<br>Yeah.<br>I’ll just confirm the reservation. You’ll be stay for one night, right? And one twin room. And you prefer smoking or non-smoking?<br>None smoking. And I don’t want my room to be at the first or at the last of the corridor. /‘kɒrɪdɔː/走廊<br>You want the middle. I’ll be giving you a nice view room. Free upgrade for you. The room has been paid already. I’ll just be asking more for deposit, 1000.<br>Can I use Alipay?<br>This’s only for payment. For the deposit, it’ll be returned to you. We accept credit card or …<br>Credit card.<br>Please don’t smoke inside the room. This is strictly non-smoking.<br>I don’t do smoking.<br>May I plz have your telephone number?<br>OK.<br>And email address right here.<br>OK.<br>For Alipay, you can use this one to pay the room charge.<br>But I have already paid for it, right?<br>Yeah, already paid. So that’s just why I only get the credit card.<br>OK. That’s only for deposit.<br>Yes, deposit only. Upon check out, it’ll be released to you. Please have your password. North Wing. Free wifi. No password required. release释放<br>OK. Cool. So what’s the reception number?<br>The reception number just dial zero, in the room. dial拨号<br>OK. Thank you, thank you so much.</p>
+<p>See those buses, they’re just like caterpillars. /‘kætəpɪlə/毛毛虫<br>How can I help you?<br>I can’t log in/connect to wifi.<br>May I know which wifi signal you’re connecting?<br>The…<br>It’s a chargeable wifi. Your room cannot connect this wifi. You can connect to another, the name is …<br>I don’t have to enter anything, right?<br>Yeah. You can just accept the item, and then connect to the Internet.</p>
+<h2 id="13-虚拟语气"><a href="#13-虚拟语气" class="headerlink" title="13.    虚拟语气"></a>13.    虚拟语气</h2><p>用来表达非真实的情况，包括主观的建议、命令、安排<br>suggest、advise、propose建议、提议，recommend推荐，order命令，demand、require要求，request请求，arrange安排、insist坚持。<br>猜测，愿望、假设、遗憾、空想、白日梦。。。<br>suggest除了建议，还有暗示的意思；insist除了有坚持要做某事的意思，还有坚定事实，强调观点，一口咬定。这种时候不需要用虚拟语气。<br>He insists that he is innocent.<br>The chat history suggests that he slept with her.<br>It’s necessary that you (should) keep a cat.<br>It’s impossible that he (should) be with you.<br>事情没有发生，但你主观意志要去做或者避免的时候，如：<br>I blocked him lets he (should) check my moments. 我把他屏蔽了，防止他看我朋友圈。<br>不会实现的愿望，相反的假设，对过去的遗憾，如：<br>现在或将来虚拟：would愿意、会，should应该，could能够，might可能 + do。</p>
+<p>If it rained tomorrow, I would completely freak out. freak out崩溃，freak奇怪的，怪异的<br>be动词的过去式都是were/wə/<br>过去虚拟：一般表达遗憾后悔，或则埋怨责骂。would愿意、会，should应该，could能够，might可能 + have done。<br>If you had said it out loud at the beginning, he might have said yes.<br>If you have got there earlier, you might have met him.<br>You could have killed me.<br>I should have said no.<br>If we had got married then, our child would be 5 years old now. /biːn/<br>If you have dumped him 2 years ago, everything would be ok now.<br>If only I were thin. 如果我瘦就好了。<br>As if it were real. 说的跟真的一样。<br>To think that I trusted him. 没想到我竟然相信了他。</p>
+<h2 id="14-催促"><a href="#14-催促" class="headerlink" title="14.    催促"></a>14.    催促</h2><p> your skates on<br>shake your leg<br>get a move on<br>chop-chop<br>I’m afraid you’ll have to make haste. 匆忙，赶紧（比较正式）<br>I wanna build a fire under you.<br>Try to hurry up a little bit more.</p>
+<h2 id="15-面试"><a href="#15-面试" class="headerlink" title="15.    面试"></a>15.    面试</h2><p>Where are you from?<br>I come/am from…<br>I was born and raised in …/… is the city where I was born and grew up.<br>I’m an outgoing and motivated person.<br>outgoing外向的，introverted内敛的，内向的/‘ɪntrə(ʊ)vɜːtɪd/ ，energetic/dynamic有活力的，passionate有激情的，creative有创造力的，motivated积极的，decisive果断的/dɪ’saɪsɪv/，effective有效的<br>I like… /My interests are… /My hobbies are…/I’m fond of doing…/<br>major subject主修课目 /‘meɪdʒə/ ，minor subject辅修科目<br>I don’t even know …<br>bachelor’s degree学士学位，bachelor单身狗<br>master’s degree硕士学位<br>phD/doctorate博士学位<br>I have a lot of time killing experience, like …<br>I think I’m quite fit for raising a cat. I believe I’m suited to doing the job.</p>
+<h2 id="16-tr-与-dr"><a href="#16-tr-与-dr" class="headerlink" title="16.    /tr/与/dr/"></a>16.    /tr/与/dr/</h2><p>Do as what we’re told trial. 照本宣科<br>将t与r分开发音，r要裂开嘴巴<br>将d与r分开发音</p>
+<h2 id="17-秋冬"><a href="#17-秋冬" class="headerlink" title="17.    秋冬"></a>17.    秋冬</h2><p>batwing sleeves蝙蝠袖/sliːv/，cloak斗篷/kləʊk/ ，coat大衣，scarf围巾，muffler/neckerchief围脖，strapless露肩装，shoulder，sweater毛线衣，jacket夹克，turtleneck高领，pants长裤，jeans牛仔裤/dʒiːnz/，wind coat风衣，T-shirt，shorts短裤，short sweatpants短运动裤，sweat sweater卫衣，hood兜帽，hoodie连帽衫，shirt衬衫，blouse女装衬衫<br>Don.t give me any lip service. 不要光说。lip service空头支票<br>I feel like a million dollars.我感觉好极了。That’s great. I feel good.<br>I’ve been in quite a good shape. 我身材好；我精神状态好。<br>Do you have the time? 现在几点钟？<br>I saw her duck.我看到她躲闪的样子。duck鸭子；躲闪</p>
+<h2 id="18-圣诞"><a href="#18-圣诞" class="headerlink" title="18. 圣诞"></a>18. 圣诞</h2><p>Santa Claus圣诞老人/ˈsæntə klɔ:z/<br>Nicholas/Saint Nicholas/Saint Nick<br>in the nick of time及时的<br>But I got smarter, I got harder in the nick of time.<br>但我即时变得更加聪明更加强大。<br>reindeer驯鹿/‘reɪndɪə/<br>mistletoe槲寄生/‘mɪs(ə)ltəʊ/<br>boxing day 12.26，Christmas box圣诞节消费<br>all fired up超激动的，lady bug七星瓢虫<br>slay杀死，杀害，残杀；秒杀全场，<br>literally照字面地；逐字地；不夸张地；正确地；简直<br>nailed it 很好/neild/<br>rock-scissors-paper石头剪刀布（一般读rock-paper-scissors）</p>
+<h2 id="19-关于狗的表达"><a href="#19-关于狗的表达" class="headerlink" title="19.关于狗的表达"></a>19.关于狗的表达</h2><p>dog在英文中一般都是褒义<br>lucky dog幸运儿<br>top dog大佬<br>put on the dog摆场子、摆架子<br>work like a dog很努力地工作<br>every dog has his day风水轮流转<br>dog eat dog残酷无情，竞争激烈</p>
+<h2 id="20-衣服品牌"><a href="#20-衣服品牌" class="headerlink" title="20.衣服品牌"></a>20.衣服品牌</h2><p>ZARA西语/zɑrɑ/,美语/sɑlɑ/<br>Supreme/suː’priːm/最高的，supreme court最高法院<br>adidas/‘adi,das/<br>NIKE/‘naiki:/<br>jean/dʒiːn/牛仔裤<br>rosebullet/rəʊz/ /‘bʊlɪt/</p>
+<h2 id="21-妇女节"><a href="#21-妇女节" class="headerlink" title="21.妇女节"></a>21.妇女节</h2><p>International Working Women’s Day/‘wɪmɪn/<br>Feminism by definition is the belief that men and women should have equal rights and opportunities./‘femɪnɪz(ə)m/女权主义<br>If not me, who? If not now, when?</p>
+<h2 id="22-互怼"><a href="#22-互怼" class="headerlink" title="22.互怼"></a>22.互怼</h2><p>You don’t wanna piss me out. 你不要惹我。<br>Yah, you are pretty, pretty stupid.yah表不愉快的声音<br>Dose any one think…<br>There’s no cure for being a criticism. /kjʊə; kjɔː<br>Go away. I was looking for something better than you.</p>
+<h2 id="23-现在进行时"><a href="#23-现在进行时" class="headerlink" title="23.现在进行时"></a>23.现在进行时</h2><p>1）以重读音节结尾<br>2）以单辅音音标结尾<br>3）以单元音字母+单辅音字母结尾</p>
+<h2 id="24-零食"><a href="#24-零食" class="headerlink" title="24.零食"></a>24.零食</h2><p>I’m about to go a vintage party. There are full of debutantes. /‘vɪntɪdʒ/ /‘debjʊtɑːnt; ‘deɪ-/ 我准备要去参加一个复古趴，那里全是名媛。<br>super lemon<br>sea salt海盐<br>straws吸管<br>potato chips薯条<br>popcorn爆米花<br>gluten/‘gluːt(ə)n/面粉，面筋，谷蛋白<br>pepper/‘pepə/辣椒，black pepper黑胡椒<br>coconut/‘kəʊkənʌt/ 椰子<br>Macarons马卡龙<br>crisp/krɪsp/adj. 脆的；新鲜的；易碎的，vt. 使卷曲；使发脆，vi. 卷曲；发脆，n. 松脆物；油炸马铃薯片<br>pumpkin crisps南瓜片<br>with chia seeds &amp; wild honey奇亚籽和野生蜂蜜<br>sour cream/saʊə/酸奶油<br>crispy thin banana chips薄脆香蕉片，/‘krɪspɪ/adj. 酥脆的；易碎的；干净利落的；生气勃勃的<br>pickled/‘pɪk(ə)ld/腌制的，腌渍的<br>pickled garlic泡蒜<br>hickory/‘hɪk(ə)rɪ/山核桃<br>Harry Potter Bertie Bott’s Every Flavour Beans哈利波特怪味糖果<br>cinnamon/‘sɪnəmən/ 肉桂<br>mango/‘mæŋgəʊ/ 芒果<br>lychee/litchi/‘laɪtʃiː; ‘lɪ-/荔枝<br>freeze dried/friːz/冻干<br>one breakfast at a time一顿早餐的量<br>Together we are saving chimps. /tʃɪmp/黑猩猩<br>Give us a thumbs up./θʌm/给我们点个赞<br>See you real quick.回见</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;1-点咖啡&quot;&gt;&lt;a href=&quot;#1-点咖啡&quot; class=&quot;headerlink&quot; title=&quot;1.点咖啡&quot;&gt;&lt;/a&gt;1.点咖啡&lt;/h2&gt;&lt;p&gt;iced加冰块，icy冰冻&lt;br&gt;cappuccino热牛奶咖啡/,kæpʊ’tʃiːnəʊ/&lt;br&gt;embarra
+    
+    </summary>
+    
+      <category term="英语" scheme="https://lichtmiao.github.io/categories/%E8%8B%B1%E8%AF%AD/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>英语——英式音标</title>
+    <link href="https://lichtmiao.github.io/2018/11/09/%E8%8B%B1%E8%AF%AD%E2%80%94%E2%80%94%E8%8B%B1%E5%BC%8F%E9%9F%B3%E6%A0%87/"/>
+    <id>https://lichtmiao.github.io/2018/11/09/英语——英式音标/</id>
+    <published>2018-11-09T05:04:48.000Z</published>
+    <updated>2018-11-20T03:21:16.521Z</updated>
+    
+    <content type="html"><![CDATA[<p>开音节是以元音结尾的音节，如“baby”，其字母y发的元音；闭音节是以辅音结尾的音节，如“book”，其字母k发的辅音[k]。</p>
+<h1 id="iː-是单元音前元音-是个长元音，美式音标与之对应的发音符号是-i-。"><a href="#iː-是单元音前元音-是个长元音，美式音标与之对应的发音符号是-i-。" class="headerlink" title="/iː/是单元音前元音,是个长元音，美式音标与之对应的发音符号是[i]。"></a><font style="" color="red">/iː/</font>是单元音前元音,是个长元音，<font style="" color="red">美式音标与之对应的发音符号是[i]</font>。</h1><p>1）张开你的嘴巴，好像你在微笑，露出你的牙齿，嘴唇向两边伸开，成扁平形。<br>2）将舌前部向硬腭尽量抬起。舌头轻微接触下齿背部。<br>3）嘴唇绷紧，舌头肌肉保持紧张，震动声带，发出/iː/音。<br>a、通常情况下，元音字母在重读开音节中都发字母本身的音，所以字母e在重读开音节中发/iː/,例词：<br>he /hiː/ pron. 他，me /miː/ pron. 我，be /biː/ vt. 是，she /ʃiː/ pron. 她，we /wiː/ pron. 我们，eve /iːv/ n. 夏娃<br>b、此外字母组合ee,ea,ie,ei在重读音节中都可以发/iː/,例词：<br>sheep /ʃiːp/ n. 绵羊，green /griːn/ adj. 绿色的，fee /fiː/ n. 费用，tree /triː/ n. 树，teeth /tiːθ/ n. 牙齿，see /siː/ vt. 看见，seat /siːt/ n. 座位，steam /stiːm/ n. 蒸汽 mean /miːn/ vi. 用意，sea /siː/ n. 海，flea /fliː/ n. 跳蚤，tea /tiː/ n. 茶叶，achieve /ə’tʃiːv/ vt. 取得，believe /bɪ’liːv/ vi. 信任，belief /bɪ’liːf/ n. 相信，relieve /rɪ’liːv/ vt. 解除，receive /rɪ’siːv/ vt. 收到，conceit /kən’siːt/ n. 自负d，eceit /dɪ’siːt/ n. 欺骗，conceive /kən’siːv/ vt. 构思</p>
+<h1 id="ɪ-是单元音前元音，这个音标在英式音标中的符号是-ɪ-，美式英标符号-ɪ-。"><a href="#ɪ-是单元音前元音，这个音标在英式音标中的符号是-ɪ-，美式英标符号-ɪ-。" class="headerlink" title="/ɪ/是单元音前元音，这个音标在英式音标中的符号是/ɪ/，美式英标符号[ɪ]。"></a>/ɪ/是单元音前元音，这个音标在英式音标中的符号是/ɪ/，美式英标符号[ɪ]。</h1><p>1）嘴微微张开，嘴唇放松，上齿和下齿之间约一个小指尖距离。<br>2）舌尖抵下齿，舌硬腭抬起，舌位稍低，稍后，舌头肌肉松弛。<br>3）嘴唇向两旁伸开，声带震动发出声音<br>注意：/ɪ/与长元音/iː/的区别。<br>a、字母i,y在闭音节和非重读音节中发/ɪ/，例词：<br>bit /bɪt/ adj. 很小的，kiss /kɪs/ vi. 接吻，list /lɪst/ n. 目录，ship /ʃɪp/ n. 船，kick /kɪk/ vt. 踢，fill /fɪl/ vt. 装满，mirror /‘mɪrə/ n. 镜子，chicken /‘tʃɪkɪn/ n. 鸡肉，pity /‘pɪtɪ/ n. 怜悯，wish /wɪʃ/ n. 希望，office /‘ɒfɪs/ n. 办公室，lily /‘lɪlɪ/ n. 百合花，<font color="red">rhythm /‘rɪðəm/ n. 节奏</font>，bicycle /‘baɪsɪkl/ n. 自行车，family /ˈfæməlɪ/ n. 家庭，slowly /‘sləʊlɪ/ adv. 缓慢地<br>b、字母e在非重读音节发/ɪ/，例词：<br>remain /rɪ’meɪn/ vi.剩余，ticket /‘tɪkɪt/ n. 票，delay /dɪ’leɪ/ vi. 延期，economy /ɪ’kɒnəmɪ/ n. 经济，escape /ɪ’skeɪp/ vt. 逃避，example /ɪg’zɑːmpəl/ n. 例子，women /‘wɪmɪn/ n. 女人</p>
+<h1 id="e-是单元音前元音，这个音标在英式音标中的符号是-e-，美式音标与之对应的发音符号是-e-。"><a href="#e-是单元音前元音，这个音标在英式音标中的符号是-e-，美式音标与之对应的发音符号是-e-。" class="headerlink" title="/e/是单元音前元音，这个音标在英式音标中的符号是/e/，美式音标与之对应的发音符号是[ɛ]。"></a><font style="" color="red">/e/</font>是单元音前元音，这个音标在英式音标中的符号是/e/，<font style="" color="red">美式音标与之对应的发音符号是[ɛ]</font>。</h1><p>1）嘴唇向两侧微微分开，上下齿之间大约可容纳一个小指头尖的距离。<br>2）舌前部在发音过程中抬起，舌尖稍微接触下齿背。<br>3）发音时下巴逐渐向下移动，震动声带，发出/e/音。<br>注意：/e/个短元音，注意与/ɜː/、/ə/的区别。<br>a、字母e在重读开音节中发[iː],在重读闭音节通常发[e],例词：<br>check /tʃek/ vi. 核实，bed /bed/ n. 床，net /net/ n. 网，ten /ten/ num. 十个，friend /frend/ n. 朋友，send /send/ vt. 发送，guess /ges/ vt. 猜测，electric /ɪ’lektrɪk/ n. 电，fresh /freʃ/ adj. 新鲜的<br>b、字母组合ea在重读音节中不仅可以发[i:]音，也可以发[e]的音，在什么情况下发[i:]或[e]没有特定规则需要在平时学习中分别记忆,例词：<br>dead /ded/ n. 死者，heaven /‘hevən/ n. 天堂，health /helθ/ n. 健康，bread /bred/ n. 面包，heavy /‘hevɪ/ adj. 沉重的，head /hed/ n. 头</p>
+<h1 id="ae-是单元音前元音，这个音标在英式音标中的符号是-ae-，美式音标与之对应的发音符号也是-ae-。"><a href="#ae-是单元音前元音，这个音标在英式音标中的符号是-ae-，美式音标与之对应的发音符号也是-ae-。" class="headerlink" title="/æ/是单元音前元音，这个音标在英式音标中的符号是/æ/，美式音标与之对应的发音符号也是[æ]。"></a>/æ/是单元音前元音，这个音标在英式音标中的符号是/æ/，美式音标与之对应的发音符号也是[æ]。</h1><p>a、字母a在重读闭音节中发[æ],例词：<br>mad /mæd/ adj. 疯狂的，cash /kæʃ/ n. 现款，apple /‘æpəl/ n. 苹果，family /ˈfæməlɪ/ n. 家庭，rabbit /‘ræbɪt/ n. 兔子，happy /‘hæpɪ/ adj. 幸福的，hat /hæt/ n. 帽子，pack /pæk/ n. 包装，dad /dæd/ n. 爸爸，bag /bæg/ n. 袋，family /ˈfæməlɪ/ n. 家庭，mad /mæd/ adj. 疯狂的，black /blæk/ adj. 黑色的，hand /hænd/ n. 手，jacket /‘dʒækɪt/ n.夹克</p>
+<h1 id="ɜː-是单元音中元音-是个长元音，旧版英式音标符号-əː-美式英语对应的音标符号-ɝ-。"><a href="#ɜː-是单元音中元音-是个长元音，旧版英式音标符号-əː-美式英语对应的音标符号-ɝ-。" class="headerlink" title="/ɜː/是单元音中元音,是个长元音，旧版英式音标符号[əː],美式英语对应的音标符号[ɝ]。"></a><font style="" color="red">/ɜː/</font>是单元音中元音,是个长元音，旧版英式音标符号[əː],<font style="" color="red">美式英语对应的音标符号[ɝ]</font>。</h1><p>1）半张开嘴巴，双唇略扁平，向嘴角两边略拉开。<br>2）舌身平放，舌中部伸向硬颚，但不要接触到硬颚，舌部肌肉紧张。<br>3）震动声带，发出/ɜː/音。<br>注意：/ɜː/个长元音，这个音听起来<span style="background-color:yellow">和汉语的”饿”相似</span>，要注意的是在美国英语中该音后常常加上一个r的音，类似北京方言的儿发音。<br>a、通常情况下字母组合er,ir,ur在重读音节中都发[ɜː],例词：<br>certain /ˈsɜ:tn/ pron. 某些，nervous /‘nɜːvəs/ adj. 神经的，serve /sɜːv/ vi. 服务，skirt /skɜːt/ n. 裙子，dirty /‘dɜːtɪ/ adj. 肮脏的，sir /sɜː/ n. 先生，nurse /nɜːs/ n. 护士，<font color="red">purse /pɜːs/ n. (女士)手提袋</font>，fur /fɜː/ n. 皮<br>b、or字母组合在w后也发[ɜː],例词：<br>worship /ˈwɜ:ʃɪp/ vt. 崇拜，worth /wɜːθ/ n. 价值，<font color="red">worm /wɜːm/ n. 蠕虫</font><br>c、ear字母组合后接辅音时通常发[ɜː],例词：<br>early /‘ɜːlɪ/ adj. 早期的，earn /ɜːn/ vt. 赚，earth /ɜːθ/ n. 地球</p>
+<h1 id="ə-是单元音前元音，这个音标在英式音标中的符号是-ə-，美式英标符号-ə-。"><a href="#ə-是单元音前元音，这个音标在英式音标中的符号是-ə-，美式英标符号-ə-。" class="headerlink" title="/ə/是单元音前元音，这个音标在英式音标中的符号是/ə/，美式英标符号[ə]。"></a>/ə/是单元音前元音，这个音标在英式音标中的符号是/ə/，美式英标符号[ə]。</h1><p>1）嘴微微张开，嘴唇放松，舌身平放。<br>2）舌中部伸向硬颚，不要与之接触。<br>3）口部肌肉和舌头放松，震动声带，气流向外发出/ə/音。<br>注意：/ə/是中央、不圆唇、非重读元音。<br>a、字母a在非重读音节中发/ə/,例词：<br>along /ə’lɒŋ/ prep. 沿着，banana /bə’nɑːnə/ n. 香蕉，arrive /ə’raɪv/ vi. 到达<br>b、字母e在非重读音节中发/ə/,例词：<br>open /‘əʊpən/ adj. 公开的，driver /‘draɪvə/ n. 驾驶员，president /‘prezɪdənt/ n. 校长<br>c、字母o在非重读音节中发/ə/,例词：<br>today /tə’deɪ/ n. 今天，second /‘sekənd/ n. 秒，actor /‘æktə/ n. 男演员<br>d、字母u在非重读音节中发/ə/,例词：<br>support /sə’pɔːt/ vt. 支持，industry /‘ɪndəstrɪ/ n. 产业，suggest /sə’dʒest/ vt. 提议，autumn /‘ɔːtəm/ n. 秋天，album /‘ælbəm/ n. 相簿，upon /ə’pɒn/ prep. 根据<br>e、字母or在非重读音节中发/ə/,例词：<br>factor /‘fæktə/ n. 因素，humor /ˈhjuːmə/ n. 幽默，visitor /‘vɪzɪtə/ n. 访问者<br>f、字母er在非重读音节中发/ə/,例词：<br>meter /ˈmi:tə/ n. 米；仪表，mother /‘mʌðə/ n. 母亲，speaker /‘spiːkə/ n. 演讲者</p>
+<h1 id="v-是单元音中元音，这个音标在英式音标中的符号是-v-，英式旧版符号和美式音标都是-v-。"><a href="#v-是单元音中元音，这个音标在英式音标中的符号是-v-，英式旧版符号和美式音标都是-v-。" class="headerlink" title="/ʌ/是单元音中元音，这个音标在英式音标中的符号是/ʌ/，英式旧版符号和美式音标都是/ʌ/。"></a>/ʌ/是单元音中元音，这个音标在英式音标中的符号是/ʌ/，英式旧版符号和美式音标都是/ʌ/。</h1><p>a、字母o在m,n,v或th前常发[ʌ],例词：<br>love /lʌv/ vi. 爱，some /sʌm/ pron. 一些，none /nʌn/ pron. 没有人，mother /‘mʌðə/ n. 母亲，monkey /‘mʌŋkɪ/ n. 猴子，month /mʌnθ/ n. 月<br>b、字母u在重读闭音节中常发[ʌ],例词：<br>drug /drʌg/ n. 麻醉药，under /‘ʌndə/ prep. 低于，hurry /‘hʌrɪ/ n. 匆忙，butter /‘bʌtə/ n. 黄油，subject /ˈsʌbdʒɪkt/ n. 主题number /‘nʌmbə/ n. 数<br>c、字母组合ou在部分单词中也发[ʌ],例词：<br>touch /tʌtʃ/ vt. 接触，enough /ɪ’nʌf/ adv. 足够地，couple /‘kʌp(ə)l/ n. 对，young /jʌŋ/ adj. 年轻的，double /‘dʌb(ə)l/ n. 两倍</p>
+<h1 id="uː-是单元音后元音-是个长元音-美式英语与之对应的音标符号-u-。"><a href="#uː-是单元音后元音-是个长元音-美式英语与之对应的音标符号-u-。" class="headerlink" title="/uː/是单元音后元音,是个长元音,美式英语与之对应的音标符号[u]。"></a><font style="" color="red">/uː/</font>是单元音后元音,是个长元音,<font style="" color="red">美式英语与之对应的音标符号[u]</font>。</h1><p>1）双唇收圆而且小，并向前突出，牙齿接近闭合。<br>2）舌身后缩，舌尖离开下齿，舌后部向软颚抬起，但不要接触到软颚。<br>3）嘴部肌肉是收紧，震动声带，发出/uː/音。<br>注意：/uː/是个长元音，发音要稍长一些。<br>a、字母组合oo在大多数情况下都发长元音[uː],例词：<br>school /skuːl/ n. 学校，fool /fuːl/ n. 傻瓜，zoo /zuː/ n. 动物园，pool /puːl/ n. 联营，noon /nuːn/ n. 中午，food /fuːd/ n. 食物<br>b、字母o,u单词中发[uː],例词：<br>lose /luːz/ vi. 失败，movie /‘muːvɪ/ n. 电影，prove /pruːv/ vt. 证明，pollute /pə’luːt/ vt. 污染，rule /ruːl/ n. 统治，ruler /‘ruːlə/ n. 尺<br>c、字母组合ew,ui,oe,ou在单词中发[uː],例词：<br>chew /tʃuː/ vt. 嚼碎，jewel /‘dʒuːəl/ n. 宝石，threw /θruː/ v. 抛，fruit /fruːt/ n. 水果，juice /dʒuːs/ n.(水果)，cruise /kruːz/ vi. 巡航，through /θruː/ prep. 通过，soup /suːp/ n. 汤，group /gruːp/ n. 组，canoe /kə’nuː/ n. 独木舟，shoe /ʃuː/ n. 鞋</p>
+<h1 id="ʊ-是单元音后元音，这个音标在英式音标中的符号是-ʊ-，旧版的音标符号是-u-，美式英标与之对应有符号-ʊ-。"><a href="#ʊ-是单元音后元音，这个音标在英式音标中的符号是-ʊ-，旧版的音标符号是-u-，美式英标与之对应有符号-ʊ-。" class="headerlink" title="/ʊ/是单元音后元音，这个音标在英式音标中的符号是/ʊ/，旧版的音标符号是[u]，美式英标与之对应有符号[ʊ]。"></a>/ʊ/是单元音后元音，这个音标在英式音标中的符号是/ʊ/，旧版的音标符号是[u]，美式英标与之对应有符号[ʊ]。</h1><p>1）双唇收圆，稍稍向外突出，嘴形小而圆，嘴角肌肉放松。<br>2）舍身后缩，舌尖离开下齿。<br>3）舌后部向软颚抬起，震动声带，短促有力发出/ʊ/音。<br>注意：/ʊ/个短元音，要诀是发音时收小腹，牙床半合，短促有力。<br>a、oo在k前发短元音[ʊ],例词：<br>cook /kʊk/ vt. 烹调，took /tʊk/ v. 拿look /lʊk/ vt. 看，brook /brʊk/ n. 小溪，shook /ʃʊk/ v. 摇动，hook /hʊk/ n. 挂钩<br>b、oul在重读音节中发[ʊ],例词：<br>should /ʃʊd/ aux. 应该，would /wʊd/ aux. 将，could /kʊd/ aux. 能够<br>c、u在某些情况下发[ʊ],例词：<br>put /pʊt/ vt. 放，sugar /‘ʃʊgə/ n. 糖，bull /bʊl/ n. 公牛，push /pʊʃ/ vi. 推进，butcher /ˈbʊtʃər/ n. 屠夫</p>
+<h1 id="oː-是单元音后元音-是个长元音-美式英语与之对应的音标符号-o-。"><a href="#oː-是单元音后元音-是个长元音-美式英语与之对应的音标符号-o-。" class="headerlink" title="/ɔː/是单元音后元音,是个长元音,美式英语与之对应的音标符号[ɔ]。"></a><font style="" color="red">/ɔː/</font>是单元音后元音,是个长元音,<font style="" color="red">美式英语与之对应的音标符号[ɔ]</font>。</h1><p>a、字母组合al在大多辅音字母前都发[ɔː],例词：<br>talk /tɔːk/ vt. 说，ball /bɔːl/ n. 球，fall /fɔːl/ vi. 落下<br>b、字母组合au,aw,or,oar,oor,ore在重读音节中发[ɔː],例词：<br>cause /kɔːz/ n. 原因，taught /tɔːt/ v. 教授，August /ˈɔːɡəst/ n. 八月，law /lɔː/ n. 法律，draw /drɔː/ vt. 画，awful /‘ɔːfʊl/ adj. 可怕的，<font color="red">border /‘bɔːdə/ n. 边境</font>，order /‘ɔːdə/ n. 命令，nor /nɔː/ conj. 也不，<font color="red">board /bɔːd/ n.木板</font>，soar /sɔː/ n. 高飞，roar /rɔː/ n. 咆哮，before /bɪ’fɔː/ prep. 在…之前，store /stɔː/ n. 商店，more /mɔː/ adj. 更多的，<font color="red">door /dɔː/ n. 门</font>，<font color="red">floor /flɔː/ n. 地板</font><br>c、字母组合ar在w后发[ɔː],例词：</p>
+<p><font color="red">war /wɔː/ n. 战争</font>，warn /wɔːn/ vt. 警告，warm /wɔːm/ adj. 温暖的<br>d、字母组合ou在ght前发[ɔː],例词：<br>fought /fɔːt/ v. 战斗brought /brɔːt/ v. 带来ought /ɔːt/ aux. 应该</p>
+<h1 id="ɒ-是单元音后元音，这个音标在英式音标中的符号是-ɒ-，旧版的国际音标符号是-o-，美式音标与之对应有符号-ɑ-。"><a href="#ɒ-是单元音后元音，这个音标在英式音标中的符号是-ɒ-，旧版的国际音标符号是-o-，美式音标与之对应有符号-ɑ-。" class="headerlink" title="/ɒ/是单元音后元音，这个音标在英式音标中的符号是/ɒ/，旧版的国际音标符号是/ɔ/，美式音标与之对应有符号[ɑ]。"></a><font style="" color="red">/ɒ/</font>是单元音后元音，这个音标在英式音标中的符号是/ɒ/，旧版的国际音标符号是/ɔ/，<font style="" color="red">美式音标与之对应有符号[ɑ]</font>。</h1><p>a、元音字母o在重读闭音节中通常发[ɒ],例词：<br>hot /hɒt/ adj. 热的，dot /dɒt/ n. 点，nod /nɒd/ n. 点头，clock /klɒk/ n. 时钟，fox /fɒks/ vt. 欺骗，body /‘bɒdɪ/ n. 身体<br>b、元音字母a在w,wh后也常发[ɒ],例词：</p>
+<p><font color="red">want /wɒnt/ vt. 需要</font>，wash /wɒʃ/ vt. 洗涤，what /wɒt/ pron. 什么，wad /wɒd/ n. 填料，was /wɒz/ v.be的过去式，wallet /‘wɒlɪt/ n. 钱包</p>
+<h1 id="ɑː-是单元音后元音-是个长元音-美式英语与之对应的音标符号-ɑ-。"><a href="#ɑː-是单元音后元音-是个长元音-美式英语与之对应的音标符号-ɑ-。" class="headerlink" title="/ɑː/是单元音后元音,是个长元音,美式英语与之对应的音标符号[ɑ]。"></a>/ɑː/是单元音后元音,是个长元音,美式英语与之对应的音标符号[ɑ]。</h1><p>a、字母组合al在大多数辅音字母前发[ɔ:],但在f或m前发[ɑː],例词：<br>calm /kɑːm/ adj. 静的，half /hɑːf/ n. 一半，palm /pɑːm/ n. 手掌<br>b、字母组合ar在w后发[ɔ:]，在其它重读音节中发[ɑː],例词：<br>arctic /‘ɑːktɪk/ n. 北极圈，<font color="red">spark /spɑːk/ n. 火花</font>，<font color="red">party /‘pɑːtɪ/ n. 聚会</font>，bark /bɑːk/ n. 树皮，star /stɑː/ n. 星，arm /ɑːm/ n. 手臂<br>c、元音节母a在f,n,ss,sp,st前发[ɑː],例词：<br>fast /fɑːst/ adj. 快速的，class /klɑːs/ n. 阶级，last /lɑːst/ n. 末尾，ask /ɑːsk/ vt. 问，glass /glɑːs/ n. 玻璃，grass /grɑːs/ n. 草<br>d、字母组合au发[ɑː],例词：<br>aunt /ɑːnt/ n. 阿姨，laugh /lɑːf/ n. 笑</p>
+<h1 id="eɪ-是开合双元音-美式英语音标符号也是-eɪ-。"><a href="#eɪ-是开合双元音-美式英语音标符号也是-eɪ-。" class="headerlink" title="/eɪ/是开合双元音,美式英语音标符号也是[eɪ]。"></a>/eɪ/是开合双元音,美式英语音标符号也是[eɪ]。</h1><p>a、字母a在重读开音节中常发[eɪ],例词：<br>fate /feɪt/ n. 命运s，ame /seɪm/ adj. 相同的，famous /‘feɪməs/ adj. 著名的，face /feɪs/ n. 脸，cake /keɪk/ n. 蛋糕，plate /pleɪt/ n. 碟<br>b、字母组合ai,ay,ei在重读音节中常发[eɪ],例词：<br>laid /leɪd/ adj. 松弛的，main /meɪn/ adj. 主要的，rain /reɪn/ n. 雨，pay /peɪ/ vt. 支付，day /deɪ/ n. 一天，may /meɪ/ aux. 可以，neighbor /‘neɪbə/ n. 邻居，weight /weɪt/ n. 重量，eight /eɪt/ num. 八</p>
+<h1 id="aɪ-是开合双元音-旧版英式音标符号-ai-美式英语音标符号也是-aɪ-。"><a href="#aɪ-是开合双元音-旧版英式音标符号-ai-美式英语音标符号也是-aɪ-。" class="headerlink" title="/aɪ/是开合双元音,旧版英式音标符号[ai],美式英语音标符号也是[aɪ]。"></a>/aɪ/是开合双元音,旧版英式音标符号[ai],美式英语音标符号也是[aɪ]。</h1><p>a、字母i,y在重读开音节中都发[aɪ],例词：<br>time /taɪm/ n. 时间，rice /raɪs/ n.米饭，tiger /‘taɪgə/ n. 老虎，fly /flaɪ/ vi. 飞，cry /kraɪ/ vi. 哭，shy /ʃaɪ/ adj. 害羞的<br>b、i字母组和与y字母组合发[aɪ]的情况,例词：<br>light /laɪt/ n. 光，<font color="red">aisle /aɪl/ n. 通道</font>，dye /daɪ/ n. 染料</p>
+<h1 id="oɪ-是开合双元音-旧版英式音标符号-oi-美式英语音标符号-oɪ-。"><a href="#oɪ-是开合双元音-旧版英式音标符号-oi-美式英语音标符号-oɪ-。" class="headerlink" title="/ɔɪ/是开合双元音,旧版英式音标符号[oi],美式英语音标符号[ɔɪ]。"></a>/ɔɪ/是开合双元音,旧版英式音标符号[oi],美式英语音标符号[ɔɪ]。</h1><p>a、常见字母组合oy,oi发[ɔɪ],例词：<br>toy /tɔɪ/ n. 玩具，joy /dʒɔɪ/ n. 欢乐，boy /bɔɪ/ n. 男孩，voice /vɔɪs/ n. 声音，<font color="red">coin /kɔɪn/ n. 硬币</font>，<font color="red">join /dʒɔɪn/ vi. 加入</font>，oil /ɔɪl/ n. 油，soil /sɔɪl/ n. 土地，toilet /ˈtɔɪlɪt/ n. 厕所</p>
+<h1 id="aʊ-是开合双元音-旧版英式音标符号-au-美式英语音标符号-aʊ-。"><a href="#aʊ-是开合双元音-旧版英式音标符号-au-美式英语音标符号-aʊ-。" class="headerlink" title="/aʊ/是开合双元音,旧版英式音标符号[au],美式英语音标符号[aʊ]。"></a>/aʊ/是开合双元音,旧版英式音标符号[au],美式英语音标符号[aʊ]。</h1><p>a、发[aʊ]音的常见字母组合有ou,ow,例词：<br>counter /‘kaʊntə/ n. 柜台，out /aʊt/ adj. 外面的，ground /graʊnd/ n. 地面，crowd /kraʊd/ n. 群众，cow /kaʊ/ n. 奶牛，how /haʊ/ conj. 如何，aloud /ə’laʊd/ adv. 大声地，mouth /maʊθ/ n. 口，house /haʊs/ n. 住宅，blouse /‘blaʊz/ n. 宽松的上衣，owl /aʊl/ n. 猫头鹰，plough /plaʊ/ n. 犁</p>
+<h1 id="əʊ-是开合双元音-旧版英式音标符号-əu-美式英语音标符号-əʊ-。"><a href="#əʊ-是开合双元音-旧版英式音标符号-əu-美式英语音标符号-əʊ-。" class="headerlink" title="/əʊ/是开合双元音,旧版英式音标符号[əu],美式英语音标符号[əʊ]。"></a>/əʊ/是开合双元音,旧版英式音标符号[əu],美式英语音标符号[əʊ]。</h1><p>a、元音字母o在重读开音节中发字母本身的音[əʊ],例词：<br>smoke /sməʊk/ n. 烟，so /səʊ/ conj. 所以，code /kəʊd/ n. 代码，open /‘əʊpən/ adj. 公开的，nose /nəʊz/ n. 鼻子，snow /snəʊ/ n. 雪<br>b、另外发[əʊ]音的常见字母组合有oa,oe,ow,例词：<br>boat /bəʊt/ n. 小船，coat /kəʊt/ n. 外套，goat /gəʊt/ n. 山羊，woe /wəʊ/ n. 悲哀，toe /təʊ/ n. 脚趾，hoe /həʊ/ n. 锄头，yellow /‘jeləʊ/ adj. 黄色的，grow /grəʊ/ vi.生长，bowl /bəʊl/ n. 碗</p>
+<h1 id="ɪə-是集中双元音-旧版英式音标符号-iə-美式英语音标符号-ɪr-。"><a href="#ɪə-是集中双元音-旧版英式音标符号-iə-美式英语音标符号-ɪr-。" class="headerlink" title="/ɪə/是集中双元音,旧版英式音标符号[iə],美式英语音标符号[ɪr]。"></a><font style="" color="red">/ɪə/</font>是集中双元音,旧版英式音标符号[iə],<font style="" color="red">美式英语音标符号[ɪr]</font>。</h1><p>a、发[ɪə]音的常见字母组合有ear,ere,ea,eer,例词：<br>rear /rɪə/ adv. 向后，near /nɪə/ adj. 近的，clear /klɪə/ adj. 清楚的，here /hɪə/ adv. 在这里，<font color="red">sincere /sɪn’sɪə/ adj. 真诚的</font>，atmosphere /‘ætməsfɪə/ n. 气氛，area /‘eərɪə/ n. 区域，really /‘rɪəlɪ/ adv. 实际上，idea /aɪ’dɪə/ n. 想法，sneer /snɪə/ vt. 嘲笑，deer /dɪə/ n. 鹿，cheer /tʃɪə/ n. 欢呼</p>
+<h1 id="eə-是集中双元音-旧版英式音标符号-eə-美式英语音标符号-er-。"><a href="#eə-是集中双元音-旧版英式音标符号-eə-美式英语音标符号-er-。" class="headerlink" title="/eə/是集中双元音,旧版英式音标符号[ɛə],美式英语音标符号[ɛr]。"></a><font style="" color="red">/eə/</font>是集中双元音,旧版英式音标符号[ɛə],<font style="" color="red">美式英语音标符号[ɛr]</font>。</h1><p>a、发[eə]这个音的常见字母组合有are,air,ear,ere,例词：<br>share /ʃeə/ vt. 分享，dare /deə/ vt. 敢/冒，care /keə/ vi. 照顾，repair /rɪ’peə/ n. 修理，air /eə/ n. 空气，hair /heə/ n. 头发，bear /beə/ n. 熊，wear /weə/ n. 衣物，pear /peə/ n.梨子，where /weə/ pron. 哪里，there /ðeə/ adv. 在那里</p>
+<h1 id="ʊə-是集中双元音-旧版英式音标符号-uə-美式英语有对应的音标符号-ʊr-。"><a href="#ʊə-是集中双元音-旧版英式音标符号-uə-美式英语有对应的音标符号-ʊr-。" class="headerlink" title="/ʊə/是集中双元音,旧版英式音标符号[uə],美式英语有对应的音标符号[ʊr]。"></a><font style="" color="red">/ʊə/</font>是集中双元音,旧版英式音标符号[uə],<font style="" color="red">美式英语有对应的音标符号[ʊr]</font>。</h1><p>a、发[ʊə]这个音的常见字母组合有our,oor,ure,例词：<br>moor /mʊə/ n. 沼泽，poor /pʊə/ adj. 贫穷的，tour /tʊə/ n. 旅游，fury /‘fjʊərɪ/ n. 狂怒，Europe /‘jʊrəp/ n. 欧洲，cure /kjʊə/ n. 治疗，detour /‘diːtʊə/ n. 绕道，curious /‘kjʊərɪəs/ adj. 好奇的，ensure /enˈʃʊə/ vt. 保证</p>
+<h1 id="p-是爆破、双唇、清辅音-旧版音标和美式音标对应的符号都是-p-。"><a href="#p-是爆破、双唇、清辅音-旧版音标和美式音标对应的符号都是-p-。" class="headerlink" title="/p/是爆破、双唇、清辅音,旧版音标和美式音标对应的符号都是[p]。"></a>/p/是爆破、双唇、清辅音,旧版音标和美式音标对应的符号都是[p]。</h1><p>a、发/p/音的字母和字母组合是p,pp,例词：<br>pig /pɪg/ n. 猪，pie /paɪ/ n. 馅饼，pipe /paɪp/ n. 管，pick /pɪk/ vt. 拾取，poor /pɔ:/ adj. 贫穷的，pear /peə/ n.梨子，cup /kʌp/ n. 杯子，rap /ræp/ n. 轻敲，lip /lɪp/ n. 嘴唇，map /mæp/ n. 地图，keep /kiːp/ vt. 保持，stop /stɒp/ vi. 停止，apple /‘æp(ə)l/ n. 苹果，happen /‘hæpən/ vi. 发生，supper /‘sʌpə/ n. 晚餐，copper /‘kɒpə/ n. 铜，apply /ə’plaɪ/ vt. 申请，upper /‘ʌpə/ adj. 上面的</p>
+<h1 id="t-是个爆破清辅音，这个音标在英式音标中的符号是-t-，美式英标符号-t-。"><a href="#t-是个爆破清辅音，这个音标在英式音标中的符号是-t-，美式英标符号-t-。" class="headerlink" title="/t/是个爆破清辅音，这个音标在英式音标中的符号是/t/，美式英标符号[t]。"></a>/t/是个爆破清辅音，这个音标在英式音标中的符号是/t/，美式英标符号[t]。</h1><p>a、t字母发/t/音，有的单词两个t个字母在一块发/t/音。例词：<br>tea /tiː/ n. 茶叶，test /test/ vt. 试验，tennis /tenɪs/ n. 网球，tree /triː/ n. 树，teach /tiːtʃ/ vt. 教，toast /toʊst/ n.烤面包，tie /taɪ/ n. 领带，time /taɪm/ n. 时间，today /tədeɪ/ n. 今天，tomato /təmeɪtoʊ/ n. 番茄/西红柿，tomorrow /təmɑroʊ/ n. 明天，terrible /terəbəl/ adj. 可怕的，telephone /teləfoʊn/ n. 电话机，sit /sɪt/ vi. 坐，plate /pleɪt/ n. 碟tooth /tuːθ/ n. 牙齿，<font color="red">heart /hɑːrt/ n. 心脏</font>，cat /kæt/ n. 猫，insect /ɪnsekt/ n. 昆虫，ticket /tɪkət/ n. 票，little /‘lɪtl/ adj. 小的，cotton /‘kɒtən/ n. 棉花，butter /‘bʌtə/ n. 黄油</p>
+<h1 id="k-是爆破、软腭、清辅音-旧版音标和美式音标对应的符号都是-k-。"><a href="#k-是爆破、软腭、清辅音-旧版音标和美式音标对应的符号都是-k-。" class="headerlink" title="/k/是爆破、软腭、清辅音,旧版音标和美式音标对应的符号都是[k]。"></a>/k/是爆破、软腭、清辅音,旧版音标和美式音标对应的符号都是[k]。</h1><p>a、字母”c、k”和字母组合”ch、ck”发/k/音，一般出现在元音前，构成一个音节,例词：<br>cafe /‘kæfeɪ/ n. 咖啡馆cake /keɪk/ n. 蛋糕camel /‘kæməl/ n.骆驼card /kɑːd/ n. 卡片case /keɪs/ n.实例care /keə/ n. 关怀<br>kangaroo /,kæŋgə’ruː/ n. 袋鼠keep /kiːp/ vt. 保持kick /kɪk/ vt. 踢kid /kɪd/ n. 小孩kill /kɪl/ vt. 杀死kind /kaɪnd/ n. 种类<br>ache /eɪk/ n. 疼痛anchor /‘æŋkə/ n. 锚archive /‘ɑrkaɪv/ n. 档案馆character /‘kærəktə/ n. 性格chasm /‘kæz(ə)m/ n. 峡谷chameleon /kə’miːlɪən/ n. 变色龙<br>lock /lɒk/ n. 锁cock /kɒk/ n. 公鸡mock /mɒk/ adj. 仿制的check /tʃek/ vt. 检查luck /lʌk/ n. 运气clock /klɒk/ n. 时钟<br>b、字母”qu”组合，发/kw/音,这是一个辅音连缀音,例词：<br>quiet /‘kwaɪət/ adj. 安静的quick /kwɪk/ adj. 快的square /skweə/ adj. 平方的queen /kwiːn/ n. 女王require /rɪ’kwaɪə/ vt. 需要quote /kwəʊt/ n. 引用<br>c、字母”c、k”与字母”l”连接构成辅音连缀，发/kl/音,例词：<br>bicycle /‘baɪsɪkl/ n. 自行车tickle /‘tɪkl/ vi. 觉得痒</p>
+<h1 id="k-是爆破、软腭、清辅音-旧版音标和美式音标对应的符号都是-k-。-1"><a href="#k-是爆破、软腭、清辅音-旧版音标和美式音标对应的符号都是-k-。-1" class="headerlink" title="/k/是爆破、软腭、清辅音,旧版音标和美式音标对应的符号都是[k]。"></a>/k/是爆破、软腭、清辅音,旧版音标和美式音标对应的符号都是[k]。</h1><p>a、字母”c、k”和字母组合”ch、ck”发/k/音，一般出现在元音前，构成一个音节,例词：<br>cafe /‘kæfeɪ/ n. 咖啡馆，cake /keɪk/ n. 蛋糕，camel /‘kæməl/ n.骆驼，card /kɑːd/ n. 卡片，case /keɪs/ n.实例，care /keə/ n. 关怀，kangaroo /,kæŋgə’ruː/ n. 袋鼠，keep /kiːp/ vt. 保持，kick /kɪk/ vt. 踢，kid /kɪd/ n. 小孩，kill /kɪl/ vt. 杀死kind /kaɪnd/ n. 种类，ache /eɪk/ n. 疼痛，anchor /‘æŋkə/ n. 锚，archive /‘ɑrkaɪv/ n. 档案馆，character /‘kærəktə/ n. 性格，chasm /‘kæz(ə)m/ n. 峡谷，chameleon /kə’miːlɪən/ n. 变色龙<br>lock /lɒk/ n. 锁cock /kɒk/ n. 公鸡mock /mɒk/ adj. 仿制的check /tʃek/ vt. 检查luck /lʌk/ n. 运气clock /klɒk/ n. 时钟<br>b、字母”qu”组合，发/kw/音,这是一个辅音连缀音,例词：<br>quiet /‘kwaɪət/ adj. 安静的，quick /kwɪk/ adj. 快的，square /skweə/ adj. 平方的，queen /kwiːn/ n. 女王，require /rɪ’kwaɪə/ vt. 需要，quote /kwəʊt/ n. 引用<br>c、字母”c、k”与字母”l”连接构成辅音连缀，发/kl/音,例词：<br>bicycle /‘baɪsɪkl/ n. 自行车，tickle /‘tɪkl/ vi. 觉得痒</p>
+<h1 id="b-是爆破、双唇、浊辅音-旧版音标和美式音标对应的符号都是-b-。"><a href="#b-是爆破、双唇、浊辅音-旧版音标和美式音标对应的符号都是-b-。" class="headerlink" title="/b/是爆破、双唇、浊辅音,旧版音标和美式音标对应的符号都是[b]。"></a>/b/是爆破、双唇、浊辅音,旧版音标和美式音标对应的符号都是[b]。</h1><p>a、字母及字母组合b,bb发/b/这个音,例词：<br>bath /bɑːθ /n. 沐浴，<font color="red">/bride /braɪd/ n. 新娘</font>，bright /braɪt/ adj. 明亮的，cab /kæb/ n. 驾驶室，herb /hɜːb/ n. 香草，cabbage /ˈkæbɪdʒ/ n. 卷心菜，rubbish /‘rʌbɪʃ/ n. 垃圾，hobby /‘hɒbɪ/ n. 嗜好，rubber /‘rʌbə/ n. 橡胶</p>
+<h1 id="d-是爆破、齿龈、浊辅音-旧版音标和美式音标对应的符号都是-d-。"><a href="#d-是爆破、齿龈、浊辅音-旧版音标和美式音标对应的符号都是-d-。" class="headerlink" title="/d/是爆破、齿龈、浊辅音,旧版音标和美式音标对应的符号都是[d]。"></a>/d/是爆破、齿龈、浊辅音,旧版音标和美式音标对应的符号都是[d]。</h1><p>a、字母及字母组合d,dd发/d/这个音,例词：<br>day /deɪ/ n. 一天，dear /dɪə/ adj. 亲爱的，mind /maɪnd/ n. 理智，<font color="red">sudden /‘sʌd(ə)n/ adj. 突然的</font>，<font color="red">middle /‘mɪd(ə)l/ adj. 中间的</font>，odd /ɒd/ adj. 奇数的，desk /desk/ n. 办公桌，dance /dɑːns/ n. 舞蹈，doctor /‘dɒktə/ n. 医生<br>b、规则动词以清辅音结尾(t除外)变为过去式或过去分词词尾加ed发/t/,以浊辅音结尾(d除外)变为过去式或过去分词词尾加ed发/d/,例词：<br>lived /lɪvd/ adj. 有生命的，joined /dʒɔind/ v. 加入，changed /tʃeɪndʒd/ vt. 改变</p>
+<h1 id="g-是爆破、软腭、浊辅音-旧版音标和美式音标对应的符号都是-g-。"><a href="#g-是爆破、软腭、浊辅音-旧版音标和美式音标对应的符号都是-g-。" class="headerlink" title="/g/是爆破、软腭、浊辅音,旧版音标和美式音标对应的符号都是[g]。"></a>/g/是爆破、软腭、浊辅音,旧版音标和美式音标对应的符号都是[g]。</h1><p>a、字母及字母组合g,gg通常发/g/音,例词：<br>game /geɪm/ n. 游戏，glade /gleɪd/ n. 林间空地，girl /gɜːl/ n. 女孩，luggage /‘lʌgɪdʒ/ n. 行李，beggar /‘begə/ n. 乞丐，golf /gɒlf/ n. 高尔夫球<br>b、字母组合”gu”或”gh”通常也发这个音，它们可以出现在元音前，与元音构成一个音节,例词：<br>catalogue /‘kæt(ə)lɒg/ n. 目录</p>
+<h1 id="f-是摩擦、唇齿、清辅音-旧版音标和美式音标对应的符号都是-f-。"><a href="#f-是摩擦、唇齿、清辅音-旧版音标和美式音标对应的符号都是-f-。" class="headerlink" title="/f/是摩擦、唇齿、清辅音,旧版音标和美式音标对应的符号都是[f]。"></a>/f/是摩擦、唇齿、清辅音,旧版音标和美式音标对应的符号都是[f]。</h1><p>a、字母f,ff发本音/f/,例词：<br>life /laɪf/ n. 生活，five /faɪv/ n. 五，fat /fæt/ adj. 肥的，off /ɒf/ adv. 切断，offer /‘ɒfə/ n. 提议，office /‘ɒfɪs/ n. 办公室<br>b、字母组合ph发/f/音,例词：</p>
+<p><font color="red">alpha /‘ælfə/ n.开端</font>，photo /‘fəʊtəʊ/ n. 照片，phone /fəʊn/ n. 电话<br>c、字母组合”gh”出现在元音后有时发/f/音,例词：<br>laugh /lɑːf/ n. 笑，enough /ɪ’nʌf/ adv. 足够地，<font color="red">cough /kɒf/ n. 咳嗽</font><br>d、/f/可与/l/或/r/连在一起，形成辅音连缀/fl/或/fr/,后接元音构成一个音节,例词：<br>fly /flaɪ/ vt. 飞行，flush /flʌʃ/ n. 激动，flag /flæg/ n. 标志，fruit /fruːt/ n. 水果，France /frɑːns/ n. 法国，friend /frend/ n. 朋友</p>
+<h1 id="s-是摩擦、齿龈、清辅音-旧版音标和美式音标对应的符号都是-s-。"><a href="#s-是摩擦、齿龈、清辅音-旧版音标和美式音标对应的符号都是-s-。" class="headerlink" title="/s/是摩擦、齿龈、清辅音,旧版音标和美式音标对应的符号都是[s]。"></a>/s/是摩擦、齿龈、清辅音,旧版音标和美式音标对应的符号都是[s]。</h1><p>a、常见的发[s]音的字母及字母组合有s,ss,c,sc,例词：<br>sea /siː/ n. 海，bus /bʌs/ n. 公共汽车，<font color="red">smile /smaɪl/ n. 微笑</font>，pass /pɑːs/ vt. 通过，mass /mæs/ adj. 群众的，lesson /‘les(ə)n/ n. 教训，ice /aɪs/ n. 冰，nice /naɪs/ adj.美好的，city /‘sɪtɪ/ n. 城市，scent /sent/ n. 气味，<font color="red">scene /siːn/ n. 场面</font>，science /‘saɪəns/ n. 科学</p>
+<h1 id="∫-是摩擦、硬腭、清辅音-旧版音标和美式音标对应的符号都是-ʃ-。"><a href="#∫-是摩擦、硬腭、清辅音-旧版音标和美式音标对应的符号都是-ʃ-。" class="headerlink" title="/∫/是摩擦、硬腭、清辅音,旧版音标和美式音标对应的符号都是[ʃ]。"></a>/∫/是摩擦、硬腭、清辅音,旧版音标和美式音标对应的符号都是[ʃ]。</h1><p>1）上下齿自然合拢，嘴唇张开不要太大，稍微收圆。<br>2）舌端抬起，靠近齿龈后部，但不要贴住。<br>3）舌身抬起，靠近上腭，形成一条狭长的通道。气流通过通道时摩擦成音。<br>注意：/∫/是个清辅音，声带不震动。<span style="background-color:yellow">/ʃ/和汉语中的声母sh很相近，但要注意的是/ʃ/不卷舌，是个平舌音</span>。<br>a、字母组合sh发[ʃ],例词：<br>shut /ʃʌt/ vt. 关闭，wish /wɪʃ/ n. 希望，shame /ʃeɪm/ n. 羞耻<br>b、当s出现在u前发[ʃ],例词：</p>
+<p><font color="red">sure /ʃɔ:(r)/ adj. 确信的</font>，<font color="red">sugar /‘ʃʊgə/ n. 糖</font>，<font color="red">surely /‘ʃʊəlɪ/ adv. 当然</font><br>c、当ss,ci,ti,si出现在单词后缀中时也常发[ʃ],例词：<br>assure /ə’ʃʊə/ vt. 保证，pressure /‘preʃə/ n. 压力，social /‘səʊʃ(ə)l/ adj. 社会的，special /‘speʃ(ə)l/ adj. 特别的，national /‘næʃ(ə)n(ə)l/ adj. 国家的，station /‘steɪʃ(ə)n/ n. 车站，efficient /ɪ’fɪʃ(ə)nt/ adj. 有效率的，Patricia /pə’triʃə/ n. 帕特丽夏（女子名），Russia /‘rʌʃə/ n. 俄罗斯，workstation /ˈwɜrksteɪʃn/ n. 工作站，action /‘ækʃ(ə)n/ n. 行动，vacation /vəˈkeɪʃn/ n. 假期</p>
+<h1 id="θ-是摩擦、舌齿、清辅音-旧版音标和美式音标对应的符号都是-θ-。"><a href="#θ-是摩擦、舌齿、清辅音-旧版音标和美式音标对应的符号都是-θ-。" class="headerlink" title="/θ/是摩擦、舌齿、清辅音,旧版音标和美式音标对应的符号都是[θ]。"></a>/θ/是摩擦、舌齿、清辅音,旧版音标和美式音标对应的符号都是[θ]。</h1><p>1）舌尖微微伸出，置于上下门齿之间，舌身成扁平。<br>2）气流由舌齿间泻出，摩擦成音，舌尖和下齿之间的气流通道非常窄小，气流从舌齿间的窄缝中泄出。<br>注意：/θ/是个清辅音，声带不震动。要注意与/ð/,/s/,/z/的区别，发这个音主要是舌尖与上齿之间的摩擦，所以千万不要紧紧咬住舌尖，应该是上齿轻触舌尖。<br>a、在英语中发[θ]这个音一般只有th字母组合,例词：<br>thing /θɪŋ/ n. 事情，death /deθ/ n. 死，tooth /tuːθ/ n. 牙齿，booth /buːθ/ n. 货摊，cloth /klɒθ/ n. 布，thin /θɪn/ adj. 薄的，bathroom /‘bɑːθruːm/ n. 浴室，birthday /‘bɜːθdeɪ/ n. 生日，health /helθ/ n. 健康，theater /‘θɪətə/ n. 电影院</p>
+<h1 id="h-是摩擦、声门、清辅音-旧版音标和美式音标对应的符号都是-h-。"><a href="#h-是摩擦、声门、清辅音-旧版音标和美式音标对应的符号都是-h-。" class="headerlink" title="/h/是摩擦、声门、清辅音,旧版音标和美式音标对应的符号都是[h]。"></a>/h/是摩擦、声门、清辅音,旧版音标和美式音标对应的符号都是[h]。</h1><p>a、在英文中大多数情况下只有h字母发/h/音,例词：<br>hair /heə/ n.头发，hate /heɪt/ vt.憎恨，high /haɪ/ adj.高的，him /hɪm/ pron.他(宾格)，hook /hʊk/ n.挂钩，hill /hɪl/ n.小山<br>b、另外<span style="background-color:yellow">许多首字母h不发音</span>,例词：<br>hour /‘aʊə/ n. 小时，honest /‘ɒnɪst/ 诚实的，honor /ˈɒnə/ n. 荣誉</p>
+<h1 id="v-是摩擦、唇齿、浊辅音-旧版音标和美式音标对应的符号都是-v-。"><a href="#v-是摩擦、唇齿、浊辅音-旧版音标和美式音标对应的符号都是-v-。" class="headerlink" title="/v/是摩擦、唇齿、浊辅音,旧版音标和美式音标对应的符号都是[v]。"></a>/v/是摩擦、唇齿、浊辅音,旧版音标和美式音标对应的符号都是[v]。</h1><p>a、大多数情况下只有v发/v/音,例词：<br>live /lɪv/ vi. 居住，have /hæv/ vt. 有，river /‘rɪvə/ n. 河，<font color="red">victor /‘vɪktə/ n. 胜利者</font>，view /vjuː/ n. 观察，village /‘vɪlɪdʒ/ n. 村庄，veil /veɪl/ n. 面纱，drive /draɪv/ vi. 开车，cave /keɪv/ n. 洞穴</p>
+<h1 id="z-是摩擦、齿龈、浊辅音-旧版音标和美式音标对应的符号都是-z-。"><a href="#z-是摩擦、齿龈、浊辅音-旧版音标和美式音标对应的符号都是-z-。" class="headerlink" title="/z/是摩擦、齿龈、浊辅音,旧版音标和美式音标对应的符号都是[z]。"></a>/z/是摩擦、齿龈、浊辅音,旧版音标和美式音标对应的符号都是[z]。</h1><p>a、字母”z”、”ze”和”zz”一般发/z/这个音,例词：<br>zone /zəʊn/ n. 地带，zoom /zuːm/ n.变焦摄影，zap /zæp/ n. 活力，doze /dəʊz/ n. 瞌睡，gaze /geɪz/ vi. 凝视，seize /siːz/ vt. 抓住，puzzle /‘pʌz(ə)l/ vi. 迷惑，dizzy /‘dɪzɪ/ adj. 晕眩的，jazz /dʒæz/ n. 爵士乐<br>b、字母”s”和”se”有时也发/z/这个音,例词：<br>is /ɪz/ v. 是，his /hɪz/ pron. 他的，season /‘siːz(ə)n/ n. 时期，rise /raɪz/ vi. 上升，rose /rəʊz/ n. 玫瑰，use /juːz/ n. 使用<br>c、字母”x”可发成包含/z/这个音的/gz/,例词：<br>example /ɪg’zɑːmpəl/ n. 例子，exist /ɪg’zɪst/ vi. 存在，exact /ɪg’zækt/ adj. 准确的</p>
+<h1 id="ʒ-是摩擦、硬腭、浊辅音-旧版音标和美式音标对应的符号都是-ʒ-。"><a href="#ʒ-是摩擦、硬腭、浊辅音-旧版音标和美式音标对应的符号都是-ʒ-。" class="headerlink" title="/ʒ/是摩擦、硬腭、浊辅音,旧版音标和美式音标对应的符号都是[ʒ]。"></a>/ʒ/是摩擦、硬腭、浊辅音,旧版音标和美式音标对应的符号都是[ʒ]。</h1><p>1）双唇略微向前突出，略成长方形。<br>2）将舌端抬起，靠近齿龈后部，但不要贴住。<br>3）舌身抬起，靠近上腭，形成狭长的通道，气流通过通道时摩擦，同时声带震动发声。<br>注意：/ʒ/是个浊辅音，发音时只有微弱气流泻出，这是一个较难发准的音，要注意声带的震动。<span style="background-color:yellow">类似拼音的“y”</span>。<br>a、当si,su出现在后缀中时其中s字母常发/ʒ/音,例词：<br>collision /kə’lɪʒ(ə)n/ n. 碰撞，confusion /kən’fjuːʒ(ə)n/ n. 混淆，explosion /ɪkˈspləʊʒən/ n. 爆炸，measure /‘meʒə/ vt. 测量，pleasure /‘pleʒə/ n. 快乐，casual /‘kæʒjʊəl/ adj. 随便的<br>b、字母组合”ge”也常发/dʒ/,例词：<br>rouge /ruːʒ/ n. 胭脂，garage /ˈgærɑ:ʒ/ n. 车库，massage /‘mæsɑːʒ/ n. 按摩</p>
+<h1 id="ð-是摩擦、舌齿、浊辅音-旧版音标和美式音标对应的符号都是-ð-。"><a href="#ð-是摩擦、舌齿、浊辅音-旧版音标和美式音标对应的符号都是-ð-。" class="headerlink" title="/ð/是摩擦、舌齿、浊辅音,旧版音标和美式音标对应的符号都是[ð]。"></a>/ð/是摩擦、舌齿、浊辅音,旧版音标和美式音标对应的符号都是[ð]。</h1><p>1）首先将舌尖微微伸出略微露出齿外，置于上下门齿之间，舌身成扁平。<br>2）气流从舌齿间的窄缝中泄出，同时声带震动发出/ð/这个音。<br>注意：/ð/是舌齿、浊辅音，舌尖和下齿之间的气流通道非常窄小。发这个音主要是舌尖与上齿之间的摩擦，所以千万不要紧紧咬住舌尖，只要轻轻咬一咬就行了。<span style="background-color:yellow">类似汉语的“日”</span>。<br>a、发[ð]音的字母组合一般只有字母组合th,例词：<br>that /ðæt/ pron. 那，father /‘fɑːðə/ n. 父亲，smooth /smuːð/ adj. 顺利的，mother /‘mʌðə/ n. 母亲，weather /‘weðə/ n. 天气，leather /‘leðə/ n. 皮革，<font color="red">breathe /briːð/ vi. 呼吸</font>，feather /‘feðə/ n. 羽毛，together /tə’geðə/ adv. 一起</p>
+<h1 id="r-是流音、齿龈、浊辅音-旧版音标和美式音标对应的符号都是-r-。"><a href="#r-是流音、齿龈、浊辅音-旧版音标和美式音标对应的符号都是-r-。" class="headerlink" title="/r/是流音、齿龈、浊辅音,旧版音标和美式音标对应的符号都是[r]。"></a>/r/是流音、齿龈、浊辅音,旧版音标和美式音标对应的符号都是[r]。</h1><p>1）双唇略张开并收圆，稍突出。<br>2）舌尖卷起，靠近上齿龈后部,舌两侧贴住上齿龈两侧。<br>3）气流通过舌端及上齿龈后背部形成轻微的摩擦，同时震动声带发出/r/音。<br>注意：/r/是个浊辅音，声音是由声带震动发出，有些学生会把汉语中的声母r的发音来代替/r/的发音，于是把rose读成”肉丝”，把road读成”肉的”，但实际上两者有很大的差别。<br>a、常见的发[r]音的字母和字母组合有r,rr,wr,例词：<br>rise /raɪz/ vi. 上升，radio /‘reɪdɪəʊ/ n. 收音机，crowd /kraʊd/ n. 群众，arrive /ə’raɪv/ vi. 到达，ferry /‘ferɪ/ n. 渡船sorry /‘sɒrɪ/ int. 对不起，<font color="red">wrong /rɒŋ/ adj. 错误的</font>，wriggle /‘rɪg(ə)l/ vi. 蠕动，wrinkle /‘rɪŋkl/ n. 皱纹</p>
+<h1 id="t∫-是破擦、硬腭、清辅音-旧版音标和美式音标对应的符号都是-t∫-。"><a href="#t∫-是破擦、硬腭、清辅音-旧版音标和美式音标对应的符号都是-t∫-。" class="headerlink" title="/t∫/是破擦、硬腭、清辅音,旧版音标和美式音标对应的符号都是[t∫]。"></a>/t∫/是破擦、硬腭、清辅音,旧版音标和美式音标对应的符号都是[t∫]。</h1><p>1）双唇微张向前突出，略成圆形。<br>2）舌尖和舌端抬起贴住上齿龈后部，憋住气。<br>3）然后舌尖稍稍下降，气流从舌和齿龈间的狭缝中冲出，摩擦成音。<br>注意：/t∫/是个清辅音，声带不震动。/tʃ/这个音和汉语拼音中的声母ch很相近，很多北方同学会用”吃”代替/tʃ/是不正确的，一些南方同学会把/tʃ/和汉语拼音中的声母q混淆，也是极不正确的，应注意区分它们的异同。<br>a、一般发/t∫/这个音的字母组合为”ch”和”tch”,例词：<br>chair /tʃeə/ n. 椅子，chain /tʃeɪn/ n. 链，cheap /tʃiːp/ adj. 便宜的，catch /kætʃ/ n. 捕捉，kitchen /‘kɪtʃɪn/ n. 厨房watch /wɒtʃ/ n. 手表<br>b、当字母”t”出现在”ua,ure”等组合前时也经常发/t∫/音,例词：<br>natural /ˈnætʃrəl/ adj. 自然的，future /‘fjuːtʃə/ n. 未来，century /ˈsentʃərɪ/ n. 世纪，virtual /ˈvɜ:tʃuəl/ adj. [计] 虚拟的</p>
+<h1 id="tr-是破擦、清辅音-旧版音标和美式音标对应的符号都是-tr-。"><a href="#tr-是破擦、清辅音-旧版音标和美式音标对应的符号都是-tr-。" class="headerlink" title="/tr/是破擦、清辅音,旧版音标和美式音标对应的符号都是[tr]。"></a>/tr/是破擦、清辅音,旧版音标和美式音标对应的符号都是[tr]。</h1><p>1）上下齿自然合拢，嘴唇张开不要太大。<br>2）舌端贴住齿龈，堵住气流。<br>2）然后舌尖略微下降，气流随之泄出。<br>注意：/tr/是个清辅音，声带不震动。/ts/,/dz/,/dr/,/tr/是传统的音标符号，新课本中美式、英式读音都没将其包括在内。<br>a、发/tr/音的字母组合一般只有tr,例词：<br>trim /trɪm/ n. 修剪，<font color="red">tree /triː/ n. 树</font>，<font color="red">train /treɪn/ n. 火车</font>，trip /trɪp/ n. 旅行，traffic /‘træfɪk/ n. 交通，introduce /ɪntrə’djuːs/ vt. 介绍</p>
+<h1 id="ts-是破擦、清辅音-旧版音标和美式音标对应的符号都是-ts-。"><a href="#ts-是破擦、清辅音-旧版音标和美式音标对应的符号都是-ts-。" class="headerlink" title="/ts/是破擦、清辅音,旧版音标和美式音标对应的符号都是[ts]。"></a>/ts/是破擦、清辅音,旧版音标和美式音标对应的符号都是[ts]。</h1><p>1）上下齿自然合拢，嘴唇张开不要太大。<br>2）舌端贴住齿龈，堵住气流。<br>3）然后舌尖略微下降，气流随之泄出。<br>注意：/ts/是个清辅音，声带不震动。/ts/,/dz/,/dr/,/tr/是传统的音标符号，新课本中美式、英式读音都没将其包括在内。<br>a、以t结尾的规则名词变为复数或规则动词变为第三人称单数时，我们通常在单词后加s,这时单词结尾的字母组合ts就发/ts/,例词：<br>hats /hæts/ n. (复数)帽子，<font color="red">starts /stɑːts/ vt. (第三人称)开始</font>，<font color="red">parts /pɑːts/ n.(复数)零件</font>，sweats /swets/ n.(复数)水珠，pets /pets/ n. (复数)宠物，goats /gəʊts/ n. (复数)山羊</p>
+<h1 id="dʒ-是破擦、硬腭、浊辅音-旧版音标和美式音标对应的符号都是-dʒ-。"><a href="#dʒ-是破擦、硬腭、浊辅音-旧版音标和美式音标对应的符号都是-dʒ-。" class="headerlink" title="/dʒ/是破擦、硬腭、浊辅音,旧版音标和美式音标对应的符号都是[dʒ]。"></a>/dʒ/是破擦、硬腭、浊辅音,旧版音标和美式音标对应的符号都是[dʒ]。</h1><p>1）双唇向前突出，略成圆形，牙齿基本闭合。<br>2）舌尖和舌端抬起贴住上齿龈后部，憋住气。<br>3）舌尖稍稍下降，气流从舌和齿龈间的狭缝冲出，同时声带震动发声。<br>注意：/dʒ/是个浊辅音，发音时只有微弱气流泻出，摩擦在舌端，声音是由声音震动发出。不要读在汉语中的“基”，“基”字发音舌位靠前，而/dʒ/是用舌尖去顶齿龈，整体舌位不靠前。<br>a、常见的字母及组合有g,dge,j发/dʒ/的音,例词：<br>page /peɪdʒ/ n. 页，large /lɑːdʒ/ adj. 大的，danger /ˈdeɪndʒə/ n. 危险，bridge /brɪdʒ/ n. 桥，judge /dʒʌdʒ/ n. 法官，edge /edʒ/ n. 边缘，jack /dʒæk/ n. 千斤顶，just /dʒʌst/ adv. 只是，job /dʒɒb/ n. 工作<br>b、当字母组合du出现在词中有时也发/dʒ/,例词：<br>procedure /prə’siːdʒə/ n. 程序，schedule 英/ˈʃedju:l/ n. 时间表，美 /ˈskedʒʊl; skɛdʒʊl/</p>
+<h1 id="dr-是破擦、浊辅音-旧版音标和美式音标对应的符号都是-dr-。"><a href="#dr-是破擦、浊辅音-旧版音标和美式音标对应的符号都是-dr-。" class="headerlink" title="/dr/是破擦、浊辅音,旧版音标和美式音标对应的符号都是[dr]。"></a>/dr/是破擦、浊辅音,旧版音标和美式音标对应的符号都是[dr]。</h1><p>1）双唇稍稍突出，略成圆形<br>2）舌身保持发/r/的姿势，舌尖贴在齿龈后部，堵住气流。<br>3）舌头放开，让气流从舌尖和齿龈间冲出，冲破阻碍<span style="background-color:yellow">发出短促的/d/后立即发/r/</span>。<br>注意：/dr/是个浊辅音，发音时声带震动。有些学生分不清/dr/和/dʒ/的区别，其实发/dʒ/时嘴唇需收圆，同时舌头闭气的部位也比/dʒ/靠前。也有人容易把这个音念成汉语中的”朱”，要注意不要在这个音的后面加上元音/u/。/ts/,/dz/,/dr/,/tr/是传统的音标符号，新课本中美式、英式读音都没将其包括在内。<br>a、/dr/音一定是接元音，所以不会出现在单词的末尾，一般只有字母组合dr发/dr/音,例词：<br>drop /drɒp/ vt. 滴，drive /draɪv/ vi. 开车，drum /drʌm/ vt. 击鼓，dreg /drɛg/ n. 渣滓，dree /driː/ adj. 凄凉的，drift /drɪft/ n. 漂流</p>
+<h1 id="dz-是破擦、浊辅音-旧版音标和美式音标对应的符号都是-dz-。"><a href="#dz-是破擦、浊辅音-旧版音标和美式音标对应的符号都是-dz-。" class="headerlink" title="/dz/是破擦、浊辅音,旧版音标和美式音标对应的符号都是[dz]。"></a>/dz/是破擦、浊辅音,旧版音标和美式音标对应的符号都是[dz]。</h1><p>1）舌端贴住齿龈，堵住气流。<br>2）舌尖略微下降，气流随之泄出形成先破擦，同时声带震动发出/dz/音。<br>注意：/dz/是个浊辅音，发音时声带震动。<span style="background-color:yellow">/dz/有点类似于汉语中的”子”（轻音）</span>，但发音时有爆破的感觉，而且声带振动较强。<br>a、以d结尾的规则名词变为复数或规则动词变为第三人称单数时在词尾加s,单词结尾的字母组合ds发/dz/,例词：<br>reads /ri:dz/ vt. 阅读(第三人称)，hands /hændz/ n. 手(复数)，heads /hedz/ n. 头(复数)，roads /rəʊdz/ n.道路(复数)，cards /kɑ:dz/ n. 卡片(复数)，pounds /paʊndz/ n. 磅(复数)</p>
+<h1 id="m-是双唇、鼻音、浊辅音-旧版音标和美式音标对应的符号都是-m-。"><a href="#m-是双唇、鼻音、浊辅音-旧版音标和美式音标对应的符号都是-m-。" class="headerlink" title="/m/是双唇、鼻音、浊辅音,旧版音标和美式音标对应的符号都是[m]。"></a>/m/是双唇、鼻音、浊辅音,旧版音标和美式音标对应的符号都是[m]。</h1><p>注意：/m/是个鼻音、浊辅音，发音时一定是闭拢双唇。发音时会感觉到嘴唇也会一起振动。<br>a、英语中发/m/这个音时一定有字母”m”,字母及字母组合有m,mm一般都发/m/,例词：<br>mail /meɪl/ n. 邮件，man /mæn/ n. 男人，<font color="red">mine /maɪn/ pron. 我的</font>，mile /maɪl/ n. 英里，magic /‘mædʒɪk/ n. 巫术，March /mɑːtʃ/ n. 三月，common /‘kɒmən/ adj. 共同的，grammar /‘græmə/ n. 语，summer /‘sʌmə/ n. 夏季<br>b、当字母组合”mb”出现在单词末尾时，其中的b不发音,只发/m/音,例词：<br>lamb /læm/ n. 羔羊，climb /klaɪm/ vi. 爬，bomb /bɒm/ vt. 轰炸</p>
+<h1 id="n-是齿龈、鼻音、浊辅音-旧版音标和美式音标对应的符号都是-n-。"><a href="#n-是齿龈、鼻音、浊辅音-旧版音标和美式音标对应的符号都是-n-。" class="headerlink" title="/n/是齿龈、鼻音、浊辅音,旧版音标和美式音标对应的符号都是[n]。"></a>/n/是齿龈、鼻音、浊辅音,旧版音标和美式音标对应的符号都是[n]。</h1><p>1）微微张开嘴巴，舌尖紧贴上齿龈，形成阻碍。<br>2）气流从鼻腔泄出，同时声带震动发出声音。<br>注意：/n/是个鼻音、浊辅音，依靠声音震动发声，当/n/出现在音节结尾处时要略微延长，以防止吞没末尾的/n/,把ten /ten/错发成/te/是不正确的。/n/和/m/是同一组浊辅音，所不同的是<span style="background-color:yellow">/m/是”闭嘴音”，而/n/是”开口音”</span>。<br>a、英语中发/n/这个音时一定有字母”n”,如字母及字母组合n,nn,gn发/n/,例词：<br>nine /naɪn/ num. 九，line /laɪn/ n. 路线，mine /maɪn/ n. 矿，dinner /‘dɪnə/ n. 晚餐，funny /‘fʌnɪ/ adj. 有趣的，sunny /‘sʌnɪ/ adj. 阳光的，sign /saɪn/ n. 迹象，design /dɪ’zaɪn/ vt. 设计，foreign /‘fɒrɪn/ adj. 外国的</p>
+<h1 id="ŋ-是软腭、闭音、浊辅音-旧版音标和美式音标对应的符号都是-ŋ-。"><a href="#ŋ-是软腭、闭音、浊辅音-旧版音标和美式音标对应的符号都是-ŋ-。" class="headerlink" title="/ŋ/是软腭、闭音、浊辅音,旧版音标和美式音标对应的符号都是[ŋ]。"></a>/ŋ/是软腭、闭音、浊辅音,旧版音标和美式音标对应的符号都是[ŋ]。</h1><p>1）嘴唇张开，舌后部抬起贴住软腭，阻止气流从口腔泄出。<br>2）软腭下垂，气流从鼻腔泄出，同时震动声带发音。<br>注意：/ŋ/是个浊辅音，声音震动。很多人会把/ŋ/发成/n/，/ŋ/和我们汉语拼音中的ng音非常相似，它和音标/n/的关系就像汉语拼音中an-ang,en-eng,in-ing的关系。<br>a、常见的发/ŋ/这个音的字母及字母组合有n,ng,例词：<br>wing /wɪŋ/ n. 翼，ring /rɪŋ/ n. 戒指，think /θɪŋk/ vt. 想，anger /‘æŋgə/ n. 怒，long /lɒŋ/ adj. 长的，among /ə’mʌŋ/ 在…中间<br>b、<span style="background-color:yellow">n后接k/g发/ŋ/</span>,<span style="background-color:yellow">n后接t/d时发/n/</span>,例词：<br>singer /‘sɪŋə/ n. 歌手，bank /bæŋk/ n. 银行，blanket /‘blæŋkɪt/ n. 毛毯，band /bænd/ n. 带，land /lænd/ n.地面，rent /rent/ n. 租金</p>
+<h1 id="l-是流音、齿龈、浊辅音-这个音也被叫做舌边音-旧版音标和美式音标对应的符号都是-l-。"><a href="#l-是流音、齿龈、浊辅音-这个音也被叫做舌边音-旧版音标和美式音标对应的符号都是-l-。" class="headerlink" title="/l/是流音、齿龈、浊辅音,这个音也被叫做舌边音,旧版音标和美式音标对应的符号都是[l]。"></a>/l/是流音、齿龈、浊辅音,这个音也被叫做舌边音,旧版音标和美式音标对应的符号都是[l]。</h1><p>1）双唇略张开，牙齿自然张开。<br>2）舌尖紧贴上齿龈，舌前部抬起靠近硬腭。<br>3）气流从舌的两侧泄出，声带震动发音。<br>/l/发音有两种情况，根据它所出现的位置不同发出两种不太完全一样的音。/l/+其它音节、/l/+元音、/l/+/j/称它为清晰/l/，发清晰/l/音时，在下一个音即将出出时舌头离开上齿龈，迅速下落；当其它音节+/l/或/l/+辅音时舌头不需要下落，称它为含糊音。<br>注意：/l/是个浊辅音，声音是由声带震动发出。这个音有一定的长度，和元音一样可以延长。另外要注意清晰音和含糊音两种情况的区别。<br>a、字母和字母组合有l,ll发清晰/l/音,例词：<br>look /lʊk/ vt. 看，light /laɪt/ n. 光，letter /‘letə/ n. 信，line /laɪn/ n. 路线，lion /‘laɪən/ n. 狮子，library /ˈlaɪbrərɪ/ n. 图书馆，allow /ə’laʊ/ vt. 允许，holly /‘hɒlɪ/ n. 冬青树，hello /həˈləʊ/ int. 喂<br>b、字母和字母组合有l,ll发模糊/l/音,例词：<br>wheel /wiːl/ n. 车轮，apple /‘æpəl/ n. 苹果，<font color="red">world /wɜːld/ n. 世界</font>，milk /mɪlk/ n. 牛奶，fall /fɔːl/ vi. 落下，wall /wɔːl/ n. 墙壁，hill /hɪl/ n. 小山，tall /tɔːl/ adj. 高的，well /wel/ adj. 良好的<br>c、这个音是一个”成音节辅音”，可与”爆破音”/p/、/b/、/t/、/d/、/k/、/g/和”摩擦音”/f/、/v/、/s/、/z/及”鼻辅音”/m/、/n/连起来构成音节，称为辅音连缀：/pl/、/bl/、/tl/、/dl/、/kl/、/gl/、/fl/、/vl/、/sl/、/zl/、/ml/、/nl/,例词：<br>play /pleɪ/ vt. 游戏，black /blæk/ adj. 黑色的，gentle /‘dʒentl/ adj. 温和的，<font color="red">middle /‘mɪdəl/ n. 中间</font>，kludge /klʌdʒ/ n.组装机，global /‘gləʊb(ə)l/ adj. 全球的，floor /flɔː/ n. 地板</p>
+<h1 id="j-是半元、硬腭、浊辅音-旧版音标和美式音标对应的符号都是-j-。"><a href="#j-是半元、硬腭、浊辅音-旧版音标和美式音标对应的符号都是-j-。" class="headerlink" title="/j/是半元、硬腭、浊辅音,旧版音标和美式音标对应的符号都是[j]。"></a>/j/是半元、硬腭、浊辅音,旧版音标和美式音标对应的符号都是[j]。</h1><p>1）双唇向两旁伸展成扁平形。<br>2）舌前部向硬腭尽量抬起，不要抵住硬腭。<br>3）气流从舌和硬腭的缝隙间通过，同时声带需震动，发音短促，立刻向后面的元音滑动。<br>注意：<span style="background-color:yellow">/j/是个半元音，发音时口型和元音/iː/有点相似</span>，但它仍是个辅音，元音可以单独成音可以延长，半元音不可以单独成音不可以延长。<br>a、常见的发[j]音的字母有y,i,例词：<br>you /juː/ pron. 你，yes /jes/ adv. 是，yet /jet/ adv. 还，yawn /jɔːn/ n. 哈欠，yoga /‘jəʊgə/ n. 瑜珈，yolk /jəʊk/ n. 蛋黄，trillion /‘trɪljən/ n. [数] 万亿，stallion /‘stæljən/ n. 种马，rebellion /rɪ’beljən/ n. 叛乱<br>b、字母u发复合元音/ju:/音，/j/包含在u字母音中,例词：<br>use /juːz/ n. 使用，student /‘stjuːd(ə)nt/ n. 学生，attitude /‘ætɪtjuːd/ n. 态度，university /juːnɪ’vɜːsɪtɪ/ n. 大学</p>
+<h1 id="w-是半元、双唇、浊辅音-旧版音标和美式音标对应的符号都是-w-。"><a href="#w-是半元、双唇、浊辅音-旧版音标和美式音标对应的符号都是-w-。" class="headerlink" title="/w/是半元、双唇、浊辅音,旧版音标和美式音标对应的符号都是[w]。"></a>/w/是半元、双唇、浊辅音,旧版音标和美式音标对应的符号都是[w]。</h1><p>1）双唇收得很圆很小，嘴唇张开到刚好可以含住一根吸管的程度，并向前突出，上下齿分开贴住嘴唇。<br>2）舌后部向软腭抬起，但不要抵住。<br>3）气流从双唇间摩擦而过，同时声带需震动，发音短促，立刻向后面的元音滑动。<br>注意：/w/是个半元音，和元音/uː/很相似，但元音可以单独成音可以延长，半元音不能单独成音，不可以延长，更不能在它后面附加元音。<br>a、常见的发/w/音的字母和字母组合有w,wh,例词：<br>win /wɪn/ vi. 赢，war /wɔː/ n. 战争，word /wɜːd/ n. [语] 单词，wine /waɪn/ n.葡萄酒，<font color="red">work /wɜːk/ n. 工作</font>，wall /wɔːl/ n. 墙壁，window /‘wɪndəʊ/ n. 窗，sweet /swiːt/ adj. 甜的，<font color="red">flower /‘flaʊə/ n. 花</font>，which /wɪtʃ/ pron. 哪/那一个，where /weə/ pron. 哪里，when /wen/ pron. 那时，while /waɪl/ conj. 虽然，what /wɒt/ pron. 什么，white /waɪt/ n. 白色<br>b、字母u也可发/w/音，一般在字母q后组成qu字母组合发/kw/音，另外one和once是特例，其中的‘o’的发音/wʌ/包含这个半元音,例词：<br>quite /kwaɪt/ adv. 很，queen /kwiːn/ n. 女王，quick /kwɪk/ adv. 迅速地，quiet /‘kwaɪət/ adj. 安静的，one /wʌn/ num. 一once /wʌns/ n. 一次</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;开音节是以元音结尾的音节，如“baby”，其字母y发的元音；闭音节是以辅音结尾的音节，如“book”，其字母k发的辅音[k]。&lt;/p&gt;
+&lt;h1 id=&quot;iː-是单元音前元音-是个长元音，美式音标与之对应的发音符号是-i-。&quot;&gt;&lt;a href=&quot;#iː-是单元音前元音-是个长
+    
+    </summary>
+    
+      <category term="英语" scheme="https://lichtmiao.github.io/categories/%E8%8B%B1%E8%AF%AD/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>英语——出国旅游常用语</title>
+    <link href="https://lichtmiao.github.io/2018/11/06/%E8%8B%B1%E8%AF%AD%E2%80%94%E2%80%94%E5%87%BA%E5%9B%BD%E6%97%85%E6%B8%B8%E5%B8%B8%E7%94%A8%E8%AF%AD/"/>
+    <id>https://lichtmiao.github.io/2018/11/06/英语——出国旅游常用语/</id>
+    <published>2018-11-06T14:07:52.000Z</published>
+    <updated>2018-11-20T03:02:55.069Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一、-机场"><a href="#一、-机场" class="headerlink" title="一、    机场"></a>一、    机场</h1><p>Departure Hall 出发大厅<br>Arrival Hall 到达大厅<br>airport fee机场费<br>international airport国际机场<br>domestic airport国内机场<br>airport terminal机场候机楼<br>international terminal国际候机楼<br>international departure国际航班出港<br>domestic departure国内航班出港；<font color="red">domestic国内的，家庭的/də’mestɪk/</font><br>satellite卫星楼<br>in入口；exit，out，way out出口<br>arrivals进站，进港，到达<br>nothing to declare/dɪ’kleə/不需报关<br>customs海关；custom习俗，风俗；customer顾客；海关；costume服装，戏服<br>gate，departure gate登机口<br>departure <font color="red">lounge/laʊn(d)ʒ/</font>候机室<br>FLT No(flight number)航班号<br>arrival from来自…<br>scheduled time（SCHED）预计时间<br>actual time实际时间<br>landed已降落<br>departure to前往<br>departure time起飞时间<br>delayed延误<br>boarding登机<br>stairs and lifts to departures由此乘坐电梯前往登机<br>greeting arrival /‘griːtɪŋ/迎宾处<br>up，upstairs由此上楼<br>down，downstairs由此下楼<br>money exchange，<font color="red">currency exchange货币兑换</font>处；currency n. 货币；通货<br>hotel reservation订旅馆<br>luggage locker行李暂存处<br>check-in登机手续办理<br>boarding pass/card登机牌</p>
+<p><font color="red">passport control immigration护照检查处</font>；immigration外来移民<br>luggage/baggage claim行李领取处，<font color="red">check in luggage托运行李</font>，<font color="red">carry-on luggage随身行李</font> /kleɪm/；claim要求<br>international passengers国际航班旅客<br>transfers中转处<br>transfer passengers中转旅客<br>transit过境；运输<br>goods to declare报关物品<br>V. I. P. room贵宾室<br>ticket office购票处<br>cash付款处<br>taxi/cab出租车<br>taxi pick-up point出租车乘车点<br>coach pick-up point大轿车乘车点；<font color="red">coach教练；旅客车厢；长途公车</font><br>airline coach service航空公司汽车服务<br>car hire/‘haɪə/ 旅客自己驾车的租车处<br>bus/coach service公共汽车<br>public phone/telephone公用电话<br>coffee shop/cafe咖啡馆<br>duty-free shop免税店；duty责任，关税，职务<br>rail ticket出售火车票<br>tour arrangement旅途安排</p>
+<p><font color="red">endorsements认可，签注/ɪn’dɔːsm(ə)nt; en-/</font><font color="red">restrictions限制，约束</font><br>name of passengers旅客姓名<br>carrier承运人<br>good for passage between旅行经停地点<br>class座舱等级<br>flight no.航班号；seat no.座位号；status订座情况<br>smoking seat吸烟座位；non-smoking seat非吸烟座位<br>ticket confirm机票确认</p>
+<p>accompaying number偕行人数<font color="red">occupation职业</font>professional/technical专业技术人员<br>legislators/administrators行政管理人员<br>nationality/country of citizenship国籍；<font color="red">citizenship公民身份；国籍；公民权</font><br>clerk办事员，职员，书记，记账员<br>commerce商业人员；商业，贸易<br>country of origin原住地<br>city where visa was issued签证签发地；issue n.问题；发行物；v.发行，放出<br>date issue签证日期<br>jobless无业<br>address while in前往国家的地址<br>signature签名/‘sɪgnətʃə/<br>number and address门牌和地址</p>
+<p><font color="red">scene expansion 机场广播</font><br>You have just arrived in your destination.<br>Could you please take me to the airport, terminal 1? 可以载我去机场的1号航站吗？<br>information desk 信息咨询台<br>check-in desk 办理登机的柜台<br>Is it the right <font color="red">counter</font> to check in for flight CA731? <font color="red">柜台</font><br>I’d like to check in the flight to Beijing at 12:10. Here is my passport.<br>May I check in, please?<br>Excuse me, I’d like to check-in to my room, please. 你好，我想要办理房间入住手续。<br>Excuse me, do you know where the information/check-in desk is?<br>登机场景对话<br>you: Hi, I’m flying to Los Angeles.<br>staff:May I have your passport, please?<br>you: Yea. Sure. Here you go!<br>挑选座位</p>
+<p><font color="red">aisle seat 靠过道的座位</font>，window seat 靠窗的座位<br>Can I have an aisle seat/window seat, please?<br>security check安检<br>liquids, gels, and creams must all be in containers under 100ml (<font color="red">milliliters</font>).液体、胶体、面霜都必须放在盒子里，而且必须少于100ml。<br>Please lay your bags <font color="red">flat</font> on the <font color="red">conveyer belt</font> and put all your electronics in the <font color="red">tray</font>. 请把你的包放在传送带上并把电子产品放在托盘里。/flæt/平放，/kən’veɚ/，/treɪ/<br>Do I need to take my laptop/ipad out of my bag?<br>Do I need to take off my shoes/jacket?<br>Please raise your arms like this.请举起手臂。<br>Please turn around。请转个身。<br>staff: Do you have any luggage to check in?你有行李要托运吗？<br>you: Yes, I have one luggage to check in and one carry-on.对，我有一件行李托运而且一件随身行李。<br>staff: Please put your luggage on the <font color="red">scale</font>. /skeɪl/规模，比例；衡量，攀登，剥落</p>
+<p><font color="red">overweight luggage行李超重</font><br>staff: Here are your passport and your <font color="red">boarding pass</font>!给你护照和<font color="red">登机牌</font>。<br>airport announcement机场通知<br>突发状况一：航班延误<br>Attention all passengers. Flight 1234（航班号）from Beijing to Los Angeles has been delayed due to bad weather on the ground（由于地面天气原因）. We apologize for the inconvenience.<br>突发状况二：登机通知<br>Attention all passengers traveling on Flight 1234（航班号）,we are now <font color="red">boarding（登机）</font> at <font color="red">gate（登机口）</font> E8. Please have your boarding pass ready. Thank you.<br>突发状况三：登机口变更<br>Attention all passengers traveling on Flight 1234, the <font color="red">departure gate（登机口）</font> has been changed to gate E22.<br>Could you show me where seat 18A is? 请问18A在哪里？<br>You’re in my seat.<br>飞机上用餐：Chinese food中式套餐，Western food西式套餐<br>Coffee, please.<br>Could you bring me a blanket/headphone/headset/pillow? 能给我一条毯子/耳机/枕头吗？<br>I don’t feel well. Do you have any <font color="red">medicine for airsickness</font>? 你们有没有<font color="red">晕机药</font>？<br>Where is the nearest <font color="red">lavatory</font>? 请问最近的<font color="red">洗手间</font>在哪里？/‘lævət(ə)rɪ/红色表示有人occupied，绿色表示没人<font color="red">vacant</font> /‘veɪk(ə)nt/<font color="red">turbulence乱流</font>，需要系好安全带<br>oxygen mask氧气罩<br>life jacket救生衣</p>
+<h1 id="二、海关"><a href="#二、海关" class="headerlink" title="二、海关"></a>二、海关</h1><p>海关不能拍照<br>不能排错队：visitor观光旅客（non-citizen非公民）；citizen公民/residents居民；PR（permanent resident）绿卡，永久居民<br>提前准备好护照和<font color="red">海关申报单（customs declaration form）</font>/deklə’reɪʃ(ə)n/ 海关申报单一般是在飞机上填写的，填写的内容有姓名、酒店、日程等。<br>Where can I have a customs declaration form?<br>Where should I pay duty on this? 在哪里缴税？<br>Excuse me, where will the customs procedure take place? 我是在这里办理通关手续吗？<br>visa签证，nationality国籍<br>custom: What’s your final destination? 一般会在转机的时候经常问<br>you: I’m gonna/I’m going to transfer to …<br>custom: What’s the purpose of your visit/Why are you here?<br>you: I’m here to visit my friend.<br>custom: How long are you planning to stay/How long will you stay？<br>you: My return flight is on (回程航班日期). 美国表达习惯January the fourteenth；澳洲表达习惯fourteenth of January<br>custom: Where will you be staying?<br>you: I will stay at the hotel/Airbnb.<br>custom: So you are not carrying any <font color="red">illegal stuff</font> with you (, are you)? 你没带什么<font color="red">违禁物品</font>吧？<br>you: No, I’m not.</p>
+<h1 id="三、-吃饭"><a href="#三、-吃饭" class="headerlink" title="三、    吃饭"></a>三、    吃饭</h1><p>I’d like to reserve a table for tonight.<br>How long do we have to wait?<br>May I take your order, please? 可以点餐了吗？<br>May I have a menu, please? 请给我一下菜单。<br>May I have a window seat, please? 我能要个靠窗的座位吗？May I see your ticket, please? 请给我看一下您的票。<br>I’d like a cup of coffee, please.<br>I would like to have one more coffee, please.<br>I’d like the <font color="red">steak. /steɪk/牛排</font><br>steam bum馒头，dumpling饺子，wonton馄饨，coriander香菜，garlic大蒜，ginger姜，curry咖喱粉，vinegar醋，soy酱油，salt盐，sugar糖，Yogurt酸奶，draught beer扎啤（生啤酒）draught/drɑːft/同draft ，Iced Americano冰美式咖啡<br>海鲜：tuna金枪鱼/吞拿鱼，lobster龙虾，crayfish小龙虾，clam蛤，crab螃蟹，cucumber黄瓜/‘kjuːkʌmbə/，sea cucumber海参，salmon三文鱼，surf clam北极贝，oyster生蚝/牡蛎，shrimp虾，squid鱿鱼，caviar鱼子酱 /‘kævɪɑː; ,kævɪ’ɑː/，scallop扇贝/‘skɒləp; ‘skæləp/<br>I’d like some marinated grilled shrimp for starters. 我要一个腌烤虾作为开头菜。marinate /‘mærɪneɪt/浸泡在卤水中，grill烧，烤<br>baked oyster烤牡蛎, the lobster and the seafood platter 海鲜拼盘<br>I’m <font color="red">allergic</font> to seafood. 我对海鲜 /ə’lɜːdʒɪk/<font color="red">过敏</font>。</p>
+<p><font color="red">make a reservation预定（餐位、酒店等）</font><br>rent a car租车<font color="red">call a cab打车</font>（cab才是非常的口语化，而taxi比较正式。比如我们在这边打车（国外的出租车一般比较少，很多时候需要打电话叫车）都会说 May I call a cab to XXX place. 很少有人会用taxi）<font color="red">wrap the food up打包食物</font>/ræp/<br>try it on试穿<br>special招牌菜、特色菜<br>What’s today’s special?<br>I’d like to try today’s special.我想尝尝今天的招牌菜。<br>Please give me a <font color="red">doggy bag</font>.请给我一个<font color="red">打包带</font>。<br>bowl碗，spoon勺子，a pair of chopsticks一双筷子，toothpick牙签，napkin餐巾纸，straw吸管</p>
+<p><font color="red">combo套餐</font> /‘kɒmbəʊ/<br>I’d like a number 2 combo, please.我想要一份2号套餐。<br>Two number 3s, please.两份3号套餐。<br>chicken nuggets鸡块，chicken/fish burger鸡/鱼堡，fries薯条，black tea红茶，onion rings洋葱圈/‘ʌnjən/，milk shake奶昔，hot chocolate热巧克力，sundae圣代，orange juice柳橙汁，strawberry草莓口味，vanilla香草味，hot dog热狗，bacon猪熏肉<br>I’d like a chicken burger with one large fries and a milk shake.我想要一个鸡堡，一份薯条和一个奶昔。<font color="red">flavor口味</font>，sauces酱汁<br>ketchup番茄酱，tomato sauce番茄沙司，sweet and sour sauces糖醋酱，sour/saʊə/酸的，发酵<br>Could I change Coke to black tea?可以把可乐换成红茶吗？<br>large大杯，regular普通杯<br>国外的汉堡通常会有：onions洋葱，pickles腌黄瓜，cheese奶酪<br>No onions/pickles/cheese on may hamburger, please.<br>Do you have any straws/napkins?有没有吸管/餐巾纸？<br>一般国外可以续杯的：<font color="red">Are refills free？可以免费续杯吗？</font><br>Is that for here/stay or to go?你是在这儿吃呢，还是带走呢？<br>No change.给的钱刚刚好，不用找零。</p>
+<p>you: Excuse me. I’m sorry, but it doesn’t seem like what I ordered.<br>staff: Sorry, but this is it. / What you see is what you get.<br>you: I’ll have it anyway. / I don’t think so. It does’t match the picture on the menu. This is not what I pay for. You’re gonna make it up to me, or just cancel it, please. 请给我换菜或取消订单。<font color="red">make it up to 解决</font><br>staff: Fine.<br>Excuse me, check, please. / I’d like to pay, please show me the bill/check.<br>Can I pay by credit card/WeChat/Alipay?<br>Thank you, this is your tip. 谢谢，这是你的小费。<br>Something’s wrong with my bill. I didn’t have the beer.</p>
+<h1 id="四、-住宿"><a href="#四、-住宿" class="headerlink" title="四、    住宿"></a>四、    住宿</h1><p>正常流程：准备好护照、事先打印好的酒店预订信息。<br>reception前台<br>you: I made a reservation under the name of somebody, and I’d like to check in.我预定了某人名下的房间，现在想办理住宿登记。（预定的房间一般包含房费、服务费及政府税，但不包含酒店里签单的项目，因此入住时可能需要交付<font color="red">押金deposit</font> /dɪ’pɒzɪt/）<br>reception: I’m sorry, but we don’t have any record of your reservation. 我们没有你的预订记录。<br>you: Could you help me to check in first? I’ll ask the booking agency. 可以先帮我办理入住吗，这个问题我会询问代理机构。<br>Do you have any rooms available now? I need a twin room. single room单人间，double room双人床的双人间，twin room两个单人床的双人间，suite room套房/swiːt/<br>What’s the reception number?<br>Can I pay by credit card? 我可以用信用卡支付吗？（退房时如果没有产生）<br>BNB（bed and breakfast）含有早餐的住宿<br>entire place整套房子，private room独立房间，heating暖气，kettle电热水壶，bathroom（share or private）卫生间/浴室（共享或私人），lock on bedroom door独立的卧室门锁<br>What’s the WiFi password?<br>I can’t connect to the Internet.我连不上网。<br>The toilet is blocked and won’t flush.马桶堵住了，不能冲水。<br>Excuse me, there is no hot water in the bathroom.<font color="red">complimentary免费赠送</font><br>safe保险箱，bulb灯泡，fridge冰箱，lock锁，<font color="red">outlet/socket插座</font>，shower莲蓬头，toilet马桶<br>room service客房服务<br>The <font color="red">air conditioner</font> in my room doesn’t work. <font color="red">空调</font>，<font color="red">faucet水龙头</font>/‘fɔːsɪt/<br>The room is so noisy. I have to change a quiet room.<br>I want an <font color="red">extension</font> of my room. 我想要续房。<br>I’d like to <font color="red">check out</font> now. 我想要现在退房。<br>Could I store my luggage here? 我可以把行李寄存在这里吗？<br>Would you please call me a taxi? 如果需要叫车服务，也可以直接拜托酒店前台。</p>
+<h1 id="五、-问路"><a href="#五、-问路" class="headerlink" title="五、    问路"></a>五、    问路</h1><p>Could you tell the way to the subway station/supermarket? 你可以告诉我地铁站/超市怎么走吗？<br>Are there any <font color="red">landmarks</font> on the way? 沿途有什么<font color="red">地标</font>吗？<br>block街区，over there在那边，next to隔壁，crossroads十字路口，traffic light红绿灯，go along沿着<br>How far is it from here? 从这到那远吗？<br>How can I get there? walking, by taxi, by subway<br>How much (is the fare) to the airport? 到机场的费用是多少？fare票价，费用；进展<br>driver: By meter or fixed fare? 是打表还是固定费率？（一般差不多）</p>
+<h1 id="六、-购物"><a href="#六、-购物" class="headerlink" title="六、    购物"></a>六、    购物</h1><p>Excuse me, where can I find the shampoos?<br>paste张贴，膏 /peɪst/；post张贴，岗位，邮件<br>toothbrush牙刷，toothpaste牙膏，tissue面巾纸，towel毛巾，instant noodle方便面（instant立即的），mineral water矿泉水，<font color="red">mineral矿物质</font><br>Do you sell them individually or by weight? 请问这些是论个卖还是论斤卖？<br>cash desk收银台，self checkout自主结账<br>Please give me a big shopping bag.<br>Can I pay <font color="red">in cash/by credit card</font>? 可以用现金/信用卡支付吗？<br>on sale打折促销，50% off半价，buy one and get one free买一送一，30% discount打七折<br>Can I try it on? fitting room试衣间<br>cosmetic化妆品：cleansing gel洁面乳、洁面膏，facial mask面膜，essence /‘es(ə)ns/精华液，lotion /‘ləʊʃ(ə)n/乳液，moisturizer/‘mɒɪstʃəraɪzə(r)/保湿霜，foundation粉底，eyeliner眼线笔，eye shadow眼影，mascara/mæ’skɑːrə/睫毛膏，blush腮红，lipstick口红，perfume香水<br>eyelash/‘aɪlæʃ/睫毛，eyebrow /‘aɪbraʊ/眉毛<br>Do you have trial samples? 请问有试用品吗？</p>
+<p>May I beg your pardon? 对不起，可以再说一遍吗？Pardon me？<br>I honestly didn’t mean it. 我真不是故意的。<br>Can you forgive me? 你能原谅我吗？<br>I apologize for that. 我对此感到抱歉。</p>
+<h1 id="七、旅游"><a href="#七、旅游" class="headerlink" title="七、旅游"></a>七、旅游</h1><p>beach umbrella海滩伞，sunshade遮阳伞，broad brim hat宽檐帽/brɪm/边缘，sunglasses太阳镜，sunscreen cream防晒霜，sunscreen lotion防晒乳，sunscreen spray防晒喷雾；sunscreen遮光剂，防晒霜，spry /spreɪ/ 喷雾<br>I’d like to rent a beach umbrella.<br>Warm up yourself before you swim. 游泳前先热身。<br>Help! Help me! I got a <font color="red">cramp</font> in my leg! /kræmp/<font color="red">痉挛</font></p>
+<p><font color="red">selfie自拍</font>/ˈsɛlfɪ/，selfie-stick自拍杆<br>puckered lips嘟嘴,pucker/‘pʌkə/折皱，缩拢，grimace/funny face扮鬼脸，victory/peace sign剪刀手，say cheese<br>Could you help me take a picture? 相机拍照还可以说成take a shot<br>portrait picture竖版照片，landscape picture横版照片，portrait n.肖像，描写，landscape风景<br>Could you help take a picture with the …（建筑物等）？可以帮我跟…合个影吗？<br>This photography is a little bit <font color="red">blurry</font>. 这张照片有点<font color="red">模糊</font>了。/‘blɜːrɪ/<br>Sorry, I <font color="red">blink</font>ed in the photo. Could you please help me take one more? 对不起我<font color="red">眨眼</font>了，你能再帮我拍一张吗？<br>Great! Thanks a lot! You’re a fantastic photographer.<br>This picture is really well taken.<br>美国的观光火车不用安检，提前半小时上车都没问题。<br>西雅图和洛杉矶之间的Coast Starlight被认为是最壮观的列车线路之一。<br>在线购票后，到达始发站后，找到quick-track进行取票。<br>现场买票<br>I’d like to buy two Pacific Surfliner round-trip tickets。我想要两张太平洋冲浪线的往返票。<br>美国：one-way ticket单程票，round-trip ticket往返票<br>英国：single ticket单程票，return ticket来回票<br>What’s the fare? 票价多少？（一般观光火车的价格较贵）<br>premium卧铺票（premium/‘priːmɪəm/ 额外费用，溢出），车票自动包含一日三餐<br>coach seat坐票，需要提前预定午餐、晚餐；couch /kaʊtʃ/长沙发<br>I’d like to make a reservation for two at 6:30 tonight.我想预约今晚6:30，两个人的位置。</p>
+<h1 id="八、生病"><a href="#八、生病" class="headerlink" title="八、生病"></a>八、生病</h1><p>symptom症状<br>I have got a headache and sore throat. 我头痛、喉咙痛。<br>I’ve got the runs. 我拉肚子了。<br>dentist牙医<br>I have a terrible toothache./‘tuːθeɪk/<br>high temperature高烧，heart attack心脏病发，diabetes糖尿病，asthma气喘，high blood pressure高血压，stomachache胃痛<br>I’m allergic to amoxicillin. /ə,mɑksɪ’sɪlɪn/我对阿莫西林过敏。<br>I’m pregnant. 我怀孕了。<br>take your temperature量体温，check-up检查，take your blood pressure量血压，X-ray x光片，<br>urinalysis /,jʊərɪ’nælɪsɪs/验尿，blood test验血<br>How should I take this medicine？这个药我该怎么服用？</p>
+<h1 id="九、兑换现金"><a href="#九、兑换现金" class="headerlink" title="九、兑换现金"></a>九、兑换现金</h1><p>small change小钞、零钱<br>机场、酒店的兑换率都较低，但是会收取高额的手续费。<br>将100美元换成零钱：Small change, please. 3 twenties, 3 tens and the rest in coins, please. 请帮我换小钞，3张20元，3张10元，其余的换零钱。in 1 dollars换成1美元<br>What’s the exchange rate for RMB to the Thai Baht? 人民币兑换成泰铢的汇率是多少？<br>如果不清楚汇率换算，直接让工作人员告知：<br>I’d like to change 500 US dollars. How much will that be in RMB yuan?</p>
+<p><strong>美国</strong>的货币单位为美元（dollar），1美元（one dollar）等于100美分（100 cents）。纸币面额最小为1美元，1美元以下用硬币，硬币有25美分（Quarter/‘kwɔːtə/）、10美分（a dime/daɪm/，一角）、5美分（a nickel/‘nɪk(ə)l/）、1美分（a cent）<br>quarter四分之一，地区，季度，一刻钟；住宿，驻扎<br>dime<br><strong>英国</strong>的货币单位：pound英镑，便士(单数:penny，复数:pence)。一英镑（one pound）等于100新便士（100 newpece）。所有硬币正面皆为英国君主像，背面除铸有币值外，在不同行政区所铸的硬币铸有不同的图案，但不论硬币于那个行政区铸造，皆全国通用。<br>硬币：1便士、2便士、5便士、10便士、20便士、50便士、1镑（铸造年限不同会有不同的背面印花，但正面君主头像不变）、2镑。<br>纸币：1镑（仅苏格兰）、5镑、10镑、20镑、50镑和100镑（仅苏格兰和北爱尔兰）。所有币值的纸币正面皆印有英国君主像、编号及币值，不同币值的纸币印有不同的英国名人像。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;一、-机场&quot;&gt;&lt;a href=&quot;#一、-机场&quot; class=&quot;headerlink&quot; title=&quot;一、    机场&quot;&gt;&lt;/a&gt;一、    机场&lt;/h1&gt;&lt;p&gt;Departure Hall 出发大厅&lt;br&gt;Arrival Hall 到达大厅&lt;br&gt;airport 
+    
+    </summary>
+    
+      <category term="英语" scheme="https://lichtmiao.github.io/categories/%E8%8B%B1%E8%AF%AD/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>出国准备</title>
+    <link href="https://lichtmiao.github.io/2018/11/06/%E7%94%9F%E6%B4%BB%E2%80%94%E2%80%94%E5%87%BA%E5%9B%BD%E5%87%86%E5%A4%87/"/>
+    <id>https://lichtmiao.github.io/2018/11/06/生活——出国准备/</id>
+    <published>2018-11-06T03:02:47.000Z</published>
+    <updated>2018-12-29T02:57:52.868Z</updated>
+    
+    <content type="html"><![CDATA[<p>由于十二月有一次出国的会议，而这也是第一次出国，感谢学校的慷慨。</p>
+<p><strong>1. 行程</strong><br>成都——香港（转机）——阿布扎比——香港（转机）——成都<br>十月国庆回家的时候办理了护照、港澳通行证，其实港澳通行证可以不用办理：香港有规定,持有中国护照,第三方国家/地区签证及相关机票的,可以免签入境7天的。叧外,如果转机不入境,只在机场禁区内等待,是不算入境的,更是什么都不用担心。<br>海关：需passport和酒店预订信。</p>
+<p><strong>2. 行李</strong><br>1）行李箱：不能超过20寸，否则需要托运。<br>2）化妆品：不能超过100ml，否则需要托运。<br>3）充电宝：不能超过2万毫安，我的是1万毫安。<br>4）衣服：需要查好阿布扎比当地的气温，现在看来可能是夏末的样子，可以带夏天的衣服过去，然后带外套。<br>5）银行卡：visa信用卡，银联信用卡。<br>6）通用转换头<br>7）关于上网，可以买当地的卡，网上也有随身wifi</p>
+<p><strong>3. 酒店</strong><br>由于我订酒店比较晚，选了个较便宜的酒店，因此预定的酒店不能退，各种税已交。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;由于十二月有一次出国的会议，而这也是第一次出国，感谢学校的慷慨。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1. 行程&lt;/strong&gt;&lt;br&gt;成都——香港（转机）——阿布扎比——香港（转机）——成都&lt;br&gt;十月国庆回家的时候办理了护照、港澳通行证，其实港澳通行证可以不用办理：香港有规
+    
+    </summary>
+    
+      <category term="生活" scheme="https://lichtmiao.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>笔试面试——校招结束</title>
+    <link href="https://lichtmiao.github.io/2018/11/06/%E7%AC%94%E8%AF%95%E9%9D%A2%E8%AF%95%E2%80%94%E2%80%94%E6%A0%A1%E6%8B%9B%E7%BB%93%E6%9D%9F/"/>
+    <id>https://lichtmiao.github.io/2018/11/06/笔试面试——校招结束/</id>
+    <published>2018-11-06T01:50:25.000Z</published>
+    <updated>2018-11-23T02:05:33.347Z</updated>
+    
+    <content type="html"><![CDATA[<p>10.20签了华为的offer，宣告准备了两个月的校招结束了。<br>一些大厂在5、6月就开始秋招了，这我也是在后来才知道的。8月初投了一批大厂的Java开发的内推offer，然后开始准备笔试面试。其实Java是我去年7月底去清华实验室的时候无意间在桌子上看到了一本《疯狂Java讲义》，然后拿来看了看，感觉讲解得挺简单的，就想要学习一下。也就那两个月里看看，今年8月才重新看，也没有相关的经验。Java开发完全靠自己的勇气了吧。。。后面的笔试也感觉不简单，需要准备的东西太多了，到后来感觉Java web开发这块都想要放弃了。虽然准备了两个月的Java，但还是不如随便看了一周的通信，这让我感受到找工作找自己擅长的还是比较有优势。</p>
+<p>秋招我就面试了5家公司。9.18面试中兴的Java开发，虽然不想去，但想去试试水，果然出现了没有Java项目经验，为什么来面试开发的问题。然后把我调到基带开发，后面也没消息了，算是一面跪。9.20面试了烽火的Java开发，但没有通信相关岗位，却把我调到c++岗，完全不懂c++，后面面试过程也不是很顺利，算是一面跪。9.28面试了华为的通信算法，两面全程感觉很轻松。10.20给的sp，成都16*14~16，之前一直想去上海，奈何感觉上海给的工资太低，家里也不是很同意，就签了成都，签了之后的一天特别郁闷，不过后来就释怀了。9.28下午看到群里发的紫光的信息，面了5G核心预研，感觉是问得最专业的一次，第二天是hr面，感觉过程比较混乱，面试体验不是很好。后面也没消息了。10.16面试中电三十所的通信算法，三个面试官都非常nice，三天后给了offer，一年15w，后来拒了，感觉特别不好意思。研究所有论文还是比较有优势，感觉终于有人重视我的论文了。秋招真实感觉自己真是个小菜鸡呀，被offer按在地上摩擦，嘻嘻嘻。</p>
+<p>后面又陆陆续续收到了面试通知，因为已经签了华为，感觉挺满意的，就没去了。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;10.20签了华为的offer，宣告准备了两个月的校招结束了。&lt;br&gt;一些大厂在5、6月就开始秋招了，这我也是在后来才知道的。8月初投了一批大厂的Java开发的内推offer，然后开始准备笔试面试。其实Java是我去年7月底去清华实验室的时候无意间在桌子上看到了一本《疯狂J
+    
+    </summary>
+    
+      <category term="笔试面试" scheme="https://lichtmiao.github.io/categories/%E7%AC%94%E8%AF%95%E9%9D%A2%E8%AF%95/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Java并发</title>
+    <link href="https://lichtmiao.github.io/2018/09/17/Java%E5%B9%B6%E5%8F%91/"/>
+    <id>https://lichtmiao.github.io/2018/09/17/Java并发/</id>
+    <published>2018-09-17T11:20:03.000Z</published>
+    <updated>2018-09-17T11:20:57.600Z</updated>
+    
+    <content type="html"><![CDATA[<p>一、几个概念</p>
+<ol>
+<li><p>同步（synchronous）和异步（asynchronous）<br>同步和异步通常用来形容异常方法的调用。同步方法一旦开始，调用者必须等到方法调用完成后，才能进行后续行为。而异步方法更像是一个消息的传递，一旦开始，方法调用会立即返回，调用者可以继续后面的行为，而异步方法通常会在另一个线程真实地执行，整个过程不会阻碍调用者的执行。</p>
+</li>
+<li><p>并发（concurrent）和并行（parallelism）<br>它们都表示多个任何可以一起执行，但偏重点不一样。并行是多个任务同时执行，而并发是多个任务交替执行，而多个任务间可能还是串行的。</p>
+</li>
+</ol>
+<p>实际上，如果系统内只有一个CPU，由于一个CPU只能执行一条指令，所以多进程或多线程任务是不可能并行执行的，只能是并发。真实的并行只存在在多个CPU中。</p>
+<ol>
+<li>临界区<br>临界区用来表示一组共享数据，它可以被多个线程使用。每次只有一个线程来使用它，一旦临界资源被占用，其它线程若想要使用这个资源，只有等待。</li>
+<li>阻塞（blocking）和非阻塞（non-blocking）<br>阻塞和非阻塞通常用来形容线程之间的相互影响。如一个线程占用了一个临界资源，而其他线程想要访问这个资源，只有等待，等待会导致线程挂起，这种情况就是阻塞。而非阻塞强调一个线程可以妨碍其他线程的执行。</li>
+<li>死锁（deadlock）、饥饿（starvation）和活锁（livelock）<br>死锁、饥饿和活锁都属于多线程的活跃性问题。<br>1）    死锁<br>（1）死锁的产生：互斥；请求和保持；不剥夺；环路条件。<br>（2）处理死锁：<br>预防死锁：破坏产生死锁的条件2、3、4中任意一个或多个；<br>避免死锁：防止进入不安全状态，即下一次线程调度存在一个安全序列，满足每个进程对资源的最大需求，使每个进程都可顺利地完成。<br>检测和解除死锁。<br>2）    饥饿<br>饥饿是指一个或多个线程因为种种原因无法获得所需资源，如线程优先级太低，导致高优先级线程不断抢占它需要的资源。饥饿与死锁的不同在于，饥饿在未来一段时间内还是可以解决的。<br>3）    活锁<br>活锁就是两个线程主动将资源释放给他人使用，导致最终没有一个线程获得资源从而正常执行。<br>二、与并行有关的两个定理</li>
+<li><p>Amdahl定理<br>Amdahl定义了串行系统并行化后的加速比的计算公式和理论上限。<br>加速比=优化前系统耗时/优化后系统耗时<br>加速比越高，表明优化效果越明显。<br>以下是Andahl公式的推导，T1表示只有一个处理器时的耗时，Tn表示有n个处理器时的耗时。F是程序中只能执行串行执行的比例。<br>加速比=1/[F+(1/n(1-F))]<br>极端情况下，当n趋近与无穷，得到加速比的理论极限：<br>加速比=1/F<br>因此只增加CPU的数量而不降低串行化比重，也是无法提高系统系统的。</p>
+</li>
+<li><p>Gustafson定理<br>Gustafson也试图说明加速比、处理器个数和串行比之间的关系。但与Amdahl定理的角度不同，它们之间是不矛盾的。Amdahl定理强调，当串行比例一定时，加速比是有上限的。而Gustafson定理关心的是，如果可被并行化的代码所占比重足够多，则加速比就能随着CPU的数量线性增长。<br>volatile：轻量级的synchronized，它在多处理器开发中保证了共享变量的“可见性”。可见性的意思是当一个线程修改一个共享变量时，另外一个线程能读到这个修改的值。</p>
+</li>
+<li><p>新建线程<br>new创建一个线程，并且start()。<br>start()后会自动调用run()方法开始执行线程（注意不需要显式调用run()方法）。<br>如果没有特别的需要，可以通过继承Thread，重载run()方法定义线程。但Java是单继承的，所以继承也是一种很宝贵的资源，可以使用Runnable接口实现同样的操作。Runnable接口是一个单方法接口，它只有一个run()方法：<br>public interface Runnable{<br>public abstract run();<br>}<br>默认的Thread.run()调用的是内部的Runnable接口，因此使用Runnable接口告诉线程应该做什么更合理。Thread类中的一个非常重要的构造方法：<br>public Thread(Runnable target){<br>if (target !=  null){<br>target.run();<br>}<br>}<br>可见，Thread类的这个构造方法传入一个Runnable接口的实例，在调用start()方法时，新的线程就会执行Ruannable.run()方法。</p>
+</li>
+<li>线程终止<br>不要用stop()方法，一般自己定义一个结束线程的方法。</li>
+<li>线程中断<br>严格地讲，线程中断并不会使线程立即退出，而是给线程发送一个通知，告知目标线程，有人希望你退出啦！<br>public void Thread.interrupted() //中断线程，并设置中断标志位<br>public boolean Thread.isInterrupted() //判断是否被中断<br>public static boolean Thread.interrupted() //判断是否被中断，并清除当前中断状态</li>
+</ol>
+<p>Thread.sleep()函数<br>public static native void sleep(long millis) throws InterruptedException<br>Thread.sleep()方法会让当前线程休眠若干时间，它会抛出一个InterruptedException异常，这不是运行时异常，因此程序必须捕获并且处理它。当线程在sleep()休眠时被中断，就会抛出这个异常。<br>Thread.sleep()方法由于中断而抛出异常，它会清除中断标志位，因此为了下次能捕获这个中断，在异常处理中，需要再次设置中断标志位。</p>
+<ol>
+<li>wait和notify<br>为了支持多线程之间的协作，JDK提供了wait()方法和notify()方法，它们是属于Object类，因此所有对象都可以调用这两个方法。<br>如果线程调用了Object.wait()方法，它就会进入object对象的等待队列，但并不是先等待的线程先执行，这种选择完全是随机的。<br>无论是wait()还是notify()，都需要先获得目标对象的监视器。</li>
+<li>线程挂起suspend()和继续执行resume()<br>suspend()和resume()是一对相反的操作。不推荐使用suspend()挂起线程的原因是，suspend()在导致线程暂停的同时，并不会去释放任何的锁资源，会导致其他线程想要访问被它占用的锁时，都无法继续运行。</li>
+<li>等待线程结束join()和谦让yield()<br>当一个线程的输入可能要依赖于</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;一、几个概念&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;同步（synchronous）和异步（asynchronous）&lt;br&gt;同步和异步通常用来形容异常方法的调用。同步方法一旦开始，调用者必须等到方法调用完成后，才能进行后续行为。而异步方法更像是一个消息的传递，一旦开始，方法调用会
+    
+    </summary>
+    
+      <category term="Java并发" scheme="https://lichtmiao.github.io/categories/Java%E5%B9%B6%E5%8F%91/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>操作系统（四）——存储器管理</title>
+    <link href="https://lichtmiao.github.io/2018/09/16/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E5%9B%9B%EF%BC%89%E2%80%94%E2%80%94%E5%AD%98%E5%82%A8%E5%99%A8%E7%AE%A1%E7%90%86/"/>
+    <id>https://lichtmiao.github.io/2018/09/16/操作系统（四）——存储器管理/</id>
+    <published>2018-09-16T08:22:41.000Z</published>
+    <updated>2018-09-17T02:07:05.926Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一、-存储器的层次结构"><a href="#一、-存储器的层次结构" class="headerlink" title="一、    存储器的层次结构"></a>一、    存储器的层次结构</h1><p>对于通用计算机而言，存储层次至少为三级：CPU寄存器、主存、辅存。<br><img src="http://ovfkr5e4k.bkt.clouddn.com/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84.png" alt="计算机存储结构"><br>什么是位？<br>所谓位，是最基本的概念，在计算机中，由于只有逻辑0和逻辑1的存在，因此很多东西、动作、数字都要表示为一串二进制的字码例如： 1001 0000 1101等等。其中每一个逻辑0或者1便是一个位。例如这个例子里的1000 1110共有八个位，它的英文名字叫（bit），是计算机中最基本的单位。<br>所谓的字节 Byte，是由八个位组成的一个单元，也就是8个bit组成1个Byte。字节有什么用呢？ 在计算机科学中，用于表示ASCII字符，便是运用字节来记录表示字母和一些符号~例如字符A便用 “0100 0001”来表示。<br>而字节以上，便是字：16个位为一个字，它代表计算机处理指令或数据的二进制数位数，是计算机进行数据存储和数据处理的运算的单位。通常称16位是一个字，而32位呢，则是一个双字，64位是两个双字。<br>xx位机的xx位是指字长。这个字和word不一样，是指这种CPU一次能运算的数据长度，32位机就是一次运算32个二进制位，64位机就是一次运算64个二进制位。</p>
+<h1 id="二、程序的装入和链接"><a href="#二、程序的装入和链接" class="headerlink" title="二、程序的装入和链接"></a>二、程序的装入和链接</h1><p>在多道程序环境下，要使程序运行，必须先为之创建进程。而创建进程的第一件事，便是将程序和数据装入内存。<br>用户源程序变成可执行程序的步骤：</p>
+<ul>
+<li>编译：由编译程序(Compiler)将用户源代码编译成若干个目标模块(Object Module)；</li>
+<li>链接：由链接程序(Linker)将编译后形成的一组目标模块，以及它们所需要的库函数链接在一起，形成一个完整的装入模块(Load Module)；</li>
+<li>装入：由装入程序(Loader)将装入模块装入内存。</li>
+</ul>
+<h1 id="三、连续分配方式"><a href="#三、连续分配方式" class="headerlink" title="三、连续分配方式"></a>三、连续分配方式</h1><p>连续分配方式是指，为用户程序分配一个连续的内存空间。又可把连续分配方式进一步分为单一连续分配、固定分区分配、动态分区分配以及动态重定位分区分配四种方式。</p>
+<h2 id="1-单一连续分配"><a href="#1-单一连续分配" class="headerlink" title="1.    单一连续分配"></a>1.    单一连续分配</h2><p>只能用于单用户、单任务的操作系统中。采用这种存储管理方式时，可把内存分为系统区和用户区两部分，系统区仅提供给OS使用，通常是放在内存的低址部分；用户区是指除系统区以外的全部内存空间，提供给用户使用。</p>
+<h2 id="2-固定分区分配"><a href="#2-固定分区分配" class="headerlink" title="2.    固定分区分配"></a>2.    固定分区分配</h2><p>固定分区分配是一种可运行多道程序的存储管理方式。它将内存用户空间划分为若干个固定大小的区域，在每个分区中只装入一道作业，这样，把用户空间划分为几个分区，便允许有几道作业并发运行。<br>为了便于内存分配，通常将分区按大小进行排队，并为之建立一张分区使用表，其中各表项包括每个分区的起始地址、大小及状态。</p>
+<h2 id="3-动态分区分配"><a href="#3-动态分区分配" class="headerlink" title="3.    动态分区分配"></a>3.    动态分区分配</h2><p>动态分区分配是根据进程的实际需要，动态地为之分配内存空间。在实现可变分区分配时，将涉及到分区分配中所用的数据结构、分区分配算法和分区的分配与回收操作这样三个问题。<br>（1）    分区分配中的数据结构<br>空闲分区表和空闲分区链。<br>（2）    分区分配算法</p>
+<ul>
+<li>首次适应算法（FF，first fit）：FF要求空闲分区链以地址递增的次序链接。在分配内存时，从链首开始顺序查找，直至找到一个大小能满足要求的空闲分区为止，会优先从内存中的低地址进行查找分配。</li>
+<li>循环首次适应算法（NF，next fit）：NF由FF演变，不再是每次都从链首开始查找，而是从上次找到的空闲分区的下一个空闲分区开始查找，直至找到一个能满足要求的空闲分区，从中划出一块与请求大小相等的内存空间分配给作业。</li>
+<li>最佳适应算法啊（BF，best fit）：每次为作业分配内存时，总是把能满足要求、又是最小的空闲分区分配给作业，避免“大材小用”。</li>
+<li>最坏适应分配算法（worst fit）：扫描整个空闲分区表或链表，总是挑选一个最大的空闲区分割给作业使用分区的分配与回收。</li>
+<li>快速适应算法(quick fit)：该算法又称为分类搜索法，是将空闲分区根据其容量大小进行分类。</li>
+</ul>
+<p>（3）    分区的分配与回收操作<br>在动态分区存储管理方式中，主要的操作是分配内存和回收内存。</p>
+<h2 id="4-动态重定位分区分配"><a href="#4-动态重定位分区分配" class="headerlink" title="4.    动态重定位分区分配"></a>4.    动态重定位分区分配</h2><h1 id="四、-基本分页存储管理方式"><a href="#四、-基本分页存储管理方式" class="headerlink" title="四、    基本分页存储管理方式"></a>四、    基本分页存储管理方式</h1><p>推动存储管理方式从固定分区到动态分区，进而发展到分页管理的主要动力是，提高内存利用率。<br>在分页存储管理方式中，如果不具备页面对换功能，则称为基本的分页存储管理方式，或称为纯分页存储管理方式，它不具有支持实现虚拟存储器的功能，它要求把每个作业全部装入内存后方能运行。</p>
+<h2 id="1-引入"><a href="#1-引入" class="headerlink" title="1.    引入"></a>1.    引入</h2><p>1）页面和物理块<br>分页存储管理是将一个进程的逻辑地址分为若干大小相等的片，称为页面或页，并为各页编号。也把内存空间分为与页面大小相等的若干存储块，称为（物理）块或页框（frame），并对块与进行编号。<br>页面大小的选取应当适中，且为2的幂，通常为512B~8KB。<br>2）地址结构<br>分页地址中的地址结构为：<span style="background-color:yellow">分也式逻辑地址=页号P+页内地址（位移量）d</span>。<br>对于某个特定机器，其地址结构是一定的。若给定一个逻辑空间中的地址A，页面大小L，则可以求得其页号P和页内地址d：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">P=floor(A / L)，向下取整</div><div class="line">d=A mod L，取余</div></pre></td></tr></table></figure></p>
+<p>如给定一个逻辑地址空间的地址A=2170 B，系统页面大小为1KB，则由上面两个式子得到页号P=2017/1024=2，页内地址d=2017 mod 1024=122。<br>3）页表<br>在分页系统中，允许将进程的各个页离散地存储在内存不同的物理块中，但系统应能保证进程的正确运行，即能在内存中找到每个页面所对应的物理块。为此，系统又为每个进程建立了一张页面映像表（页表）。<span style="background-color:yellow">页表的作用是实现从<strong>页号</strong>到<strong>物理块号</strong>的地址映射</span>。<br><img src="http://ovfkr5e4k.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180916195430.png" alt="页表的作用"> </p>
+<h2 id="2-地址变换机构"><a href="#2-地址变换机构" class="headerlink" title="2.    地址变换机构"></a>2.    地址变换机构</h2><p>地址变换机构的主要作用是<font color="red">实现从逻辑地址到物理地址的转换</font>。具体地，将逻辑地址的页号转换为内存中的物理块号。又由于页面映射表（页表）的作用就是实现页号到物理块号的映射，因此地址变换的主要任务是借助页面映射表（页表）来完成的。<br>1）基本的地址变换机构<br>当进程未执行时，页表的始址和页表的长度都存在本进程的PCB中；当调度程序调度到某进程时，才将这两个数据装入页表寄存器。<br><strong>计算某个分页管理中逻辑地址的物理地址</strong>：<br><span style="background-color:yellow">找到逻辑地址的页号；计算在页表中的地址=页表始址+页号*页表项长度；通过页表映射到物理地址</span>。<br><img src="http://ovfkr5e4k.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180916200645.png" alt="分页系统的地址变换机构"><br>2）    具有快表的地址转换机构</p>
+<h1 id="五、-基本分段存储管理方式"><a href="#五、-基本分段存储管理方式" class="headerlink" title="五、    基本分段存储管理方式"></a>五、    基本分段存储管理方式</h1><h2 id="1-引入-1"><a href="#1-引入-1" class="headerlink" title="1.    引入"></a>1.    引入</h2><p>引入基本分段存储管理方式的目的是，满足开发人员在编程和使用上的多方要求：</p>
+<ul>
+<li>方便编程：逻辑地址=段号+段内地址（偏移）；</li>
+<li>信息共享：段是信息的逻辑单位，而页只是存放信息的物理单位（块），并无完整意义。允许多个进程共享一个或多个分段。</li>
+<li>信息保护：对信息的逻辑单位进行保护。</li>
+<li>动态增长，</li>
+<li>动态链接：在作业运行之前，并不把作业段链接起来，而是在运行过程中需要调用某段时，才将该段调入内存并连接。</li>
+</ul>
+<h2 id="2-分段系统的原理"><a href="#2-分段系统的原理" class="headerlink" title="2.    分段系统的原理"></a>2.    分段系统的原理</h2><p>1）分段<br><span style="background-color:yellow">分段式逻辑地址=段号+段内地址</span>。整个作业的地址空间由于是分成多个段，因而是二维的。<br>作业的地址空间被划分为若干个段，每个段定义了一组逻辑信息。例如，有主程序段MAIN、子程序段X、数据段D 及栈段S段，每个段都有自己的名字。<br>2）段表<br>对应于分页管理中的页表，分段管理中也有<font color="red">段表，用于实现逻辑段到物理内存区的映射</font>。<br>3）地址变换机构<br><strong>计算分段管理中某个逻辑地址的物理地址</strong>：<br><span style="background-color:yellow">找到逻辑地址的段号；根据段表始址和段号，计算该段对应表项的位置，从中读出该段在内存中的起始地址；计算物理地址=起始地址+段内地址；通过页表映射到物理地址</span>。<br><img src="http://ovfkr5e4k.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180916202950.png" alt="分段系统的地址变换机构"><br>4）<strong>分页和分段的主要区别</strong><br>a.    页是信息的物理单位，分页是为了提高内存利用率；段是信息的逻辑段位，分段是为了满足用户的需要。<br>b.    页的大小固定且由系统决定；段的大小不固定，由用户所编写的程序决定。<br>c.    分页的作业地址空间是一维的；分段的作业地址空间是二维的，在标识地址时，既要给出段名，又要给出段内地址。<br>怎么理解分页管理是一维的，而分段管理是二维的？<br>页式存储是一维的，因为各个模块在链接时必须组织在同一地址空间；而分段式二维的，各个模块在链接时可以把每个段组织成一个地址空间。也就是说，在编程的时候，如果是分页存储，你只需要给定一个逻辑地址，然后操作系统会自己去把逻辑地址划分成页号和页内偏移，所以是一维的。而如果是段式存储的话，你需要给定的逻辑地址必须包括段号和段内偏移量，因为分段式从程序员的角度来分的，操作系统并不知道段内偏移，无法只通过段号找物理地址，所以段式存储是二维的。<br>5）段页式存储管理<br>分页能提高内存利用率，而分段能满足用户需求。<br>段页式存储是分段和分页原理的结合，即先将用户程序分成若干个段，再把每个段分成若干个页，并为每一个段赋予一个段名。<br><span style="background-color:yellow">段页式逻辑地址=段号+段内地址+页内地址</span>。</p>
+<h1 id="六、-虚拟存储器"><a href="#六、-虚拟存储器" class="headerlink" title="六、    虚拟存储器"></a>六、    虚拟存储器</h1><h2 id="1．引入"><a href="#1．引入" class="headerlink" title="1．引入"></a>1．引入</h2><p>前面所说的存储器都需要将所有作业放入内存才能运行，但并非所有程序和数据都用得到，而且作业会一直驻留在内存，直到作业运行结束。但可能出现内存容量不够大的情况，因此出现了虚拟存储器的概念。<br>局部性原理：<br>程序在执行时将呈现局部性规律，即在一较短时间内，程序的执行仅局限于某个部分，相应地，它访问的内存区域也局限于某个区域。体现在：</p>
+<ul>
+<li>时间局限性：如果程序中的某条指令被执行过，则该条指令可能再次被执行；或该条数据被访问过，则它有可能被再次访问。</li>
+<li>空间局限性：如果程序的某个存储单元被访问过，则它附近的单元可能在不久后被访问。</li>
+</ul>
+<p>基于局部性原理，应用程序在执行之前，没必要全部装入内存。</p>
+<h2 id="3-虚拟存储器的实现方法"><a href="#3-虚拟存储器的实现方法" class="headerlink" title="3.    虚拟存储器的实现方法"></a>3.    虚拟存储器的实现方法</h2><p>1）    分页请求系统</p>
+<p>2）    分段请求系统</p>
+<h1 id="七、-请求分页存储管理方式"><a href="#七、-请求分页存储管理方式" class="headerlink" title="七、    请求分页存储管理方式"></a>七、    请求分页存储管理方式</h1><p>请求分页存储管理是建立在基本分页存储管理方式上的。为了能支持虚拟存储器功能，增加了<font color="red">调页功能和页面置换功能</font>。</p>
+<h1 id="八、-页面置换算法"><a href="#八、-页面置换算法" class="headerlink" title="八、    页面置换算法"></a>八、    页面置换算法</h1><p>在进程运行过程中，若其要访问的页面不在内存且需要调入内存，但内存中已无空闲空间时，系统必须从内存中调出一页或数据送往磁盘的对换区中。把选择换出页面的算法称为页面置换算法（page replacement algorithm）。</p>
+<h2 id="1-最佳（optimal）置换算法"><a href="#1-最佳（optimal）置换算法" class="headerlink" title="1.    最佳（optimal）置换算法"></a>1.    <span style="background-color:yellow">最佳（optimal）置换算法</span></h2><p>最佳置换算法是Belady提出的一种理论上的算法。<font color="red">它所选择的淘汰页面是，以后将永不再使用的，或许在最长（未来）时间内不再被访问的页面</font>。可以保证最低的缺页率。<br>如系统为某个进程分配了三个物理块，考虑如下的页面号引用串：<br>7,0,1,2,0,3,0,4,2,3,0,3,2,1,2,0,1,7,0,1<br>先将7,0,1转入内存，当要访问页面2时，将产生缺页中断，根据最佳置换算法，选择将页面7淘汰。因为页面7将在第18次访问才调入，页面0将在第5次访问调入，页面1将在第14次访问时调入，所以页面7将是最晚访问的，需要被淘汰。从下图可以看出产生了6次页面置换。<br><img src="http://ovfkr5e4k.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180916214344.png" alt="最佳页面置换算法"> </p>
+<h2 id="2-先进先出（FIFO，first-in-first-out）置换算法"><a href="#2-先进先出（FIFO，first-in-first-out）置换算法" class="headerlink" title="2.    先进先出（FIFO，first in first out）置换算法"></a>2.    <span style="background-color:yellow">先进先出（FIFO，first in first out）置换算法</span></h2><p>先进先出<font color="red">总是淘汰最先进入内存的页面</font>，即选择在内存中驻留时间最久的页面予以淘汰。<br>仍然使用上面的例子，从下图可以看出FIFO算法执行了12次页面置换。<br><img src="http://ovfkr5e4k.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180916214624.png" alt="FIFO置换算法"> </p>
+<h2 id="3-最近最久未使用（LRU，least-recently-used）置换算法"><a href="#3-最近最久未使用（LRU，least-recently-used）置换算法" class="headerlink" title="3.    最近最久未使用（LRU，least recently used）置换算法"></a>3.    <span style="background-color:yellow">最近最久未使用（LRU，least recently used）置换算法</span></h2><p>最近最久未使用算法<font color="red">选择最近最久未使用的页面予以淘汰</font>。仍然使用上面的例子，由下图可以看出，LRU算法进行了9次页面置换。需要硬件支持。<br><img src="http://ovfkr5e4k.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180916215016.png" alt="LRU页面置换算法"> </p>
+<h2 id="4-Clock置换算法"><a href="#4-Clock置换算法" class="headerlink" title="4.    Clock置换算法"></a>4.    Clock置换算法</h2><p>LRU 算法是较好的一种算法，但由于它要求有较多的硬件支持，故在实际应用中，大多采用LRU的近似算法。Clock算法就是用得较多的一种LRU近似算法。<br>由于该算法是循环地检查各页面的使用情况，故称为Clock算法。置换时是将未使用过<br>的页面换出去，所有又叫最近未用（NRU，not recently used）算法。需要硬件支持。</p>
+<h2 id="5-最少使用（LFU，least-frequency-used）页面置换算法"><a href="#5-最少使用（LFU，least-frequency-used）页面置换算法" class="headerlink" title="5.    最少使用（LFU，least frequency used）页面置换算法"></a>5.    最少使用（LFU，least frequency used）页面置换算法</h2><p>LFU算法选择在最近使用次数最少的页面作为淘汰页。<br>设置移位寄存器来记录页面使用的频率，每次访问某个页面时，便将该移位寄存器的最高位置1，再每隔一段时间（如100ms）右移一次。没有使用计数器的原因是存储器的访问速度太高。</p>
+<h2 id="6-页面缓冲算法（PBA，page-buffering-algorithm）"><a href="#6-页面缓冲算法（PBA，page-buffering-algorithm）" class="headerlink" title="6.    页面缓冲算法（PBA，page buffering algorithm）"></a>6.    页面缓冲算法（PBA，page buffering algorithm）</h2><p>页面缓冲算法规定将一个被淘汰的页放入两个链表中的一个，即如果页面未被修改，就将它直接放入空闲链表中；否则，便放入已修改页面的链表中。须注意的是，这时页面在内存中并不做物理上的移动，而只是将页表中的表项移到上述两个链表之一中。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;一、-存储器的层次结构&quot;&gt;&lt;a href=&quot;#一、-存储器的层次结构&quot; class=&quot;headerlink&quot; title=&quot;一、    存储器的层次结构&quot;&gt;&lt;/a&gt;一、    存储器的层次结构&lt;/h1&gt;&lt;p&gt;对于通用计算机而言，存储层次至少为三级：CPU寄存器、主
+    
+    </summary>
+    
+      <category term="操作系统" scheme="https://lichtmiao.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>笔试面试——网易互娱运营开发</title>
+    <link href="https://lichtmiao.github.io/2018/09/15/%E7%AC%94%E8%AF%95%E9%9D%A2%E8%AF%95%E2%80%94%E2%80%94%E7%BD%91%E6%98%93%E4%BA%92%E5%A8%B1%E8%BF%90%E8%90%A5%E5%BC%80%E5%8F%91/"/>
+    <id>https://lichtmiao.github.io/2018/09/15/笔试面试——网易互娱运营开发/</id>
+    <published>2018-09-15T12:08:55.000Z</published>
+    <updated>2018-09-15T12:20:27.640Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一、选择题"><a href="#一、选择题" class="headerlink" title="一、选择题"></a>一、选择题</h1><h2 id="1-卡特兰公式"><a href="#1-卡特兰公式" class="headerlink" title="1. 卡特兰公式"></a>1. 卡特兰公式</h2><p>f(n)=c(2n,n)/(n+1)。<br>长度为n的序列进栈，则有f(n)种可能的出栈序列。</p>
+<h2 id="2-Cookie"><a href="#2-Cookie" class="headerlink" title="2. Cookie"></a>2. Cookie</h2><p>Cookie,也可以用其复数形式Cookies来表示。是指某些网站为了辨别用户身份而储存在用户本地终端上的数据（通常经过加密）<br>1）Cookie介绍<br>Cookie就是服务器暂存放在你的电脑里的资料（.txt格式的文本文件），通过在HTTP传输中的状态好让服务器用来辨认你的计算机。当你在浏览网站的时候，Web服务器会先送一些资料放在你的计算机上，Cookie 会帮你在网站上所打的文字或是一些选择都记录下来。<br>当下次你再访问同一个网站，Web服务器会先看看有没有它上次留下的Cookie资料，有的话，就会依据Cookie里的内容来判断使用者，送出特定的网页内容给你。<br>2）Cookie的作用<br>cookie有什么作用呢？现在上许多网站都用新用户注册这一项，有时注册了一下，等到下次再访问该站点时，会自动识别到你，并且向你问好，是不是觉得很亲切？当然这种作用只是表面现象，更重要的是，网站可以利用cookie跟踪统计用户访问该网站的习惯，比如什么时间访问，访问了哪些页面，在每个网页的停留时间等。<br>利用这些信息，一方面是可以为用户提供个性化的服务，另一方面，也可以作为了解所有用户行为的工具，对于网站经营策略的改进有一定参考价值。例如，你在某家航空公司站点查阅航班时刻表，该网站可能就创建了包含你旅行计划的 Cookies，也可能它只记录了你在该站点上曾经访问过的Web页，在你下次访问时，网站根据你的情况对显示的内容进行调整，将你所感兴趣的内容放在前列。这是高级的Cookie应用。<br>目前Cookie最广泛的是记录用户登录信息，这样下次访问时可以不需要输入自己的用户名、密码了——当然这种方便也存在用户信息泄密的问题，尤其在多个用户共用一台电脑时很容易出现这样的问题。<br>3）生存周期<br>Cookie可以保持登录信息到用户下次与服务器的会话，换句话说，下次访问同一网站时，用户会发现不必输入用户名和密码就已经登录了（当然，不排除用户手工删除Cookie）。而还有一些Cookie在用户退出会话的时候就被删除了，这样可以有效保护个人隐私。<br>Cookie在生成时就会被指定一个Expire（终止、期满）值，这就是Cookie的生存周期，在这个周期内Cookie有效，超出周期Cookie就会被清除。有些页面将Cookie的生存周期设置为“0”或负值，这样在关闭浏览器时，就马上清除Cookie，不会记录用户信息，更加安全。<br>4）脚本攻击<br>尽管cookie没有病毒那么危险，但它仍包含了一些敏感信息：用户名，计算机名，使用的浏览器和曾经访问的网站。用户不希望这些内容泄漏出去，尤其是当其中还包含有私人信息的时候。一种名为Cross site scripting的工具可以达到此目的。在受到Cross site scripting攻击时，cookie盗贼和cookie毒药将窃取内容。一旦cookie落入攻击者手中，它将会重现其价值。<br>cookie盗贼：搜集用户cookie并发给攻击者的黑客。攻击者将利用cookie信息通过合法手段进入用户帐户。<br>cookie毒药：利用安全机制，攻击者加入代码从而改写cookie内容，以便持续攻击。<br>5）Cookie的安全问题<br>适用对象：所有希望上网安全的读者<br>Cookie欺骗<br>Cookie记录着用户的帐户ID、密码之类的信息，如果在网上传递，通常使用的是MD5方法加密。这样经过加密处理后的信息，即使被网络上一些别有用心的人截获，也看不懂，因为他看到的只是一些无意义的字母和数字。然而，现在遇到的问题是，截获Cookie的人不需要知道这些字符串的含义，他们只要把别人的Cookie向服务器提交，并且能够通过验证，他们就可以冒充受害人的身份，登陆网站。<br>这种方法叫做Cookie欺骗。Cookie欺骗实现的前提条件是服务器的验证程序存在漏洞，并且冒充者要获得被冒充的人的Cookie信息。目前网站的验证程序要排除所有非法登录是非常困难的，例如，编写验证程序使用的语言可能存在漏洞。而且要获得别人Cookie是很容易的，用支持Cookie的语言编写一小段代码就可以实现（具体方法见三），只要把这段代码放到网络里，那么所有人的Cookie都能够被收集。<br>如果一个论坛允许HTML代码或者允许使用Flash标签就可以利用这些技术收集Cookie的代码放到论坛里，然后给帖子取一个吸引人的主题，写上有趣的内容，很快就可以收集到大量的Cookie。在论坛上，有许多人的密码就被这种方法盗去的。至于如何防范，目前还没有特效药，我们也只能使用通常的防护方法，不要在论坛里使用重要的密码，也不要使用IE自动保存密码的功能，以及尽量不登陆不了解底细的网站。<br>Flash的代码隐患<br>Flash中有一个getURL（）函数，Flash可以利用这个函数自动打开指定的网页。因此它可能把你引向一个包含恶意代码的网站。打个比方，当你在自己电脑上欣赏精美的Flash动画时，动画帧里的代码可能已经悄悄地连上网，并打开了一个极小的包含有特殊代码的页面。<br>这个页面可以收集你的Cookie、也可以做一些其他的事情，比如在你的机器上种植木马甚至格式化你的硬盘等等。对于Flash的这种行为，网站是无法禁止的，因为这是Flash文件的内部行为。我们所能做到的，如果是在本地浏览尽量打开防火墙，如果防火墙提示的向外发送的数据包并不为你知悉，最好禁止。如果是在Internet上欣赏，最好找一些知名的大网站。</p>
+<h2 id="3-HTTP的post和get的区别"><a href="#3-HTTP的post和get的区别" class="headerlink" title="3. HTTP的post和get的区别"></a>3. HTTP的post和get的区别</h2><h1 id="二、编程题"><a href="#二、编程题" class="headerlink" title="二、编程题"></a>二、编程题</h1><h2 id="1-求最少进行几次操作"><a href="#1-求最少进行几次操作" class="headerlink" title="1. 求最少进行几次操作"></a>1. 求最少进行几次操作</h2><p>问题：str1=”abcd”，str2=”acc”，对str2进行删除或插入操作，使其变成str1，求需要进行的最少操作次数。输出为3.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line">import java.util.Scanner;</div><div class="line">public class Main &#123;</div><div class="line"></div><div class="line">	    public static void main(String[] args) &#123;</div><div class="line">	        Scanner in = new Scanner(System.in);</div><div class="line">	        String str1 = in.nextLine();</div><div class="line">	        String str2 = in.nextLine();</div><div class="line">	        int cost = minCost(str1, str2, 1, 1, 2);</div><div class="line">	        System.out.println(cost);</div><div class="line">	    &#125;</div><div class="line">	/**</div><div class="line">	 * 生成(M+1)*(N+1)的动态规划表</div><div class="line">	 * @param str1</div><div class="line">	 * @param str2</div><div class="line">	 * @param ic 插入代价</div><div class="line">	 * @param dc 删除代价</div><div class="line">	 * @param rc 替换代价</div><div class="line">	 * @return</div><div class="line">	 */</div><div class="line">	public static int minCost(String str1, String str2, int ic, int dc, int rc) &#123;</div><div class="line">		if (str1 == null || str2 == null) &#123;</div><div class="line">			return 0;</div><div class="line">		&#125;</div><div class="line">		char[] chas1 = str1.toCharArray();</div><div class="line">		char[] chas2 = str2.toCharArray();</div><div class="line">		int m = chas1.length + 1;</div><div class="line">		int n = chas2.length + 1;</div><div class="line">		int[][] dp = new int[m][n];</div><div class="line">		//默认dp[0][0] = 0，不需要重新写出</div><div class="line">		for (int i = 1; i &lt; m; i++) &#123;</div><div class="line">			dp[i][0] = dc * i;</div><div class="line">		&#125;</div><div class="line">		for (int j = 1; j &lt; n; j++) &#123;</div><div class="line">			dp[0][j] = ic * j;</div><div class="line">		&#125;</div><div class="line">		for (int i = 1; i &lt; m; i++) &#123;</div><div class="line">			for (int j = 1; j &lt; n; j++) &#123;</div><div class="line">				if (chas1[i-1] != chas2[j-1]) &#123;</div><div class="line">					dp[i][j] = dp[i-1][j-1] + rc;</div><div class="line">				&#125; else &#123; //chas1[i-1] == chas2[j-1]</div><div class="line">					dp[i][j] = dp[i-1][j-1];</div><div class="line">				&#125;</div><div class="line">				dp[i][j] = Math.min(dp[i][j], dp[i-1][j] + dc);</div><div class="line">				dp[i][j] = Math.min(dp[i][j], dp[i][j-1] + ic);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		return dp[m-1][n-1];</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ol>
+<li>求三角形里内接矩阵的最大面积</li>
+</ol>
+<ol>
+<li>最小二乘法<br>利用最小二乘法求解二元线性方程。<br>y=a+b*x0+c*x1。</li>
+</ol>
+<p>参考<br><a href="http://www.zzbaike.com/wiki/Cookie" target="_blank" rel="external">Cookie </a><br><a href="https://blog.csdn.net/fjssharpsword/article/details/54581468" target="_blank" rel="external">机器学习知识点(四)最小二乘法Java实现</a><br><a href="http://blog.sohu.com/s/MTAyMjIxNjYy/302179352.html" target="_blank" rel="external">Java最小二乘法线性回归函数编码实现</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;一、选择题&quot;&gt;&lt;a href=&quot;#一、选择题&quot; class=&quot;headerlink&quot; title=&quot;一、选择题&quot;&gt;&lt;/a&gt;一、选择题&lt;/h1&gt;&lt;h2 id=&quot;1-卡特兰公式&quot;&gt;&lt;a href=&quot;#1-卡特兰公式&quot; class=&quot;headerlink&quot; title=
+    
+    </summary>
+    
+      <category term="笔试面试" scheme="https://lichtmiao.github.io/categories/%E7%AC%94%E8%AF%95%E9%9D%A2%E8%AF%95/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>字符串问题——括号字符串的有效性和最长有效长度</title>
+    <link href="https://lichtmiao.github.io/2018/09/13/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%97%AE%E9%A2%98%E2%80%94%E2%80%94%E6%8B%AC%E5%8F%B7%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%89%E6%95%88%E6%80%A7%E5%92%8C%E6%9C%80%E9%95%BF%E6%9C%89%E6%95%88%E9%95%BF%E5%BA%A6/"/>
+    <id>https://lichtmiao.github.io/2018/09/13/字符串问题——括号字符串的有效性和最长有效长度/</id>
+    <published>2018-09-12T17:22:42.000Z</published>
+    <updated>2018-10-14T10:36:10.650Z</updated>
+    
+    <content type="html"><![CDATA[<p>题目：给定一个字符串，判读是不是整体有效的括号字符串。<br>例：<br>str=”()”，返回true<br>str=”(())”，返回true<br>str=”())”，返回false<br>str=”()a()”，返回false<br>实现</p>
+<ol>
+<li>遍历str，若不是括号，则直接返回false。</li>
+<li>遍历到每个字符，检查括号的数量，如果’)’更多，则返回false。</li>
+<li>遍历完，若’(‘的数量和’)’相等，则返回true，否则返回false。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public static boolean isValidKuohao (String str) &#123;</div><div class="line">		if (str == null || str.equals(&quot;&quot;)) &#123;</div><div class="line">			return false;</div><div class="line">		&#125;</div><div class="line">		char[] chas = str.toCharArray();</div><div class="line">		int num = 0; //遇到左括号则加1，遇到有括号则减1</div><div class="line">		for (int i = 0; i &lt; chas.length; i++) &#123;</div><div class="line">			if (chas[i] != &apos;(&apos; &amp;&amp; chas[i] != &apos;)&apos;) &#123; </div><div class="line">				return false;</div><div class="line">			&#125;</div><div class="line">			if (chas[i] == &apos;)&apos; &amp;&amp; --num &lt; 0) &#123; //若右括号数大于左括号数</div><div class="line">				return false;</div><div class="line">			&#125;</div><div class="line">			if (chas[i] == &apos;(&apos;) &#123;</div><div class="line">				num++;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		return num == 0; //如果最终右括号数-左括号数=0，则返回true，否则返回false</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<p>补充题目：给定一个括号字符串str，返回最长的有效括号子串。<br>例：<br>str=”(()())”，返回6<br>str=”())”，返回2<br>str=”()(()()(“，返回4<br>实现：动态规划</p>
+<ol>
+<li>生成dp[N]数组，dp[i]表示在str[0,…i]中以str[i]结尾的字符的最长有效括号子串的长度。</li>
+<li>dp[0]=0</li>
+<li>从左到右依次遍历str[1,…N-1]，假设遍历到str[i]<br>1）若str[i]==’(‘，由于括号一定是以’)’结尾，所以以’(‘结尾是不可能的，dp[i]=0<br>2）若str[i]==’)’，</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;题目：给定一个字符串，判读是不是整体有效的括号字符串。&lt;br&gt;例：&lt;br&gt;str=”()”，返回true&lt;br&gt;str=”(())”，返回true&lt;br&gt;str=”())”，返回false&lt;br&gt;str=”()a()”，返回false&lt;br&gt;实现&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+    
+    </summary>
+    
+      <category term="算法与数据结构" scheme="https://lichtmiao.github.io/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>字符串问题——数组中两个字符串的最小距离</title>
+    <link href="https://lichtmiao.github.io/2018/09/13/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%97%AE%E9%A2%98%E2%80%94%E2%80%94%E6%95%B0%E7%BB%84%E4%B8%AD%E4%B8%A4%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%8F%E8%B7%9D%E7%A6%BB/"/>
+    <id>https://lichtmiao.github.io/2018/09/13/字符串问题——数组中两个字符串的最小距离/</id>
+    <published>2018-09-12T16:58:52.000Z</published>
+    <updated>2018-09-12T16:59:58.713Z</updated>
+    
+    <content type="html"><![CDATA[<p>题目：给定一个字符串str，再给定两个字符串str1和str2，返回在str中str1和str2的最小距离，如果str1或str2为null，返回-1。<br>例：<br>strs=[“1”,”3”,”3”,”3”,”2”,”3”,”1”]，str1=”1”,str2=”2”，返回2。<br>strs=[“CD”]，str1=”CD”,str2=”AB”，返回-1。</p>
+<p>实现</p>
+<ol>
+<li>遍历str，用last1记录str1最近出现的位置，用last2记录str2最近出现的位置。用min记录str1和str2之间的最小距离。</li>
+<li>如果遍历到str1，则i-last2就是str1与str2的最小距离；<br>如果遍历到str2，则i-last1就是str2与str1的最小距离。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line"> * 输出str中str1和str2字符串之间的最小距离</div><div class="line"> */</div><div class="line">public class MinDistance &#123;</div><div class="line">	public static int minDistance(String[] strs, String str1, String str2) &#123;</div><div class="line">		if (str1 == null || str2 == null) &#123;</div><div class="line">			return -1;</div><div class="line">		&#125;</div><div class="line">		if (str1.equals(str2)) &#123;</div><div class="line">			return 0;</div><div class="line">		&#125;</div><div class="line">		int last1 = -1;</div><div class="line">		int last2 = -1;</div><div class="line">		int min = Integer.MAX_VALUE; //注意将最小距离初始化为不可能值</div><div class="line">		for (int i = 0; i &lt; strs.length; i++) &#123;</div><div class="line">			if (strs[i].equals(str1)) &#123;</div><div class="line">				//如果last2还没有找到，则最小值不存在，min=Integer.MAX_VLAUE</div><div class="line">				min = Math.min(min, last2 == -1 ? min : i - last2); </div><div class="line">				last1 = i;</div><div class="line">			&#125;</div><div class="line">			if (strs[i].equals(str2)) &#123;</div><div class="line">				min = Math.min(min, last1 == -1 ? min : i - last1);</div><div class="line">				last2 = i;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		return min == Integer.MAX_VALUE ? -1 : min; //为了显示当不存在最小距离时返回-1</div><div class="line">	&#125;</div><div class="line">	//Test</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		String[] strs = &#123;&quot;1&quot;,&quot;3&quot;,&quot;3&quot;,&quot;3&quot;,&quot;2&quot;,&quot;3&quot;,&quot;1&quot;&#125;;</div><div class="line">		String str1 = &quot;1&quot;;</div><div class="line">		String str2 = &quot;2&quot;;</div><div class="line">		System.out.println(minDistance(strs, str1, str2));</div><div class="line">		String[] strs1 = &#123;&quot;CD&quot;&#125;;</div><div class="line">		String str3 = &quot;CD&quot;;</div><div class="line">		String str4 = &quot;AB&quot;;</div><div class="line">		System.out.println(minDistance(strs1, str3, str4));</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;题目：给定一个字符串str，再给定两个字符串str1和str2，返回在str中str1和str2的最小距离，如果str1或str2为null，返回-1。&lt;br&gt;例：&lt;br&gt;strs=[“1”,”3”,”3”,”3”,”2”,”3”,”1”]，str1=”1”,str2=”2
+    
+    </summary>
+    
+      <category term="算法与数据结构" scheme="https://lichtmiao.github.io/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Java虚拟机（五）——虚拟机性能监控与故障处理工具</title>
+    <link href="https://lichtmiao.github.io/2018/09/10/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%88%E4%BA%94%EF%BC%89%E2%80%94%E2%80%94%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E4%B8%8E%E6%95%85%E9%9A%9C%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7/"/>
+    <id>https://lichtmiao.github.io/2018/09/10/Java虚拟机（五）——虚拟机性能监控与故障处理工具/</id>
+    <published>2018-09-10T15:31:17.000Z</published>
+    <updated>2018-09-10T15:43:28.525Z</updated>
+    
+    <content type="html"><![CDATA[<p>Sun JDK监控和故障处理工具</p>
+<style>
+table th:first-of-type {
+    width: 200px;
+}
+</style>
+
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>主要作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>jps(JVM process status tool)</td>
+<td>进程状况工具，显示指定系统内所有HotSpot虚拟机进程</td>
+</tr>
+<tr>
+<td>jstat(JVM statistics monitoring tool)</td>
+<td>统计信息监视工具，收集HotSpot虚拟机各方面的运行数据</td>
+</tr>
+<tr>
+<td>jinfo(configuration info for java)</td>
+<td>配置信息工具，显示虚拟机配置信息</td>
+</tr>
+<tr>
+<td>jmap(memory map for java)</td>
+<td>内存映像工具，生成虚拟机的内存存储快照（hepdump文件）</td>
+</tr>
+<tr>
+<td>jhat(JVM heapdump analysis tool)</td>
+<td>堆转存储快照分析工具，与jmap搭配使用，用来分析jmap生成的堆转存储快照</td>
+</tr>
+<tr>
+<td>jstack(stack trace for java)</td>
+<td>堆栈跟踪工具，显示虚拟机的线程快照</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Sun JDK监控和故障处理工具&lt;/p&gt;
+&lt;style&gt;
+table th:first-of-type {
+    width: 200px;
+}
+&lt;/style&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;th&gt;主要作用&lt;/th&gt;
+&lt;/tr&gt;
+
+    
+    </summary>
+    
+      <category term="Java虚拟机" scheme="https://lichtmiao.github.io/categories/Java%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Java虚拟机（四）——JVM类加载机制</title>
+    <link href="https://lichtmiao.github.io/2018/09/10/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%88%E5%9B%9B%EF%BC%89%E2%80%94%E2%80%94JVM%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/"/>
+    <id>https://lichtmiao.github.io/2018/09/10/Java虚拟机（四）——JVM类加载机制/</id>
+    <published>2018-09-10T04:37:00.000Z</published>
+    <updated>2018-09-10T07:21:46.343Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="1-类加载的时机"><a href="#1-类加载的时机" class="headerlink" title="1.    类加载的时机"></a>1.    类加载的时机</h1><p>从类被加载到JVM内存，到卸载出内存，它的整个生命周期包括：加载（loading）、验证（verification）、准备（preparation）、解析（resolution）、初始化（initialization）、使用（using）、卸载（unloading）。</p>
+<div align="center"><br>    <img src="http://ovfkr5e4k.bkt.clouddn.com/%E7%B1%BB%E7%9A%84%E5%A3%B0%E6%98%8E%E5%91%A8%E6%9C%9F.png"><br></div> 
+
+<p>加载、验证、准备、初始化、卸载这5个阶段的顺序是确定的，类的加载必须按照这种顺序按部就班地进行，而解析阶段则不一定。</p>
+<h2 id="1）对一个类主动引用"><a href="#1）对一个类主动引用" class="headerlink" title="1）对一个类主动引用"></a>1）对一个类主动引用</h2><p>JVM规范规定了有且只有5种情况必须立即对类进行初始化（而加载、验证、准备自然需要在此之前进行）。<br>（1）遇到new、getstatic、putstatic、invokestatic这4条字节码指令时，如果类没有进行初始化，则先触发其初始化。生成这4条指令最常见的代码场景是：使用new关键字实例化对象的时候；读取或设置一个类的静态字段（被final修饰、已在编译阶段把结果送入常量池的静态字段除外）的时候；调用一个类的静态方法的时候。<br>（2）使用java.lang.reflect包的方法对类进行反射调用的时候，如果类没有进行初始化，则先触发其初始化。<br>（3）当初始化一个类的时候，如果发现其父类还没有进行过初始化，则先触发其父类的初始化。<br>（4）当JVM启动时，用户需要先确定执行的主类（有main()方法的那个类），JVM会先初始化这个主类。<br>（5）当使用JDK1.7的动态语言支持时，当使用java.lang.invoke.MethodHandle实例最后的解析结果是REF_getstatic、REF_putstatic、REF_invokeStatic的方法句柄时，若这个方法对应的句柄没有进行初始化，则触发其初始化。</p>
+<h2 id="2）对一个类被动引用"><a href="#2）对一个类被动引用" class="headerlink" title="2）对一个类被动引用"></a>2）对一个类被动引用</h2><p><font color="red">所有引用类的方式都不会触发其初始化</font>。<br>（1）子类引用父类的静态字段，不会导致子类初始化，而是父类的静态字段被初始化。<br>（2）通过数组定义来引用类，不会触发此类的初始化。<br>（3）常量在编译阶段会存入调用类的常量池中（常量的传播优化），本质上并没有直接引用到定义常量的类，因此不会触发定义常量的类初始化。</p>
+<h1 id="2-类加载的过程"><a href="#2-类加载的过程" class="headerlink" title="2.    类加载的过程"></a>2.    类加载的过程</h1><p>即加载、验证、准备、解析、初始化这5个过程。在类加载过程中，除了在加载阶段用于应用程序可以使用自定义的类加载器外，其余动作完全由虚拟机主导和控制。到了初始化阶段，才是真正执行类中定义的Java源代码（或者说是字节码）。</p>
+<h2 id="1）-加载"><a href="#1）-加载" class="headerlink" title="1）    加载"></a>1）    加载</h2><p>在加载阶段需要完成以下三件事：<br>（1）    通过一个类的全限定名来获取此类的<font color="red">二进制字节流</font>。<br>此处并没有指明从哪里获取、怎样获取。如从ZIP包中获取；从网络中获取，典型应用是Applet；运行时计算生成，这种场景用得最多的是动态代理技术，java.lang.reflect.Proxy；从其他文件中生成，典型场景是JSP文件生成对应的Class类。<br>（2）    将这个字节流所代表的静态存储结构转化为<font color="red">方法区</font>的运行时数据结构。<br>（3）    在内存中生成一个代表这个类的java.lang.Class对象，作为方法区这个类的各种数据的访问入口。<br>相对于类加载过程的其它阶段，一个非数组的加载类（即加载阶段获取类的二进制字节流的动作）是开发人员可控性最强的，因为既可以使用系统提供的引导类加载器来完成，又可以使用自定义的类加载器去控制二进制字节流的获取方式（即重写一个类加载器的loadClass()方法）。<br>而数组类本身不通过类加载器创建，它是由Java虚拟机直接创建的。</p>
+<h2 id="2）-验证"><a href="#2）-验证" class="headerlink" title="2）    验证"></a>2）    验证</h2><p>验证是连接阶段的第一阶段，验证的目的是为了确保Class文件的字节流中包含的信息符合当前<font color="red">虚拟机</font>的要求，并且不会危害虚拟机自身的安全。<br>在验证阶段需要完成以下4个阶段的验证动作：<br>（1）    文件格式验证<br>第一阶段是验证字节流是否符合Class文件格式的规范，并能被当前版本的虚拟机处理。<br>包含的验证：是否已<font color="red">魔数0xCAFEBABE</font>开头；主、次版本号；常量类型等。<br>这个阶段是验证基于二进制字节流的，只有通过了这个阶段，字节流才会进入内存的方法区进行存储，后面的三个阶段都是基于方法区的存储结构进行的，不会直接操作字节流。<br><strong>标识文件类型的“魔数”</strong><br>大多数情况下，我们都是通过扩展名来识别一个文件的类型的，比如我们看到一个.txt类型的文件我们就知道他是一个纯文本文件。但是，扩展名是可以修改的，那一旦一个文件的扩展名被修改过，那么怎么识别一个文件的类型呢。这就用到了 “魔数”。很多类型的文件，其起始的几个字节的内容是固定的（或是有意填充，或是本就如此）。这几个字节的内容也被称为魔数 (magic number)，因为根据这几个字节的内容就可以确定文件类型。有了这些魔术数字，我们就可以很方便的区别不同的文件。为了方便虚拟机识别一个文件是否是class类型的文件，SUN公司规定每个class文件都必须以一个<font color="red">四个字节</font>作为开始，这个数字就是魔数。魔数是由四个字节的无符号数组成的，而class文件的名字还挺好听的的，其魔数就是0xCAFEBABE。<br>（2）    元数据验证<br>第二阶段是对字节码的描述信息进行寓意分析，以保证其描述的信息符合Java语言规范的要求。<br>包含的验证：这个类是否有父类；这个类的父类是否继承了不允许被继承的类（即被final修饰的类）；是否实现了父类或接口中的方法。<br>（3）    字节码验证<br>第三阶段是对<font color="red">类的方法体</font>进行校验，主要通过数据流和控制流分析，确定程序语义是否合法、符合逻辑。<br>包含的验证：类型转换有效；保证跳转指令不会跳转到方法体以外的字节码指令上等。JDK1.6之后，将字节码验证的类型推导转变为类型检查（不需要通过程序检查，因为根据Halting problem，通过程序区校验程序逻辑是无法做到绝对准确的。而只需要检查StackMapTable属性中的记录是否合法）。<br>（4）    符号引用验证<br>最后一个阶段的校验发生在<font color="red">解析阶段</font>：虚拟机将符号引用转化为直接引用的时候。符号引用验证的目的是确保解析动作能正常执行。如果无法通过符号引用验证，将会抛出java.lang.IncompatibleClassChangeError异常的子类。</p>
+<h2 id="3）-准备"><a href="#3）-准备" class="headerlink" title="3）    准备"></a>3）    准备</h2><p>准备阶段是<span style="background-color:yellow">正式为<font color="red">类变量</font>分配内存并设置类变量初始值</span>阶段，这些变量所使用的内存都将在方法区中进行分配。仅包含类变量（被static修饰），不包含实例变量，实例变量将会在对象实例化时，随对象一起分配到Java堆中。这里的初始化<font color="red">通常是基本数据类型的零值</font>，比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//在准备阶段之后初始值为0，在初始化阶段才会被赋值为123。</div><div class="line">public static int value = 123；</div></pre></td></tr></table></figure></p>
+<p><font color="red">但若存在ConstantValue属性，则类变量在准备阶段就会被初始化为ConstantValue属性所指定的值</font>，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static final int value = 123;//在准备阶段之后初始值为123。</div></pre></td></tr></table></figure></p>
+<h2 id="4）-解析"><a href="#4）-解析" class="headerlink" title="4）    解析"></a>4）    解析</h2><p>虚拟机将<span style="background-color:yellow">常量池内的符号引用替换为直接引用</span>的过程。符号引用见<a href="https://lichtmiao.github.io/2018/08/18/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E7%B1%BB%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">Java虚拟机——类文件构</a>。</p>
+<ul>
+<li>符号引用（symbolic reference）：以一组符号来描述所引用的目标，引用的目标不一定已经加载到内存中。</li>
+<li>直接引用（direct reference）：直接指向目标的指针、相对偏移量或是一个能间接定位到目标的句柄。直接引用和虚拟机实现的内存布局相关，同一符号引用在不同虚拟机实例上翻译出来的直接引用一般不同。</li>
+</ul>
+<p>对同一个符号引用进行多次解析，虚拟机可以对第一次的解析结果进行缓存，即在运行时常量池中记录直接引用，并把常量标识为以解析状态，从而避免解析动作重复执行。<br>解析动作主要针对：类或接口、字段、类方法、接口方法、方法类型、方法句柄和调用点限定符这7类符号引用。分别对应于常量池的CONSTANT_Class_info、CONSTANT_Fieldref_info、CONSTANT_Methodref_info、CONSTANT_Interfaceref_info、CONSTANT_InterfaceMethodref_info、CONSTANT_MethodType_info、CONSTANT_MethodHandle_info、CONSTANT_invokeDynamic_info7种常量类型。后面三种与JDK1.7新增的动态语言支持相关。</p>
+<h2 id="5）-初始化"><a href="#5）-初始化" class="headerlink" title="5）    初始化"></a>5）    初始化</h2><p>类初始化阶段是类加载过程的最后一步。到了初始化阶段，才是<font color="red">真正开始执行类中定义的Java源代码（或者说是字节码）</font>。初始化阶段是执行<span style="background-color:yellow">类构造器&lt;clinit&gt;()方法</span>的过程。<br>在准备阶段，类变量已经赋值一次系统要求的初始值，而在初始化阶段，通过执行类构造器去初始化类变量和其它资源。<br>（1）<strong>&lt;clinit&gt;()与&lt;init&gt;()方法的区别</strong><br>&lt;clinit&gt;()：在jvm第一次加载class文件时调用，包括静态变量初始化语句和静态块的执行<br>&lt;init&gt;()：在实例创建出来的时候调用，包括调用new操作符；调用Class或java.lang.reflect.Constructor对象的newInstance()方法；调用任何现有对象的clone()方法；通过java.io.ObjectInputStream类的getObject()方法反序列化。<br>（2）<strong>&lt;clinit&gt;()方法的特点</strong><br><b>a. &lt;clinit&gt;()方法是由编译器自动收集类中的所有类变量的赋值动作和静态语句块（static）中的语句合并产生的，编译器收集的顺序是由<font color="red">语句在源文件中出现的顺序所决定</font>的，<font color="red">静态语句块只能访问到定义在静态语句块之前的变量，定义在它之后的变量，在前面的静态语句块中可以赋值但不能访问</font>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">public class Test&#123;</div><div class="line">static&#123;</div><div class="line">i = 0;    //给变量赋值可以正常通过</div><div class="line">System.out.println(i);  //编译出错</div><div class="line">&#125;</div><div class="line">static int i = 1;</div><div class="line">&#125;</div></pre></td></tr></table></figure></b></p>
+<p>编译错误：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Exception in thread &quot;main&quot; java.lang.Error: Unresolved compilation problem: </div><div class="line"></div><div class="line">	at TestOrder.main(TestOrder.java:16)</div></pre></td></tr></table></figure></p>
+<p>b. &lt;clinit&gt;()方法<font color="red">与实例构造器中的&lt;init&gt;()方法不同， 它不需要显示的调用父类构造器</font>，虚拟机会保证在子类的&lt;init>()方法执行之前，父类的&lt;clinit&gt;()方法已经执行完毕。因为在虚拟机中第一个被执行的&lt;clinit&gt;()方法的类肯定是java.lang.Object。<br>c. <font color="red">由于父类的&lt;clinit&gt;()方法先执行，也就意味着父类中定义的静态语句块要优先于子类类的变量赋值操作</font>。<br>d. &lt;clinit&gt;()方法对于类或者接口来说并<font color="red">不是必须的</font>，如果一个类没有静态语句块，也就没有变量的赋值操作，那么编译器可以不为这个类生成&lt;clinit&gt;()方法。<br>e. <font color="red">接口中不能使用静态语句块，但仍然可以有变量初始化的赋值操作，因此接口与类一样都会生成&lt;clinit&gt;()方法</font>。但接口与类不同，<font color="red">执行接口或接口的实现类的&lt;clinit&gt;()方法不需要先执行父接口的&lt;clinit&gt;()方法</font>。<font color="red">只有当父接口中定义的变量使用时，父接口才会初始化</font>。<br>f. 虚拟机会保证一个类的&lt;clinit&gt;()方法在多线程环境中被正确地加锁、同步，<font color="red">如果多个线程同时去初始化一个类，那么只有一个线程去执行这个类的&lt;clinit>()方法</font>，直至活动线程执行&lt;clinit&gt;()方法完毕。<br></p>
+<h1 id="3-类加载器"><a href="#3-类加载器" class="headerlink" title="3. 类加载器"></a>3. 类加载器</h1><p>类加载阶段中的“通过一个类的全限定名来获取描述此类的二进制字节流”这个动作放到JVM外部去实现，以便让应用程序<font color="red">自己去决定如何获取需要的类</font>。实现这个动作的代码模块称为类加载器。</p>
+<h2 id="1）-类与类加载器"><a href="#1）-类与类加载器" class="headerlink" title="1）    类与类加载器"></a>1）    类与类加载器</h2><p>对于任意一个类，都需要由加载它的类加载器和这个类本身确立在虚拟机中的唯一性，每一个类加载器，都拥有独立的类名称空间。<br>比较两个类是否相等，只有这两个类是由<font color="red">同一个类加载器的前提下</font>才有意义。</p>
+<h2 id="2）-双亲委派模型（parent-delegation-model）"><a href="#2）-双亲委派模型（parent-delegation-model）" class="headerlink" title="2）    双亲委派模型（parent delegation model）"></a>2）    双亲委派模型（parent delegation model）</h2><p>（1）类加载器的分类<br>从Java JVM的角度来讲，只存在两种不同类型的类加载器：一种是启动类加载器（Bootstrap ClassLoader），用C++语言实现，是虚拟机自身的一部分；一种是所有其他的类加载器，用Java语言实现，独立于虚拟机外部，并且全部继承自抽象类java.lang.ClassLoader。<br>从Java开发人员的角度来看，可以分得更细些：</p>
+<ul>
+<li><strong>启动类加载器（Bootstrap ClassLoader）</strong>：负责加载&lt;JAVA_HOME&gt;\lib目录，或被-Xbootclasspath参数所指定路径中的类库到虚拟机内存中。启动类加载器无法被Java程序直接引用。</li>
+<li><strong>扩展类加载器（Extension ClassLoader）</strong>：负责加载&lt;JAVA_HOME&gt;\lib\ext目录，或被java.ext.dirs所指定路径中的类库到虚拟机内存中。可以被直接引用。</li>
+<li><strong>应用程序类加载器（Application ClassLoader）</strong>：负责加载用户类路径（ClassPath）上所指定的类库。这个类加载器是ClassLoader中的getSystemClassLoader()方法的返回值。可以被直接使用，如果应用程序中没有自定义类加载器，<font color="red">一般情况下应用程序类加载器就是默认的类加载器</font>。</li>
+</ul>
+<p>（2）什么是双亲委派模型<br>“<span style="background-color:yellow"><b>启动类 &lt;- 扩展类 &lt;- 应用程序类 &lt;- 自定义类</b></span>”展示的类加载器之间的层次关系，叫类加载器的双亲委派模型，一般使用<font color="red">组合（composition）关系</font>来复用父加载器的代码。<br>（3）双亲委派模型的工作原理<br>如果一个类加载器收到了类加载的请求，它首先不会自己去加载这个类，而是把这个请求委派给其父加载器去完成，每一层都是如此，最后所有的加载请求都会被传送到顶层的启动类加载器中，只有当父加载器无法完成这个加载请求时，子加载器才会尝试自己加载。<br>（4）双亲委派模型的好处<br>对于一个类，无论哪一个加载器加载这个类，最终都委派给了启动类加载器，因此这个类在每种类加载器中都是<strong>同一个类</strong>（因为类的唯一性是类加载器和类名一起保证的）；否则会产生多个不同的类，造成应用程序混乱。</p>
+<p><strong>参考</strong><br><a href="https://mp.weixin.qq.com/s?__biz=MzI3NzE0NjcwMg%3D%3D&amp;idx=1&amp;mid=2650121162&amp;sn=581b70bf1975f9194fe12553a4dc80680" target="_blank" rel="external">小知识|Java中的“魔数”</a><br><a href="https://blog.csdn.net/java528416037/article/details/48463639" target="_blank" rel="external">java中init()和clinit()方法的区别</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;1-类加载的时机&quot;&gt;&lt;a href=&quot;#1-类加载的时机&quot; class=&quot;headerlink&quot; title=&quot;1.    类加载的时机&quot;&gt;&lt;/a&gt;1.    类加载的时机&lt;/h1&gt;&lt;p&gt;从类被加载到JVM内存，到卸载出内存，它的整个生命周期包括：加载（loadi
+    
+    </summary>
+    
+      <category term="Java虚拟机" scheme="https://lichtmiao.github.io/categories/Java%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>笔试面试——京东Java开发</title>
+    <link href="https://lichtmiao.github.io/2018/09/09/%E7%AC%94%E8%AF%95%E9%9D%A2%E8%AF%95%E2%80%94%E2%80%94%E4%BA%AC%E4%B8%9CJava%E5%BC%80%E5%8F%91/"/>
+    <id>https://lichtmiao.github.io/2018/09/09/笔试面试——京东Java开发/</id>
+    <published>2018-09-09T14:10:30.000Z</published>
+    <updated>2018-09-15T12:17:23.034Z</updated>
+    
+    <content type="html"><![CDATA[<p>九点做完了京东的Java开发工程师的笔试题。30道选择，两道编程。<br>选择题里有一半是看代码选结果，问的是初始化方面的知识。线程优先级对输出结果的影响。Linux chmod命令，Shell表达式echo `expr 3/4`结果为3/4。</p>
+<p><strong>Java类的初始化顺序</strong><br>参见<a href="https://lichtmiao.github.io/2018/09/10/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%88%E5%9B%9B%EF%BC%89%E2%80%94%E2%80%94JVM%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/">Java虚拟机（四）——JVM类加载机制</a>中初始化阶段的内容。<span style="background-color:yellow">静态变量和静态初始化块是依照他们在类中的定义顺序进行初始化的</span>。同样，变量和初始化块也遵循这个规律。遇到new进行初始化（在此之前的加载、验证、准备阶段自然也要完成）。<br>1）没有继承<br>（静态变量、静态初始化块）-&gt;(变量、变量初始化块)-&gt;构造方法<br>2）有继承的情况<br>（父类静态变量、父类静态初始化块）-&gt;（子类静态变量、子类静态变量初始化块）-&gt;（父类变量初始化、父类变量初始化块）-&gt;父类构造方法-&gt;（子类变量初始化、子类变量初始化块）-&gt;子类构造方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public class Solution2 &#123;	</div><div class="line">	// 静态变量</div><div class="line">	public static String staticField1 = &quot;静态变量前&quot;;</div><div class="line">	// 静态初始化块</div><div class="line">	static &#123;</div><div class="line">		System.out.println(&quot;静态初始化块&quot;);</div><div class="line">	&#125;</div><div class="line">	// 静态变量</div><div class="line">	public static String staticField2 = &quot;静态变量后&quot;;</div><div class="line">	public static String staticField3 = &quot;静态变量后2&quot;;</div><div class="line">	//构造器</div><div class="line">	Solution2() &#123;</div><div class="line">		System.out.println(&quot;构造器初始化&quot;);</div><div class="line">	&#125;</div><div class="line">	// Test</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		System.out.println(staticField1); //this调用，默认类名</div><div class="line">		//Solution2 so = new Solution2(); //如果实例化，一定是先初始化静态代码块</div><div class="line">		System.out.println(Solution2.staticField2); //类名显式调用</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">静态初始化块</div><div class="line">静态变量前</div><div class="line">静态变量后</div></pre></td></tr></table></figure></p>
+<p>可见，就算没有进行实例化，由于调用了静态变量，也初始化了类。静态块与静态成员的初始化工作与实例化过程无关，实例化必须先执行静态块和静态成员，但并不代表实例化一定会执行静态块和静态成员。只有当实例化的对应的类加载入虚拟机的时候，才会进行这种操作。有些时候执行静态块或者初始化静态成员不一定就是实例化该类对象才会进行的，例如调研该类的某静态成员或者静态方法，又例如该类的子类被实例化或者调用了静态成员或静态方法等。<br>静态变量和静态初始化块的初始化时根据它们的先后顺序进行的。上例中<strong>加载了main()方法对应的类</strong>，所以按顺序加载了静态变量、静态初始化块。由于静态初始化块中有输出，所以才先输出了静态初始化块的内容。为了验证这点，给出了下面的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public class TestOrder &#123; </div><div class="line">	// 静态变量 </div><div class="line">	public static TestA a = new TestA(); </div><div class="line">	// 静态初始化块 </div><div class="line">	static &#123; </div><div class="line">		System.out.println(&quot;静态初始化块&quot;); </div><div class="line">	&#125; </div><div class="line">	// 静态变量 </div><div class="line">	public static TestB b = new TestB(); 	</div><div class="line">	//Test</div><div class="line">	public static void main(String[] args) &#123; </div><div class="line">		new TestOrder(); </div><div class="line">	&#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">class TestA &#123; </div><div class="line">	public TestA() &#123; </div><div class="line">		System.out.println(&quot;Test--A&quot;); </div><div class="line">	&#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">class TestB &#123; </div><div class="line">	public TestB() &#123; </div><div class="line">		System.out.println(&quot;Test--B&quot;); </div><div class="line">	&#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Test--A </div><div class="line">静态初始化块 </div><div class="line">Test--B</div></pre></td></tr></table></figure></p>
+<p>静态语句块只能访问到定义在静态语句块之前的变量，定义在它之后的变量，在前面的静态语句块中可以赋值但不能访问。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public class TestOrder &#123; </div><div class="line">	// 静态变量 </div><div class="line">	public static TestA a = new TestA(); </div><div class="line">	// 静态初始化块 </div><div class="line">	static &#123; </div><div class="line">		//c = 0; </div><div class="line">		//System.out.println(c); //可以赋值但不能访问，报错Unresolved compilation problem</div><div class="line">		System.out.println(&quot;静态初始化块&quot;); </div><div class="line">	&#125; </div><div class="line">	// 静态变量 </div><div class="line">	public static TestB b = new TestB();</div><div class="line">	public static int c = 1;</div><div class="line">	//Test</div><div class="line">	public static void main(String[] args) &#123; </div><div class="line">		new TestOrder(); </div><div class="line">	&#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>去掉静态初始化块中的注释会报错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Exception in thread &quot;main&quot; java.lang.Error: Unresolved compilation problem: </div><div class="line">	at TestOrder.main(TestOrder.java:16)</div><div class="line">``` </div><div class="line"></div><div class="line">下面加上实例，比较构造器的位置对输出顺序有没有影响：</div></pre></td></tr></table></figure></p>
+<p>public class Solution2 {<br>    // 静态变量<br>    public static String staticField1 = “静态变量前”;<br>    // 静态初始化块<br>    static {<br>        System.out.println(“静态初始化块”);<br>    }<br>    // 静态变量<br>    public static String staticField2 = “静态变量后”;<br>    public static String staticField3 = “静态变量后2”;<br>    //构造器<br>    Solution2() {<br>        System.out.println(“构造器初始化”);<br>    }<br>    // Test<br>    public static void main(String[] args) {<br>        System.out.println(staticField1);<br>        Solution2 so = new Solution2(); //如果实例化，一定是先初始化静态代码块<br>        System.out.println(Solution2.staticField2);<br>    }<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line">public class Solution2 &#123;</div><div class="line">	//构造器</div><div class="line">	Solution2() &#123;</div><div class="line">		System.out.println(&quot;构造器初始化&quot;);</div><div class="line">	&#125;</div><div class="line">	// 静态变量</div><div class="line">	public static String staticField1 = &quot;静态变量前&quot;;	</div><div class="line">	// 静态初始化块</div><div class="line">	static &#123;</div><div class="line">		System.out.println(&quot;静态初始化块&quot;);</div><div class="line">	&#125;</div><div class="line">	// 静态变量</div><div class="line">	public static String staticField2 = &quot;静态变量后&quot;;</div><div class="line">	public static String staticField3 = &quot;静态变量后2&quot;;	</div><div class="line">	// Test</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		System.out.println(staticField1);</div><div class="line">		Solution2 so = new Solution2(); //如果实例化，一定是先初始化静态代码块</div><div class="line">		System.out.println(Solution2.staticField2);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>输出都是相同的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">静态初始化块</div><div class="line">静态变量前</div><div class="line">构造器初始化</div><div class="line">静态变量后</div></pre></td></tr></table></figure></p>
+<p>可见，构造器在任何地方，都不会改变它的输出顺序。注意遇到new才初始化了构造器。</p>
+<p><strong>B/S（brower/server）模式的优缺点</strong><br>(1) 优点:</p>
+<ul>
+<li>具有分布性特点，可以随时随地进行查询、浏览等业务处理。 </li>
+<li>业务扩展简单方便，通过增加网页即可增加服务器功能。 </li>
+<li>维护简单方便，只需要改变网页，即可实现所有用户的同步更新。 </li>
+<li>开发简单，共享性强</li>
+</ul>
+<p>(2) B/S 模式的缺点</p>
+<ul>
+<li>个性化特点明显降低，无法实现具有个性化的功能要求。 </li>
+<li>操作是以鼠标为最基本的操作方式，无法满足快速操作的要求。 </li>
+<li>页面动态刷新，响应速度明显降低。 </li>
+<li>无法实现分页显示，给数据库访问造成较大的压力。 </li>
+<li>功能弱化，难以实现传统模式下的特殊功能要求。</li>
+</ul>
+<p>2)C/S （client/server）模式的优点和缺点<br>(1) 优点 </p>
+<ul>
+<li>由于客户端实现与服务器的直接相连，没有中间环节，因此响应速度快。 </li>
+<li>操作界面漂亮、形式多样，可以充分满足客户自身的个性化要求。 </li>
+<li>结构的管理信息系统具有较强的事务处理能力，能实现复杂的业务流程。 </li>
+</ul>
+<p>(2) 缺点 </p>
+<ul>
+<li>需要专门的客户端安装程序，分布功能弱，针对点多面广且不具备网络条件的用户群体，不能够实现快速部署安装和配置。 </li>
+<li>兼容性差，对于不同的开发工具，具有较大的局限性。若采用不同工具，需要重新改写程序。 </li>
+<li>开发成本较高，需要具有一定专业水准的技术人员才能完成。</li>
+</ul>
+<p><strong>值类型和引用类型的区别</strong><br>在Java中类型可分为两大类：值类型与引用类型。值类型就是基本数据类型（如int ,double 等），而引用类型，是指除了基本的变量类型之外的所有类型（如通过 class 定义的类型）。所有的类型在内存中都会分配一定的存储空间(形参在使用的时候也会分配存储空间,方法调用完成之后,这块存储空间自动消失), 基本的变量类型只有一块存储空间(分配在stack中), 而引用类型有两块存储空间(一块在stack中,一块在heap中)，在函数调用时Java是传值还是传引用，下面用图形与代码来解释：<br><img src="http://ovfkr5e4k.bkt.clouddn.com/%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B.png" alt="值类型和引用类型"></p>
+<p><strong>设计模式</strong><br>适配器（Adapter）模式：可以让接口不兼容而不能工作的那些类可以一起工作。<br>备忘录（Mementto）模式：在不破坏封装性的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态。这样以后就可将该对象恢复到原先保存的状态。</p>
+<p><strong>DML、DDL和DCL</strong><br>1）DML（data manipulation language，数据操纵语言）<br>就是我们最经常用到的 SELECT、UPDATE、INSERT、DELETE 主要用来对数据库的数据进行一些操作。<br>2）DDL（data definition language，数据库定义语言）<br>其实就是我们在创建表的时候用到的一些sql，比如CREATE、ALTER、DROP等。DDL主要是用在定义或改变表的结构、数据类型、表之间的链接和约束等初始化工作上。<br>3）DCL（data control language，数据库控制语言）<br>是用来设置或更改数据库用户或角色权限的语句，包括grant、deny、revoke等语句。这个比较少用到。</p>
+<p><strong>drop、truncate和delete的区别</strong></p>
+<ol>
+<li>delete<br>1) delete是DML，执行delete操作时，每次从表中删除一行，并且同时将该行的的删除操作记录在redo和undo表空间中以便进行回滚（rollback）和重做操作，但要注意表空间要足够大，需要手动提交（commit）操作才能生效，可以通过rollback撤消操作。<br>2) delete可根据条件删除表中满足条件的数据，如果不指定where子句，那么删除表中所有记录。<br>3) delete语句不影响表所占用的extent，高水线(high watermark)保持原位置不变。</li>
+<li>truncate<br>1) truncate是DDL，会隐式提交，所以，不能回滚，不会触发触发器。<br>2) truncate会删除表中所有记录，并且将重新设置高水线和所有的索引，缺省情况下将空间释放到minextents个extent，除非使用reuse storage，。不会记录日志，所以执行速度很快，但不能通过rollback撤消操作（如果一不小心把一个表truncate掉，也是可以恢复的，只是不能通过rollback来恢复）。<br>3) 对于外键（foreignkey）约束引用的表，也会照删不误，因此不能使用 truncate table，而应使用不带 where 子句的 delete 语句。<br>4) truncatetable不能用于参与了索引视图的表。</li>
+<li>drop：<br>1) drop是DDL，会隐式提交，所以，不能回滚，不会触发触发器。<br>2) drop语句删除表结构及所有数据，并将表所占用的空间全部释放。<br>3) drop语句将删除表的结构所依赖的约束，触发器，索引，依赖于该表的存储过程/函数将保留,但是变为invalid状态。<br>总结：<br><span style="background-color:yellow">对于表来说，不再需要该表用drop；需要保留表，但要删除所有记录用truncate；删除部分记录用delete</span>。<br>1）在速度上，一般来说，drop&gt; truncate &gt; delete<br>2）Truncate删除所有行，如果遇到任何一行违反违约（外键约束），照删不误，但delete则会返回错误。<br>3）DELETE语句执行删除的过程是每次从表中删除一行，并且同时将该行的删除操作作为事务记录在日志中保存以便进行进行回滚操作。TRUNCATE TABLE 则一次性地从表中删除所有的数据并不把单独的删除操作记录记入日志保存，删除行是不能恢复的。并且在删除的过程中不会激活与表有关的删除触发器。执行速度快。</li>
+</ol>
+<p><strong>List集合扩容</strong><br>List集合的底层实现是数组结构，而数组的大小是不可改变的，因此当其容器内存不足时，需要进行扩容，扩容的方法就是重新分配一个新数组，然后复制元素到新数组中，再将元素添加到数组末位。<br>以ArrayList集合为例，通过分析ArrayList的源码，发现构造器有三个，分别是：无参、一个int型参数、一个集合泛型。默认数组大小的常量为10（<font color="red">注意是默认，如果指定数组大小的创建，则没有扩充</font>）。其中的grow()方法判断加一个元素之后，数组大小是否超出当前数组的大小，若超出则扩容：int newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1); 表示新数组的长度=原数组的长度+原数组长度的一半。<br>总结：</p>
+<ol>
+<li>List 元素是有序的、可重复<br>1）ArrayList 默认初始容量为10<br>线程不安全，查询速度快<br>底层数据结构是数组结构<br>加载因子为1：即当元素个数超过容量长度时，进行扩容<br>扩容增量：原容量的 0.5倍<br>如 ArrayList的容量为10，一次扩容后是容量为15<br>2） Vector：线程安全，但速度慢<br>底层数据结构是数组结构<br>加载因子为1：即当元素个数超过容量长度时，进行扩容<br>扩容增量：原容量的1倍<br>如 Vector的容量为10，一次扩容后是容量为20</li>
+<li>Set(集) 元素无序的、不可重复。<br>1）HashSet：线程不安全，存取速度快<br>底层实现是一个HashMap（保存数据），实现Set接口<br>默认初始容量为16（为何是16，见下方对HashMap的描述）<br>加载因子为0.75：即当元素个数超过容量长度的0.75倍时，进行扩容<br>扩容增量：原容量的 1 倍<br>如 HashSet的容量为16，一次扩容后是容量为32<br>其实HashSet 的创建其实就是一个HashMap，Map是一个双列集合<br>2）HashMap：默认初始容量为16<br>为何是16：16是2^4，可以提高查询效率<br>加载因子为0.75：即当元素个数超过容量长度的0.75倍时，进行扩容<br>扩容增量：原容量的 1 倍<br>如 HashSet的容量为16，一次扩容后是容量为32 </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">例：</div><div class="line">ArrayList list = new ArrayList(20);中的list扩充几次?</div><div class="line">答：0次。</div><div class="line">解析：    </div><div class="line">ArrayList list=new ArrayList(); //这种是默认创建大小为10的数组，每次扩容大小为1.5倍。</div><div class="line">ArrayList list=new ArrayList(20); //这种是指定数组大小的创建，没有扩充。</div></pre></td></tr></table></figure>
+<p>GPRS是通用分组无线业务（General Packet Radio Service）的英文简称，是一种新的分组数据承载业务。GPRS与现有的GSM语音系统最根本的区别是，GSM是一种电路交换系统，而GPRS是一种分组交换系统。因此，GPRS特别适用于间断的、突发性的或频繁的、少量的数据传输，也适用于偶尔的大数据量传输。这一特点正适合大多数移动互联的应用</p>
+<p><strong>编程题</strong><br>第一题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">package Jdong;</div><div class="line">/**</div><div class="line"> * 输入N个顶点，M条边的图，输入两顶点定义的边，</div><div class="line"> * 输出是否可以构成多部图</div><div class="line"> */</div><div class="line">import java.util.Scanner;</div><div class="line"></div><div class="line">public class Main &#123;</div><div class="line">	public static String isCover(int[][] edge, int N) &#123;</div><div class="line">		String s = &quot;Yes&quot;;</div><div class="line">		int[] sum = new int[N + 1];</div><div class="line">		//边的下标都从1开始</div><div class="line">		for (int i = 1; i &lt; N + 1; i++) &#123;</div><div class="line">			for (int j = 1; j &lt; N + 1; j++) &#123;</div><div class="line">				sum[i] += edge[i][j]; //将每行的边加起来，表示为出度或入度</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		for (int i = 1; i &lt; N + 1; i++) &#123;</div><div class="line">			for (int j = 1; j &lt; N + 1; j++) &#123;</div><div class="line">				if (edge[i][j] == 0) &#123; //如果顶点i、j之间没有边</div><div class="line">					if (sum[j] != sum[i]) //如果i的出度与j的出度不等，则不能构成</div><div class="line">						s = &quot;No&quot;;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		return s;</div><div class="line">	&#125;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		Scanner in = new Scanner(System.in);</div><div class="line">		int T = in.nextInt(); //需要进行判断的图的个数</div><div class="line">		while (T &gt; 0) &#123;</div><div class="line">			int N = in.nextInt();</div><div class="line">			int M = in.nextInt();</div><div class="line">			int X, Y;</div><div class="line">			////构建邻接矩阵edge，由于边的输入是从1开始的，因此邻接矩阵使用的下标是1~N</div><div class="line">			int[][] edge = new int[N + 1][N + 1];</div><div class="line">			for (int i = 0; i &lt; M; i++) &#123;</div><div class="line">				X = in.nextInt();</div><div class="line">				Y = in.nextInt();</div><div class="line">				edge[X][Y] = 1; //无向图，对称的</div><div class="line">				edge[Y][X] = 1;</div><div class="line">			&#125;</div><div class="line"></div><div class="line">			String s = isCover(edge, N);</div><div class="line">			System.out.println(s);</div><div class="line">			T--;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>第二题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">package Jdong;</div><div class="line">/*</div><div class="line"> * 京东Java研发编程第二题</div><div class="line"> * 判断有多少个合格产品：如果某个产品的三个指标分别为ai、bi、ci，</div><div class="line"> * 若存在另一个产品使得aj&gt;ai、bj&gt;bi、cj&gt;ci则说明这个产品不合格，</div><div class="line"> * 输入产品个数n，和产品的三个指标；输出不合格产品数。</div><div class="line"> */</div><div class="line">import java.io.FileNotFoundException;</div><div class="line">import java.util.Scanner;</div><div class="line"></div><div class="line">public class Main2 &#123;</div><div class="line">    public static void main(String[] args) throws FileNotFoundException &#123;</div><div class="line">        Scanner in = new Scanner(System.in);</div><div class="line">        int n = in.nextInt(); //行数</div><div class="line">        int m = in.nextInt(); //列数</div><div class="line">        int count = 0;</div><div class="line">        //定义每一列</div><div class="line">        int[] a = new int[n];</div><div class="line">        int[] b = new int[n];</div><div class="line">        int[] c = new int[n];</div><div class="line">        for (int j = 0; j &lt; m; j++) &#123; //对每行赋值</div><div class="line">            a[j] = in.nextInt();</div><div class="line">            b[j] = in.nextInt();</div><div class="line">            c[j] = in.nextInt();</div><div class="line">        &#125;</div><div class="line">        // 一层一层地开始判断</div><div class="line">        for (int i = 0; i &lt; n; i++) &#123;</div><div class="line">            int ai = a[i];</div><div class="line">            int bi = b[i];</div><div class="line">            int ci = c[i];</div><div class="line">          //将第j行与第i行进行比较，这里i和j都是从0开始的，会有自己跟自己比较的情况，但对count的值没有影响。</div><div class="line">            for (int j = 0; j &lt; n; j++) &#123; </div><div class="line">                int aj = a[j];</div><div class="line">                int bj = b[j];</div><div class="line">                int cj = c[j];</div><div class="line">                if(aj&gt;ai &amp;&amp; bj&gt;bi &amp;&amp; cj&gt;ci)&#123; </div><div class="line">                    count++;</div><div class="line">                    break; //只要第i行不合格，就不必再比较下去了，则跳出内层for循环</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        System.out.println(count);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>参考</strong><br>《深入理解Java虚拟机》<br><a href="http://www.cnblogs.com/luckygxf/p/4796955.html" target="_blank" rel="external">Java类的初始化顺序 （静态变量、静态初始化块、变量、初始…</a><br><a href="https://blog.csdn.net/pdcxs007/article/details/18628177" target="_blank" rel="external">Java静态成员初始化问题</a><br><a href="http://zanchenandme.blog.163.com/blog/static/1346881062009113022950767/" target="_blank" rel="external">什么是B/S模式？C/S模式？及它们的优缺点</a><br><a href="https://www.cnblogs.com/SilentCode/p/4858790.html" target="_blank" rel="external">深入理解Java引用类型</a><br><a href="https://blog.csdn.net/wujiaxian/article/details/40040121" target="_blank" rel="external">Java设计模式——接口型模式：适配器模式</a><br><a href="https://blog.csdn.net/timliang18601860/article/details/6746239" target="_blank" rel="external">java 设计模式 行为模式 -Memento(备忘录模式)</a><br><a href="https://blog.csdn.net/ws0513/article/details/49980547" target="_blank" rel="external">drop、truncate和delete的区别</a><br><a href="https://www.cnblogs.com/dato/p/7049343.html" target="_blank" rel="external">浅谈DML、DDL、DCL的区别</a><br><a href="https://blog.csdn.net/github_39500681/article/details/78061724" target="_blank" rel="external">集合扩容问题（ArrList为例，常用集合扩容机制）–JAVA 基础</a><br><a href="https://blog.csdn.net/caiwanxia1/article/details/52949802" target="_blank" rel="external">常用集合的默认初始容量和扩容的原因</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;九点做完了京东的Java开发工程师的笔试题。30道选择，两道编程。&lt;br&gt;选择题里有一半是看代码选结果，问的是初始化方面的知识。线程优先级对输出结果的影响。Linux chmod命令，Shell表达式echo `expr 3/4`结果为3/4。&lt;/p&gt;
+&lt;p&gt;&lt;strong
+    
+    </summary>
+    
+      <category term="笔试面试" scheme="https://lichtmiao.github.io/categories/%E7%AC%94%E8%AF%95%E9%9D%A2%E8%AF%95/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>计算机网络——计算机网络安全</title>
+    <link href="https://lichtmiao.github.io/2018/09/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E4%B8%83%EF%BC%89%E2%80%94%E2%80%94%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    <id>https://lichtmiao.github.io/2018/09/08/计算机网络（七）——计算机网络安全/</id>
+    <published>2018-09-08T13:52:43.000Z</published>
+    <updated>2018-09-16T16:36:19.861Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-计算机网络安全概述"><a href="#1-计算机网络安全概述" class="headerlink" title="1. 计算机网络安全概述"></a>1. 计算机网络安全概述</h2><p>1）计算机网络上面临的通信威胁：<br>截获（interception）、中断（interruption）、篡改（modification）、伪造（fabrication）。<br> （1）被动攻击：观察者只是观察和分析一个PDU（protocol data unit，协议数据单元），而不干扰信息流，也叫通信量分析（traffic analysis）。<br>对付被动攻击主要采用加密。<br>（2）主动攻击：对连接中通过的PDU进行各种处理。<br>对付主动攻击主要采用报文鉴别（message authentication）。<br>主动攻击又可分为以下几种：</p>
+<ul>
+<li>更改报文流。</li>
+<li>拒绝报文服务。攻击者或删除某一连接的所有PDU，或将双方或单方的所有PDU延迟。如服务器处于“忙”状态，拒绝向发出请求的客户提供服务，这种方式称为DoS（denial of service，拒绝服务）。若从因特网上成百上千的网站中集中攻击一个网站，则称为DDoS（distributed denial of service，分布式拒绝服务）。</li>
+<li>伪造连接初始化。攻击者重放已被记录的合法连接初始化序列，或者伪造身份启动建立连接。</li>
+<li>恶意程序（rogue program）。如计算机病毒、计算机蠕虫、特洛伊木马、逻辑炸弹。<br>计算机病毒（computer virtus）：通过修改其它程序把自己或其变种复制进去。<br>计算机蠕虫（computer worm）：通过网络通信将自身的一个结点发送到另一个结点并启动运行的程序。<br>特洛伊木马（Trojan horse）：一个编译程序除了执行编译功能外，还把用户的源程序偷偷拷贝下来，这种编译程序就是一个特洛伊木马。计算机病毒通常也以特洛伊木马的形式出现。<br>逻辑炸弹（logic bomb）：当运行环境满足某种特定条件时，执行其他特殊功能的程序。</li>
+</ul>
+<p>2）计算机网络安全的内容<br>保密性、安全协议的设计、接入控制</p>
+<h2 id="2-对称密钥体制"><a href="#2-对称密钥体制" class="headerlink" title="2. 对称密钥体制"></a>2. 对称密钥体制</h2><p>1）    替代密码（substitution cipher）与置换密码（transposition cipher）<br>替代密码：密码与明文相差几个字符。<br>置换密码：根据某一规则重排消息中的字符的相对顺序。<br>2）    分组密码（block cipher）：将明文划分为固定n比特的数据组，然后以组为单位，在密钥的控制下生成一系列密文。给定一个密钥后，若明文分组相同，则所变换出的密文分组也相同。分组密码的重要优点是不需要同步，因此广泛用于分组交换网中。分组密码中最有名的是美国的DES和IDEA。<br>（1）    DES（data encryption standard，数据加密标准）<br>DES是一种分组密码。在加密前先对明文进行分组，每一组长为64bit。然后对每一组明文进行加密处理，产生一组64bit的密文。最后将各组密文串接起来，得到整个密文。其中使用的64bit的密钥只有56bit是密钥长度，其它8bit用于奇偶校验。<br>DES的加密取决于对密钥的加密，而算法是公开的。<br>（2）    三重DES（triple DES）<br>使用两个密钥，执行三次加密算法。没有使用多个密钥的原因是，两个密钥合起来已经有112bit，这对商用已经足够，使用多个带来不必要的开销。加密采用E-D-E加密，解密采用E-D-E解密。采用这种加密解密结构的原因是为了与现有DES系统向后兼容。</p>
+<p>（3）    IDEA（international data encryption algorithm，国际数据加密算法）<br>IDEA使用128bit密钥，它的加密过程与DES类似。</p>
+<h2 id="3-非对称密码体制"><a href="#3-非对称密码体制" class="headerlink" title="3. 非对称密码体制"></a>3. 非对称密码体制</h2><p>使用不同的加密密钥与解密密钥，加密密钥是公开的，解密密钥是需要保密的。加密算法阿和解密算法都是公开的。是一种由已知加密密钥推导出解密密钥在计算上是不可行的密码体制。<br>（1）RSA<br>命名由来：由美国三位科学家Rivesi、Shamir和Adleman于1976年提出的。<br>RSA的原理：根据数论，寻求两个大素数比较简单，但将它们的乘积分解则比较困难。<br><a href="https://zh.wikipedia.org/wiki/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0" target="_blank" rel="external">欧拉函数</a>：在数论中，对正整数n，欧拉函数f(n)是小于或等于n的正整数中与n互质的数的数目。<br>f(n)=n(1-1/p1)…(1-1/pn), 其中pi为1到n范围内与n互质的质数。<br>（2）数字签名<br>发送方：用私钥进行数字签名，用公钥加密明文。</p>
+<p>对称加密与非对称加密</p>
+<ul>
+<li>非对称加密不一定比对称加密安全。实际上，任何加密方法的安全性取决于密钥的长度和攻破密文所需要的计算量。</li>
+<li>非对称加密的开销较大。</li>
+<li>非对称密钥的分配过程并不比对称密钥分配简单，这需要密钥分配协议。</li>
+</ul>
+<h2 id="4-报文鉴别"><a href="#4-报文鉴别" class="headerlink" title="4. 报文鉴别"></a>4. 报文鉴别</h2><p>主要是为了应对主动攻击中的篡改和伪造。<br>近年来广泛使用报文摘要（message digest）进行报文鉴别。它仅对短得多的定长报文进行加密。<br>报文摘要和循环冗余校验都是多对一的哈希函数的例子。<br>MD5算法<br>MD5算法是一种报文摘要算法。它可以对任意长的报文进行运算，然后得出128bit的MD报文摘要代码。<br>SHA算法（secure hash algorithm，安全散列算法）<br>SHA算法与MD5算法类似，但码长为160bit。其新版本SHA-1已制定出来。</p>
+<h2 id="5-密钥分配"><a href="#5-密钥分配" class="headerlink" title="5. 密钥分配"></a>5. 密钥分配</h2><p>目前常用的密钥分配方式是设立KDC（key distribution center，密钥分配中心）。<br>KDC还可以在报文中增加时间戳，防止报文的截获者利用以前记录下的报文进行重放攻击。<br>CA（certification authority，认证中心）：将公开密钥与其对应的实体（如人或机器）进行绑定（blinding）.</p>
+<h2 id="6-电子邮件的加密"><a href="#6-电子邮件的加密" class="headerlink" title="6. 电子邮件的加密"></a>6. 电子邮件的加密</h2><p>PGP（pretty good privacy）是一个完整的电子邮件安全软件包，包括加密、鉴别、电子签名和压缩等技术。<br>PEM（privacy enhanced mail）是因特网的邮件加密建议标准。</p>
+<h2 id="7-因特网商务中的加密"><a href="#7-因特网商务中的加密" class="headerlink" title="7. 因特网商务中的加密"></a>7. 因特网商务中的加密</h2><p>商务安全方面较出名的协议有：SSL（secure socket layer，安全插口层）和SET（secure electronic transaction，安全电子交易）。<br>1）SSL可看成应用层和传输层之间的一个层。SSL和TLS（transport layer security，传输层安全协议）可用于HTTP和IMAP服务。<br>2）SET专门在因特网上进行信用卡交易的协议。</p>
+<h2 id="8-因特网的网络安全协议簇IPsec"><a href="#8-因特网的网络安全协议簇IPsec" class="headerlink" title="8. 因特网的网络安全协议簇IPsec"></a>8. 因特网的网络安全协议簇IPsec</h2><p>IPsec（IP security协议）。网络层保密是指所有在IP数据报中的数据都是加密的。<br>防火墙<br>防火墙（Firewall）是由软硬件构成的系统，用来在两个网络间实时接入控制策略。防火墙用来解决内联网和外联网问题。防火墙的两个功能：阻止和允许。</p>
+<p><strong>加密算法总结</strong><br>1、当前的专利算法包括但不限于：IDEA。已过专利保护期的加密算法已不再受专利保护；<br>2、已经被证明不再安全的公开加密算法包括：DES、MD5、SHA1、HMAC-MD5、HMAC-SHA1；<br>3、对称加密算法建议使用：AES；<br>4、密钥交换算法建议使用：DH；<br>5、数字签名算法建议使用：DSA、ECDSA；<br>6、非对称算法建议使用：ECC、RSA；<br>7、HASH（哈希）算法建议使用：SHA；<br>8、HMAC（基于哈希的消息验证码）算法建议使用：HMAC-SHA；</p>
+<p>参考：<br><a href="http://blog.sina.com.cn/s/blog_6b93a42d01016s8q.html" target="_blank" rel="external">互联网业务安全——加密解密</a><br><a href="https://zh.wikipedia.org/wiki/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0" target="_blank" rel="external">欧拉函数</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;1-计算机网络安全概述&quot;&gt;&lt;a href=&quot;#1-计算机网络安全概述&quot; class=&quot;headerlink&quot; title=&quot;1. 计算机网络安全概述&quot;&gt;&lt;/a&gt;1. 计算机网络安全概述&lt;/h2&gt;&lt;p&gt;1）计算机网络上面临的通信威胁：&lt;br&gt;截获（intercept
+    
+    </summary>
+    
+      <category term="计算机网络" scheme="https://lichtmiao.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>笔试面试——网易有道测开</title>
+    <link href="https://lichtmiao.github.io/2018/09/08/%E7%AC%94%E8%AF%95%E9%9D%A2%E8%AF%95%E2%80%94%E2%80%94%E7%BD%91%E6%98%93%E6%9C%89%E9%81%93%E6%B5%8B%E5%BC%80/"/>
+    <id>https://lichtmiao.github.io/2018/09/08/笔试面试——网易有道测开/</id>
+    <published>2018-09-08T09:07:28.000Z</published>
+    <updated>2018-09-09T14:24:05.639Z</updated>
+    
+    <content type="html"><![CDATA[<p>刚笔试完网易有道的测试开发工程师，感觉下次别投测试了，都没有准备测试相关的东西。</p>
+<ol>
+<li>20道选择题<br>有很多关于Shell的知识，幸好前天才学习过，影响比较深。看来最近的努力还是有回报的。也有计算机网络、二叉树、java、python的知识。</li>
+<li>两道问答<br>包括设计一个测试用例；给出几张表，根据要求写出SQL语句。</li>
+<li>3道编程题<br>编程1：计算使用三个数的代价，第一个数没有代价，使用其它两个数的代价为|Ai-Aj|，输出最小代价。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">package Wangyi;</div><div class="line"></div><div class="line">import java.util.ArrayList;</div><div class="line">import java.util.Arrays;</div><div class="line">import java.util.Collections;</div><div class="line">import java.util.Scanner;</div><div class="line"></div><div class="line">public class Main1 &#123;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		Scanner sc = new Scanner(System.in);</div><div class="line">		int n = 3;</div><div class="line">		/*int[] arr = new int[n];</div><div class="line">		while (sc.hasNextInt()) &#123;</div><div class="line">			for (int i = 0; i &lt; n; i++) &#123;</div><div class="line">				arr[i] = sc.nextInt();</div><div class="line">			&#125;</div><div class="line">		&#125;*/</div><div class="line">		int[] arr = &#123;1,6,3&#125;;</div><div class="line">		Arrays.sort(arr);</div><div class="line">        int start=arr[0];</div><div class="line">        int sum = 0;</div><div class="line">        for (int i = 1; i &lt; arr.length; i++) &#123;</div><div class="line">            int minus=arr[i]-start;</div><div class="line">            sum += minus;</div><div class="line">            start=arr[i];</div><div class="line">        &#125;</div><div class="line">        System.out.println();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>第二道是翻牌游戏，第三道题都没看完。。。。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;刚笔试完网易有道的测试开发工程师，感觉下次别投测试了，都没有准备测试相关的东西。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;20道选择题&lt;br&gt;有很多关于Shell的知识，幸好前天才学习过，影响比较深。看来最近的努力还是有回报的。也有计算机网络、二叉树、java、python的知识。&lt;/l
+    
+    </summary>
+    
+      <category term="笔试面试" scheme="https://lichtmiao.github.io/categories/%E7%AC%94%E8%AF%95%E9%9D%A2%E8%AF%95/"/>
+    
+    
+  </entry>
+  
+</feed>
