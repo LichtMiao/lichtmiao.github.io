@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lichtmiao.github.io/"/>
-  <updated>2018-12-31T05:39:11.956Z</updated>
+  <updated>2018-12-31T06:13:56.488Z</updated>
   <id>https://lichtmiao.github.io/</id>
   
   <author>
@@ -17,17 +17,21 @@
   
   <entry>
     <title>2018年工作总结</title>
-    <link href="https://lichtmiao.github.io/2018/12/30/Life%E2%80%94%E2%80%942018%E5%B9%B4%E5%B7%A5%E4%BD%9C%E6%80%BB%E7%BB%93/"/>
-    <id>https://lichtmiao.github.io/2018/12/30/Life——2018年工作总结/</id>
-    <published>2018-12-30T03:40:46.000Z</published>
-    <updated>2018-12-31T05:39:11.956Z</updated>
+    <link href="https://lichtmiao.github.io/2018/12/31/Life%E2%80%94%E2%80%942018%E5%B9%B4%E5%B7%A5%E4%BD%9C%E6%80%BB%E7%BB%93/"/>
+    <id>https://lichtmiao.github.io/2018/12/31/Life——2018年工作总结/</id>
+    <published>2018-12-31T03:40:46.000Z</published>
+    <updated>2018-12-31T06:13:56.488Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="1-写了六份报告"><a href="#1-写了六份报告" class="headerlink" title="1.    写了六份报告"></a>1.    写了六份报告</h2><p><img src="https://user-images.githubusercontent.com/26324355/50503436-f18be380-0aa1-11e9-9215-239765b84278.png" alt="1545910999"></p>
-<h2 id="2-论文"><a href="#2-论文" class="headerlink" title="2.    论文"></a>2.    论文</h2><p><strong>投稿</strong><br>一篇A类会议Globecom2018 <a href="https://ieeexplore.ieee.org/document/8452972" target="_blank" rel="external">Comments on “Cross-Tier Cooperation for Optimal Resource Utilization in Ultra-Dense Heterogeneous Networks”</a><br>一篇二区期刊Transactions on Vehicular Technology。<br><strong>审稿</strong>：一篇A类会议Globecom2018，三篇A类会议ICC2019。</p>
-<h2 id="3-找工作"><a href="#3-找工作" class="headerlink" title="3.    找工作"></a>3.    找工作</h2><p><strong>互联网</strong>：为了找互联网的工作突击了一个月Java，由于没有Java开发的经验，而且准备的时间不足面试过程并不顺利。整理的一部分Java开发内容如下（嗯1.73G）：</p>
+    <content type="html"><![CDATA[<h2 id="1-写报告"><a href="#1-写报告" class="headerlink" title="1.    写报告"></a>1.    写报告</h2><p>写了六份报告，多次修改简直写到吐:(。</p>
+<p><img src="https://user-images.githubusercontent.com/26324355/50503436-f18be380-0aa1-11e9-9215-239765b84278.png" alt="1545910999"></p>
+<h2 id="2-论文"><a href="#2-论文" class="headerlink" title="2.    论文"></a>2.    论文</h2><p><strong>投稿</strong>：</p>
+<p>一篇A类会议Globecom2018： <a href="">A Cross-tier Cooperation Resource Allocation Approach over Ultra-Dense Heterogeneous Networks</a></p>
+<p>一篇二区期刊Transactions on Vehicular Technology：<a href="https://ieeexplore.ieee.org/document/8452972" target="_blank" rel="external">Comments on “Cross-Tier Cooperation for Optimal Resource Utilization in Ultra-Dense Heterogeneous Networks”</a></p>
+<p><strong>审稿</strong>：一篇A类会议Globecom2018，三篇A类会议ICC2019。</p>
+<h2 id="3-找工作"><a href="#3-找工作" class="headerlink" title="3.    找工作"></a>3.    找工作</h2><p><strong>互联网</strong>：17年在清华实验室偶然看到一本Java入门的书《疯狂Java讲义》，感觉很好读就入坑了，后面陆陆续续把这本书看完了。为了找互联网的工作今年8月突击了一个月Java，由于没有Java开发的经验，而且准备的时间不足面试过程并不十分顺利。整理的一部分Java开发内容如下（嗯1.73G）：</p>
 <p><img src="https://user-images.githubusercontent.com/26324355/50504573-74646c80-0aa9-11e9-8ae1-46d599e87259.png" alt="1545977070"></p>
-<p><strong>通信</strong>：中间复习了一周通信知识，面试过程超顺利。这也让我意识到，要找自己有优势的工作。<br><strong>研究所</strong>：研究所对论文还是比价看重的，薪资还可以。</p>
-<h2 id="4-Contribuion"><a href="#4-Contribuion" class="headerlink" title="4.    Contribuion"></a>4.    Contribuion</h2><p>今年的contribution主要在Java的代码练习和博客更新的学习笔记上。</p>
+<p><strong>通信</strong>：中间复习了一周通信知识，面试过程超顺利。这也让我意识到，要找自己有优势的工作。<br><strong>研究所</strong>：研究所对论文还是比较看重的，薪资还可以，已拒。</p>
+<h2 id="4-Contribuion"><a href="#4-Contribuion" class="headerlink" title="4.    Contribuion"></a>4.    Contribuion</h2><p>今年的contribution主要在Java的代码练习和blog更新的学习笔记上。</p>
 <p><img src="https://user-images.githubusercontent.com/26324355/50554062-f691a280-0cee-11e9-837e-5eafacc9e123.png" alt="1546226789"></p>
 <p><strong>代码练习</strong>：</p>
 <p><img src="https://user-images.githubusercontent.com/26324355/50503934-2188b600-0aa5-11e9-8286-e8f7beb7040a.png" alt="java_20181228133213"></p>
@@ -35,6 +39,7 @@
 <p><img src="https://user-images.githubusercontent.com/26324355/50532344-fe1c4480-0b52-11e9-9abb-8b9549adb236.png" alt="blog_20181228133105"></p>
 <ul>
 <li>CSS(1)</li>
+<li>English(6)</li>
 <li>HTML(1)</li>
 <li>JDBC(6)</li>
 <li>JavaScript(1)</li>
@@ -42,25 +47,24 @@
 <li>Java并发(1)</li>
 <li>Java程序员面试宝典(12)</li>
 <li>Java虚拟机(5)</li>
+<li>Life(3)</li>
 <li>Linux(3)</li>
-<li>Software(4)</li>
+<li>Software(6)</li>
 <li>操作系统(6)</li>
 <li>数据库(6)</li>
-<li>生活(3)</li>
 <li>笔试面试(6)</li>
 <li>算法与数据结构(47)</li>
-<li>综合(2)</li>
-<li>英语(6)</li>
 <li>计算机网络(13)</li>
 <li>设计模式(8)</li>
 <li>随笔(2)</li>
 </ul>
-<h2 id="5-出国参会"><a href="#5-出国参会" class="headerlink" title="5.    出国参会"></a>5.    出国参会</h2><p>由于论文被接收，需要在会议上作报告，12月GC参会。</p>
+<h2 id="5-出国参会"><a href="#5-出国参会" class="headerlink" title="5.    出国参会"></a>5.    出国参会</h2><p>由于论文被接收，需要在会议上作presentation，12月GC参会。官方发布了限时共享相册，下载了一部分存在网盘：<a href="https://pan.baidu.com/disk/home?#/all?vmode=list&amp;path=%2FMy%20pictures%2FGLOBECOM2018%20PHOTOS" target="_blank" rel="external">GLOBECOM2018 PHOTOS</a>。</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;1-写了六份报告&quot;&gt;&lt;a href=&quot;#1-写了六份报告&quot; class=&quot;headerlink&quot; title=&quot;1.    写了六份报告&quot;&gt;&lt;/a&gt;1.    写了六份报告&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://user-images.githubus
+      &lt;h2 id=&quot;1-写报告&quot;&gt;&lt;a href=&quot;#1-写报告&quot; class=&quot;headerlink&quot; title=&quot;1.    写报告&quot;&gt;&lt;/a&gt;1.    写报告&lt;/h2&gt;&lt;p&gt;写了六份报告，多次修改简直写到吐:(。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-
     
     </summary>
     
@@ -74,10 +78,11 @@
     <link href="https://lichtmiao.github.io/2018/12/27/Life%E2%80%94%E2%80%94GC%E5%8F%82%E4%BC%9A/"/>
     <id>https://lichtmiao.github.io/2018/12/27/Life——GC参会/</id>
     <published>2018-12-27T02:23:33.000Z</published>
-    <updated>2018-12-31T05:36:06.122Z</updated>
+    <updated>2018-12-31T06:11:22.935Z</updated>
     
     <content type="html"><![CDATA[<p>由于参加IEEE GLOBECOM 2018，9-13 Dec. 2018，Abu Dhabi，公费出国游玩了阿联酋的两大城市Abu Dhabi和Dubai。<br>8号从成都出发，13号晚上返程。中途由于在香港的转机时间较长，在香港玩了挺久的。<br>总而言之不虚此行，每天在会场听大佬的报告，然后蹭吃蹭喝，游览了Abu Dhabi和Dubai的一些著名的旅游景点。作为内陆孩纸第一次见到了大海，还是那种海天一色，蓝得不行的蓝，特别干净。是一个值得再去一次的地方。</p>
-<p>放个vlog链接：<a href="https://www.bilibili.com/video/av38412148" target="_blank" rel="external">阿布扎比迪拜vlog</a><br>官方发布了一些照片，总共14G，由于是共享链接，限时失效，所以下载了一部分到网盘：<a href="https://pan.baidu.com/disk/home?#/all?vmode=list&amp;path=%2FMy%20pictures%2FGLOBECOM2018%20PHOTOS" target="_blank" rel="external">GLOBECOM2018 PHOTOS</a></p>
+<p>放个vlog链接：<a href="https://www.bilibili.com/video/av38412148" target="_blank" rel="external">阿布扎比迪拜vlog</a></p>
+<p>官方发布了一些照片，总共14G，由于是共享链接，限时失效，所以下载了一部分到网盘：<a href="https://pan.baidu.com/disk/home?#/all?vmode=list&amp;path=%2FMy%20pictures%2FGLOBECOM2018%20PHOTOS" target="_blank" rel="external">GLOBECOM2018 PHOTOS</a></p>
 ]]></content>
     
     <summary type="html">
