@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lichtmiao.github.io/"/>
-  <updated>2018-12-31T07:02:05.647Z</updated>
+  <updated>2018-12-31T07:47:13.778Z</updated>
   <id>https://lichtmiao.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://lichtmiao.github.io/2018/12/31/Life%E2%80%94%E2%80%942018%E5%B9%B4%E5%B7%A5%E4%BD%9C%E6%80%BB%E7%BB%93/"/>
     <id>https://lichtmiao.github.io/2018/12/31/Life——2018年工作总结/</id>
     <published>2018-12-31T03:40:46.000Z</published>
-    <updated>2018-12-31T07:02:05.647Z</updated>
+    <updated>2018-12-31T07:47:13.778Z</updated>
     
     <content type="html"><![CDATA[<h2 id="1-写报告"><a href="#1-写报告" class="headerlink" title="1.    写报告"></a>1.    写报告</h2><p>写了六份报告，多次修改简直快要写到吐:(。赶紧毕业离开清华就不用写报告了，后来一想，工作了难道就不写了吗，呵呵，自我催眠，继续写吧。</p>
 <p><img src="https://user-images.githubusercontent.com/26324355/50503436-f18be380-0aa1-11e9-9215-239765b84278.png" alt="1545910999"></p>
@@ -31,7 +31,7 @@
 <h2 id="3-找工作"><a href="#3-找工作" class="headerlink" title="3.    找工作"></a>3.    找工作</h2><p><strong>互联网</strong>：17年10月在实验室偶然看到一本Java入门的书<a href="https://pan.baidu.com/s/1M-7Am9w-j-GLAeOLFR5kTQ" target="_blank" rel="external">《疯狂Java讲义（第3版）》</a>，感觉很好读就入坑了，后面陆陆续续把这本书看完了。中间也有接触python、JavaScript、HTML等。为了找互联网的工作今年8月突击了一个月Java，由于没有Java开发的经验，而且准备的时间不足面试过程并不十分顺利。整理的一部分Java开发内容如下：<a href="https://pan.baidu.com/s/1Pwj-neC4pPaP8j80ikIcTg" target="_blank" rel="external">我的整理</a>（嗯1.73G）：</p>
 <p><img src="https://user-images.githubusercontent.com/26324355/50504573-74646c80-0aa9-11e9-8ae1-46d599e87259.png" alt="1545977070"></p>
 <p><strong>通信</strong>：中间复习了一周通信知识，面试过程超顺利。这也让我意识到，要找自己有优势的工作。<br><strong>研究所</strong>：研究所对论文还是比较看重的，薪资还可以，已拒。</p>
-<h2 id="4-Contribuion"><a href="#4-Contribuion" class="headerlink" title="4.    Contribuion"></a>4.    Contribuion</h2><p>今年的contribution主要在Java的代码练习和blog更新的学习笔记上。</p>
+<h2 id="4-Contributions"><a href="#4-Contributions" class="headerlink" title="4.    Contributions"></a>4.    Contributions</h2><p>今年的contribution主要在Java的代码练习和blog更新的学习笔记上。</p>
 <p><img src="https://user-images.githubusercontent.com/26324355/50554062-f691a280-0cee-11e9-837e-5eafacc9e123.png" alt="1546226789"></p>
 <p><strong>代码练习</strong>：</p>
 <p><img src="https://user-images.githubusercontent.com/26324355/50503934-2188b600-0aa5-11e9-8286-e8f7beb7040a.png" alt="java_20181228133213"></p>
