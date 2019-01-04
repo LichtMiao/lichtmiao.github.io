@@ -574,31 +574,6 @@
   </entry>
   
   <entry>
-    <title>出国准备</title>
-    <link href="https://lichtmiao.github.io/2018/11/06/Life%E2%80%94%E2%80%94%E5%87%BA%E5%9B%BD%E5%87%86%E5%A4%87/"/>
-    <id>https://lichtmiao.github.io/2018/11/06/Life——出国准备/</id>
-    <published>2018-11-06T03:02:47.000Z</published>
-    <updated>2018-12-31T05:36:06.128Z</updated>
-    
-    <content type="html"><![CDATA[<p>由于十二月有一次出国的会议，而这也是第一次出国，感谢学校的慷慨。</p>
-<p><strong>1. 行程</strong><br>成都——香港（转机）——阿布扎比——香港（转机）——成都<br>十月国庆回家的时候办理了护照、港澳通行证，其实港澳通行证可以不用办理：香港有规定,持有中国护照,第三方国家/地区签证及相关机票的,可以免签入境7天的。叧外,如果转机不入境,只在机场禁区内等待,是不算入境的,更是什么都不用担心。<br>海关：需passport和酒店预订信。</p>
-<p><strong>2. 行李</strong><br>1）行李箱：不能超过20寸，否则需要托运。<br>2）化妆品：不能超过100ml，否则需要托运。<br>3）充电宝：不能超过2万毫安，我的是1万毫安。<br>4）衣服：需要查好阿布扎比当地的气温，现在看来可能是夏末的样子，可以带夏天的衣服过去，然后带外套。<br>5）银行卡：visa信用卡，银联信用卡。<br>6）通用转换头<br>7）关于上网，可以买当地的卡，网上也有随身wifi</p>
-<p><strong>3. 酒店</strong><br>由于我订酒店比较晚，选了个较便宜的酒店，因此预定的酒店不能退，各种税已交。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;由于十二月有一次出国的会议，而这也是第一次出国，感谢学校的慷慨。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;1. 行程&lt;/strong&gt;&lt;br&gt;成都——香港（转机）——阿布扎比——香港（转机）——成都&lt;br&gt;十月国庆回家的时候办理了护照、港澳通行证，其实港澳通行证可以不用办理：香港有规
-    
-    </summary>
-    
-      <category term="Life" scheme="https://lichtmiao.github.io/categories/Life/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>笔试面试——校招结束</title>
     <link href="https://lichtmiao.github.io/2018/11/06/%E7%AC%94%E8%AF%95%E9%9D%A2%E8%AF%95%E2%80%94%E2%80%94%E6%A0%A1%E6%8B%9B%E7%BB%93%E6%9D%9F/"/>
     <id>https://lichtmiao.github.io/2018/11/06/笔试面试——校招结束/</id>
@@ -764,6 +739,41 @@
     </summary>
     
       <category term="笔试面试" scheme="https://lichtmiao.github.io/categories/%E7%AC%94%E8%AF%95%E9%9D%A2%E8%AF%95/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>字符串问题——括号字符串的有效性和最长有效长度</title>
+    <link href="https://lichtmiao.github.io/2018/09/13/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%97%AE%E9%A2%98%E2%80%94%E2%80%94%E6%8B%AC%E5%8F%B7%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%89%E6%95%88%E6%80%A7%E5%92%8C%E6%9C%80%E9%95%BF%E6%9C%89%E6%95%88%E9%95%BF%E5%BA%A6/"/>
+    <id>https://lichtmiao.github.io/2018/09/13/字符串问题——括号字符串的有效性和最长有效长度/</id>
+    <published>2018-09-12T17:22:42.000Z</published>
+    <updated>2018-10-14T10:36:10.650Z</updated>
+    
+    <content type="html"><![CDATA[<p>题目：给定一个字符串，判读是不是整体有效的括号字符串。<br>例：<br>str=”()”，返回true<br>str=”(())”，返回true<br>str=”())”，返回false<br>str=”()a()”，返回false<br>实现</p>
+<ol>
+<li>遍历str，若不是括号，则直接返回false。</li>
+<li>遍历到每个字符，检查括号的数量，如果’)’更多，则返回false。</li>
+<li>遍历完，若’(‘的数量和’)’相等，则返回true，否则返回false。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public static boolean isValidKuohao (String str) &#123;</div><div class="line">		if (str == null || str.equals(&quot;&quot;)) &#123;</div><div class="line">			return false;</div><div class="line">		&#125;</div><div class="line">		char[] chas = str.toCharArray();</div><div class="line">		int num = 0; //遇到左括号则加1，遇到有括号则减1</div><div class="line">		for (int i = 0; i &lt; chas.length; i++) &#123;</div><div class="line">			if (chas[i] != &apos;(&apos; &amp;&amp; chas[i] != &apos;)&apos;) &#123; </div><div class="line">				return false;</div><div class="line">			&#125;</div><div class="line">			if (chas[i] == &apos;)&apos; &amp;&amp; --num &lt; 0) &#123; //若右括号数大于左括号数</div><div class="line">				return false;</div><div class="line">			&#125;</div><div class="line">			if (chas[i] == &apos;(&apos;) &#123;</div><div class="line">				num++;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		return num == 0; //如果最终右括号数-左括号数=0，则返回true，否则返回false</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<p>补充题目：给定一个括号字符串str，返回最长的有效括号子串。<br>例：<br>str=”(()())”，返回6<br>str=”())”，返回2<br>str=”()(()()(“，返回4<br>实现：动态规划</p>
+<ol>
+<li>生成dp[N]数组，dp[i]表示在str[0,…i]中以str[i]结尾的字符的最长有效括号子串的长度。</li>
+<li>dp[0]=0</li>
+<li>从左到右依次遍历str[1,…N-1]，假设遍历到str[i]<br>1）若str[i]==’(‘，由于括号一定是以’)’结尾，所以以’(‘结尾是不可能的，dp[i]=0<br>2）若str[i]==’)’，</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;题目：给定一个字符串，判读是不是整体有效的括号字符串。&lt;br&gt;例：&lt;br&gt;str=”()”，返回true&lt;br&gt;str=”(())”，返回true&lt;br&gt;str=”())”，返回false&lt;br&gt;str=”()a()”，返回false&lt;br&gt;实现&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+    
+    </summary>
+    
+      <category term="算法与数据结构" scheme="https://lichtmiao.github.io/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
     
   </entry>
