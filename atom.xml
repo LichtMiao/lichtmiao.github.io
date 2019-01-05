@@ -118,32 +118,6 @@
   </entry>
   
   <entry>
-    <title>Matlab</title>
-    <link href="https://lichtmiao.github.io/2019/01/03/Tech/Software/Software%E2%80%94%E2%80%94Matlab/"/>
-    <id>https://lichtmiao.github.io/2019/01/03/Tech/Software/Software——Matlab/</id>
-    <published>2019-01-03T02:48:27.000Z</published>
-    <updated>2019-01-03T02:58:34.233Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Learning"><a href="#Learning" class="headerlink" title="Learning"></a>Learning</h1><p><a href="http://www.51zxw.net/list.aspx?cid=456" target="_blank" rel="external">Matlab视频教程</a></p>
-<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><p><a href="https://blog.csdn.net/garfielder007/article/details/51510805" target="_blank" rel="external">Matlab中下标，斜体，及希腊字母的使用方法</a></p>
-<p><a href="https://www.zybang.com/question/2670d80fe4661dab7587840393ae2854.html" target="_blank" rel="external">希腊字母表(配读音)</a></p>
-<p><a href="https://blog.csdn.net/lk274857347/article/details/56845818" target="_blank" rel="external">Matlab画图线型、符号及颜色汇总</a></p>
-<p><a href="https://blog.csdn.net/hit97/article/details/7553962" target="_blank" rel="external">功率W与dBm的对照表及关系</a></p>
-<p><a href="http://www.elecfans.com/tools/dbm.htm" target="_blank" rel="external">W,dBW和dBm转换在线计算器 | dbw和dbm的换算 | 电磁兼容EMC</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Learning&quot;&gt;&lt;a href=&quot;#Learning&quot; class=&quot;headerlink&quot; title=&quot;Learning&quot;&gt;&lt;/a&gt;Learning&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;http://www.51zxw.net/list.aspx?cid=45
-    
-    </summary>
-    
-      <category term="Software" scheme="https://lichtmiao.github.io/categories/Software/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>Some learning websites in 2019</title>
     <link href="https://lichtmiao.github.io/2019/01/02/Life/Some%20learning%20websites%20in%202019/"/>
     <id>https://lichtmiao.github.io/2019/01/02/Life/Some learning websites in 2019/</id>
@@ -780,6 +754,32 @@
       &lt;p&gt;题目：给定一个字符串，判读是不是整体有效的括号字符串。&lt;br&gt;例：&lt;br&gt;str=”()”，返回true&lt;br&gt;str=”(())”，返回true&lt;br&gt;str=”())”，返回false&lt;br&gt;str=”()a()”，返回false&lt;br&gt;实现&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
+    
+    </summary>
+    
+      <category term="算法与数据结构" scheme="https://lichtmiao.github.io/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>字符串问题——数组中两个字符串的最小距离</title>
+    <link href="https://lichtmiao.github.io/2018/09/13/Tech/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%97%AE%E9%A2%98%E2%80%94%E2%80%94%E6%95%B0%E7%BB%84%E4%B8%AD%E4%B8%A4%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%8F%E8%B7%9D%E7%A6%BB/"/>
+    <id>https://lichtmiao.github.io/2018/09/13/Tech/算法与数据结构/字符串问题——数组中两个字符串的最小距离/</id>
+    <published>2018-09-12T16:58:52.000Z</published>
+    <updated>2018-09-12T16:59:58.713Z</updated>
+    
+    <content type="html"><![CDATA[<p>题目：给定一个字符串str，再给定两个字符串str1和str2，返回在str中str1和str2的最小距离，如果str1或str2为null，返回-1。<br>例：<br>strs=[“1”,”3”,”3”,”3”,”2”,”3”,”1”]，str1=”1”,str2=”2”，返回2。<br>strs=[“CD”]，str1=”CD”,str2=”AB”，返回-1。</p>
+<p>实现</p>
+<ol>
+<li>遍历str，用last1记录str1最近出现的位置，用last2记录str2最近出现的位置。用min记录str1和str2之间的最小距离。</li>
+<li>如果遍历到str1，则i-last2就是str1与str2的最小距离；<br>如果遍历到str2，则i-last1就是str2与str1的最小距离。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line"> * 输出str中str1和str2字符串之间的最小距离</div><div class="line"> */</div><div class="line">public class MinDistance &#123;</div><div class="line">	public static int minDistance(String[] strs, String str1, String str2) &#123;</div><div class="line">		if (str1 == null || str2 == null) &#123;</div><div class="line">			return -1;</div><div class="line">		&#125;</div><div class="line">		if (str1.equals(str2)) &#123;</div><div class="line">			return 0;</div><div class="line">		&#125;</div><div class="line">		int last1 = -1;</div><div class="line">		int last2 = -1;</div><div class="line">		int min = Integer.MAX_VALUE; //注意将最小距离初始化为不可能值</div><div class="line">		for (int i = 0; i &lt; strs.length; i++) &#123;</div><div class="line">			if (strs[i].equals(str1)) &#123;</div><div class="line">				//如果last2还没有找到，则最小值不存在，min=Integer.MAX_VLAUE</div><div class="line">				min = Math.min(min, last2 == -1 ? min : i - last2); </div><div class="line">				last1 = i;</div><div class="line">			&#125;</div><div class="line">			if (strs[i].equals(str2)) &#123;</div><div class="line">				min = Math.min(min, last1 == -1 ? min : i - last1);</div><div class="line">				last2 = i;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		return min == Integer.MAX_VALUE ? -1 : min; //为了显示当不存在最小距离时返回-1</div><div class="line">	&#125;</div><div class="line">	//Test</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		String[] strs = &#123;&quot;1&quot;,&quot;3&quot;,&quot;3&quot;,&quot;3&quot;,&quot;2&quot;,&quot;3&quot;,&quot;1&quot;&#125;;</div><div class="line">		String str1 = &quot;1&quot;;</div><div class="line">		String str2 = &quot;2&quot;;</div><div class="line">		System.out.println(minDistance(strs, str1, str2));</div><div class="line">		String[] strs1 = &#123;&quot;CD&quot;&#125;;</div><div class="line">		String str3 = &quot;CD&quot;;</div><div class="line">		String str4 = &quot;AB&quot;;</div><div class="line">		System.out.println(minDistance(strs1, str3, str4));</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;题目：给定一个字符串str，再给定两个字符串str1和str2，返回在str中str1和str2的最小距离，如果str1或str2为null，返回-1。&lt;br&gt;例：&lt;br&gt;strs=[“1”,”3”,”3”,”3”,”2”,”3”,”1”]，str1=”1”,str2=”2
     
     </summary>
     

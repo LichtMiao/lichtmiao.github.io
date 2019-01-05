@@ -25,14 +25,6 @@
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[Matlab]]></title>
-    <url>%2F2019%2F01%2F03%2FTech%2FSoftware%2FSoftware%E2%80%94%E2%80%94Matlab%2F</url>
-    <content type="text"><![CDATA[LearningMatlab视频教程 ReferencesMatlab中下标，斜体，及希腊字母的使用方法 希腊字母表(配读音) Matlab画图线型、符号及颜色汇总 功率W与dBm的对照表及关系 W,dBW和dBm转换在线计算器 | dbw和dbm的换算 | 电磁兼容EMC]]></content>
-      <categories>
-        <category>Software</category>
-      </categories>
-  </entry>
-  <entry>
     <title><![CDATA[Some learning websites in 2019]]></title>
     <url>%2F2019%2F01%2F02%2FLife%2FSome%20learning%20websites%20in%202019%2F</url>
     <content type="text"><![CDATA[Here I will summarize some of my learning websites. Hope I will make vast progress in 2019. English LearningI have been very enthusiastic about English speaking recently. Speaking at a meeting gave me great encouragement and confidence. I want to speak English more and practice my pronunciation. BBC Learning English Learn English with Emma Speak English With Vanessa JamesESL English Lessons EnglishLessons4U - Learn English with Ronnie! Learn English with EnglishClass101.com Learn English With TV Series Japanese LearningConsidering that my graduation trip may go to Japan, I need to review my Japanese with my spare time. Although I haven’t completed the primary learning of Japanese, what I have learned may work in the future. I need to be prepared for each upcoming opportunity. 【日语课程】标日初级精讲BY萌萌哒葉子先生 ProgrammingTop 4 programming languages to learn in 2019: JavaScript, Python, Go, Java. CS Dojo Life of Luba mayuko Life at Google thenewboston BRILLIANT 廖雪峰Python教程，JavaScript教程，Git Python教程，JavaScript教程，Go教程，MySql，Sql，HTML，CSS，Node.js，Linux，Shell practical-programming-books Dreamwaever，Photoshop DocumentaryFor the documentary, I always prefer natural documentaries. Especially the animals. BBC Earth Primitive Technology NASA FoodWatching food making always makes me peaceful, and I love desserts making, which can make me happy. Food Wishes Bon Appétit LookbookI can learn some vocabularies of cosmetics. KathleenLights bestdressed]]></content>
@@ -1193,7 +1185,7 @@
   </entry>
   <entry>
     <title><![CDATA[Word问题]]></title>
-    <url>%2F2018%2F06%2F11%2FTech%2FSoftware%2FSoftware%E2%80%94%E2%80%94Word%E9%97%AE%E9%A2%98%2F</url>
+    <url>%2F2018%2F06%2F11%2FTech%2FSoftware%2FWord%E9%97%AE%E9%A2%98%2F</url>
     <content type="text"><![CDATA[问题：有章节号的图的标号从0开始解决：选中章节号，定义新的列表样式，编号样式设置为 第0章，设置编号值：从1开始。 问题：图片无法完全显示解决：开始-样式-单击正文。]]></content>
       <categories>
         <category>Software</category>
@@ -1201,7 +1193,7 @@
   </entry>
   <entry>
     <title><![CDATA[Skype]]></title>
-    <url>%2F2018%2F06%2F10%2FTech%2FSoftware%2FSoftware%E2%80%94%E2%80%94%E8%A7%A3%E5%86%B3Skype%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80%E7%9A%84%E9%97%AE%E9%A2%98%2F</url>
+    <url>%2F2018%2F06%2F10%2FTech%2FSoftware%2F%E8%A7%A3%E5%86%B3Skype%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80%E7%9A%84%E9%97%AE%E9%A2%98%2F</url>
     <content type="text"><![CDATA[早上开会发现双击skype无响应，上周才使用过，应该不是电脑的问题，可能软件更新过出现了些问题。（先关闭了360，防火墙啥的，防止杀毒软件误杀），按网上的教程： 在开始 -&gt; 运行栏中输入“%appdata%\skype”,回车找到Skype 的配置文件存储目录； 删除目录中的”shared.xml、shared.lck”两个文件 成功删除文件后，重新启动Skype 即可。 解决： 重新上官网下载桌面版，安装后按照网上教程进行解决但是我在第一步就卡住了，根本找不到skype配置文件的根目录。猜测是没安装成功或是版本安装错误。后面发现确实是版本的问题，直接上英文的官网下载的就是有问题。 重新搜到Skype简体中文版官网安装过程与英文版面有些不同，但最终能够使用。看来是版本的问题。 还有Sype网页版，具体功能应该跟桌面版一样，没有测试过。 其它： Skype被Microsoft收购，搜的时候发现一个工作版：skype for business，安装后会自动添加到Microsoft office里面，但登录的时候发现不能登自己的邮箱账号，需要输入地址？？？反正就是不能用自己的账号，所以不要下载这个版本的。]]></content>
       <categories>
         <category>Software</category>
@@ -1217,18 +1209,42 @@
   </entry>
   <entry>
     <title><![CDATA[如何卸载VS2013及之后版本]]></title>
-    <url>%2F2018%2F06%2F07%2FTech%2FSoftware%2FSoftware%E2%80%94%E2%80%94%E5%A6%82%E4%BD%95%E5%8D%B8%E8%BD%BDVS2013%E5%8F%8A%E4%B9%8B%E5%90%8E%E7%89%88%E6%9C%AC%2F</url>
+    <url>%2F2018%2F06%2F07%2FTech%2FSoftware%2F%E5%A6%82%E4%BD%95%E5%8D%B8%E8%BD%BDVS2013%E5%8F%8A%E4%B9%8B%E5%90%8E%E7%89%88%E6%9C%AC%2F</url>
     <content type="text"><![CDATA[一. 问题我之前安装了Visual Studio 2013 community with Update 4 （在线安装包已经被我删除，而官网只有VS2013 express with update 4版本的）。MS的性冷淡风格简直对我的胃口，于是我想能不能用VS作为IDE工具编码java。去网上搜了下还真有，但不能 debug。 如何用VS进行java编程的参考： 如何用visual studio编译java源代码 Compiling Java in Visual Studio JAVA TOOLS FOR VISUAL STUDIO 按照里面的步骤走的时候，想起当年安装的时候自定义，很多东西没装，没了安装包也无法修复，所以我打算卸载后重装。 此时问题出现了，VS根本就卸不掉，无论是用360安全卫士，还是直接在控制面板中卸载，根本就没反应。网上查发现VS卸载不掉是普遍问题，而且容易出现卸载不干净的问题。 二. 如何卸载VS 若还保留VS的安装包，直接打开“卸载”或“修复”。 若没有安装包，MS在github上提供了卸载方案，下载：VisulStudioUnistaller,以管理员身份运行Setup.ForcedUninstall.exe文件注意会卸载掉2013之后的VS。 三. 重装VS已经更新到2017，为了防止软件出现不能解决的错误，这次我打算装Visual Studio 2013 community with update 5 四. 其它 微软的捆绑真是很麻烦了。虽然C盘中的残留应该删掉了，但控制面板中还是有显示，无法删除。算了不管了，以后发现删除的方法再更新。 用360安全卫士带的“系统盘瘦身”工具，转移虚拟内存、删除了系统自动备份区的文件、将个人文件转移到F:\360MoveData，时C盘空出了10G多的空间。还是挺有用的。 搜软件的时候发现了Visual Studio Code，它是一款编辑器，风格较类似Sublimetext3；而Visual Studio是编译器。 下载Markdownpad编辑器。 对VS除了风格特别喜欢其实没啥意思，，还是eclipse用着顺手。反正我编辑工具用的Notepad++，无论是VS还是eclipse都只是作为编译工具。]]></content>
       <categories>
         <category>Software</category>
       </categories>
   </entry>
   <entry>
+    <title><![CDATA[Matlab]]></title>
+    <url>%2F2018%2F05%2F23%2FTech%2FMatlab%2FMatlab%E4%B8%ADvarargout%E4%B8%8Enargout%2F</url>
+    <content type="text"><![CDATA[varargout与nargout区别varargoutvarargout可以看做“Variable length output argument list”的缩写。在matlab中定义m函数时通过varargout我们可以得到可变的数个返回值。在matlab命令窗口中输入doc varargout或help varargout可以获得相关帮助信息。函数申明时的输出参数。用法：function varargout = foo(n)。 nargout在matlab中定义一个函数时，在函数体内部，nargout指出了输出参数的个数。特别是在利用了可变参数列表的函数中，用nargout获取输出参数个数很方便。用法：12n = nargoutn= nargout(fun) varargin与nargin的区别vararginvarargin可以看做“Variable length input argument list”的缩写。在matlab中, varargin提供了一种函数可变参数列表机制。就是说，使用了“可变参数列表机制”的函数允许调用者调用该函数时根据需要来改变输入参数的个数。用法：1function y = bar(varargin) nargin在matlab中定义一个函数时， 在函数体内部， nargin指出了输入参数的个数。特别是在利用了可变参数列表的函数中，用nargin获取输入参数个数很方便。用法：12n = narginn = nargin(fun) 实例12345678function varargout = foo(varargin) fprintf('How many output arguments? %d\nAnd they are: \n', nargout); for k=1:nargout varargout(k) = varargin(k); % the same as &#123;varargin&#123;k&#125;&#125;; fprintf('%s ', num2str(varargout&#123;k&#125;)); end disp(' '); end 在matlab command中运行结果如下：123456789101112131415&gt;&gt;[y1,y2]=lianxi(1,2,3) How many output arguments? 2 And they are: 1 2 y1 = 1 y2 = 2&gt;&gt; y=lianxi(1,2,3) How many output arguments? 1 And they are: 1 y = 1]]></content>
+      <categories>
+        <category>Matlab</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Matlab中size、length、numel的区别]]></title>
+    <url>%2F2018%2F05%2F22%2FTech%2FMatlab%2FMatlab%E4%B8%ADsize%20length%20numel%E7%9A%84%E5%8C%BA%E5%88%AB%2F</url>
+    <content type="text"><![CDATA[size：获取数组的行数和列数 s=size(A),当只有一个输出参数时，返回一个行向量，该行向量的第一个元素是数组的行数，第二个元素是数组的列数。 [r,c]=size(A),当有两个输出参数时，size函数将数组的行数返回到第一个输出变量，将数组的列数返回到第二个输出变量。 如果在size函数的输入参数中再添加一项，并用1或2为该项赋值，则size将返回数组的行数或列数。 其中r=size(A,1)该语句返回的是数组A的行数， c=size(A,2) 该语句返回的时数组A的列数。 n=max(size(A)：若A为非空数组，返回A的最大维数；若A为空数组，返回A中最长的非0维数。 length：数组长度（即行数或列数中的较大值）n=length(A)：如果A为非空数组，返回行数和列数两者之间数值较大的那一个值，即相当于执行了max(size(A))；如果A为空数组，则返回0；如果A是一个向量则返回A的长度。 numel：元素总数n=numel(A)该语句返回数组中元素的总数。]]></content>
+      <categories>
+        <category>Matlab</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[Markdown]]></title>
-    <url>%2F2018%2F05%2F17%2FTech%2FSoftware%2FSoftware%E2%80%94%E2%80%94Markdown%2011%E7%A7%8D%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%2F</url>
+    <url>%2F2018%2F05%2F17%2FTech%2FSoftware%2FMarkdown%2F</url>
     <content type="text"><![CDATA[11种基本语法标题设置（让字体变大，和word的标题意思一样）在Markdown当中设置标题，有两种方式：第一种：通过在文字下方添加“=”和“-”，他们分别表示一级标题和二级标题。第二种：在文字开头加上 “#”，通过“#”数量表示几级标题。（一共只有1~6级标题，1级标题字体最大） 块注释（blockquote）通过在文字开头添加“&gt;”表示块注释。（当&gt;和文字之间添加五个blank时，块注释的文字会有变化。） 斜体将需要设置为斜体的文字两端使用1个“*”或者“_”夹起来 粗体将需要设置为斜体的文字两端使用2个“*”或者“_”夹起来 无序列表在文字开头添加(*, +, and -)实现无序列表。但是要注意在(*, +, and -)和文字之间需要添加空格。（建议：一个文档中只用一种无序列表的表示方式） 有序列表使用数字后面跟上句号。（还要有空格） 链接（Links）Markdown中有两种方式，实现链接，分别为内联方式和引用方式。内联方式：This is an [example link](http://example.com/).引用方式：I get 10 times more traffic from [Google][1] than from [Yahoo][2] or [MSN][3]. 图片（Images）图片的处理方式和链接的处理方式，非常的类似。内联方式：![alt text](/path/to/img.jpg “Title”)引用方式：![alt text][id][id]: /path/to/img.jpg “Title” 代码（HTML中所谓的Code）实现方式有两种：第一种：简单文字出现一个代码框。使用`&lt; blockquote &gt; `。（`不是单引号而是左上角的ESC下面~中的`）第二种：大片文字需要实现代码框。使用Tab和四个空格。 脚注（footnote）实现方式如下：hello[^hello][^hello]: hi 下划线在空白行下方添加三条“-”横线。（前面讲过在文字下方添加“-”，实现的2级标题 参考Markdown 语法说明 (简体中文版) 在markdown中使用HTML中的特殊符号 Markdown 表格之调整宽度技巧]]></content>
       <categories>
         <category>Software</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Matlab基础]]></title>
+    <url>%2F2018%2F04%2F23%2FTech%2FMatlab%2FMatlab%E5%9F%BA%E7%A1%80%2F</url>
+    <content type="text"><![CDATA[基础matlab矩阵的简单操作cell array元胞数组，是由Cell构成的Array。Cell可以包含各种数据类型。可以使用( )取cell array的子集，使用{ }取cell array指定位置的元素值。 directory目录，rand()生成（0,1）之间均匀分布的随机矩阵，randn()生成均值为0、方差为1的标准正态分布随机矩阵，randi(imax, sz1,sz2)生成1到imax之间均匀分布的sz1*sz2的伪随机整数，Inf无穷大 A(i:i+m,:)获取矩阵A的第i到i+m行的全部元素 给变量X赋空矩阵的语句为X=[] Cell类型：cell（元胞）数组是一种包含名为元胞的索引数据容器的数据类型，其中的每个元胞都可以包含任意类型的数据。元胞数组通常包含文本列表、文本和数字的组合或者不同大小的数值数组。通过将索引括在圆括号 () 中可以引用元胞集。使用大括号 {} 进行索引来访问元胞的内容。 30dBm = 1 W+3dBm，功率乘以2；-3dBm，功率除以2；+10dBm，功率乘以10；-10dBm，功率除以10。10log1000mW = 30dBm 选中多行添加注释：Ctrl+R取消多行注释：Ctrl+T LearningMatlab视频教程 ReferencesMatlab中下标，斜体，及希腊字母的使用方法 希腊字母表(配读音) Matlab画图线型、符号及颜色汇总 功率W与dBm的对照表及关系 W,dBW和dBm转换在线计算器 | dbw和dbm的换算 | 电磁兼容EMC]]></content>
+      <categories>
+        <category>Matlab</category>
       </categories>
   </entry>
   <entry>
@@ -1241,7 +1257,7 @@
   </entry>
   <entry>
     <title><![CDATA[LaTeX]]></title>
-    <url>%2F2017%2F08%2F30%2FTech%2FSoftware%2FSoftware%E2%80%94%E2%80%94LaTeX%20notes%2F</url>
+    <url>%2F2017%2F08%2F30%2FTech%2FSoftware%2FLaTeX%2F</url>
     <content type="text"><![CDATA[总述编码之前的默认设置：编码：UTF-8，排版工具：XeLaTex控制序列：以\开头，以一个空格或非字母字符结束的一串文字。\documentclass{article}的控制序列是document，{article}是参数，部分控制序列还有[ ]包括的可选参数。这个控制序列的作用是调用名为article的文档类。导言区：\documentclass{article}与\begin{document}之间的部分。通常在导言区里设置页面大小、页眉页脚样式、章节标题样式等。环境：控制序列\begin{ }与\end{ }之间的部分，它们成对出现。{ }里是环境名，且begin与end内的环境名相同。宏包：一系列控制序列的集合。\usepackage{ }可以用来调用宏包。CTeX宏集：本质是LaTeX宏的集合，包含若干文档类（.cls文件）和宏包（.sty文件）。CTeX套装是一个系统。中文支持：XeTeX支持Unicode，并可以方便地调用系统字体，所以不需要调用CJK宏包。123\begin&#123;document&#125;你好，world！\end&#123;document&#125; 当前系统可用的全部中文字体C:\font_zh-cn.txtLatex将换行当做空格处理。 所有宏包文档都可以在这里找到：TeXdoc Online LaTeX常见文件类型 功能简介 .cls class files，类文件，使用\documentclass{ }加载 .sty style files，使用\usepackage{ }加载 .dtx Documented LaTeX source，宏包重要部分 .ins installation，控制TeX从.dtx文件释放宏包文件 .aux auxiliary，辅助文件，不影响正常使用 .bst BibTeX style file，控制参考文件样式 版面设置：页边距：geometry宏包。参见宏包文档geometry.pdf页眉页脚：fancyhdr宏包。参见宏包文档fancyhdr.pdf首行缩进：导言区调用\usepackage{indentfirst}，在段首缩进设置中再添加\setlength{\parindent}{\ccwd}，其中{\ccwd}是当前字号下一个中文汉字的宽度。行间距：setpath宏包。修改\linespread{ }。段间距：修改\parskipheheh 公式可参见 MATHEMATICS meta导入数学公式宏包，如amsmath（美国数学协会）数学模式有两种：行内（inline）和行间（display）。前者在正文中插入，$…$插入；后者单独成行，并自动居中，[…]插入。若需要对行间公式编号，使用equation环境：123\begin&#123;equation&#125;…\end&#123;equation&#125; 行内行间公式对标点的要求是不同的：行内行内标点应放在数学模式限定符之外，如Einstein’s $E=mc^2$. ；而行间则应放在限定符之内，如[ E=mc^2. ]。上标用^，下标用_。默认只作用于之后的一个字符，若要连续作用需用{ }括起来。 Latex常见公式环境与对齐方式小节 图片参见宏包文档graphicx.pdf123456\documentclass&#123;article&#125;\usepackage&#123;graphic&#125;\begin&#123;document&#125;\ingcludegraphics&#123;a.jpg&#125; \includegraphics[width = .8\textwidth]&#123;a.jpg&#125; %等比缩放到80%\end&#123;document&#125; 表格横线：\hline 竖线：| 分列：&amp; 换行：\每列可居左、居中、居右：l c r12345678910111213\begin&#123;tabular&#125;&#123;|l|c|r|&#125;\hline操作系统&amp; 发行版 &amp; 编辑器 \\\hlineWindows &amp; MikTex &amp; TexMakerX \\\hlineUnix/Linux &amp; teTex &amp; Kile \\\hlineMac OS &amp; MacTex &amp; Texshop \\\hline通用&amp; TexLive &amp; TeXworks \\\hline\end&#123;tabular&#125;]]></content>
       <categories>
         <category>Software</category>
@@ -1252,7 +1268,7 @@
   </entry>
   <entry>
     <title><![CDATA[Hexo部署]]></title>
-    <url>%2F2017%2F08%2F28%2FTech%2FSoftware%2FSoftware%E2%80%94%E2%80%94Hexo%E9%83%A8%E7%BD%B2%2F</url>
+    <url>%2F2017%2F08%2F28%2FTech%2FSoftware%2FHexo%E9%83%A8%E7%BD%B2%2F</url>
     <content type="text"><![CDATA[Hexo是基于Node.js的静态博客网页生成器，Node.js就是运行在服务端的JavaScript。参考：菜鸟学node.js 利用JavaScript作为服务器端脚本，通过Node.js框架web开发。Node.js框架是基于Chrome V8 JavaScript的引擎，是目前速度最快的JavaScript引擎。之前我已经安装了Node.js和Git，在cmd中输入node –v和node –npm显示版本，则安装成功。安装完这里直接开始安装Hexo。 一. 配置现在合适的地方创建一个文件夹，shift+鼠标右键，进入命令窗口。 安装hexo：npm install hexo-cli –g新建blog文件夹：hexo init blog切换到blog文件夹：cd blog自动安装需要的组件:npm install 发布新文章：hexo n 文章名生成静态文件：hexo g启动本地web服务：hexo s (-debug可以显示出错误）发布到github：hexo d 输入localhost:4000发现一片空白，原因：theme文件夹中没有主题，解决：下载主题包next放入theme文件夹中，并在blog\_config.yml站点配置文件中修改theme：next 将hexo与github关联：打开blog\_config.yml站点配置文件，修改：1234deploy: type: gitmarkl repository: https://github.com/LichtMiao/LichtMiao.github.io.git branch: master 保存后安装git部署插件：1npm install hexo-deployer-git --save hexo clean 清除缓存，网页正常情况下可以忽略这条命令hexo ghexo s 对主题进行升级12$ git clone --branch v5.1.2 https://github.com/iissnan/hexo-theme-nexttheme/next next主题帮助文档 创建仓库文件：new repository仓库地址： https://github.com/LichtMiao/lichtmiao.github.io.git 二. 优化1.主页添加标签，主站点配置文件中配置menu，menu icon，新建menu名字：1hexo new page "new page name" 2.设置Guestbook的评论为开在index.md中添加：1comments:true 3.将头像设置为圆形并旋转blog\themes\next\source\css\_common\components\sidebar\sidebar-author.styl4.站点建立时间1since:2017 5.站内搜索（1）1$ npm install hexo-genrator-searchdb --save （2）在站点配置文件中修改123456#站点搜索search：path：search.xmlfield: postformat: htmllimit: 10000 （3）编辑主题配置文件12local_search: enable: true 6.添加行内代码：`代码`添加代码块：```//代码```添加链接：[链接名字](网址)添加图片：可以使用图床链接：！[图片名字](图床网址)；也可直接放在source根目录下。图床：七牛云下载markdown编辑器：markdownpad/sublime text3 7.站点地图123//#sitemapsitemap: path: sitemap.xml 访问 https://lichtmiao.github.io/sitemap.xml8.修改文章显示高度：主题配置文件中123auto_excerpt: enable: true length: 9.注释掉侧边栏的tags: F:\Hexo\blog\themes\next\layout\_macro\sidebar.swig 将tags项注释掉：注意首页的tags与侧边栏相关联也是在这里，右边栏若无法点击，也是修改这里。12345678910&lt;!-- &#123;% if site.tags.length &gt; 0 %&#125; &#123;% set tagsPageQuery = site.pages.find(&#123;type: 'tags'&#125;, &#123;lean: true&#125;) %&#125; &#123;% set hasTagsPage = tagsPageQuery.length &gt; 0 %&#125; &lt;div class="site-state-item site-state-tags"&gt; &#123;% if hasTagsPage %&#125;&lt;a href="&#123;&#123; url_for(tagsPageQuery[0].path) &#125;&#125;"&gt;&#123;% endif %&#125; &lt;span class="site-state-item-count"&gt;&#123;&#123; site.tags.length &#125;&#125;&lt;/span&gt; &lt;span class="site-state-item-name"&gt;&#123;&#123; __('state.tags') &#125;&#125;&lt;/span&gt; &#123;% if hasTagsPage %&#125;&lt;/a&gt;&#123;% endif %&#125; &lt;/div&gt; &#123;% endif %&#125; --&gt; 10.自定义文章范本样式：F:\Hexo\blog\scaffolds\post.md注意：我添加其他东西会报错，无法生成新文档，但删掉里面一些东西可以用。11.添加网站小图标，修改主题配置文件:1favicon: /images/favicon.ico 12.添加sitemap、feed插件（1） 利用npm包管理工具下载几个包12npm install hexo-generator-feednpm install hexo-generator-sitemap （2） 修改站点配置，增减以下内容123456789Plugins: - hexo-generator-feed - hexo-generator-sitemapeFeed: type: atom path: atom.xm limit: 20sitemap: Path: sitemap.xml （3） 若没有成功，可能在package.json中没有自动生成，手动添加：123"hexo-generator-searchdb": "^1.0.8","hexo-generator-sitemap": "^1.2.0","hexo-generator-feed": "^1.2.0", //后面是版本号，npm的时候可以看到版本。 13.编辑公式：mathjax数学公式14.改站点头像favicon在线制作工具建立文件夹images，放入图片favoicon.ico，在站点配置文件中修改：1favicon: images/favicon.ico 15.生成站点地图sitemap,参考站点地图是一种文件，您可以通过该文件列出您网站上的网页，从而将您网站内容的组织架构告知Google和其他搜索引擎。Googlebot等搜索引擎网页抓取工具会读取此文件，以便更加智能地抓取您的网站。百度站点提交入口谷歌站点提交入口1）先安装一下插件：12npm install hexo-generator-sitemap --savenpm install hexo-generator-baidu-sitemap --save 2) 编译博客1hexo d -g 3)文件验证：将下载的验证文件放入主题文件下的source文件中。为什么放到主题的source下而不直接放在站点source下面呢？因为站点source下面的html文件都会被按照主题样式重新渲染，最后html文件的内容会被改变，谷歌、百度验证就不能识别。 说明我已经上传成功了。下面是可以访问到： 16.修改字体等颜色F:\Hexo\blog\themes\next\source\css\ _variables\base.styl （注意修改main中的颜色每次发布都会被重新生成的文件替换掉，base才是源文件），参考在F:\Hexo\blog\themes\next\source\css\_ariables\base.styl 中添加颜色值lavendor，（1）在里面修改整体背景颜色：12// Background color for &lt;body&gt; 整体背景颜色 $body-bg-color = $lavendor （2）在F:\Hexo\blog\themes\next\source\css\_schemes\Mist\ _header.styl 中修改顶部条的颜色1.header &#123; background: $lavendor; &#125;， （3）在F:\Hexo\blog\themes\next\source\css\_schemes\Mist\index.styl 中修改底部条的颜色：12345678// Footer// --------------------------------------------------.footer &#123; margin-top: 80px; padding: 10px 0; background: $lavendor; color: $grey-dim;&#125; 参考颜色对应代码修改背景图片：F:\Hexo\blog\themes\next\source\css\_custom.styl17.使用斜杠+符号，可以防止符号被注释掉。 三.出错1.错误：本地部署没问题，但网页中分类打不开，显示404。解决：删掉deploy_git文件重新生成。2.错误：hexo g INFO Start processing ERROR Process failed:TypeError: Cannot read property ‘offset’ of null解决：时区填错了，修改为Asia/Shanghai3.网站访客数显示异常 之前网站统计的数字一直无法显示，今天准备来解决这个问题。网站统计使用的不蒜子。进官网发现是2018.9后网站域名发生了变化：不蒜子|不如 所以需要修改footer中的内容，在F:\Hexo\blog\themes\next\layout_partials\footer.swig最后一行添加： 12&lt;script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"&gt;&lt;/script&gt; 即可正常显示访客数。 4.博客所有图片显示异常将头像等图片就换成了本地链接，在F:\Hexo\blog\themes\next_config.yml文件中修改：1avatar: /images/avatar.jpg 图片放在主题文件配置下：F:\Hexo\blog\source\images 由于使用的是外链接，之前七牛云的测试域名失效了，需要迁移空间：七牛云5402获取bucket域名失败，最简单的解决方法然后新建空间需要实名认证。。。七牛云测试域名要回收，新申请的测试域名也只有30天有效期，如果想继续使用的话，需要绑定域名，还得是备案过的，很是麻烦。因此利用github做图床：使用GitHub做图床 5.解决baidu无法收录网站的问题，之前的步骤应该都是对的，问题在于我配置文件中的baidu_push没有打开： 1baidu_push: true 6.对于才写的博文，在google上好像不能立即搜到，一周前的可以搜到。 参考Hexo官方文档NexT使用文档GitHub+Hexo 搭建个人网站详细教程手把手教你使用Hexo + Github Pages搭建个人独立博客Hexo-NexT搭建个人博客（二）hexo之next主题优化整理最简单的Hexo搭建博客教程搭建Hexo博客」简明教程使用Hexo搭建个人博客(基于hexo3.0)手把手教你用Hexo+Github 搭建属于自己的博客Hexo在github上构建免费的Web应用简洁轻便的博客平台: Hexo详解]]></content>
       <categories>
         <category>Software</category>
