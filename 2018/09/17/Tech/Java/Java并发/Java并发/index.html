@@ -101,17 +101,17 @@
 
 
 
-<meta name="description" content="一、常用函数1.日期函数1）CURDATE()：返回当前日期2）CURTIME()：返回当前时间3）MONTH(d)：返回日期d中的月份，范围1~12//从t_ta表中获取当前日期，时间，月份（月份设置别名m）SELECT CURDATE(), CURTIME(), MONTH(birthday) AS m FROM t_ta;2.字符串函数1）CHAR_LENGTH(s)：返回字符串s的字符数S">
+<meta name="description" content="一、几个概念  同步（synchronous）和异步（asynchronous）同步和异步通常用来形容异常方法的调用。同步方法一旦开始，调用者必须等到方法调用完成后，才能进行后续行为。而异步方法更像是一个消息的传递，一旦开始，方法调用会立即返回，调用者可以继续后面的行为，而异步方法通常会在另一个线程真实地执行，整个过程不会阻碍调用者的执行。  并发（concurrent）和并行（paralleli">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SQL语句（三）——存储过程与存储函数">
-<meta property="og:url" content="https://lichtmiao.github.io/2018/08/12/Tech/Sql/SQL语句（三）——存储过程与存储函数/index.html">
+<meta property="og:title" content="Java并发">
+<meta property="og:url" content="https://lichtmiao.github.io/2018/09/17/Tech/Java/Java并发/Java并发/index.html">
 <meta property="og:site_name" content="LichtMiao&#39;s Blog">
-<meta property="og:description" content="一、常用函数1.日期函数1）CURDATE()：返回当前日期2）CURTIME()：返回当前时间3）MONTH(d)：返回日期d中的月份，范围1~12//从t_ta表中获取当前日期，时间，月份（月份设置别名m）SELECT CURDATE(), CURTIME(), MONTH(birthday) AS m FROM t_ta;2.字符串函数1）CHAR_LENGTH(s)：返回字符串s的字符数S">
+<meta property="og:description" content="一、几个概念  同步（synchronous）和异步（asynchronous）同步和异步通常用来形容异常方法的调用。同步方法一旦开始，调用者必须等到方法调用完成后，才能进行后续行为。而异步方法更像是一个消息的传递，一旦开始，方法调用会立即返回，调用者可以继续后面的行为，而异步方法通常会在另一个线程真实地执行，整个过程不会阻碍调用者的执行。  并发（concurrent）和并行（paralleli">
 <meta property="og:locale" content="en.yml">
-<meta property="og:updated_time" content="2018-09-11T02:59:04.073Z">
+<meta property="og:updated_time" content="2018-09-17T11:20:57.600Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SQL语句（三）——存储过程与存储函数">
-<meta name="twitter:description" content="一、常用函数1.日期函数1）CURDATE()：返回当前日期2）CURTIME()：返回当前时间3）MONTH(d)：返回日期d中的月份，范围1~12//从t_ta表中获取当前日期，时间，月份（月份设置别名m）SELECT CURDATE(), CURTIME(), MONTH(birthday) AS m FROM t_ta;2.字符串函数1）CHAR_LENGTH(s)：返回字符串s的字符数S">
+<meta name="twitter:title" content="Java并发">
+<meta name="twitter:description" content="一、几个概念  同步（synchronous）和异步（asynchronous）同步和异步通常用来形容异常方法的调用。同步方法一旦开始，调用者必须等到方法调用完成后，才能进行后续行为。而异步方法更像是一个消息的传递，一旦开始，方法调用会立即返回，调用者可以继续后面的行为，而异步方法通常会在另一个线程真实地执行，整个过程不会阻碍调用者的执行。  并发（concurrent）和并行（paralleli">
 
 
 
@@ -141,7 +141,7 @@
 
 
 
-  <link rel="canonical" href="https://lichtmiao.github.io/2018/08/12/Tech/Sql/SQL语句（三）——存储过程与存储函数/"/>
+  <link rel="canonical" href="https://lichtmiao.github.io/2018/09/17/Tech/Java/Java并发/Java并发/"/>
 
 
 
@@ -149,7 +149,7 @@
 
 <!-- 网页加载条 -->
 <script src="https://neveryu.github.io/js/src/pace.min.js"></script>
-  <title>SQL语句（三）——存储过程与存储函数 | LichtMiao's Blog</title>
+  <title>Java并发 | LichtMiao's Blog</title>
   
 
 
@@ -242,7 +242,7 @@
             
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
             
-            検索
+            Search
           </a>
         </li>
       
@@ -300,7 +300,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lichtmiao.github.io/2018/08/12/Tech/Sql/SQL语句（三）——存储过程与存储函数/">
+    <link itemprop="mainEntityOfPage" href="https://lichtmiao.github.io/2018/09/17/Tech/Java/Java并发/Java并发/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Juan Peng">
@@ -317,7 +317,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">SQL语句（三）——存储过程与存储函数</h1>
+          <h1 class="post-title" itemprop="name headline">Java并发</h1>
         
 
         <div class="post-meta">
@@ -327,10 +327,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">投稿日</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-12T00:26:58+08:00">
-                2018-08-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-17T19:20:03+08:00">
+                2018-09-17
               </time>
             
 
@@ -352,8 +352,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
+                  <a href="/categories/Java并发/" itemprop="url" rel="index">
+                    <span itemprop="name">Java并发</span>
                   </a>
                 </span>
 
@@ -389,15 +389,33 @@
       
 
       
-        <h1 id="一、常用函数"><a href="#一、常用函数" class="headerlink" title="一、常用函数"></a>一、常用函数</h1><p>1.日期函数<br>1）CURDATE()：返回当前日期<br>2）CURTIME()：返回当前时间<br>3）MONTH(d)：返回日期d中的月份，范围1~12<br>//从t_ta表中获取当前日期，时间，月份（月份设置别名m）<br>SELECT CURDATE(), CURTIME(), MONTH(birthday) AS m FROM t_ta;<br>2.字符串函数<br>1）CHAR_LENGTH(s)：返回字符串s的字符数<br>SELECT CHAR_LENGTH(userName) FROM t_book;<br>2）UPPER(s)：把字符串s中所有字母变成大写<br>3）LOWER(s)<br>3.数学函数<br>1）ABS(x)<br>SELECT ABA(num) FROM t_book;<br>2）SQRT(x)<br>3）MOD(x,y)：求余<br>4.加密函数<br>1）PASSWORD(str)：对用户的密码进行加密，不可逆<br>INSERT INTO t_book VALUES (NULL,.., PASSWORD(‘123456’));<br>2）MD5(str)：普通加密，不可逆<br>3）ENCODE(str, pswd_str)：加密函数，结果是一个二进制数，必须使用BLOB类型的字段来保存它。pswd_str为加密解密的钥匙<br>4）DECODE(crypt_str, pswd_str)：解密函数</p>
-<h1 id="二、存储过程和存储函数"><a href="#二、存储过程和存储函数" class="headerlink" title="二、存储过程和存储函数"></a>二、存储过程和存储函数</h1><p>存储过程和存储函数是在数据库中定义的一些SQL语句的集合，然后直接调用这些存储过程和函数来执行已经定义好的SQL语句。存储过程和函数可以避免开发人员重复编写相同的SQL语句，而且它们是在Mysql服务器中存储和执行的，可以减少客户端和服务器端的数据传输。<br>1.创建存储过程<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">CREATE PROCEDURE sp_name ([pro_parameter[,…]])</div><div class="line">	[存储过程的特性] SQL代码内容;</div></pre></td></tr></table></figure></p>
-<p>其中<br>代码内容可以用BEGIN…END来标识SQL代码内容的开始和结束。<br>pro_parameter存储过程参数列表，其中的每个参数由3部分组成：输入输出类型、参数名称和参数类型。其格式为[IN, OUT|INOUT] param_name type。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">//传入bookTypeId，查当前图书类别下有多少图书</div><div class="line">DELIMITER &amp;&amp; //begin end中有多条语句时，为了防止遇到分号就执行，需要有定界符（分隔符）</div><div class="line">CREATE PROCDURE pro_getBookNumByBookTypeId ( IN bTI INT, OUT count_num INT)</div><div class="line">	READ SQL DATA</div><div class="line">	BEGIN</div><div class="line">		SELECT COUNT(*) INTO count_num FROM t_book WHRER bookTypeId = bTI;</div><div class="line">	END</div><div class="line">	&amp;&amp;</div><div class="line">DELIMETER ; //此行必须与第一行的DELIMETER对齐，且与分号间有空格，否则报错。</div><div class="line">//调用procedure</div><div class="line">CALL pro_book(1, @total); //输入参数和输出参数，@表示全局变量</div><div class="line">//显示遍历变量</div><div class="line">SELECT @total;</div></pre></td></tr></table></figure></p>
-<p>2.创建存储函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">CREATE FUNCTION sp_name ([func_parameter[,…]])</div><div class="line">	RETURNS 类型</div><div class="line">	[存储过程的特性] SQL代码内容;</div><div class="line">//查找id为bookId的图书名</div><div class="line">DELIMETER &amp;&amp;</div><div class="line">CREATE FUNCTION func_book (bookId INT)</div><div class="line">	RETURN VACHAR(2)</div><div class="line">BEGIN</div><div class="line">		RETURN (SELECT bookName FROM t_book WHERE id = bookId);</div><div class="line">END</div><div class="line">&amp;&amp;</div><div class="line">DELIMETER ;</div><div class="line">//调用</div><div class="line">SELECT func_book(1);</div></pre></td></tr></table></figure></p>
-<p>1）变量的使用<br>（1）定义变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">DECLARE var_name […] type [DEFAULT value];</div><div class="line">//例</div><div class="line">DELIMTER &amp;&amp;</div><div class="line">CREATE PROCEDURE pro_user()</div><div class="line">		BEGIN</div><div class="line">			DECLARE a, b VARCHAR(20);</div><div class="line">			SET a = ‘数学’, b = ‘123456’;</div><div class="line">			INSERT INTO t_book VALUES (NULL, a, b);</div><div class="line">		END</div><div class="line">		&amp;&amp;</div><div class="line">DELIMETER ;</div><div class="line">CALL pro_user;</div></pre></td></tr></table></figure></p>
-<p>（2）为变量赋值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">SET var_name = expr [var_name = expr]</div><div class="line">		FROM 表名 WHERE 条件表达式;</div><div class="line">SELECT col_name[,…] INTO var_name [,…]</div><div class="line">	 	FROM 表名 WHERE 条件表达式;</div></pre></td></tr></table></figure></p>
-<p>2）游标的使用<br>查询语句可能查询出多条记录，在存储过程和函数中使用游标来逐条读取查询结果集中的记录。包括声明游标、打开游标、使用游标和关闭游标。游标必须声明在处理程序之前，并且声明在变量和条件之前。<br>（1）声明游标<br>DECLARE cursor_name CURSOR FOR 选择语句;<br>（2）打开游标<br>OPEN cursor_nam;<br>（3）使用游标<br>FETCH cursor_name INTO var_name [,var_name,…];<br>（4）关闭游标<br>18-19讲<br>3.调<br>CALL sp_name ([parameter[,…]]);<br>func_name ([parameter[,…]]);<br>4.查看<br>1）查看状态<br>SHOW {PROCEDUR|FUNCTION} STATUS [LIKE ‘pattern’];<br>2）查看定义<br>SHOW CREATE {PROCEDUR|FUNCTION} sp_name;<br>3）从information_schema.Routines表中查看存储过程和函数信息。<br>5.修改<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ALTER &#123;PROCEDURE|FUNCTION&#125; sp_name [characteristic…]</div><div class="line">characteristic:</div><div class="line">&#123;CONSTAINT SQL|NO SQL|READS SQL DATA|MODIFIES SQL DATA&#125;</div><div class="line">|SQL SECURITY &#123;DEFINER|INVOKER&#125;</div><div class="line">|CONMMENT ‘string’</div></pre></td></tr></table></figure></p>
-<p>6.删除<br>DROP {PROCEDURE|FUNCTION} sp_name;</p>
-<h1 id="三、数据备份与还原"><a href="#三、数据备份与还原" class="headerlink" title="三、数据备份与还原"></a>三、数据备份与还原</h1><p>1.数据备份<br>1）用命令<br>（2）先打开命令窗口cmd，切换到mysqldum.exe所在文件夹：<br>cd D:\Software\MySQL\MySQL Server 5.1\bin<br>（2）输入导出命令<br>mysqldump –u username –p dbname table1 table2 … &gt; BackupName.sql;<br>例：输入 mysqldump –u root –p db_book &gt; d:\db_book.sql<br>2）使用SQLyog<br>右击数据库-&gt; 备份/导出 -&gt; 备份数据库，存储到SQL<br>2.数据还原<br>1）<br>2）使用SQLyog还原数据库<br>先创建一个与需要导入的数据库同名的空数据库；<br>右击root@localhost或右击任一数据库 -&gt; 导入 -&gt; 执行SQL脚本；<br>若没有导入成功，可用Notepad++打开.sql文件，查看以下两行中的数据库名是否与所创建的空数据库同名。</p>
+        <p>一、几个概念</p>
+<ol>
+<li><p>同步（synchronous）和异步（asynchronous）<br>同步和异步通常用来形容异常方法的调用。同步方法一旦开始，调用者必须等到方法调用完成后，才能进行后续行为。而异步方法更像是一个消息的传递，一旦开始，方法调用会立即返回，调用者可以继续后面的行为，而异步方法通常会在另一个线程真实地执行，整个过程不会阻碍调用者的执行。</p>
+</li>
+<li><p>并发（concurrent）和并行（parallelism）<br>它们都表示多个任何可以一起执行，但偏重点不一样。并行是多个任务同时执行，而并发是多个任务交替执行，而多个任务间可能还是串行的。</p>
+</li>
+</ol>
+<p>实际上，如果系统内只有一个CPU，由于一个CPU只能执行一条指令，所以多进程或多线程任务是不可能并行执行的，只能是并发。真实的并行只存在在多个CPU中。</p>
+<ol>
+<li>临界区<br>临界区用来表示一组共享数据，它可以被多个线程使用。每次只有一个线程来使用它，一旦临界资源被占用，其它线程若想要使用这个资源，只有等待。</li>
+<li>阻塞（blocking）和非阻塞（non-blocking）<br>阻塞和非阻塞通常用来形容线程之间的相互影响。如一个线程占用了一个临界资源，而其他线程想要访问这个资源，只有等待，等待会导致线程挂起，这种情况就是阻塞。而非阻塞强调一个线程可以妨碍其他线程的执行。</li>
+<li>死锁（deadlock）、饥饿（starvation）和活锁（livelock）<br>死锁、饥饿和活锁都属于多线程的活跃性问题。<br>1）    死锁<br>（1）死锁的产生：互斥；请求和保持；不剥夺；环路条件。<br>（2）处理死锁：<br>预防死锁：破坏产生死锁的条件2、3、4中任意一个或多个；<br>避免死锁：防止进入不安全状态，即下一次线程调度存在一个安全序列，满足每个进程对资源的最大需求，使每个进程都可顺利地完成。<br>检测和解除死锁。<br>2）    饥饿<br>饥饿是指一个或多个线程因为种种原因无法获得所需资源，如线程优先级太低，导致高优先级线程不断抢占它需要的资源。饥饿与死锁的不同在于，饥饿在未来一段时间内还是可以解决的。<br>3）    活锁<br>活锁就是两个线程主动将资源释放给他人使用，导致最终没有一个线程获得资源从而正常执行。<br>二、与并行有关的两个定理</li>
+<li><p>Amdahl定理<br>Amdahl定义了串行系统并行化后的加速比的计算公式和理论上限。<br>加速比=优化前系统耗时/优化后系统耗时<br>加速比越高，表明优化效果越明显。<br>以下是Andahl公式的推导，T1表示只有一个处理器时的耗时，Tn表示有n个处理器时的耗时。F是程序中只能执行串行执行的比例。<br>加速比=1/[F+(1/n(1-F))]<br>极端情况下，当n趋近与无穷，得到加速比的理论极限：<br>加速比=1/F<br>因此只增加CPU的数量而不降低串行化比重，也是无法提高系统系统的。</p>
+</li>
+<li><p>Gustafson定理<br>Gustafson也试图说明加速比、处理器个数和串行比之间的关系。但与Amdahl定理的角度不同，它们之间是不矛盾的。Amdahl定理强调，当串行比例一定时，加速比是有上限的。而Gustafson定理关心的是，如果可被并行化的代码所占比重足够多，则加速比就能随着CPU的数量线性增长。<br>volatile：轻量级的synchronized，它在多处理器开发中保证了共享变量的“可见性”。可见性的意思是当一个线程修改一个共享变量时，另外一个线程能读到这个修改的值。</p>
+</li>
+<li><p>新建线程<br>new创建一个线程，并且start()。<br>start()后会自动调用run()方法开始执行线程（注意不需要显式调用run()方法）。<br>如果没有特别的需要，可以通过继承Thread，重载run()方法定义线程。但Java是单继承的，所以继承也是一种很宝贵的资源，可以使用Runnable接口实现同样的操作。Runnable接口是一个单方法接口，它只有一个run()方法：<br>public interface Runnable{<br>public abstract run();<br>}<br>默认的Thread.run()调用的是内部的Runnable接口，因此使用Runnable接口告诉线程应该做什么更合理。Thread类中的一个非常重要的构造方法：<br>public Thread(Runnable target){<br>if (target !=  null){<br>target.run();<br>}<br>}<br>可见，Thread类的这个构造方法传入一个Runnable接口的实例，在调用start()方法时，新的线程就会执行Ruannable.run()方法。</p>
+</li>
+<li>线程终止<br>不要用stop()方法，一般自己定义一个结束线程的方法。</li>
+<li>线程中断<br>严格地讲，线程中断并不会使线程立即退出，而是给线程发送一个通知，告知目标线程，有人希望你退出啦！<br>public void Thread.interrupted() //中断线程，并设置中断标志位<br>public boolean Thread.isInterrupted() //判断是否被中断<br>public static boolean Thread.interrupted() //判断是否被中断，并清除当前中断状态</li>
+</ol>
+<p>Thread.sleep()函数<br>public static native void sleep(long millis) throws InterruptedException<br>Thread.sleep()方法会让当前线程休眠若干时间，它会抛出一个InterruptedException异常，这不是运行时异常，因此程序必须捕获并且处理它。当线程在sleep()休眠时被中断，就会抛出这个异常。<br>Thread.sleep()方法由于中断而抛出异常，它会清除中断标志位，因此为了下次能捕获这个中断，在异常处理中，需要再次设置中断标志位。</p>
+<ol>
+<li>wait和notify<br>为了支持多线程之间的协作，JDK提供了wait()方法和notify()方法，它们是属于Object类，因此所有对象都可以调用这两个方法。<br>如果线程调用了Object.wait()方法，它就会进入object对象的等待队列，但并不是先等待的线程先执行，这种选择完全是随机的。<br>无论是wait()还是notify()，都需要先获得目标对象的监视器。</li>
+<li>线程挂起suspend()和继续执行resume()<br>suspend()和resume()是一对相反的操作。不推荐使用suspend()挂起线程的原因是，suspend()在导致线程暂停的同时，并不会去释放任何的锁资源，会导致其他线程想要访问被它占用的锁时，都无法继续运行。</li>
+<li>等待线程结束join()和谦让yield()<br>当一个线程的输入可能要依赖于</li>
+</ol>
 
       
     </div>
@@ -422,8 +440,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/12/Tech/Sql/SQL语句（二）——视图与触发器/" rel="next" title="SQL语句（二）——视图与触发器">
-                <i class="fa fa-chevron-left"></i> SQL语句（二）——视图与触发器
+              <a href="/2018/09/16/Tech/操作系统/操作系统（四）——存储器管理/" rel="next" title="操作系统（四）——存储器管理">
+                <i class="fa fa-chevron-left"></i> 操作系统（四）——存储器管理
               </a>
             
           </div>
@@ -432,8 +450,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/12/Tech/HTML/" rel="prev" title="HTML">
-                HTML <i class="fa fa-chevron-right"></i>
+              <a href="/2018/11/06/Tech/笔试面试/笔试面试——校招结束/" rel="prev" title="笔试面试——校招结束">
+                笔试面试——校招结束 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -486,17 +504,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            見出し
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            概要
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -514,7 +523,7 @@
               <a href="/archives">
             
                 <span class="site-state-item-count">155</span>
-                <span class="site-state-item-name">ポスト</span>
+                <span class="site-state-item-name">posts</span>
               </a>
             </div>
           
@@ -525,7 +534,7 @@
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
                 <span class="site-state-item-count">20</span>
-                <span class="site-state-item-name">カテゴリ</span>
+                <span class="site-state-item-name">categories</span>
               </a>
             </div>
           
@@ -536,7 +545,7 @@
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">7</span>
-                <span class="site-state-item-name">タグ</span>
+                <span class="site-state-item-name">tags</span>
               
             </div>
            -->
@@ -591,22 +600,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、常用函数"><span class="nav-number">1.</span> <span class="nav-text">一、常用函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、存储过程和存储函数"><span class="nav-number">2.</span> <span class="nav-text">二、存储过程和存储函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、数据备份与还原"><span class="nav-number">3.</span> <span class="nav-text">三、数据备份与还原</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

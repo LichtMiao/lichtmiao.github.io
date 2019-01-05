@@ -101,17 +101,17 @@
 
 
 
-<meta name="description" content="一、安装MySQL 5.1选择custom修改安装地址，然后一直默认选项next，但注意以下需要选择utf8 GBK格式，否则会出现中文乱码。（后面也可以在my.ini文件中修改） 设置密码，注意不要设置current root password，new root password我设置为123456 二、安装SQLyogSQLyog将数据、表以图形的格式展现。 三、打开SQLyog新建连接 -&amp;">
+<meta name="description" content="主要参考MySQL索引背后的数据结构及算法原理 一、为什么要B树一般来说，索引本身也很大一般不存在内存中，而是以索引文件的形式存储在磁盘上。 1.    主存存取原理目前计算机使用的主存基本都是随机读写存储器（RAM），其抽象结构如下： 主存的存取过程如下：1）读：当系统需要读取主存时，则将地址信号放到地址总线上传给主存，主存读到地址信号后，解析信号并定位到指定存储单元，然后将此存储单元数据放到数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL——Mysql+SQLyog安装配置">
-<meta property="og:url" content="https://lichtmiao.github.io/2018/08/12/Tech/Sql/MySQL——Mysql-SQLyog安装配置/index.html">
+<meta property="og:title" content="数据库——B树">
+<meta property="og:url" content="https://lichtmiao.github.io/2018/09/03/Tech/数据库/数据库——B树/index.html">
 <meta property="og:site_name" content="LichtMiao&#39;s Blog">
-<meta property="og:description" content="一、安装MySQL 5.1选择custom修改安装地址，然后一直默认选项next，但注意以下需要选择utf8 GBK格式，否则会出现中文乱码。（后面也可以在my.ini文件中修改） 设置密码，注意不要设置current root password，new root password我设置为123456 二、安装SQLyogSQLyog将数据、表以图形的格式展现。 三、打开SQLyog新建连接 -&amp;">
+<meta property="og:description" content="主要参考MySQL索引背后的数据结构及算法原理 一、为什么要B树一般来说，索引本身也很大一般不存在内存中，而是以索引文件的形式存储在磁盘上。 1.    主存存取原理目前计算机使用的主存基本都是随机读写存储器（RAM），其抽象结构如下： 主存的存取过程如下：1）读：当系统需要读取主存时，则将地址信号放到地址总线上传给主存，主存读到地址信号后，解析信号并定位到指定存储单元，然后将此存储单元数据放到数">
 <meta property="og:locale" content="en.yml">
-<meta property="og:updated_time" content="2018-09-11T02:58:54.463Z">
+<meta property="og:updated_time" content="2018-09-11T02:58:26.056Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MySQL——Mysql+SQLyog安装配置">
-<meta name="twitter:description" content="一、安装MySQL 5.1选择custom修改安装地址，然后一直默认选项next，但注意以下需要选择utf8 GBK格式，否则会出现中文乱码。（后面也可以在my.ini文件中修改） 设置密码，注意不要设置current root password，new root password我设置为123456 二、安装SQLyogSQLyog将数据、表以图形的格式展现。 三、打开SQLyog新建连接 -&amp;">
+<meta name="twitter:title" content="数据库——B树">
+<meta name="twitter:description" content="主要参考MySQL索引背后的数据结构及算法原理 一、为什么要B树一般来说，索引本身也很大一般不存在内存中，而是以索引文件的形式存储在磁盘上。 1.    主存存取原理目前计算机使用的主存基本都是随机读写存储器（RAM），其抽象结构如下： 主存的存取过程如下：1）读：当系统需要读取主存时，则将地址信号放到地址总线上传给主存，主存读到地址信号后，解析信号并定位到指定存储单元，然后将此存储单元数据放到数">
 
 
 
@@ -141,7 +141,7 @@
 
 
 
-  <link rel="canonical" href="https://lichtmiao.github.io/2018/08/12/Tech/Sql/MySQL——Mysql-SQLyog安装配置/"/>
+  <link rel="canonical" href="https://lichtmiao.github.io/2018/09/03/Tech/数据库/数据库——B树/"/>
 
 
 
@@ -149,7 +149,7 @@
 
 <!-- 网页加载条 -->
 <script src="https://neveryu.github.io/js/src/pace.min.js"></script>
-  <title>MySQL——Mysql+SQLyog安装配置 | LichtMiao's Blog</title>
+  <title>数据库——B树 | LichtMiao's Blog</title>
   
 
 
@@ -242,7 +242,7 @@
             
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
             
-            検索
+            Search
           </a>
         </li>
       
@@ -300,7 +300,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lichtmiao.github.io/2018/08/12/Tech/Sql/MySQL——Mysql-SQLyog安装配置/">
+    <link itemprop="mainEntityOfPage" href="https://lichtmiao.github.io/2018/09/03/Tech/数据库/数据库——B树/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Juan Peng">
@@ -317,7 +317,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MySQL——Mysql+SQLyog安装配置</h1>
+          <h1 class="post-title" itemprop="name headline">数据库——B树</h1>
         
 
         <div class="post-meta">
@@ -327,10 +327,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">投稿日</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-12T00:14:27+08:00">
-                2018-08-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-03T00:45:39+08:00">
+                2018-09-03
               </time>
             
 
@@ -389,11 +389,24 @@
       
 
       
-        <h1 id="一、安装MySQL-5-1"><a href="#一、安装MySQL-5-1" class="headerlink" title="一、安装MySQL 5.1"></a>一、安装MySQL 5.1</h1><p>选择custom修改安装地址，然后一直默认选项next，但注意以下需要选择utf8 GBK格式，否则会出现中文乱码。<br>（后面也可以在my.ini文件中修改）</p>
-<p>设置密码，注意不要设置current root password，new root password我设置为123456</p>
-<h1 id="二、安装SQLyog"><a href="#二、安装SQLyog" class="headerlink" title="二、安装SQLyog"></a>二、安装SQLyog</h1><p>SQLyog将数据、表以图形的格式展现。</p>
-<h1 id="三、打开SQLyog"><a href="#三、打开SQLyog" class="headerlink" title="三、打开SQLyog"></a>三、打开SQLyog</h1><p>新建连接 -&gt; 输入密码123456</p>
-<h1 id="四、注意事项"><a href="#四、注意事项" class="headerlink" title="四、注意事项"></a>四、注意事项</h1><p>一定要启动了Mysql服务后，才能使用SQLyog，不然不会连接成功<br>出错：Mysql输入密码后闪退<br>解决：首先要查看 MySQL 服务是否启动，如果 MySQL 服务没有启动，那么大多数情况，当咱们手动启动 MySQL 服务之后，上述问题就可以得到解决；如果 MySQL 服务已经启动，但还是出现了闪退现象，这就需要咱们修改相关配置。<br>打开计算机，搜索服务，我们看大Mysql的服务未启动，将其设置为启动即可。</p>
+        <p>主要参考<a href="https://www.kancloud.cn/kancloud/theory-of-mysql-index/41844" target="_blank" rel="external">MySQL索引背后的数据结构及算法原理</a></p>
+<h1 id="一、为什么要B树"><a href="#一、为什么要B树" class="headerlink" title="一、为什么要B树"></a>一、为什么要B树</h1><p>一般来说，索引本身也很大一般不存在内存中，而是以索引文件的形式存储在磁盘上。</p>
+<h2 id="1-主存存取原理"><a href="#1-主存存取原理" class="headerlink" title="1.    主存存取原理"></a>1.    主存存取原理</h2><p>目前计算机使用的主存基本都是随机读写存储器（RAM），其抽象结构如下：</p>
+<p>主存的存取过程如下：<br>1）读：当系统需要读取主存时，则将地址信号放到地址总线上传给主存，主存读到地址信号后，解析信号并定位到指定存储单元，然后将此存储单元数据放到数据总线上，供其它部件读取。<br>2）写：写主存的过程类似，系统将要写入单元地址和数据分别放在地址总线和数据总线上，主存读取两个总线的内容，做相应的写操作。</p>
+<h2 id="2-磁盘存取原理"><a href="#2-磁盘存取原理" class="headerlink" title="2.    磁盘存取原理"></a>2.    磁盘存取原理</h2><p>磁盘中有两个机械运动的部分，分别是盘片旋转和磁臂移动。盘片旋转就是我们市面上所提到的多少转每分钟，而磁盘移动则是在盘片旋转到指定位置以后，移动磁臂后开始进行数据的读写。那么这就存在一个定位到磁盘中的块的过程，而定位是磁盘的存取中花费时间比较大的一块，毕竟机械运动花费的时候要远远大于电子运动的时间。当大规模数据存储到磁盘中的时候，显然定位是一个非常花费时间的过程，但是我们可以通过B树进行优化，提高磁盘读取时定位的效率。</p>
+<h2 id="3-局部性原理与磁盘预读"><a href="#3-局部性原理与磁盘预读" class="headerlink" title="3.    局部性原理与磁盘预读"></a>3.    局部性原理与磁盘预读</h2><p>由于存储介质的特性，磁盘本身存取就比主存慢很多，再加上机械运动耗费，磁盘的存取速度往往是主存的几百分之一，因此为了提高效率，要尽量减少磁盘I/O。为了达到这个目的，磁盘往往不是严格按需读取，而是每次都会预读，即使只需要一个字节，磁盘也会从这个位置开始，顺序向后读取一定长度的数据放入内存。这样做的理论依据是计算机科学中著名的局部性原理。程序运行期间所需要的数据通常比较集中。<br>局部性原理：当一个数据被用到时，其附近的数据也通常会马上被使用。<br>由于磁盘顺序读取的效率很高（不需要寻道时间，只需很少的旋转时间），因此对于具有局部性的程序来说，预读可以提高I/O效率。</p>
+<p>为什么B类树可以进行优化呢？我们可以根据B类树的特点，构造一个多阶的B类树，然后在尽量多的在结点上存储相关的信息，保证层数尽量的少，以便后面我们可以更快的找到信息，磁盘的I/O操作也少一些，而且B类树是平衡树，每个结点到叶子结点的高度都是相同，这也保证了每个查询是稳定的。B树上大部分的操作所需要的磁盘存取次数和B树的高度是成正比的，在B树中可以检查多个子结点，由于在一棵树中检查任意一个结点都需要一次磁盘访问，所以B树避免了大量的磁盘访问。</p>
+<h1 id="二、B-树"><a href="#二、B-树" class="headerlink" title="二、B-树"></a>二、B-树</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h2><p>1)    一个 m 阶的B-树满足以下条件：<br>2)    每个结点至多拥有m棵子树；<br>3)    根结点至少拥有两颗子树（存在子树的情况下）；<br>4)    除了根结点以外，其余每个分支结点至少拥有 m/2 棵子树；<br>5)    所有的叶结点都在同一层上；所有叶节点具有相同的深度，也就是说 B-Tree 是平衡的；<br>6)    有 k 棵子树的分支结点则存在 k-1 个关键码（子树在关键码之间生成），关键码按照递增次序进行排列；<br>7)    关键字数量需要满足ceil(m/2)-1 &lt;= n &lt;= m-1；（ceil向下取整）</p>
+<h2 id="2-插入"><a href="#2-插入" class="headerlink" title="2.    插入"></a>2.    插入</h2><p>假定对高度为h的m阶B-树进行操作。<br>新结点一般插在第h层，通过搜索找到对应的结点进行插入，那么根据即将插入的结点的数量又分为下面几种情况。<br>1）如果该结点的关键字个数没有到达m-1个，那么直接插入即可；<br>2）如果该结点的关键字个数已经到达了m-1个，那么根据B树的性质显然无法满足，需要将其进行分裂。分裂的规则是该结点分成两半，将中间的关键字进行提升，加入到父亲结点中，但是这又可能存在父亲结点也满员的情况，则不得不向上进行回溯，甚至是要对根结点进行分裂，那么整棵树都加了一层。</p>
+<h2 id="3-删除"><a href="#3-删除" class="headerlink" title="3.    删除"></a>3.    删除</h2><p>同样的，我们需要先通过搜索找到相应的值，存在则进行删除，需要考虑删除以后的情况，<br>1）如果该结点拥有关键字数量仍然满足B树性质，则不做任何处理；<br>2）如果该结点在删除关键字以后不满足B树的性质（关键字没有到达ceil(m/2)-1的数量），则需要向兄弟结点借关键字，这有分为兄弟结点的关键字数量是否足够的情况。<br>（1）如果兄弟结点的关键字足够借给该结点，则过程为将父亲结点的关键字下移，兄弟结点的关键字上移；<br>（2）如果兄弟结点的关键字在借出去以后也无法满足情况，即之前兄弟结点的关键字的数量为ceil(m/2)-1，借的一方的关键字数量为ceil(m/2)-2的情况，那么我们可以将该结点合并到兄弟结点中，合并之后的子结点数量少了一个，则需要将父亲结点的关键字下放，如果父亲结点不满足性质，则向上回溯；<br>3）其余情况参照BST中的删除。</p>
+<h1 id="三、B-树"><a href="#三、B-树" class="headerlink" title="三、B+树"></a>三、B+树</h1><p>B-树因为其分支结点同样存储着数据，我们要找到具体的数据，需要进行一次中序遍历按序来扫。而B+树的数据都存储在叶子结点中，分支结点均为索引，方便扫库，只需要扫一遍叶子结点即可。</p>
+<h2 id="1-简介-1"><a href="#1-简介-1" class="headerlink" title="1.    简介"></a>1.    简介</h2><p>以一个m阶树为例：<br>1)    根结点只有一个，分支数量范围为[2，m]；<br>2)    分支结点，每个结点包含分支数范围为[ceil(m/2), m]；<br>3)    分支结点的关键字数量等于其子分支的数量减一，关键字的数量范围为[ceil(m/2)-1, m-1]，关键字顺序递增；<br>4)    所有叶子结点都在同一层。</p>
+<h2 id="2-操作"><a href="#2-操作" class="headerlink" title="2.    操作"></a>2.    操作</h2><p>其操作和B树的操作是类似的，不过需要注意的是，在增加值的时候，如果存在满员的情况，将选择结点中的值作为新的索引，还有在删除值的时候，索引中的关键字并不会删除，也不会存在父亲结点的关键字下沉的情况，因为那只是索引。</p>
+<h1 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h1><p>B树：二叉树，每个结点只存储一个关键字，等于则命中，小于走左结点，大于走右结点。<br>所以通常B-树用于文件索引，而B+树则常用于数据库索引。</p>
+<h2 id="1-关键字的数量不同"><a href="#1-关键字的数量不同" class="headerlink" title="1.    关键字的数量不同"></a>1.    关键字的数量不同</h2><p>B+树中分支结点有m个关键字，其叶子结点也有m个，其关键字只是起到了一个索引的作用（由于是索引，所以有多少索引就有多少的子节点数据），但是B-树虽然也有m个子结点，但是其只拥有m-1个关键字。</p>
+<h2 id="2-存储的位置不同"><a href="#2-存储的位置不同" class="headerlink" title="2.    存储的位置不同"></a>2.    存储的位置不同</h2><p>B+树中的数据都存储在叶子结点上，也就是其所有叶子结点的数据组合起来就是完整的数据；但是B-树的数据存储在每一个结点中，并不仅仅存储在叶子结点上。</p>
+<h2 id="3-分支结点的构造不同"><a href="#3-分支结点的构造不同" class="headerlink" title="3.    分支结点的构造不同"></a>3.    分支结点的构造不同</h2><p>B+树的分支结点仅仅存储着关键字信息和儿子的指针（这里的指针指的是磁盘块的偏移量），也就是说内部结点仅仅包含着索引信息。</p>
+<h2 id="4-查询不同"><a href="#4-查询不同" class="headerlink" title="4.    查询不同"></a>4.    查询不同</h2><p>B-树在找到具体的数值以后，则结束，而B+树则需要通过索引找到叶子结点中的数据才结束，也就是说B+树的搜索过程中走了一条从根结点到叶子结点的路径。</p>
 
       
     </div>
@@ -418,8 +431,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/04/Essay/上古异闻录/" rel="next" title="上古异闻录">
-                <i class="fa fa-chevron-left"></i> 上古异闻录
+              <a href="/2018/09/03/Tech/数据库/MySQL——基础/" rel="next" title="MySQL——基础">
+                <i class="fa fa-chevron-left"></i> MySQL——基础
               </a>
             
           </div>
@@ -428,8 +441,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/12/Tech/Sql/SQL语句（一）——创建与查询/" rel="prev" title="SQL语句（一）——创建与查询">
-                SQL语句（一）——创建与查询 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/09/03/Tech/Java/Java基础/Java基础——J2SE复习/" rel="prev" title="Java基础——J2SE复习">
+                Java基础——J2SE复习 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -484,10 +497,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            見出し
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            概要
+            Overview
           </li>
         </ul>
       
@@ -510,7 +523,7 @@
               <a href="/archives">
             
                 <span class="site-state-item-count">155</span>
-                <span class="site-state-item-name">ポスト</span>
+                <span class="site-state-item-name">posts</span>
               </a>
             </div>
           
@@ -521,7 +534,7 @@
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
                 <span class="site-state-item-count">20</span>
-                <span class="site-state-item-name">カテゴリ</span>
+                <span class="site-state-item-name">categories</span>
               </a>
             </div>
           
@@ -532,7 +545,7 @@
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">7</span>
-                <span class="site-state-item-name">タグ</span>
+                <span class="site-state-item-name">tags</span>
               
             </div>
            -->
@@ -597,7 +610,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、安装MySQL-5-1"><span class="nav-number">1.</span> <span class="nav-text">一、安装MySQL 5.1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、安装SQLyog"><span class="nav-number">2.</span> <span class="nav-text">二、安装SQLyog</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、打开SQLyog"><span class="nav-number">3.</span> <span class="nav-text">三、打开SQLyog</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、注意事项"><span class="nav-number">4.</span> <span class="nav-text">四、注意事项</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、为什么要B树"><span class="nav-number">1.</span> <span class="nav-text">一、为什么要B树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-主存存取原理"><span class="nav-number">1.1.</span> <span class="nav-text">1.    主存存取原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-磁盘存取原理"><span class="nav-number">1.2.</span> <span class="nav-text">2.    磁盘存取原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-局部性原理与磁盘预读"><span class="nav-number">1.3.</span> <span class="nav-text">3.    局部性原理与磁盘预读</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、B-树"><span class="nav-number">2.</span> <span class="nav-text">二、B-树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-简介"><span class="nav-number">2.1.</span> <span class="nav-text">1. 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-插入"><span class="nav-number">2.2.</span> <span class="nav-text">2.    插入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-删除"><span class="nav-number">2.3.</span> <span class="nav-text">3.    删除</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、B-树"><span class="nav-number">3.</span> <span class="nav-text">三、B+树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-简介-1"><span class="nav-number">3.1.</span> <span class="nav-text">1.    简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-操作"><span class="nav-number">3.2.</span> <span class="nav-text">2.    操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、总结"><span class="nav-number">4.</span> <span class="nav-text">四、总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-关键字的数量不同"><span class="nav-number">4.1.</span> <span class="nav-text">1.    关键字的数量不同</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-存储的位置不同"><span class="nav-number">4.2.</span> <span class="nav-text">2.    存储的位置不同</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-分支结点的构造不同"><span class="nav-number">4.3.</span> <span class="nav-text">3.    分支结点的构造不同</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-查询不同"><span class="nav-number">4.4.</span> <span class="nav-text">4.    查询不同</span></a></li></ol></li></ol></div>
             
 
           </div>
