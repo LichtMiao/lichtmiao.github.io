@@ -83,7 +83,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Learning, Life" />
+  <meta name="keywords" content="观察者模式," />
 
 
 
@@ -101,17 +101,18 @@
 
 
 
-<meta name="description" content="面向对象设计原则是为了支持可维护性复用而诞生。常见的7种面向对象的设计原则：单一职责原则、开闭原则、里氏代换原则、依赖倒转原则、接口隔离原则、合成复用原则、迪米特法则。 1.单一职责原则（single responsibility principle, SRP）它用于控制类的粒度大小，一个类只负责一个功能领域的相应职责。实现高内聚、低耦合。 2.开闭原则（open-close principle,">
+<meta name="description" content="观察者模式又称监听者模式，它广泛应用在图形化编程中。实现观察者模式比较直观的一种是使用“注册、通知、撤销注册”的形式：（1）注册观察者将自己注册到目标对象中，目标对象将观察者放在一个容器里。为防止观察者重复，一般用HashSet来保存观察者的引用（Set集合无序、不重复）。（2）通知目标对象发生了某种变化（如按钮被单击），从容器中得到所有注册过的观察者，将变化通知给观察者。（3）撤销注册观察者告诉">
+<meta name="keywords" content="观察者模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设计模式（一）——面向对象设计原则">
-<meta property="og:url" content="https://lichtmiao.github.io/2018/08/23/Tech/设计模式/设计模式（一）——面向对象设计原则/index.html">
+<meta property="og:title" content="观察者模式">
+<meta property="og:url" content="https://lichtmiao.github.io/2018/09/04/Tech/Design Pattern/观察者模式/index.html">
 <meta property="og:site_name" content="LichtMiao&#39;s Blog">
-<meta property="og:description" content="面向对象设计原则是为了支持可维护性复用而诞生。常见的7种面向对象的设计原则：单一职责原则、开闭原则、里氏代换原则、依赖倒转原则、接口隔离原则、合成复用原则、迪米特法则。 1.单一职责原则（single responsibility principle, SRP）它用于控制类的粒度大小，一个类只负责一个功能领域的相应职责。实现高内聚、低耦合。 2.开闭原则（open-close principle,">
+<meta property="og:description" content="观察者模式又称监听者模式，它广泛应用在图形化编程中。实现观察者模式比较直观的一种是使用“注册、通知、撤销注册”的形式：（1）注册观察者将自己注册到目标对象中，目标对象将观察者放在一个容器里。为防止观察者重复，一般用HashSet来保存观察者的引用（Set集合无序、不重复）。（2）通知目标对象发生了某种变化（如按钮被单击），从容器中得到所有注册过的观察者，将变化通知给观察者。（3）撤销注册观察者告诉">
 <meta property="og:locale" content="en.yml">
-<meta property="og:updated_time" content="2018-09-03T03:06:55.321Z">
+<meta property="og:updated_time" content="2019-01-06T03:00:33.413Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="设计模式（一）——面向对象设计原则">
-<meta name="twitter:description" content="面向对象设计原则是为了支持可维护性复用而诞生。常见的7种面向对象的设计原则：单一职责原则、开闭原则、里氏代换原则、依赖倒转原则、接口隔离原则、合成复用原则、迪米特法则。 1.单一职责原则（single responsibility principle, SRP）它用于控制类的粒度大小，一个类只负责一个功能领域的相应职责。实现高内聚、低耦合。 2.开闭原则（open-close principle,">
+<meta name="twitter:title" content="观察者模式">
+<meta name="twitter:description" content="观察者模式又称监听者模式，它广泛应用在图形化编程中。实现观察者模式比较直观的一种是使用“注册、通知、撤销注册”的形式：（1）注册观察者将自己注册到目标对象中，目标对象将观察者放在一个容器里。为防止观察者重复，一般用HashSet来保存观察者的引用（Set集合无序、不重复）。（2）通知目标对象发生了某种变化（如按钮被单击），从容器中得到所有注册过的观察者，将变化通知给观察者。（3）撤销注册观察者告诉">
 
 
 
@@ -141,7 +142,7 @@
 
 
 
-  <link rel="canonical" href="https://lichtmiao.github.io/2018/08/23/Tech/设计模式/设计模式（一）——面向对象设计原则/"/>
+  <link rel="canonical" href="https://lichtmiao.github.io/2018/09/04/Tech/Design Pattern/观察者模式/"/>
 
 
 
@@ -149,7 +150,7 @@
 
 <!-- 网页加载条 -->
 <script src="https://neveryu.github.io/js/src/pace.min.js"></script>
-  <title>设计模式（一）——面向对象设计原则 | LichtMiao's Blog</title>
+  <title>观察者模式 | LichtMiao's Blog</title>
   
 
 
@@ -242,7 +243,7 @@
             
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
             
-            Search
+            検索
           </a>
         </li>
       
@@ -300,7 +301,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lichtmiao.github.io/2018/08/23/Tech/设计模式/设计模式（一）——面向对象设计原则/">
+    <link itemprop="mainEntityOfPage" href="https://lichtmiao.github.io/2018/09/04/Tech/Design Pattern/观察者模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Juan Peng">
@@ -317,7 +318,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">设计模式（一）——面向对象设计原则</h1>
+          <h1 class="post-title" itemprop="name headline">观察者模式</h1>
         
 
         <div class="post-meta">
@@ -327,10 +328,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">投稿日</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-23T18:46:14+08:00">
-                2018-08-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-04T02:13:07+08:00">
+                2018-09-04
               </time>
             
 
@@ -352,8 +353,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
+                  <a href="/categories/Design-Pattern/" itemprop="url" rel="index">
+                    <span itemprop="name">Design Pattern</span>
                   </a>
                 </span>
 
@@ -389,14 +390,10 @@
       
 
       
-        <p>面向对象设计原则是为了支持可维护性复用而诞生。常见的7种面向对象的设计原则：单一职责原则、开闭原则、里氏代换原则、依赖倒转原则、接口隔离原则、合成复用原则、迪米特法则。</p>
-<h1 id="1-单一职责原则（single-responsibility-principle-SRP）"><a href="#1-单一职责原则（single-responsibility-principle-SRP）" class="headerlink" title="1.单一职责原则（single responsibility principle, SRP）"></a>1.单一职责原则（single responsibility principle, SRP）</h1><p>它用于控制类的粒度大小，一个类只负责一个功能领域的相应职责。实现高内聚、低耦合。</p>
-<h1 id="2-开闭原则（open-close-principle-OCP）"><a href="#2-开闭原则（open-close-principle-OCP）" class="headerlink" title="2.开闭原则（open-close principle, OCP）"></a>2.开闭原则（open-close principle, OCP）</h1><p>一个软件实体应当对扩展开放，对修改关闭。即软件实体应当在不修改原有代码的情况下扩展。为了满足开闭原则，需要对系统进行抽象化设计。</p>
-<h1 id="3-里氏代换原则（Liskov-substitution-principle-LSP）"><a href="#3-里氏代换原则（Liskov-substitution-principle-LSP）" class="headerlink" title="3.里氏代换原则（Liskov substitution principle, LSP）"></a>3.里氏代换原则（Liskov substitution principle, LSP）</h1><p>所有使用父类（基类）对象的地方一定能用其子类对象进行替换，反之则不成立。<br>在程序中尽量使用父类进行定义，在运行时再确定其子类类型。减少代码重复，使系统更具有扩展性。<br>注意：<br>1）子类的所有方法必须在父类中声明，或子类必须实现父类中声明的所有方法；<br>2）尽量把父类设计成抽象类或接口，让子类继承父类或实现父接口，并实现在父类中声明的方法，运行时子类替代父类。在扩展系统功能时，无需修改原有子类的代码，增加新功能时，可以通过定义一个新的子类实现。<br>3）    在Java语言中，在编译阶段，Java编译器会检查一个程序是否符合里氏代换原则。</p>
-<h1 id="4-依赖倒转原则（dependence-inversion-principle-DIP）"><a href="#4-依赖倒转原则（dependence-inversion-principle-DIP）" class="headerlink" title="4.依赖倒转原则（dependence inversion principle, DIP）"></a>4.依赖倒转原则（dependence inversion principle, DIP）</h1><p>要针对接口编程，而不是针对实现编程。针对抽象层编程，将具体类写在配置文件中，而将具体类的对象通过依赖注入（dependency injection, DI）的方式注入到其它对象。这样一来如果系统对象发生变化，只需要对抽象层进行修改，同时修改配置文件，无需修改系统源代码。<br>依赖注入是指当一个对象要与其他对象发生依赖关系时，通过抽象来注入所依赖的对象。常用的注入方式有三种：构造注入（通过构造函数来传入具体类的对象）、设值注入（通过setter方法来传入具体类的对象）和接口注入（通过在接口中声明的业务方法来传入具体类的对象）。这些方法在定义时使用的是抽象类型，在运行时再传入具体类型的对象，由子类对象来覆盖父类对象。</p>
-<h1 id="5-接口隔离原则（interface-segregation-principle-ISP）"><a href="#5-接口隔离原则（interface-segregation-principle-ISP）" class="headerlink" title="5.接口隔离原则（interface segregation principle, ISP）"></a>5.接口隔离原则（interface segregation principle, ISP）</h1><p>使用多个专门的接口，而不使用单一总接口。当一个接口太大时，需要将它分割成一些更小的接口，每个接口承担一种相对独立的角色。这里的接口有两种含义：<br>1）一个类型所具有的的所有方法特征的集合。这是一种逻辑上的概念，可以把接口理解成角色，一个接口只能代表一个角色，每个角色都有它特定的一个接口，此时这个原则也叫“角色隔离原则”。<br>2）狭义的特定语言的接口，如Java语言的interface。接口仅为客户端提供需要的行为，客户端不需要的行为则隐藏。在面向对象编程语言中，实现接口就是实现接口中的所有方法啊，因此大的接口使用起来很不方便，灵活性较差。接口应当尽可能小，每个接口只包含一个客户端（如子模块或业务逻辑类）所需的方法即可。</p>
-<h1 id="6-合成复用原则（composite-reuse-principle-CRP）"><a href="#6-合成复用原则（composite-reuse-principle-CRP）" class="headerlink" title="6.合成复用原则（composite reuse principle, CRP）"></a>6.合成复用原则（composite reuse principle, CRP）</h1><p>在面向对象设计中，有两种方法可以在不同环境中复用已有的设计和实现，即通过对象组合（组合/聚合关系）和通过继承。但应该尽量使用对象组合，而不是使用继承达到复用。<br>1）对象组合可以使系统更加灵活，降低类之间的耦合度，一个类的变化对其它类造成的影响相对较小。如果两个类之间是“B has A”的关系用对象组合。<br>2）其次才考虑使用继承进行复用，使用继承时需要严格遵循里氏代换原则。继承复用的主要问题是会破坏系统的封装性，因为会将父类的实现细节暴露给子类。如果父类发生改变，则子类的实现也必须改变，但从父类继承的实现是静态的，不可能在运行时发生改变，没有足够的灵活性。如果两个类之间是“B is A”的关系使用继承。</p>
-<h1 id="7-迪米特法则（law-of-demeter-LoD）"><a href="#7-迪米特法则（law-of-demeter-LoD）" class="headerlink" title="7.迪米特法则（law of demeter, LoD）"></a>7.迪米特法则（law of demeter, LoD）</h1><p>一个软件实体应当尽可能少地与其他实体发生相互作用。迪米特法则可以降低系统耦合度，使类与类之间保持松散的耦合关系。<br>如果一个对象需要调用另一个对象的某一个方法，引入一个合理的第三者来降低现有对象之间的耦合度。</p>
+        <p>观察者模式又称监听者模式，它广泛应用在图形化编程中。<br>实现观察者模式比较直观的一种是使用“<span style="background-color:yellow">注册、通知、撤销注册</span>”的形式：<br>（1）注册<br>观察者将自己注册到目标对象中，目标对象将观察者放在一个容器里。为防止观察者重复，一般用<font color="red">HashSet</font>来保存观察者的引用（Set集合无序、不重复）。<br>（2）通知<br>目标对象发生了某种变化（如按钮被单击），从容器中得到所有注册过的观察者，将变化通知给观察者。<br>（3）撤销注册<br>观察者告诉目标要撤销观察，目标间观察者从容器中移除。所以观察者接口中需要有cancelObserve()方法，方法体中得到目标的容器，并去掉当前观察者。<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//观察者（抽象类）</span></div><div class="line"><span class="keyword">interface</span> <span class="title">Observer</span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span>(<span class="params">Product p</span>)</span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">cancelProduct</span>(<span class="params">Product p</span>)</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//具体观察者</span></div><div class="line"><span class="keyword">public</span> WebObserver implements Observer&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span>(<span class="params">Product p</span>)</span>&#123;</div><div class="line">		System.<span class="keyword">out</span>.println(<span class="string">"更新页面价格"</span> + p.getName() + p.getPrice());</div><div class="line">	&#125;</div><div class="line">	<span class="function">pulic <span class="keyword">void</span> <span class="title">cancelProduct</span>(<span class="params">Product p</span>)</span>&#123;</div><div class="line">		p.getObservers().<span class="keyword">remove</span>(<span class="keyword">this</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">public</span> MailObserver implements Observer&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span>(<span class="params">Product p</span>)</span>&#123;</div><div class="line">		System.<span class="keyword">out</span>.println(<span class="string">"为所有会员发送价格变化信息"</span> + p.getName() + p.getPrice());</div><div class="line">	&#125;</div><div class="line">	<span class="function">pulic <span class="keyword">void</span> <span class="title">cancelProduct</span>(<span class="params">Product p</span>)</span>&#123;</div><div class="line">		p.getObservers().<span class="keyword">remove</span>(<span class="keyword">this</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//商品类（具体类）</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Product</span>&#123;</div><div class="line">	<span class="keyword">private</span> String name;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">double</span> price;</div><div class="line">	<span class="keyword">private</span> HashSet&lt;Observer&gt; observers = <span class="keyword">new</span> HashSet&lt;&gt;();</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Product</span>(<span class="params">String name, <span class="keyword">double</span> price</span>)</span>&#123;</div><div class="line">		<span class="keyword">this</span>.name = name;</div><div class="line">		<span class="keyword">this</span>.price = price;</div><div class="line">		observers = <span class="keyword">new</span> HashSet&lt;Observer&gt;; <span class="comment">//虽然没有传入参数，但也在构造器中初始化</span></div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addObserver</span>(<span class="params">Observer obs</span>)</span>&#123;</div><div class="line">		observers.<span class="keyword">add</span>(obs);</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">notifyObservers</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">for</span>(Observer obs : observers)&#123;</div><div class="line">			obs.update(<span class="keyword">this</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="comment">//getter和setter方法</span></div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getName</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> name;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span>(<span class="params">String name</span>) </span>&#123;</div><div class="line">		<span class="keyword">this</span>.name = name;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getPrice</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> price;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPrice</span>(<span class="params"><span class="keyword">double</span> price</span>)</span>&#123;</div><div class="line">		<span class="keyword">this</span>.price = price;</div><div class="line">		notifyObservers(); <span class="comment">//价格变动通知所有观察者</span></div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> HashSet&lt;Obsrever&gt; <span class="title">getObservers</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> observers;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setObservers</span>(<span class="params">HashSet&lt;Observer&gt; observers</span>) </span>&#123;</div><div class="line">		<span class="keyword">this</span>.observers = observers;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//主类</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ObserverTest</span></span>&#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> void main(Stirng[] args)&#123;</div><div class="line">		Product p = <span class="keyword">new</span> <span class="type">Product</span>(<span class="string">"《Java》"</span>, <span class="number">100</span>);<span class="comment">//创建一个商品</span></div><div class="line">		Observer ob1 = <span class="keyword">new</span> <span class="type">Observer</span>();<span class="comment">//new观察者</span></div><div class="line">		Observer ob2 = <span class="keyword">new</span> <span class="type">Observer</span>();</div><div class="line">		p.addObserver(ob1);<span class="comment">//注册观察者</span></div><div class="line">		p.addObserver(ob2);</div><div class="line">		p.setPrice(<span class="number">80</span>);<span class="comment">//修改商品价格，同时会通知所有观察者</span></div><div class="line">		ob1.cancelObserve(p);<span class="comment">//取消观察者对p的观察</span></div><div class="line">		p.setPrice();<span class="comment">//再次修改价格</span></div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -412,6 +409,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/观察者模式/" rel="tag"><i class="fa fa-tag"></i> 观察者模式</a>
+          
+        </div>
+      
 
       
       
@@ -421,8 +424,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/22/Tech/Java/Java基础/Java基础（三）——流程控制和数组/" rel="next" title="Java基础（三）——流程控制和数组">
-                <i class="fa fa-chevron-left"></i> Java基础（三）——流程控制和数组
+              <a href="/2018/09/04/Tech/Design Pattern/工厂方法模式/" rel="next" title="工厂方法模式">
+                <i class="fa fa-chevron-left"></i> 工厂方法模式
               </a>
             
           </div>
@@ -431,8 +434,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/23/Tech/设计模式/设计模式（二）——6个创建模式/" rel="prev" title="设计模式（二）—6个创建模式">
-                设计模式（二）—6个创建模式 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/09/04/Tech/Java/Java程序员面试宝典/Java程序员面试宝典——实现一个链表/" rel="prev" title="Java程序员面试宝典——实现一个链表">
+                Java程序员面试宝典——实现一个链表 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -485,17 +488,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -513,7 +507,7 @@
               <a href="/archives">
             
                 <span class="site-state-item-count">157</span>
-                <span class="site-state-item-name">posts</span>
+                <span class="site-state-item-name">ポスト</span>
               </a>
             </div>
           
@@ -523,8 +517,8 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">25</span>
-                <span class="site-state-item-name">categories</span>
+                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-name">カテゴリ</span>
               </a>
             </div>
           
@@ -535,7 +529,7 @@
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">7</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">タグ</span>
               
             </div>
            -->
@@ -590,22 +584,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-单一职责原则（single-responsibility-principle-SRP）"><span class="nav-number">1.</span> <span class="nav-text">1.单一职责原则（single responsibility principle, SRP）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-开闭原则（open-close-principle-OCP）"><span class="nav-number">2.</span> <span class="nav-text">2.开闭原则（open-close principle, OCP）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-里氏代换原则（Liskov-substitution-principle-LSP）"><span class="nav-number">3.</span> <span class="nav-text">3.里氏代换原则（Liskov substitution principle, LSP）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-依赖倒转原则（dependence-inversion-principle-DIP）"><span class="nav-number">4.</span> <span class="nav-text">4.依赖倒转原则（dependence inversion principle, DIP）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-接口隔离原则（interface-segregation-principle-ISP）"><span class="nav-number">5.</span> <span class="nav-text">5.接口隔离原则（interface segregation principle, ISP）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-合成复用原则（composite-reuse-principle-CRP）"><span class="nav-number">6.</span> <span class="nav-text">6.合成复用原则（composite reuse principle, CRP）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-迪米特法则（law-of-demeter-LoD）"><span class="nav-number">7.</span> <span class="nav-text">7.迪米特法则（law of demeter, LoD）</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

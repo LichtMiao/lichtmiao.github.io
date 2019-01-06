@@ -83,7 +83,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="单例模式," />
+  <meta name="keywords" content="Learning, Life" />
 
 
 
@@ -101,18 +101,17 @@
 
 
 
-<meta name="description" content="单例就是保证始终只有一个实例。确保对象的唯一性，如Windows的任务管理器，打印控制器，数据库连接池等。实现单例注意点：（1）构造器私有，外部无法创建实例；（2）因此需要提供公有的方法来获取实例getInstance();（3）静态类私有成员变量，保证只有一个变量引用。单例模式的两种实现形式：  懒汉式：在第一次获取实例时才创建对象。如果在获取实例前线程A暂停了，此时线程B获取实例并创建了对象并">
-<meta name="keywords" content="单例模式">
+<meta name="description" content="面向对象设计原则是为了支持可维护性复用而诞生。常见的7种面向对象的设计原则：单一职责原则、开闭原则、里氏代换原则、依赖倒转原则、接口隔离原则、合成复用原则、迪米特法则。 单一职责原则（single responsibility principle, SRP）它用于控制类的粒度大小，一个类只负责一个功能领域的相应职责。实现高内聚、低耦合。 开闭原则（open-close principle, OCP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java程序员面试宝典——单例模式">
-<meta property="og:url" content="https://lichtmiao.github.io/2018/09/04/Tech/设计模式/设计模式——单例模式/index.html">
+<meta property="og:title" content="设计模式（一）——面向对象设计原则">
+<meta property="og:url" content="https://lichtmiao.github.io/2018/08/23/Tech/Design Pattern/设计模式（一）——面向对象设计原则/index.html">
 <meta property="og:site_name" content="LichtMiao&#39;s Blog">
-<meta property="og:description" content="单例就是保证始终只有一个实例。确保对象的唯一性，如Windows的任务管理器，打印控制器，数据库连接池等。实现单例注意点：（1）构造器私有，外部无法创建实例；（2）因此需要提供公有的方法来获取实例getInstance();（3）静态类私有成员变量，保证只有一个变量引用。单例模式的两种实现形式：  懒汉式：在第一次获取实例时才创建对象。如果在获取实例前线程A暂停了，此时线程B获取实例并创建了对象并">
+<meta property="og:description" content="面向对象设计原则是为了支持可维护性复用而诞生。常见的7种面向对象的设计原则：单一职责原则、开闭原则、里氏代换原则、依赖倒转原则、接口隔离原则、合成复用原则、迪米特法则。 单一职责原则（single responsibility principle, SRP）它用于控制类的粒度大小，一个类只负责一个功能领域的相应职责。实现高内聚、低耦合。 开闭原则（open-close principle, OCP">
 <meta property="og:locale" content="en.yml">
-<meta property="og:updated_time" content="2018-09-03T17:57:45.287Z">
+<meta property="og:updated_time" content="2019-01-06T03:01:11.021Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java程序员面试宝典——单例模式">
-<meta name="twitter:description" content="单例就是保证始终只有一个实例。确保对象的唯一性，如Windows的任务管理器，打印控制器，数据库连接池等。实现单例注意点：（1）构造器私有，外部无法创建实例；（2）因此需要提供公有的方法来获取实例getInstance();（3）静态类私有成员变量，保证只有一个变量引用。单例模式的两种实现形式：  懒汉式：在第一次获取实例时才创建对象。如果在获取实例前线程A暂停了，此时线程B获取实例并创建了对象并">
+<meta name="twitter:title" content="设计模式（一）——面向对象设计原则">
+<meta name="twitter:description" content="面向对象设计原则是为了支持可维护性复用而诞生。常见的7种面向对象的设计原则：单一职责原则、开闭原则、里氏代换原则、依赖倒转原则、接口隔离原则、合成复用原则、迪米特法则。 单一职责原则（single responsibility principle, SRP）它用于控制类的粒度大小，一个类只负责一个功能领域的相应职责。实现高内聚、低耦合。 开闭原则（open-close principle, OCP">
 
 
 
@@ -142,7 +141,7 @@
 
 
 
-  <link rel="canonical" href="https://lichtmiao.github.io/2018/09/04/Tech/设计模式/设计模式——单例模式/"/>
+  <link rel="canonical" href="https://lichtmiao.github.io/2018/08/23/Tech/Design Pattern/设计模式（一）——面向对象设计原则/"/>
 
 
 
@@ -150,7 +149,7 @@
 
 <!-- 网页加载条 -->
 <script src="https://neveryu.github.io/js/src/pace.min.js"></script>
-  <title>Java程序员面试宝典——单例模式 | LichtMiao's Blog</title>
+  <title>设计模式（一）——面向对象设计原则 | LichtMiao's Blog</title>
   
 
 
@@ -243,7 +242,7 @@
             
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
             
-            Search
+            検索
           </a>
         </li>
       
@@ -301,7 +300,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lichtmiao.github.io/2018/09/04/Tech/设计模式/设计模式——单例模式/">
+    <link itemprop="mainEntityOfPage" href="https://lichtmiao.github.io/2018/08/23/Tech/Design Pattern/设计模式（一）——面向对象设计原则/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Juan Peng">
@@ -318,7 +317,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Java程序员面试宝典——单例模式</h1>
+          <h1 class="post-title" itemprop="name headline">设计模式（一）——面向对象设计原则</h1>
         
 
         <div class="post-meta">
@@ -328,10 +327,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">投稿日</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-04T01:06:33+08:00">
-                2018-09-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-23T18:46:14+08:00">
+                2018-08-23
               </time>
             
 
@@ -353,8 +352,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
+                  <a href="/categories/Design-Pattern/" itemprop="url" rel="index">
+                    <span itemprop="name">Design Pattern</span>
                   </a>
                 </span>
 
@@ -390,12 +389,14 @@
       
 
       
-        <p>单例就是保证始终只有一个实例。确保对象的唯一性，如Windows的任务管理器，打印控制器，数据库连接池等。实现单例注意点：<br>（1）构造器私有，外部无法创建实例；<br>（2）因此需要提供公有的方法来获取实例getInstance();<br>（3）静态类私有成员变量，保证只有一个变量引用。<br>单例模式的两种实现形式：</p>
-<ol>
-<li>懒汉式：在第一次获取实例时才创建对象。<br>如果在获取实例前线程A暂停了，此时线程B获取实例并创建了对象并返回了，然后线程A恢复，又创建了一个对象，不能保证单例，因此需要为getInstance()方法加上synchronized关键字保证线程同步。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">//懒汉模式</div><div class="line">public class ConnectionPoolA &#123;</div><div class="line">	private static ConnectionPoolA cp;</div><div class="line">	private ConnectionPoolA()&#123;&#125;</div><div class="line">	public static synchronized ConnectionPoolA getInstance()&#123;</div><div class="line">		if (cp == null) &#123;</div><div class="line">			cp = new ConnectionPoolA();</div><div class="line">		&#125;</div><div class="line">		return cp;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">```	</div><div class="line">2. 饿汉式：在类加载时就已经创建对象了。</div><div class="line">饿汉式不存在线程安全问题，但容易造成资源浪费，因为实例在类加载的时候随着静态变量的初始化而创建，但有时候可能并不会使用该实例。</div></pre></td></tr></table></figure>
-<p>//饿汉模式<br>public class ConnectionPoolB {<br>    private static ConnectionPoolB cp = new ConnectionPoolB();<br>    private ConnectionPoolB() {}<br>    public static ConnectionPoolB getInstance() {<br>        return cp;<br>    }<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line">public class SingletonObject &#123;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		ConnectionPoolA cp1 = ConnectionPoolA.getInstance();</div><div class="line">		ConnectionPoolA cp2 = ConnectionPoolA.getInstance();</div><div class="line">		System.out.println(cp1 == cp2); //判断是否创建的两个相同的对象，true</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+        <p>面向对象设计原则是为了支持可维护性复用而诞生。常见的7种面向对象的设计原则：单一职责原则、开闭原则、里氏代换原则、依赖倒转原则、接口隔离原则、合成复用原则、迪米特法则。</p>
+<h1 id="单一职责原则（single-responsibility-principle-SRP）"><a href="#单一职责原则（single-responsibility-principle-SRP）" class="headerlink" title="单一职责原则（single responsibility principle, SRP）"></a>单一职责原则（single responsibility principle, SRP）</h1><p>它用于控制类的粒度大小，一个类只负责一个功能领域的相应职责。实现高内聚、低耦合。</p>
+<h1 id="开闭原则（open-close-principle-OCP）"><a href="#开闭原则（open-close-principle-OCP）" class="headerlink" title="开闭原则（open-close principle, OCP）"></a>开闭原则（open-close principle, OCP）</h1><p>一个软件实体应当对扩展开放，对修改关闭。即软件实体应当在不修改原有代码的情况下扩展。为了满足开闭原则，需要对系统进行抽象化设计。</p>
+<h1 id="里氏代换原则（Liskov-substitution-principle-LSP）"><a href="#里氏代换原则（Liskov-substitution-principle-LSP）" class="headerlink" title="里氏代换原则（Liskov substitution principle, LSP）"></a>里氏代换原则（Liskov substitution principle, LSP）</h1><p>所有使用父类（基类）对象的地方一定能用其子类对象进行替换，反之则不成立。<br>在程序中尽量使用父类进行定义，在运行时再确定其子类类型。减少代码重复，使系统更具有扩展性。<br>注意：<br>1）子类的所有方法必须在父类中声明，或子类必须实现父类中声明的所有方法；<br>2）尽量把父类设计成抽象类或接口，让子类继承父类或实现父接口，并实现在父类中声明的方法，运行时子类替代父类。在扩展系统功能时，无需修改原有子类的代码，增加新功能时，可以通过定义一个新的子类实现。<br>3）    在Java语言中，在编译阶段，Java编译器会检查一个程序是否符合里氏代换原则。</p>
+<h1 id="依赖倒转原则（dependence-inversion-principle-DIP）"><a href="#依赖倒转原则（dependence-inversion-principle-DIP）" class="headerlink" title="依赖倒转原则（dependence inversion principle, DIP）"></a>依赖倒转原则（dependence inversion principle, DIP）</h1><p>要针对接口编程，而不是针对实现编程。针对抽象层编程，将具体类写在配置文件中，而将具体类的对象通过依赖注入（dependency injection, DI）的方式注入到其它对象。这样一来如果系统对象发生变化，只需要对抽象层进行修改，同时修改配置文件，无需修改系统源代码。<br>依赖注入是指当一个对象要与其他对象发生依赖关系时，通过抽象来注入所依赖的对象。常用的注入方式有三种：构造注入（通过构造函数来传入具体类的对象）、设值注入（通过setter方法来传入具体类的对象）和接口注入（通过在接口中声明的业务方法来传入具体类的对象）。这些方法在定义时使用的是抽象类型，在运行时再传入具体类型的对象，由子类对象来覆盖父类对象。</p>
+<h1 id="接口隔离原则（interface-segregation-principle-ISP）"><a href="#接口隔离原则（interface-segregation-principle-ISP）" class="headerlink" title="接口隔离原则（interface segregation principle, ISP）"></a>接口隔离原则（interface segregation principle, ISP）</h1><p>使用多个专门的接口，而不使用单一总接口。当一个接口太大时，需要将它分割成一些更小的接口，每个接口承担一种相对独立的角色。这里的接口有两种含义：<br>1）一个类型所具有的的所有方法特征的集合。这是一种逻辑上的概念，可以把接口理解成角色，一个接口只能代表一个角色，每个角色都有它特定的一个接口，此时这个原则也叫“角色隔离原则”。<br>2）狭义的特定语言的接口，如Java语言的interface。接口仅为客户端提供需要的行为，客户端不需要的行为则隐藏。在面向对象编程语言中，实现接口就是实现接口中的所有方法啊，因此大的接口使用起来很不方便，灵活性较差。接口应当尽可能小，每个接口只包含一个客户端（如子模块或业务逻辑类）所需的方法即可。</p>
+<h1 id="合成复用原则（composite-reuse-principle-CRP）"><a href="#合成复用原则（composite-reuse-principle-CRP）" class="headerlink" title="合成复用原则（composite reuse principle, CRP）"></a>合成复用原则（composite reuse principle, CRP）</h1><p>在面向对象设计中，有两种方法可以在不同环境中复用已有的设计和实现，即通过对象组合（组合/聚合关系）和通过继承。但应该尽量使用对象组合，而不是使用继承达到复用。<br>1）对象组合可以使系统更加灵活，降低类之间的耦合度，一个类的变化对其它类造成的影响相对较小。如果两个类之间是“B has A”的关系用对象组合。<br>2）其次才考虑使用继承进行复用，使用继承时需要严格遵循里氏代换原则。继承复用的主要问题是会破坏系统的封装性，因为会将父类的实现细节暴露给子类。如果父类发生改变，则子类的实现也必须改变，但从父类继承的实现是静态的，不可能在运行时发生改变，没有足够的灵活性。如果两个类之间是“B is A”的关系使用继承。</p>
+<h1 id="迪米特法则（law-of-demeter-LoD）"><a href="#迪米特法则（law-of-demeter-LoD）" class="headerlink" title="迪米特法则（law of demeter, LoD）"></a>迪米特法则（law of demeter, LoD）</h1><p>一个软件实体应当尽可能少地与其他实体发生相互作用。迪米特法则可以降低系统耦合度，使类与类之间保持松散的耦合关系。<br>如果一个对象需要调用另一个对象的某一个方法，引入一个合理的第三者来降低现有对象之间的耦合度。</p>
 
       
     </div>
@@ -411,12 +412,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/单例模式/" rel="tag"><i class="fa fa-tag"></i> 单例模式</a>
-          
-        </div>
-      
 
       
       
@@ -426,8 +421,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/04/Tech/Java/Java程序员面试宝典/Java程序员面试宝典——将某个时间以固定格式转化为字符串/" rel="next" title="Java程序员面试宝典——将某个时间以固定格式转化为字符串">
-                <i class="fa fa-chevron-left"></i> Java程序员面试宝典——将某个时间以固定格式转化为字符串
+              <a href="/2018/08/22/Tech/Java/Java基础/Java基础（三）——流程控制和数组/" rel="next" title="Java基础（三）——流程控制和数组">
+                <i class="fa fa-chevron-left"></i> Java基础（三）——流程控制和数组
               </a>
             
           </div>
@@ -436,8 +431,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/04/Tech/设计模式/设计模式——简单工厂模式/" rel="prev" title="设计模式——简单工厂模式">
-                设计模式——简单工厂模式 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/23/Tech/Design Pattern/设计模式（二）——6个创建模式/" rel="prev" title="设计模式（二）—6个创建模式">
+                设计模式（二）—6个创建模式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -490,8 +485,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            見出し
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            概要
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -509,7 +513,7 @@
               <a href="/archives">
             
                 <span class="site-state-item-count">157</span>
-                <span class="site-state-item-name">posts</span>
+                <span class="site-state-item-name">ポスト</span>
               </a>
             </div>
           
@@ -519,8 +523,8 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">25</span>
-                <span class="site-state-item-name">categories</span>
+                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-name">カテゴリ</span>
               </a>
             </div>
           
@@ -531,7 +535,7 @@
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">7</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">タグ</span>
               
             </div>
            -->
@@ -586,6 +590,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#单一职责原则（single-responsibility-principle-SRP）"><span class="nav-number">1.</span> <span class="nav-text">单一职责原则（single responsibility principle, SRP）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开闭原则（open-close-principle-OCP）"><span class="nav-number">2.</span> <span class="nav-text">开闭原则（open-close principle, OCP）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#里氏代换原则（Liskov-substitution-principle-LSP）"><span class="nav-number">3.</span> <span class="nav-text">里氏代换原则（Liskov substitution principle, LSP）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#依赖倒转原则（dependence-inversion-principle-DIP）"><span class="nav-number">4.</span> <span class="nav-text">依赖倒转原则（dependence inversion principle, DIP）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#接口隔离原则（interface-segregation-principle-ISP）"><span class="nav-number">5.</span> <span class="nav-text">接口隔离原则（interface segregation principle, ISP）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#合成复用原则（composite-reuse-principle-CRP）"><span class="nav-number">6.</span> <span class="nav-text">合成复用原则（composite reuse principle, CRP）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#迪米特法则（law-of-demeter-LoD）"><span class="nav-number">7.</span> <span class="nav-text">迪米特法则（law of demeter, LoD）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

@@ -83,7 +83,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Learning, Life" />
+  <meta name="keywords" content="单例模式," />
 
 
 
@@ -101,17 +101,18 @@
 
 
 
-<meta name="description" content="1. 职责链模式（chain of responsibility pattern）2. 命令模式（command pattern）3. 解释器模式（interpreter pattern）4. 迭代器模式（iterator pattern）5. 中介者模式（mediator pattern）6. 备忘录模式（memento pattern）7. 观察者模式（observer pattern）—对象">
+<meta name="description" content="单例就是保证始终只有一个实例。确保对象的唯一性，如Windows的任务管理器，打印控制器，数据库连接池等。实现单例注意点：（1）构造器私有，外部无法创建实例；（2）因此需要提供公有的方法来获取实例getInstance();（3）静态类私有成员变量，保证只有一个变量引用。单例模式的两种实现形式：  懒汉式：在第一次获取实例时才创建对象。如果在获取实例前线程A暂停了，此时线程B获取实例并创建了对象并">
+<meta name="keywords" content="单例模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设计模式（四）——11个行为模式">
-<meta property="og:url" content="https://lichtmiao.github.io/2018/08/24/Tech/设计模式/设计模式（四）——11个行为模式/index.html">
+<meta property="og:title" content="单例模式">
+<meta property="og:url" content="https://lichtmiao.github.io/2018/09/04/Tech/Design Pattern/单例模式/index.html">
 <meta property="og:site_name" content="LichtMiao&#39;s Blog">
-<meta property="og:description" content="1. 职责链模式（chain of responsibility pattern）2. 命令模式（command pattern）3. 解释器模式（interpreter pattern）4. 迭代器模式（iterator pattern）5. 中介者模式（mediator pattern）6. 备忘录模式（memento pattern）7. 观察者模式（observer pattern）—对象">
+<meta property="og:description" content="单例就是保证始终只有一个实例。确保对象的唯一性，如Windows的任务管理器，打印控制器，数据库连接池等。实现单例注意点：（1）构造器私有，外部无法创建实例；（2）因此需要提供公有的方法来获取实例getInstance();（3）静态类私有成员变量，保证只有一个变量引用。单例模式的两种实现形式：  懒汉式：在第一次获取实例时才创建对象。如果在获取实例前线程A暂停了，此时线程B获取实例并创建了对象并">
 <meta property="og:locale" content="en.yml">
-<meta property="og:updated_time" content="2018-09-03T03:06:55.322Z">
+<meta property="og:updated_time" content="2019-01-06T03:00:33.342Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="设计模式（四）——11个行为模式">
-<meta name="twitter:description" content="1. 职责链模式（chain of responsibility pattern）2. 命令模式（command pattern）3. 解释器模式（interpreter pattern）4. 迭代器模式（iterator pattern）5. 中介者模式（mediator pattern）6. 备忘录模式（memento pattern）7. 观察者模式（observer pattern）—对象">
+<meta name="twitter:title" content="单例模式">
+<meta name="twitter:description" content="单例就是保证始终只有一个实例。确保对象的唯一性，如Windows的任务管理器，打印控制器，数据库连接池等。实现单例注意点：（1）构造器私有，外部无法创建实例；（2）因此需要提供公有的方法来获取实例getInstance();（3）静态类私有成员变量，保证只有一个变量引用。单例模式的两种实现形式：  懒汉式：在第一次获取实例时才创建对象。如果在获取实例前线程A暂停了，此时线程B获取实例并创建了对象并">
 
 
 
@@ -141,7 +142,7 @@
 
 
 
-  <link rel="canonical" href="https://lichtmiao.github.io/2018/08/24/Tech/设计模式/设计模式（四）——11个行为模式/"/>
+  <link rel="canonical" href="https://lichtmiao.github.io/2018/09/04/Tech/Design Pattern/单例模式/"/>
 
 
 
@@ -149,7 +150,7 @@
 
 <!-- 网页加载条 -->
 <script src="https://neveryu.github.io/js/src/pace.min.js"></script>
-  <title>设计模式（四）——11个行为模式 | LichtMiao's Blog</title>
+  <title>单例模式 | LichtMiao's Blog</title>
   
 
 
@@ -242,7 +243,7 @@
             
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
             
-            Search
+            検索
           </a>
         </li>
       
@@ -300,7 +301,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lichtmiao.github.io/2018/08/24/Tech/设计模式/设计模式（四）——11个行为模式/">
+    <link itemprop="mainEntityOfPage" href="https://lichtmiao.github.io/2018/09/04/Tech/Design Pattern/单例模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Juan Peng">
@@ -317,7 +318,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">设计模式（四）——11个行为模式</h1>
+          <h1 class="post-title" itemprop="name headline">单例模式</h1>
         
 
         <div class="post-meta">
@@ -327,10 +328,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">投稿日</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-24T01:32:11+08:00">
-                2018-08-24
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-04T01:06:33+08:00">
+                2018-09-04
               </time>
             
 
@@ -352,8 +353,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
+                  <a href="/categories/Design-Pattern/" itemprop="url" rel="index">
+                    <span itemprop="name">Design Pattern</span>
                   </a>
                 </span>
 
@@ -389,14 +390,13 @@
       
 
       
-        <h1 id="1-职责链模式（chain-of-responsibility-pattern）"><a href="#1-职责链模式（chain-of-responsibility-pattern）" class="headerlink" title="1. 职责链模式（chain of responsibility pattern）"></a>1. 职责链模式（chain of responsibility pattern）</h1><h1 id="2-命令模式（command-pattern）"><a href="#2-命令模式（command-pattern）" class="headerlink" title="2. 命令模式（command pattern）"></a>2. 命令模式（command pattern）</h1><h1 id="3-解释器模式（interpreter-pattern）"><a href="#3-解释器模式（interpreter-pattern）" class="headerlink" title="3. 解释器模式（interpreter pattern）"></a>3. 解释器模式（interpreter pattern）</h1><h1 id="4-迭代器模式（iterator-pattern）"><a href="#4-迭代器模式（iterator-pattern）" class="headerlink" title="4. 迭代器模式（iterator pattern）"></a>4. 迭代器模式（iterator pattern）</h1><h1 id="5-中介者模式（mediator-pattern）"><a href="#5-中介者模式（mediator-pattern）" class="headerlink" title="5. 中介者模式（mediator pattern）"></a>5. 中介者模式（mediator pattern）</h1><h1 id="6-备忘录模式（memento-pattern）"><a href="#6-备忘录模式（memento-pattern）" class="headerlink" title="6. 备忘录模式（memento pattern）"></a>6. 备忘录模式（memento pattern）</h1><h1 id="7-观察者模式（observer-pattern）—对象间的联动"><a href="#7-观察者模式（observer-pattern）—对象间的联动" class="headerlink" title="7. 观察者模式（observer pattern）—对象间的联动"></a>7. 观察者模式（observer pattern）—对象间的联动</h1><p>观察者模式用于建立一种对象之间的依赖关系，一个对象发生改变时将通知其他对象，其他对象将相应作出反应。它广泛应用在图形化编程中。</p>
-<h2 id="1）-定义"><a href="#1）-定义" class="headerlink" title="1）    定义"></a>1）    定义</h2><p>定义对象之间的一种依赖关系，使得每当一个对象状态发生改变时，其相关依赖对象皆得到通知并自动更新。观察者模式的别名包括：发布-订阅（publish-subscribe）模式、模型-视图（model-view）模式、源-监听（source-listener）模式、从属者（dependents）模式。</p>
-<h2 id="2）观察者模式的4个角色（类）"><a href="#2）观察者模式的4个角色（类）" class="headerlink" title="2）观察者模式的4个角色（类）"></a>2）观察者模式的4个角色（类）</h2><p>（1）Subject（目标）<br>它是被观察的对象。一个目标可以定义任意多个观察者来观察者，它定义了一系列方法来增加attach()和删除detach()观察者对象，同时定义了通知方法notify()。目标类可以是接口、抽象类或具体类。<br>（2）ConcreteSubject（具体目标）<br>具体目标是目标类的子类，它实现了目标类中的抽象方法；通常它包含要经常改变的数据，当它的状态发生改变时，向它的各个观察者发出通知。如无需扩展目标类，则具体目标类可以省略。<br>（3）Observer（观察者）<br>观察者将对目标的改变做出反应。观察者一般定义为接口，因此又称为抽象观察者，这个接口声明了更新数据的方法update()。<br>（4）ConcreteObserver（具体观察者）<br>在具体观察者中维护一个指向具体目标对象的引用，它存储具体观察者的有关状态，这些状态需要与目标的状态保持一致；它实现了抽象观察者中定义的update()方法。</p>
-<h2 id="3）实现观察者模式"><a href="#3）实现观察者模式" class="headerlink" title="3）实现观察者模式"></a>3）实现观察者模式</h2><p>实现观察者模式比较直观的一种是使用“注册、通知、撤销注册”的形式：<br>（1）注册<br>观察者将自己注册到目标对象中，目标对象将观察者放在一个容器里。为防止观察者重复，一般用HashSet来保存观察者的引用（Set集合无序、不重复）。<br>（2）通知<br>目标对象发生了某种变化（如按钮被单击），从容器中得到所有注册过的观察者，经变化通知给观察者。<br>（3）撤销注册<br>观察者告诉目标要撤销观察，目标间观察者从容器中移除。所以观察者接口中需要有cancelObserve()方法，方法体中得到目标的容器，并去掉当前观察者。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">//目标</div><div class="line">abstract class Subject&#123;</div><div class="line">	//定义一个观察者集合用于存储所有观察者</div><div class="line">	protected HashSet&lt;Observer&gt; observers = new HashSet&lt;&gt;();</div><div class="line">	//向观察者集合中添加一个观察者</div><div class="line">	public void attach(Obsrever observer)&#123;</div><div class="line">			observers.add(observer);</div><div class="line">	&#125;</div><div class="line">	//从观察者集合中删除一个观察者</div><div class="line">	public void detach(Observer observer)&#123;</div><div class="line">			observers.remove(observer);</div><div class="line">	&#125;</div><div class="line">	//抽象通知方法</div><div class="line">	public abstract void notify();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//具体目标</div><div class="line">public class ConcreteSubject extends Subject&#123;</div><div class="line">	public void notify()&#123;</div><div class="line">			for (Object obj : observers)&#123;</div><div class="line">				((Observer)obj).update();</div><div class="line">			&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//观察者</div><div class="line">interface Observer&#123;</div><div class="line">	public void update(); //声明观察者响应的方法</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">//具体观察者</div><div class="line">public class ConcreteObserver extends Observer&#123;</div><div class="line">	public void update()&#123;</div><div class="line">			//具体观察者响应的代码</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="8-状态模式（state-pattern）"><a href="#8-状态模式（state-pattern）" class="headerlink" title="8.    状态模式（state pattern）"></a>8.    状态模式（state pattern）</h1><h1 id="9-策略模式（strategy-pattern）"><a href="#9-策略模式（strategy-pattern）" class="headerlink" title="9.    策略模式（strategy pattern）"></a>9.    策略模式（strategy pattern）</h1><h1 id="10-模板方法模式（templeate-method-pattern）"><a href="#10-模板方法模式（templeate-method-pattern）" class="headerlink" title="10.    模板方法模式（templeate method pattern）"></a>10.    模板方法模式（templeate method pattern）</h1><h1 id="11-访问者模式（visitor-pattern）"><a href="#11-访问者模式（visitor-pattern）" class="headerlink" title="11.    访问者模式（visitor pattern）"></a>11.    访问者模式（visitor pattern）</h1>
+        <p>单例就是保证始终只有一个实例。确保对象的唯一性，如Windows的任务管理器，打印控制器，数据库连接池等。实现单例注意点：<br>（1）构造器私有，外部无法创建实例；<br>（2）因此需要提供公有的方法来获取实例getInstance();<br>（3）静态类私有成员变量，保证只有一个变量引用。<br>单例模式的两种实现形式：</p>
+<ol>
+<li>懒汉式：在第一次获取实例时才创建对象。<br>如果在获取实例前线程A暂停了，此时线程B获取实例并创建了对象并返回了，然后线程A恢复，又创建了一个对象，不能保证单例，因此需要为getInstance()方法加上synchronized关键字保证线程同步。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//懒汉模式</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnectionPoolA</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> ConnectionPoolA cp;</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="title">ConnectionPoolA</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> ConnectionPoolA <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">if</span> (cp == <span class="keyword">null</span>) &#123;</div><div class="line">			cp = <span class="keyword">new</span> ConnectionPoolA();</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> cp;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">```	</div><div class="line"><span class="number">2</span>. 饿汉式：在类加载时就已经创建对象了。</div><div class="line">饿汉式不存在线程安全问题，但容易造成资源浪费，因为实例在类加载的时候随着静态变量的初始化而创建，但有时候可能并不会使用该实例。</div></pre></td></tr></table></figure>
+<p>//饿汉模式<br>public class ConnectionPoolB {<br>    private static ConnectionPoolB cp = new ConnectionPoolB();<br>    private ConnectionPoolB() {}<br>    public static ConnectionPoolB getInstance() {<br>        return cp;<br>    }<br>}<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">SingletonObject</span> &#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">		ConnectionPoolA cp1 = ConnectionPoolA.getInstance();</div><div class="line">		ConnectionPoolA cp2 = ConnectionPoolA.getInstance();</div><div class="line">		System.<span class="keyword">out</span>.println(cp1 == cp2); <span class="comment">//判断是否创建的两个相同的对象，true</span></div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
       
     </div>
     
@@ -411,6 +411,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/单例模式/" rel="tag"><i class="fa fa-tag"></i> 单例模式</a>
+          
+        </div>
+      
 
       
       
@@ -420,8 +426,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/24/Tech/设计模式/设计模式（三）——7个结构型模式/" rel="next" title="设计模式（三）——7个结构型模式">
-                <i class="fa fa-chevron-left"></i> 设计模式（三）——7个结构型模式
+              <a href="/2018/09/04/Tech/Java/Java程序员面试宝典/Java程序员面试宝典——将某个时间以固定格式转化为字符串/" rel="next" title="Java程序员面试宝典——将某个时间以固定格式转化为字符串">
+                <i class="fa fa-chevron-left"></i> Java程序员面试宝典——将某个时间以固定格式转化为字符串
               </a>
             
           </div>
@@ -430,8 +436,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/25/Tech/Java/Java基础/Java基础（六）——Java基础类库/" rel="prev" title="Java基础（六）——Java基础类库">
-                Java基础（六）——Java基础类库 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/09/04/Tech/Design Pattern/简单工厂模式/" rel="prev" title="简单工厂模式">
+                简单工厂模式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -484,17 +490,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -512,7 +509,7 @@
               <a href="/archives">
             
                 <span class="site-state-item-count">157</span>
-                <span class="site-state-item-name">posts</span>
+                <span class="site-state-item-name">ポスト</span>
               </a>
             </div>
           
@@ -522,8 +519,8 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">25</span>
-                <span class="site-state-item-name">categories</span>
+                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-name">カテゴリ</span>
               </a>
             </div>
           
@@ -534,7 +531,7 @@
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">7</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">タグ</span>
               
             </div>
            -->
@@ -589,22 +586,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-职责链模式（chain-of-responsibility-pattern）"><span class="nav-number">1.</span> <span class="nav-text">1. 职责链模式（chain of responsibility pattern）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-命令模式（command-pattern）"><span class="nav-number">2.</span> <span class="nav-text">2. 命令模式（command pattern）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-解释器模式（interpreter-pattern）"><span class="nav-number">3.</span> <span class="nav-text">3. 解释器模式（interpreter pattern）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-迭代器模式（iterator-pattern）"><span class="nav-number">4.</span> <span class="nav-text">4. 迭代器模式（iterator pattern）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-中介者模式（mediator-pattern）"><span class="nav-number">5.</span> <span class="nav-text">5. 中介者模式（mediator pattern）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-备忘录模式（memento-pattern）"><span class="nav-number">6.</span> <span class="nav-text">6. 备忘录模式（memento pattern）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-观察者模式（observer-pattern）—对象间的联动"><span class="nav-number">7.</span> <span class="nav-text">7. 观察者模式（observer pattern）—对象间的联动</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1）-定义"><span class="nav-number">7.1.</span> <span class="nav-text">1）    定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2）观察者模式的4个角色（类）"><span class="nav-number">7.2.</span> <span class="nav-text">2）观察者模式的4个角色（类）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3）实现观察者模式"><span class="nav-number">7.3.</span> <span class="nav-text">3）实现观察者模式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-状态模式（state-pattern）"><span class="nav-number">8.</span> <span class="nav-text">8.    状态模式（state pattern）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9-策略模式（strategy-pattern）"><span class="nav-number">9.</span> <span class="nav-text">9.    策略模式（strategy pattern）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#10-模板方法模式（templeate-method-pattern）"><span class="nav-number">10.</span> <span class="nav-text">10.    模板方法模式（templeate method pattern）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#11-访问者模式（visitor-pattern）"><span class="nav-number">11.</span> <span class="nav-text">11.    访问者模式（visitor pattern）</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

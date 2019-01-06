@@ -83,7 +83,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Learning, Life" />
+  <meta name="keywords" content="工厂方法模式," />
 
 
 
@@ -101,17 +101,18 @@
 
 
 
-<meta name="description" content="1. 适配器模式（adapter pattern）2. 桥接模式（bridge pattern）3. 组合模式（composite pattern）4. 装饰模式（decorator pattern）5. 外观模式（façade pattern）6. 享元模式（flyweight pattern）7. 代理模式（proxy pattern）">
+<meta name="description" content="工厂方法模式是对简单工厂方法的改进，将Factory类进行了抽象，工厂类不再负责创建具体的产品，其具体的生产工作交给其子类去完成。在这个模式中，具体工厂类和具体产品类可以一一对应。如一个抽象汽车工厂类，其具体工厂类为可以生产轿车和卡车，衍生出生产轿车和卡车的具体实现类。1234//抽象产品类abstract class Auto&amp;#123;	…&amp;#125; 1234567//具体产品类class">
+<meta name="keywords" content="工厂方法模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设计模式（三）——7个结构型模式">
-<meta property="og:url" content="https://lichtmiao.github.io/2018/08/24/Tech/设计模式/设计模式（三）——7个结构型模式/index.html">
+<meta property="og:title" content="工厂方法模式">
+<meta property="og:url" content="https://lichtmiao.github.io/2018/09/04/Tech/Design Pattern/工厂方法模式/index.html">
 <meta property="og:site_name" content="LichtMiao&#39;s Blog">
-<meta property="og:description" content="1. 适配器模式（adapter pattern）2. 桥接模式（bridge pattern）3. 组合模式（composite pattern）4. 装饰模式（decorator pattern）5. 外观模式（façade pattern）6. 享元模式（flyweight pattern）7. 代理模式（proxy pattern）">
+<meta property="og:description" content="工厂方法模式是对简单工厂方法的改进，将Factory类进行了抽象，工厂类不再负责创建具体的产品，其具体的生产工作交给其子类去完成。在这个模式中，具体工厂类和具体产品类可以一一对应。如一个抽象汽车工厂类，其具体工厂类为可以生产轿车和卡车，衍生出生产轿车和卡车的具体实现类。1234//抽象产品类abstract class Auto&amp;#123;	…&amp;#125; 1234567//具体产品类class">
 <meta property="og:locale" content="en.yml">
-<meta property="og:updated_time" content="2018-09-03T03:06:55.322Z">
+<meta property="og:updated_time" content="2019-01-06T03:00:33.402Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="设计模式（三）——7个结构型模式">
-<meta name="twitter:description" content="1. 适配器模式（adapter pattern）2. 桥接模式（bridge pattern）3. 组合模式（composite pattern）4. 装饰模式（decorator pattern）5. 外观模式（façade pattern）6. 享元模式（flyweight pattern）7. 代理模式（proxy pattern）">
+<meta name="twitter:title" content="工厂方法模式">
+<meta name="twitter:description" content="工厂方法模式是对简单工厂方法的改进，将Factory类进行了抽象，工厂类不再负责创建具体的产品，其具体的生产工作交给其子类去完成。在这个模式中，具体工厂类和具体产品类可以一一对应。如一个抽象汽车工厂类，其具体工厂类为可以生产轿车和卡车，衍生出生产轿车和卡车的具体实现类。1234//抽象产品类abstract class Auto&amp;#123;	…&amp;#125; 1234567//具体产品类class">
 
 
 
@@ -141,7 +142,7 @@
 
 
 
-  <link rel="canonical" href="https://lichtmiao.github.io/2018/08/24/Tech/设计模式/设计模式（三）——7个结构型模式/"/>
+  <link rel="canonical" href="https://lichtmiao.github.io/2018/09/04/Tech/Design Pattern/工厂方法模式/"/>
 
 
 
@@ -149,7 +150,7 @@
 
 <!-- 网页加载条 -->
 <script src="https://neveryu.github.io/js/src/pace.min.js"></script>
-  <title>设计模式（三）——7个结构型模式 | LichtMiao's Blog</title>
+  <title>工厂方法模式 | LichtMiao's Blog</title>
   
 
 
@@ -242,7 +243,7 @@
             
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
             
-            Search
+            検索
           </a>
         </li>
       
@@ -300,7 +301,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lichtmiao.github.io/2018/08/24/Tech/设计模式/设计模式（三）——7个结构型模式/">
+    <link itemprop="mainEntityOfPage" href="https://lichtmiao.github.io/2018/09/04/Tech/Design Pattern/工厂方法模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Juan Peng">
@@ -317,7 +318,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">设计模式（三）——7个结构型模式</h1>
+          <h1 class="post-title" itemprop="name headline">工厂方法模式</h1>
         
 
         <div class="post-meta">
@@ -327,10 +328,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">投稿日</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-24T01:31:56+08:00">
-                2018-08-24
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-04T02:09:55+08:00">
+                2018-09-04
               </time>
             
 
@@ -352,8 +353,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
+                  <a href="/categories/Design-Pattern/" itemprop="url" rel="index">
+                    <span itemprop="name">Design Pattern</span>
                   </a>
                 </span>
 
@@ -389,7 +390,12 @@
       
 
       
-        <h1 id="1-适配器模式（adapter-pattern）"><a href="#1-适配器模式（adapter-pattern）" class="headerlink" title="1. 适配器模式（adapter pattern）"></a>1. 适配器模式（adapter pattern）</h1><h1 id="2-桥接模式（bridge-pattern）"><a href="#2-桥接模式（bridge-pattern）" class="headerlink" title="2. 桥接模式（bridge pattern）"></a>2. 桥接模式（bridge pattern）</h1><h1 id="3-组合模式（composite-pattern）"><a href="#3-组合模式（composite-pattern）" class="headerlink" title="3. 组合模式（composite pattern）"></a>3. 组合模式（composite pattern）</h1><h1 id="4-装饰模式（decorator-pattern）"><a href="#4-装饰模式（decorator-pattern）" class="headerlink" title="4. 装饰模式（decorator pattern）"></a>4. 装饰模式（decorator pattern）</h1><h1 id="5-外观模式（facade-pattern）"><a href="#5-外观模式（facade-pattern）" class="headerlink" title="5. 外观模式（façade pattern）"></a>5. 外观模式（façade pattern）</h1><h1 id="6-享元模式（flyweight-pattern）"><a href="#6-享元模式（flyweight-pattern）" class="headerlink" title="6. 享元模式（flyweight pattern）"></a>6. 享元模式（flyweight pattern）</h1><h1 id="7-代理模式（proxy-pattern）"><a href="#7-代理模式（proxy-pattern）" class="headerlink" title="7. 代理模式（proxy pattern）"></a>7. 代理模式（proxy pattern）</h1>
+        <p>工厂方法模式是对简单工厂方法的改进，将Factory类进行了抽象，工厂类不再负责创建具体的产品，其具体的生产工作交给其子类去完成。在这个模式中，具体工厂类和具体产品类可以一一对应。如一个抽象汽车工厂类，其具体工厂类为可以生产轿车和卡车，衍生出生产轿车和卡车的具体实现类。<br><figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//抽象产品类</span></div><div class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Auto</span></span>&#123;</div><div class="line">	…</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//具体产品类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">class</span> <span class="title">Car</span> <span class="keyword">extends</span> <span class="title">Auto</span></span>&#123;</div><div class="line">	…</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Truck</span> <span class="keyword">extends</span> <span class="title">Auto</span></span>&#123;</div><div class="line">	…</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//抽象工厂类</span></div><div class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">AutoFactory</span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> Auto <span class="title">createAuto</span>(<span class="params"></span>)</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//具体工厂类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CarFactory</span> <span class="keyword">extends</span> <span class="title">AutoFactory</span></span>&#123;</div><div class="line">	public <span class="type">Auto</span> createAuto()&#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="type">Car</span>();</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TruckFactory</span> <span class="keyword">extends</span> <span class="title">AtoFactory</span></span>&#123;</div><div class="line">	public <span class="type">Auto</span> createAuto()&#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="type">Truck</span>();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//主方法</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FactoryTest</span></span>&#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> void main(<span class="keyword">String</span>[] args)&#123;</div><div class="line">		AutoFactory factory1 = <span class="keyword">new</span> <span class="type">CarFactory</span>();</div><div class="line">		Car car = factory1.createAuto();</div><div class="line">		AutoFactory factory2 = <span class="keyword">new</span> <span class="type">TruckFactory</span>();</div><div class="line">		Truck truck = factory2.createAuto();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -404,6 +410,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/工厂方法模式/" rel="tag"><i class="fa fa-tag"></i> 工厂方法模式</a>
+          
+        </div>
+      
 
       
       
@@ -413,8 +425,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/24/Tech/Java/Java基础/Java基础（五）——面向对象（下）/" rel="next" title="Java基础（五）——面向对象（下）">
-                <i class="fa fa-chevron-left"></i> Java基础（五）——面向对象（下）
+              <a href="/2018/09/04/Tech/Design Pattern/简单工厂模式/" rel="next" title="简单工厂模式">
+                <i class="fa fa-chevron-left"></i> 简单工厂模式
               </a>
             
           </div>
@@ -423,8 +435,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/24/Tech/设计模式/设计模式（四）——11个行为模式/" rel="prev" title="设计模式（四）——11个行为模式">
-                设计模式（四）——11个行为模式 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/09/04/Tech/Design Pattern/观察者模式/" rel="prev" title="观察者模式">
+                观察者模式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -477,17 +489,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -505,7 +508,7 @@
               <a href="/archives">
             
                 <span class="site-state-item-count">157</span>
-                <span class="site-state-item-name">posts</span>
+                <span class="site-state-item-name">ポスト</span>
               </a>
             </div>
           
@@ -515,8 +518,8 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">25</span>
-                <span class="site-state-item-name">categories</span>
+                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-name">カテゴリ</span>
               </a>
             </div>
           
@@ -527,7 +530,7 @@
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">7</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">タグ</span>
               
             </div>
            -->
@@ -582,22 +585,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-适配器模式（adapter-pattern）"><span class="nav-number">1.</span> <span class="nav-text">1. 适配器模式（adapter pattern）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-桥接模式（bridge-pattern）"><span class="nav-number">2.</span> <span class="nav-text">2. 桥接模式（bridge pattern）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-组合模式（composite-pattern）"><span class="nav-number">3.</span> <span class="nav-text">3. 组合模式（composite pattern）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-装饰模式（decorator-pattern）"><span class="nav-number">4.</span> <span class="nav-text">4. 装饰模式（decorator pattern）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-外观模式（facade-pattern）"><span class="nav-number">5.</span> <span class="nav-text">5. 外观模式（façade pattern）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-享元模式（flyweight-pattern）"><span class="nav-number">6.</span> <span class="nav-text">6. 享元模式（flyweight pattern）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-代理模式（proxy-pattern）"><span class="nav-number">7.</span> <span class="nav-text">7. 代理模式（proxy pattern）</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
