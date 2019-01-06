@@ -390,8 +390,8 @@
 
       
         <p>表示日期格式的工具类：java.text.SimpleDateFormat<br>日期-&gt;文本：格式化format()；<br>文本-&gt;日期：解析<br>在创建SimpleDateFormat时，需要指定格式，如<br>SimpleDateFormat sdf = new SimpleDateFormat(“yyyy-MM-dd HH:mm:ss”);<br>String str = sdf.format(date);</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">import java.text.SimpleDateFormat;</div><div class="line">import java.util.Date;</div><div class="line">public class DateFormat &#123;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		Date date = new Date();</div><div class="line">		System.out.println(date2FormatStr(date));</div><div class="line">	&#125;</div><div class="line">	public static String date2FormatStr(Date date) &#123;</div><div class="line">		SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;);	</div><div class="line">		return sdf.format(date);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">2018-08-22 21:33:05</div></pre></td></tr></table></figure></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.text.SimpleDateFormat;</div><div class="line"><span class="keyword">import</span> java.util.Date;</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> DateFormat &#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">void</span> main(<span class="built_in">String</span>[] args) &#123;</div><div class="line">		<span class="built_in">Date</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line">		System.out.println(date2FormatStr(date));</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">String</span> date2FormatStr(<span class="built_in">Date</span> date) &#123;</div><div class="line">		SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);	</div><div class="line">		<span class="keyword">return</span> sdf.format(date);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>输出：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">2018<span class="selector-tag">-08-22</span> 21<span class="selector-pseudo">:33</span><span class="selector-pseudo">:05</span></div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -509,7 +509,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
