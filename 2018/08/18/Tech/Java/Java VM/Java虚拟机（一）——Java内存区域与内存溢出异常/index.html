@@ -108,12 +108,12 @@
 <meta property="og:site_name" content="LichtMiao&#39;s Blog">
 <meta property="og:description" content="运行时数据区域根据《虚拟机规范SE 7版》规定，Java虚拟机管理的内存将会包括以下几个运行时数据区域。       程序计数器（programming counter register）可以看作当前线程所执行字节码的行号指示器。JVM的多线程是通过线程轮流切换并分配处理器执行时间的方式来实现的，在任何一个确定的时刻，一个处理器（对于多个处理器来说是一个内核）只会执行一条线程中的指令。因此为了线程">
 <meta property="og:locale" content="en.yml">
-<meta property="og:image" content="http://ovfkr5e4k.bkt.clouddn.com/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA.png">
-<meta property="og:updated_time" content="2019-01-06T02:48:27.041Z">
+<meta property="og:image" content="https://user-images.githubusercontent.com/26324355/50731503-64334800-11a1-11e9-9782-adc8c47b3f30.png">
+<meta property="og:updated_time" content="2019-01-06T02:55:28.932Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java虚拟机（一）——Java内存区域与内存溢出异常">
 <meta name="twitter:description" content="运行时数据区域根据《虚拟机规范SE 7版》规定，Java虚拟机管理的内存将会包括以下几个运行时数据区域。       程序计数器（programming counter register）可以看作当前线程所执行字节码的行号指示器。JVM的多线程是通过线程轮流切换并分配处理器执行时间的方式来实现的，在任何一个确定的时刻，一个处理器（对于多个处理器来说是一个内核）只会执行一条线程中的指令。因此为了线程">
-<meta name="twitter:image" content="http://ovfkr5e4k.bkt.clouddn.com/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA.png">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/26324355/50731503-64334800-11a1-11e9-9782-adc8c47b3f30.png">
 
 
 
@@ -392,7 +392,7 @@
 
       
         <h1 id="运行时数据区域"><a href="#运行时数据区域" class="headerlink" title="运行时数据区域"></a>运行时数据区域</h1><p>根据《虚拟机规范SE 7版》规定，Java虚拟机管理的内存将会包括以下几个运行时数据区域。</p>
-<div align="center"><br>    <img src="http://ovfkr5e4k.bkt.clouddn.com/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA.png"><br></div>
+<div align="center"><br>    <img src="https://user-images.githubusercontent.com/26324355/50731503-64334800-11a1-11e9-9782-adc8c47b3f30.png"><br></div>
 
 <h2 id="程序计数器（programming-counter-register）"><a href="#程序计数器（programming-counter-register）" class="headerlink" title="程序计数器（programming counter register）"></a>程序计数器（programming counter register）</h2><p>可以看作当前线程所执行字节码的行号指示器。<br>JVM的多线程是通过<font color="red">线程轮流切换并分配处理器执行时间</font>的方式来实现的，在任何一个确定的时刻，一个处理器（对于多个处理器来说是一个内核）只会执行一条线程中的指令。因此为了线程切换后能恢复到正确的位置，<font color="red">每条线程都需要有一个独立的程序计数器</font>，各条线程程序计数器之间互不影响，独立存储。我们称这类内存区域为线程私有的内存。</p>
 <h2 id="虚拟机栈（VM-stack）"><a href="#虚拟机栈（VM-stack）" class="headerlink" title="虚拟机栈（VM stack）"></a>虚拟机栈（VM stack）</h2><p>与程序计数器一样，Java虚拟机栈也是线程私有的，它的生命周期与线程相同。<font color="red">栈中存放的是基本类型变量的值和引用类型变量的地址</font>。虚拟机栈是<font color="red"><b>Java方法</b></font>执行的内存模型：每个<font color="red">方法</font>执行的同时会创建一个<font color="red">栈帧（stack frame）用于存储局部变量表、操作数栈、动态链接、方法出口等信息</font>。每个方法从调用直至完成的过程，对应者一个栈帧在虚拟机中的入栈和出栈过程。<br>通常所说的栈内存（stack）和堆内存（heap）与对象内存分配最密切，实际上Java内存区域的划分远比这个复杂。其中的栈内存就是此处所说的虚拟机栈。<br>这个区域规定了两种异常状态：如果线程请求的栈深度大于虚拟机允许的深度，将会抛出StackOverflowError异常；如果虚拟机可以动态扩展，而扩展时无法申请到足够的内存，则抛出OutOfMemoryError异常。</p>
