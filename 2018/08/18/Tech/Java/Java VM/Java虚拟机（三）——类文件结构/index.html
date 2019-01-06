@@ -104,11 +104,11 @@
 <meta name="description" content="常量池（constant pool）中主要存放两大类常量：字面量（literal）和符号引用（symbolic references）。1）    字面量：比较接近常量的概念，如文本字符串，声明为final的常量值等。2）    符号引用：类和接口的全限定名（fully qualified name），成员变量（字段）的名称和描述符（descriptor），方法的名称和描述符。当虚拟机运行时，需">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java虚拟机（三）——类文件结构">
-<meta property="og:url" content="https://lichtmiao.github.io/2018/08/18/Tech/Java/Java虚拟机/Java虚拟机（三）——类文件结构/index.html">
+<meta property="og:url" content="https://lichtmiao.github.io/2018/08/18/Tech/Java/Java VM/Java虚拟机（三）——类文件结构/index.html">
 <meta property="og:site_name" content="LichtMiao&#39;s Blog">
 <meta property="og:description" content="常量池（constant pool）中主要存放两大类常量：字面量（literal）和符号引用（symbolic references）。1）    字面量：比较接近常量的概念，如文本字符串，声明为final的常量值等。2）    符号引用：类和接口的全限定名（fully qualified name），成员变量（字段）的名称和描述符（descriptor），方法的名称和描述符。当虚拟机运行时，需">
 <meta property="og:locale" content="en.yml">
-<meta property="og:updated_time" content="2018-09-10T04:52:55.251Z">
+<meta property="og:updated_time" content="2019-01-06T02:48:01.115Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java虚拟机（三）——类文件结构">
 <meta name="twitter:description" content="常量池（constant pool）中主要存放两大类常量：字面量（literal）和符号引用（symbolic references）。1）    字面量：比较接近常量的概念，如文本字符串，声明为final的常量值等。2）    符号引用：类和接口的全限定名（fully qualified name），成员变量（字段）的名称和描述符（descriptor），方法的名称和描述符。当虚拟机运行时，需">
@@ -141,7 +141,7 @@
 
 
 
-  <link rel="canonical" href="https://lichtmiao.github.io/2018/08/18/Tech/Java/Java虚拟机/Java虚拟机（三）——类文件结构/"/>
+  <link rel="canonical" href="https://lichtmiao.github.io/2018/08/18/Tech/Java/Java VM/Java虚拟机（三）——类文件结构/"/>
 
 
 
@@ -242,7 +242,7 @@
             
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
             
-            検索
+            Search
           </a>
         </li>
       
@@ -300,7 +300,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lichtmiao.github.io/2018/08/18/Tech/Java/Java虚拟机/Java虚拟机（三）——类文件结构/">
+    <link itemprop="mainEntityOfPage" href="https://lichtmiao.github.io/2018/08/18/Tech/Java/Java VM/Java虚拟机（三）——类文件结构/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Juan Peng">
@@ -327,7 +327,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">投稿日</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-18T20:02:47+08:00">
                 2018-08-18
@@ -352,8 +352,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java虚拟机/" itemprop="url" rel="index">
-                    <span itemprop="name">Java虚拟机</span>
+                  <a href="/categories/Java-VM/" itemprop="url" rel="index">
+                    <span itemprop="name">Java VM</span>
                   </a>
                 </span>
 
@@ -417,7 +417,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/18/Tech/Java/Java虚拟机/Java虚拟机（二）——垃圾回收器与分配策略/" rel="next" title="Java虚拟机（二）——垃圾回收器与分配策略">
+              <a href="/2018/08/18/Tech/Java/Java VM/Java虚拟机（二）——垃圾回收器与分配策略/" rel="next" title="Java虚拟机（二）——垃圾回收器与分配策略">
                 <i class="fa fa-chevron-left"></i> Java虚拟机（二）——垃圾回收器与分配策略
               </a>
             
@@ -500,7 +500,7 @@
               <a href="/archives">
             
                 <span class="site-state-item-count">157</span>
-                <span class="site-state-item-name">ポスト</span>
+                <span class="site-state-item-name">posts</span>
               </a>
             </div>
           
@@ -510,8 +510,8 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">24</span>
-                <span class="site-state-item-name">カテゴリ</span>
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">categories</span>
               </a>
             </div>
           
@@ -522,7 +522,7 @@
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">7</span>
-                <span class="site-state-item-name">タグ</span>
+                <span class="site-state-item-name">tags</span>
               
             </div>
            -->

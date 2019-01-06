@@ -101,17 +101,19 @@
 
 
 
-<meta name="description" content="java.util.regex是一个用正则表达式所订制的模式来对字符串进行匹配工作的类库包。它包括两个类：Pattern和Matcher 。Pattern：一个Pattern是一个正则表达式经编译后的表现模式。Matcher：一个Matcher对象是一个状态机器，它依据Pattern对象做为匹配模式对字符串展开匹配检查。 1. Pattern类Pattern的方法如下：static Pattern">
+<meta name="description" content="运行时数据区域根据《虚拟机规范SE 7版》规定，Java虚拟机管理的内存将会包括以下几个运行时数据区域。       程序计数器（programming counter register）可以看作当前线程所执行字节码的行号指示器。JVM的多线程是通过线程轮流切换并分配处理器执行时间的方式来实现的，在任何一个确定的时刻，一个处理器（对于多个处理器来说是一个内核）只会执行一条线程中的指令。因此为了线程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java基础——Pattern和Matcher">
-<meta property="og:url" content="https://lichtmiao.github.io/2018/09/04/Tech/Java/Java基础/Java基础——Pattern和Matcher/index.html">
+<meta property="og:title" content="Java虚拟机（一）——Java内存区域与内存溢出异常">
+<meta property="og:url" content="https://lichtmiao.github.io/2018/08/18/Tech/Java/Java VM/Java虚拟机（一）——Java内存区域与内存溢出异常/index.html">
 <meta property="og:site_name" content="LichtMiao&#39;s Blog">
-<meta property="og:description" content="java.util.regex是一个用正则表达式所订制的模式来对字符串进行匹配工作的类库包。它包括两个类：Pattern和Matcher 。Pattern：一个Pattern是一个正则表达式经编译后的表现模式。Matcher：一个Matcher对象是一个状态机器，它依据Pattern对象做为匹配模式对字符串展开匹配检查。 1. Pattern类Pattern的方法如下：static Pattern">
+<meta property="og:description" content="运行时数据区域根据《虚拟机规范SE 7版》规定，Java虚拟机管理的内存将会包括以下几个运行时数据区域。       程序计数器（programming counter register）可以看作当前线程所执行字节码的行号指示器。JVM的多线程是通过线程轮流切换并分配处理器执行时间的方式来实现的，在任何一个确定的时刻，一个处理器（对于多个处理器来说是一个内核）只会执行一条线程中的指令。因此为了线程">
 <meta property="og:locale" content="en.yml">
-<meta property="og:updated_time" content="2018-09-04T16:19:48.976Z">
+<meta property="og:image" content="http://ovfkr5e4k.bkt.clouddn.com/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA.png">
+<meta property="og:updated_time" content="2019-01-06T02:48:27.041Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java基础——Pattern和Matcher">
-<meta name="twitter:description" content="java.util.regex是一个用正则表达式所订制的模式来对字符串进行匹配工作的类库包。它包括两个类：Pattern和Matcher 。Pattern：一个Pattern是一个正则表达式经编译后的表现模式。Matcher：一个Matcher对象是一个状态机器，它依据Pattern对象做为匹配模式对字符串展开匹配检查。 1. Pattern类Pattern的方法如下：static Pattern">
+<meta name="twitter:title" content="Java虚拟机（一）——Java内存区域与内存溢出异常">
+<meta name="twitter:description" content="运行时数据区域根据《虚拟机规范SE 7版》规定，Java虚拟机管理的内存将会包括以下几个运行时数据区域。       程序计数器（programming counter register）可以看作当前线程所执行字节码的行号指示器。JVM的多线程是通过线程轮流切换并分配处理器执行时间的方式来实现的，在任何一个确定的时刻，一个处理器（对于多个处理器来说是一个内核）只会执行一条线程中的指令。因此为了线程">
+<meta name="twitter:image" content="http://ovfkr5e4k.bkt.clouddn.com/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA.png">
 
 
 
@@ -141,7 +143,7 @@
 
 
 
-  <link rel="canonical" href="https://lichtmiao.github.io/2018/09/04/Tech/Java/Java基础/Java基础——Pattern和Matcher/"/>
+  <link rel="canonical" href="https://lichtmiao.github.io/2018/08/18/Tech/Java/Java VM/Java虚拟机（一）——Java内存区域与内存溢出异常/"/>
 
 
 
@@ -149,7 +151,7 @@
 
 <!-- 网页加载条 -->
 <script src="https://neveryu.github.io/js/src/pace.min.js"></script>
-  <title>Java基础——Pattern和Matcher | LichtMiao's Blog</title>
+  <title>Java虚拟机（一）——Java内存区域与内存溢出异常 | LichtMiao's Blog</title>
   
 
 
@@ -242,7 +244,7 @@
             
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
             
-            検索
+            Search
           </a>
         </li>
       
@@ -300,7 +302,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lichtmiao.github.io/2018/09/04/Tech/Java/Java基础/Java基础——Pattern和Matcher/">
+    <link itemprop="mainEntityOfPage" href="https://lichtmiao.github.io/2018/08/18/Tech/Java/Java VM/Java虚拟机（一）——Java内存区域与内存溢出异常/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Juan Peng">
@@ -317,7 +319,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Java基础——Pattern和Matcher</h1>
+          <h1 class="post-title" itemprop="name headline">Java虚拟机（一）——Java内存区域与内存溢出异常</h1>
         
 
         <div class="post-meta">
@@ -327,10 +329,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">投稿日</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-04T22:58:36+08:00">
-                2018-09-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-18T20:02:11+08:00">
+                2018-08-18
               </time>
             
 
@@ -352,8 +354,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java基础/" itemprop="url" rel="index">
-                    <span itemprop="name">Java基础</span>
+                  <a href="/categories/Java-VM/" itemprop="url" rel="index">
+                    <span itemprop="name">Java VM</span>
                   </a>
                 </span>
 
@@ -389,21 +391,15 @@
       
 
       
-        <p>java.util.regex是一个用正则表达式所订制的模式来对字符串进行匹配工作的类库包。<br>它包括两个类：Pattern和Matcher 。<br>Pattern：一个Pattern是一个正则表达式经编译后的表现模式。<br>Matcher：一个Matcher对象是一个状态机器，它依据Pattern对象做为匹配模式对字符串展开匹配检查。</p>
-<h1 id="1-Pattern类"><a href="#1-Pattern类" class="headerlink" title="1. Pattern类"></a>1. Pattern类</h1><p>Pattern的方法如下：<br>static Pattern compile(String regex) 将给定的正则表达式编译并赋予给Pattern类<br>static Pattern compile(String regex, int flags) 同上，但增加flag参数的指定，可选的flag参数包括：CASE_ INSENSITIVE（忽略大小写的），COMMNETS（允许模式中的空白和注释）MULTILINE（允许多行模式），LITERAL（支持模式的文字解析）<br>int flags() 返回当前Pattern的匹配flag参数.<br>Matcher matcher(CharSequence input) 生成一个给定命名的Matcher对象<br>static boolean matches(String regex, CharSequence input) 编译给定的正则表达式并且对输入的字串以该正则表达式为模开展匹配,该方法适合于该正则表达式只会使用一次的情况，也就是只进行一次匹配工作，因为这种情况下并不需要生   成一个Matcher实例。<br>String pattern() 返回该Patter对象所编译的正则表达式。<br>String[] split(CharSequence input) 将目标字符串按照Pattern里所包含的正则表达式为模进行分割。<br>String[] split(CharSequence input, int limit) 作用同上，增加参数limit目的在于要指定分割的段数，如将limi设为2，那么目标字符串将根据正则表达式分为割为两段。 </p>
-<p>一个正则表达式，也就是一串有特定意义的字符，必须首先要编译成为一个Pattern类的实例，这个Pattern对象将会使用matcher()方法来生成一个Matcher实例，接着便可以使用该 Matcher实例以编译的正则表达式为基础对目标字符串进行匹配工作，多个Matcher是可以共用一个Pattern对象的。</p>
-<h1 id="2-Matcher类"><a href="#2-Matcher类" class="headerlink" title="2. Matcher类"></a>2. Matcher类</h1><p>Matcher方法如下：<br>Matcher appendReplacement(StringBuffer sb, String replacement) 将当前匹配子串替换为指定字符串，并且将替换后的子串以及其之前到上次匹配子串之后的字符串段添加到一个StringBuffer对象里。<br>StringBuffer appendTail(StringBuffer sb) 将最后一次匹配工作后剩余的字符串添加到一个StringBuffer对象里。<br>int end() 返回当前匹配的子串的最后一个字符在原目标字符串中的索引位置 。<br>int end(int group) 返回与匹配模式里指定的组相匹配的子串最后一个字符的位置。<br>boolean find() 尝试在目标字符串里查找下一个匹配子串。<br>boolean find(int start) 重设Matcher对象，并且尝试在目标字符串里从指定的位置开始查找下一个匹配的子串。<br>String group() 返回当前查找而获得的与组匹配的所有子串内容<br>String group(int group) 返回当前查找而获得的与指定的组匹配的子串内容<br>int groupCount() 返回当前查找所获得的匹配组的数量。<br>boolean lookingAt() 检测目标字符串是否以匹配的子串起始。<br>boolean matches() 尝试对整个目标字符展开匹配检测，也就是只有整个目标字符串完全匹配时才返回真值。<br>Pattern pattern() 返回该Matcher对象的现有匹配模式，也就是对应的Pattern 对象。<br>String replaceAll(String replacement) 将目标字符串里与既有模式相匹配的子串全部替换为指定的字符串。<br>String replaceFirst(String replacement) 将目标字符串里第一个与既有模式相匹配的子串替换为指定的字符串。<br>Matcher reset() 重设该Matcher对象。<br>Matcher reset(CharSequence input) 重设该Matcher对象并且指定一个新的目标字符串。<br>int start() 返回当前查找所获子串的开始字符在原目标字符串中的位置。<br>int start(int group) 返回当前查找所获得的和指定组匹配的子串的第一个字符在原目标字符串中的位置。 </p>
-<h2 id="★1）matches-lookingAt-find"><a href="#★1）matches-lookingAt-find" class="headerlink" title="★1）matches()/lookingAt ()/find()"></a>★1）matches()/lookingAt ()/find()</h2><p>Matcher类提供了三个返回boolean值得匹配方法：matches()，lookingAt()，find()，find(int start)，其中matches()用于全字符串匹配，<br>matches()方法尝试对整个目标字符展开匹配检测，也就是只有整个目标字符串完全匹配时才返回真值<br>lookingAt()从字符串最开头开始匹配满足的子串。<br>find()方法尝试在目标字符串里查找下一个匹配子串。find()可以对任意位置字符串匹配,其中start为起始查找索引值。<br>以上三个方法都将返回一个布尔值来表明成功与否。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">attern pattern = Pattern.compile(&quot;Java&quot;);</div><div class="line">String test1 = &quot;Java&quot;;</div><div class="line">String test2 = &quot;Java1234&quot;;</div><div class="line">String test3 = &quot;1234Java&quot;</div><div class="line">Matcher matcher = pattern.matcher(test1);</div><div class="line">System.out.println(matcher.matches());//返回true</div><div class="line">matcher = pattern.matcher(test2);</div><div class="line">System.out.println(matcher.matches());//返回false</div><div class="line"></div><div class="line">matcher = pattern.matcher(test2);</div><div class="line">System.out.println(matcher.lookingAt())://返回true</div><div class="line">matcher = pattern.matcher(test3);</div><div class="line">System.out.println(matcher.lookingAt());//返回false</div><div class="line"></div><div class="line">matcher = pattern.matcher(test1);</div><div class="line">System.out.println(matcher.find());//返回true</div><div class="line">matcher = pattern.matcher(test2);</div><div class="line">System.out.println(matcher.find());//返回true</div><div class="line">matcher = pattern.matcher(test3);</div><div class="line">System.out.println(matcher.find(2));//返回true</div><div class="line">matcher = pattern.matcher(test3);</div><div class="line">System.out.println(matcher.find(5));//返回false</div></pre></td></tr></table></figure></p>
-<h2 id="★2）replaceAll-appendReplacement-appendTail"><a href="#★2）replaceAll-appendReplacement-appendTail" class="headerlink" title="★2）replaceAll ()/appendReplacement()/appendTail()"></a>★2）replaceAll ()/appendReplacement()/appendTail()</h2><p>Matcher类同时提供了四个将匹配子串替换成指定字符串的方法：replaceAll() 、replaceFirst() 、appendReplacement() 、appendTail() 。<br>appendReplacement(StringBuffer sb, String replacement) 将当前匹配子串替换为指定字符串，并且将替换后的子串以及其之前到上次匹配子串之后的字符串段添加到一个StringBuffer对象里（即渐进式匹配），而appendTail(StringBuffer sb) 方法则将最后一次匹配工作后剩余的字符串添加到一个StringBuffer对象里。 </p>
-<p>例如，有字符串fatcatfatcatfat,假设既有正则表达式模式为”cat”，<br>第一次匹配后调用appendReplacement(sb,”dog”),那么这时StringBuffer sb的内容为fatdog，也就是fatcat中的cat被替换为dog并且与匹配子串前的内容加到sb里，<br>而第二次匹配后调用appendReplacement(sb,”dog”)，那么sb的内容就变为fatdogfatdog，<br>如果最后再调用一次appendTail（sb）,那么sb最终的内容将是fatdogfatdogfat。<br>例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">//该例将把句子里的&quot;Kelvin&quot;改为&quot;Kevin&quot; </div><div class="line">import java.util.regex.*; </div><div class="line">public class MatcherTest&#123; </div><div class="line">	public static void main(String[] args) throws Exception &#123; </div><div class="line">		Pattern p = Pattern.compile(&quot;Kevin&quot;); </div><div class="line">		Matcher m = p.matcher(&quot;Kelvin Li and Kelvin Chan are both working in Kelvin Chen&apos;s KelvinSoftShop company&quot;); </div><div class="line">		StringBuffer sb = new StringBuffer(); </div><div class="line">		int i=0; </div><div class="line">		//使用find()方法查找第一个匹配的对象 </div><div class="line">		boolean result = m.find(); </div><div class="line">		//使用循环将句子里所有的kelvin找出并替换再将内容加到sb里 </div><div class="line">		while(result) &#123; </div><div class="line">			i++; </div><div class="line">			m.appendReplacement(sb, &quot;Kevin&quot;); </div><div class="line">			System.out.println(&quot;第&quot; + i + &quot;次匹配后sb的内容是：&quot; + sb); </div><div class="line">			//继续查找下一个匹配对象 </div><div class="line">			result = m.find(); </div><div class="line">		&#125; </div><div class="line">		//最后调用appendTail()方法将最后一次匹配后的剩余字符串加到sb里； </div><div class="line">		m.appendTail(sb); </div><div class="line">		System.out.println(&quot;调用m.appendTail(sb)后sb的最终内容是:&quot;+ sb.toString()); </div><div class="line">		&#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>最终输出结果为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">第1次匹配后sb的内容是：Kevin </div><div class="line">第2次匹配后sb的内容是：Kevin Li and Kevin </div><div class="line">第3次匹配后sb的内容是：Kevin Li and Kevin Chan are both working in Kevin </div><div class="line">第4次匹配后sb的内容是：Kevin Li and Kevin Chan are both working in Kevin Chen&apos;s Kevin </div><div class="line">调用m.appendTail(sb)后sb的最终内容是：Kevin Li and Kevin Chan are both working in Kevin Chen&apos;s KevinSoftShop company.</div></pre></td></tr></table></figure></p>
-<h2 id="★3）group-group-int-group-groupCount"><a href="#★3）group-group-int-group-groupCount" class="headerlink" title="★3）group()/group(int group)/groupCount()"></a>★3）group()/group(int group)/groupCount()</h2><p>组是用括号划分的正则表达式，可以根据组的编号来引用这个组。组号为0表示整个表达式，组号为1表示被第一对括号括起的组，依次类推，例如A(B(C))D，组0是ABCD，组1是BC，组2是C。<br>Matcher类提供了start()，end()，group()分别用于返回字符串的起始索引，结束索引，以及匹配到到的字符串。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">import java.util.regex.*; </div><div class="line">public class GroupTest&#123; </div><div class="line">public static void main(String[] args) </div><div class="line">	throws Exception &#123; </div><div class="line">	Pattern p = Pattern.compile(&quot;(ca)(t)&quot;); </div><div class="line">	Matcher m = p.matcher(&quot;one cat,two cats in the yard&quot;); </div><div class="line">	StringBuffer sb = new StringBuffer(); </div><div class="line">	boolean result = m.find(); </div><div class="line">	System.out.println(&quot;该次查找获得匹配组的数量为：&quot;+m.groupCount()); </div><div class="line">	for (int i = 0; I &lt; m.groupCount(); i++)&#123;</div><div class="line">		System.out.println(“第” + i + “组的子串内容为:” + m.group(i));</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>输出为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">该次查找获得匹配组的数量为：2 </div><div class="line">第1组的子串内容为：ca </div><div class="line">第2组的子串内容为：t</div></pre></td></tr></table></figure></p>
-<h1 id="3-正则表达式规则"><a href="#3-正则表达式规则" class="headerlink" title="3. 正则表达式规则"></a>3. 正则表达式规则</h1><h2 id="1）字符"><a href="#1）字符" class="headerlink" title="1）字符"></a>1）字符</h2><p>x    字符 x<br>\    反斜线字符<br>\0n    八进制值的字符0n (0 &lt;= n &lt;= 7)<br>\0nn    八进制值的字符 0nn (0 &lt;= n &lt;= 7)<br>\0mnn    八进制值的字符0mnn 0mnn (0 &lt;= m &lt;= 3, 0 &lt;= n &lt;= 7)<br>\xhh    十六进制值的字符0xhh<br>\uhhhh    十六进制值的字符0xhhhh<br>\t    制表符(‘\u0009’)<br>\n    换行符 (‘\u000A’)<br>\r    回车符 (‘\u000D’)<br>\f    换页符 (‘\u000C’)<br>\a    响铃符 (‘\u0007’)<br>\e    转义符 (‘\u001B’)<br>\cx    T对应于x的控制字符 x</p>
-<h2 id="2）字符类"><a href="#2）字符类" class="headerlink" title="2）字符类"></a>2）字符类</h2><p>[abc]    a, b, or c (简单类)<br>[^abc]    除了a、b或c之外的任意字符（求反）<br>[a-zA-Z]    a到z或A到Z，包含（范围）<br>[a-z-[bc]]    a到z，除了b和c：[ad-z]（减去）<br>[a-z-[m-p]]    a到z，除了m到 p：[a-lq-z]<br>[a-z-[^def]]    d、e 或 f<br>备注：<br>方括号只匹配括号里的单个字符。如正则表达式“t[aeio]n”只匹配“tan”、“ten”、“tin”和“ton”，只能匹配单个字符。<br>圆括号可以匹配多个字符。如 “t(a|e|i|o|oo)n”正则表达式，就必须用圆括号。</p>
-<h2 id="3）预定义的字符类"><a href="#3）预定义的字符类" class="headerlink" title="3）预定义的字符类"></a>3）预定义的字符类</h2><p>. 任意字符（也许能与行终止符匹配，也许不能） 备注：句点符号代表任意一个字符。比如：表达式就是“t.n”，它匹配“tan”、“ten”、“tin”和“ton”，还匹配“t#n”、“tpn”甚至“t n”。<br>\d    数字: [0-9]<br>\D    非数字: [^0-9]<br>\s    空格符: [ \t\n\x0B\f\r]<br>\S    非空格符: [^\s]<br>\w    单词字符: [a-zA-Z_0-9]<br>\W    非单词字符: [^\w]</p>
-<h2 id="4）表达次数的符号"><a href="#4）表达次数的符号" class="headerlink" title="4）表达次数的符号"></a>4）表达次数的符号</h2><p>符号    次数<br>*    0次或者多次<br>+    1次或者多次<br>?    0次或者1次<br>{n}    恰好n次<br>{n,m}    从n次到m次</p>
-<p>参考：<br><a href="http://www.cnblogs.com/playing/archive/2011/03/15/1984943.html" target="_blank" rel="external">Java正则表达式Pattern和Matcher</a><br><a href="https://blog.csdn.net/taizhenba/article/details/49303047" target="_blank" rel="external">Matcher.group函数的用法</a><br><a href="https://blog.csdn.net/woaigaolaoshi/article/details/50970527" target="_blank" rel="external">我爱学Java之Pattern和Matcher用法</a></p>
+        <h1 id="运行时数据区域"><a href="#运行时数据区域" class="headerlink" title="运行时数据区域"></a>运行时数据区域</h1><p>根据《虚拟机规范SE 7版》规定，Java虚拟机管理的内存将会包括以下几个运行时数据区域。</p>
+<div align="center"><br>    <img src="http://ovfkr5e4k.bkt.clouddn.com/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA.png"><br></div>
+
+<h2 id="程序计数器（programming-counter-register）"><a href="#程序计数器（programming-counter-register）" class="headerlink" title="程序计数器（programming counter register）"></a>程序计数器（programming counter register）</h2><p>可以看作当前线程所执行字节码的行号指示器。<br>JVM的多线程是通过<font color="red">线程轮流切换并分配处理器执行时间</font>的方式来实现的，在任何一个确定的时刻，一个处理器（对于多个处理器来说是一个内核）只会执行一条线程中的指令。因此为了线程切换后能恢复到正确的位置，<font color="red">每条线程都需要有一个独立的程序计数器</font>，各条线程程序计数器之间互不影响，独立存储。我们称这类内存区域为线程私有的内存。</p>
+<h2 id="虚拟机栈（VM-stack）"><a href="#虚拟机栈（VM-stack）" class="headerlink" title="虚拟机栈（VM stack）"></a>虚拟机栈（VM stack）</h2><p>与程序计数器一样，Java虚拟机栈也是线程私有的，它的生命周期与线程相同。<font color="red">栈中存放的是基本类型变量的值和引用类型变量的地址</font>。虚拟机栈是<font color="red"><b>Java方法</b></font>执行的内存模型：每个<font color="red">方法</font>执行的同时会创建一个<font color="red">栈帧（stack frame）用于存储局部变量表、操作数栈、动态链接、方法出口等信息</font>。每个方法从调用直至完成的过程，对应者一个栈帧在虚拟机中的入栈和出栈过程。<br>通常所说的栈内存（stack）和堆内存（heap）与对象内存分配最密切，实际上Java内存区域的划分远比这个复杂。其中的栈内存就是此处所说的虚拟机栈。<br>这个区域规定了两种异常状态：如果线程请求的栈深度大于虚拟机允许的深度，将会抛出StackOverflowError异常；如果虚拟机可以动态扩展，而扩展时无法申请到足够的内存，则抛出OutOfMemoryError异常。</p>
+<h2 id="本地方法栈（native-method-stack）"><a href="#本地方法栈（native-method-stack）" class="headerlink" title="本地方法栈（native method stack）"></a>本地方法栈（native method stack）</h2><p>本地方法栈与虚拟机栈所发挥的作用非常相似，它们的区别在于虚拟机栈为虚拟机执行Java方法（即字节码）服务，而本地方法栈为虚拟机使用的Native方法服务。与虚拟机栈一样，本地方法栈也会抛出StackOverflowError异常和OutOfMemoryError异常。</p>
+<h2 id="Java堆（Java-heap）"><a href="#Java堆（Java-heap）" class="headerlink" title="Java堆（Java heap）"></a>Java堆（Java heap）</h2><p>Java堆是虚拟机管理内存中最大的一块，是<font color="red">被所有线程共享</font>的一块内存区域。<br>Java堆用于存放<font color="red">几乎所有的对象实例和数组</font>。但随着JIT编译器的发展和逃逸技术的逐渐成熟，栈上分配、标量替换优化技术将导致所有的对象都在堆上分配不那么绝对了。<br>Java堆是垃圾回收器管理的主要区域，因此也常被称为GC堆（garbage collected heap）。从内存回收的角度看，回收器基本采用<font color="red">分代收集算法</font>，Java堆可分为新生带和老年代；从内存分配的角度看，线程共享的Java堆中可能划分出多个<font color="red">线程私有的分配缓冲区</font>（thread local allocation buffer，TLAB）。<br>Java堆可以处于物理上不连续的区域，但只要逻辑上连续即可。如果在堆中没有内存完成实例分配，并且堆也无法再扩展时（当前主流虚拟机都是按照可扩展来实现的），将会抛出OutOfMemoryError异常。</p>
+<h2 id="方法区（method-error）"><a href="#方法区（method-error）" class="headerlink" title="方法区（method error）"></a>方法区（method error）</h2><p>与Java堆一样，是各个线程共享的内存区域，它用于分配<font color="red">已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据</font>。它也叫非堆（non-heap），目的是与堆区分开来。<br>Java规范对方法区的限制非常放松，除了和Java堆一样不需要连续物理内存和可以选择固定大小或可扩展外，<font color="red">还可以选择不实现垃圾回收</font>。但并非数据进入方法区后就永久存在，这个区域的内存回收的主要目标是<font color="red">常量池的回收和对类的卸载</font>。<br>当方法区无法满足内存需求时，将抛出OutOfMemoryError异常。<br><strong>常量池（constant pool table）</strong>：用于存放编译阶段生成的各种字面量和符号引用，这部分内容将会在类加载后进入方法区的<font color="red"><b>运行时常量池（runtime constant pool）</b></font>存放。<font color="red">运行时常量池是方法区的一部分</font>。<br>运行时常量池对于class文件常量池的另一个重要特征是具备动态性，<font color="red">并不要求常量一定只在编译阶段产生，运行阶段也可能将新的常量放入池中</font>。典型的是String类的intern()方法。<br>当常量无法再申请到方法区的内存时，将抛出OutOfMemoryError异常。<br><strong>字面量</strong>：文本字符串；八种基本类型的值；被声明为final的常量等。<br><strong>符号引用</strong>：类和方法的全限定名；字段（成员变量、属性）的名称和描述符；方法的名称和描述符。<br>注意：在jdk1.6之前，字符串常量池存放在方法区中 ，但到了jdk1.7之后，常量池被移出到Java堆中了。<br>栈与堆的区别：<br>（1）栈中数据大小和生命周期确定；堆中不确定。<br>（2）说到大小，栈中存放的局部变量（8种基本数据类型和对象引用）实际值基本都是一串二进制数据，所以数据很小。而堆中存放的对象类型数据更大。<br>（3）栈中的数据在其所属方法或代码块执行结束后，就被释放；而堆中的数据由垃圾回收机制进行管理，无法确定合适会被回收释放。</p>
+<h1 id="直接内存（direct-memory）"><a href="#直接内存（direct-memory）" class="headerlink" title="直接内存（direct memory）"></a>直接内存（direct memory）</h1><p>直接内存并不是Java运行时数据区域的一部分，也不是虚拟机规范中定义的内存区域。但这部分被频繁使用，也可能导致OutOfMemoryError异常。<br>在JDK1.4中新加入了NIO（new input/output）类，引入了一种基于通道（channel）和缓冲（buffer）的I/O方式，可以使用<font color="red">Native函数直接分配堆外内存</font>，然后通过存储在<font color="red">Java堆中的DirectByteBuffer对象为这块内存的引用进行操作</font>。避免了Java堆和Native堆（本机的内存）来回复制数据。<br>本机直接地址的分配不会受到Java堆的限制，但会受到本机内存（包括RAM、SWAP区域或分页文件）以及处理器寻址空间的限制。若直接内存区域总和大于物理内存限制（包括物理的和操作系统级的限制），从而导致动态扩展时出现OutOfMemory异常。</p>
 
       
     </div>
@@ -428,8 +424,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/04/Tech/Linux/Linux——Linux基础/" rel="next" title="Linux——Linux基础">
-                <i class="fa fa-chevron-left"></i> Linux——Linux基础
+              <a href="/2018/08/17/Tech/Java/Java程序员面试宝典/Java程序员面试宝典（一）/" rel="next" title="Java程序员面试宝典（一）">
+                <i class="fa fa-chevron-left"></i> Java程序员面试宝典（一）
               </a>
             
           </div>
@@ -438,8 +434,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/04/Tech/算法与数据结构/字符串问题——替换字符串中连续出现的指定字符串/" rel="prev" title="字符串问题——替换字符串中连续出现的指定字符串">
-                字符串问题——替换字符串中连续出现的指定字符串 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/18/Tech/Java/Java VM/Java虚拟机（二）——垃圾回收器与分配策略/" rel="prev" title="Java虚拟机（二）——垃圾回收器与分配策略">
+                Java虚拟机（二）——垃圾回收器与分配策略 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -494,10 +490,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            見出し
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            概要
+            Overview
           </li>
         </ul>
       
@@ -520,7 +516,7 @@
               <a href="/archives">
             
                 <span class="site-state-item-count">157</span>
-                <span class="site-state-item-name">ポスト</span>
+                <span class="site-state-item-name">posts</span>
               </a>
             </div>
           
@@ -530,8 +526,8 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">24</span>
-                <span class="site-state-item-name">カテゴリ</span>
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">categories</span>
               </a>
             </div>
           
@@ -542,7 +538,7 @@
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">7</span>
-                <span class="site-state-item-name">タグ</span>
+                <span class="site-state-item-name">tags</span>
               
             </div>
            -->
@@ -607,7 +603,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Pattern类"><span class="nav-number">1.</span> <span class="nav-text">1. Pattern类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Matcher类"><span class="nav-number">2.</span> <span class="nav-text">2. Matcher类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#★1）matches-lookingAt-find"><span class="nav-number">2.1.</span> <span class="nav-text">★1）matches()/lookingAt ()/find()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#★2）replaceAll-appendReplacement-appendTail"><span class="nav-number">2.2.</span> <span class="nav-text">★2）replaceAll ()/appendReplacement()/appendTail()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#★3）group-group-int-group-groupCount"><span class="nav-number">2.3.</span> <span class="nav-text">★3）group()/group(int group)/groupCount()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-正则表达式规则"><span class="nav-number">3.</span> <span class="nav-text">3. 正则表达式规则</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1）字符"><span class="nav-number">3.1.</span> <span class="nav-text">1）字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2）字符类"><span class="nav-number">3.2.</span> <span class="nav-text">2）字符类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3）预定义的字符类"><span class="nav-number">3.3.</span> <span class="nav-text">3）预定义的字符类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4）表达次数的符号"><span class="nav-number">3.4.</span> <span class="nav-text">4）表达次数的符号</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#运行时数据区域"><span class="nav-number">1.</span> <span class="nav-text">运行时数据区域</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#程序计数器（programming-counter-register）"><span class="nav-number">1.1.</span> <span class="nav-text">程序计数器（programming counter register）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚拟机栈（VM-stack）"><span class="nav-number">1.2.</span> <span class="nav-text">虚拟机栈（VM stack）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地方法栈（native-method-stack）"><span class="nav-number">1.3.</span> <span class="nav-text">本地方法栈（native method stack）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java堆（Java-heap）"><span class="nav-number">1.4.</span> <span class="nav-text">Java堆（Java heap）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法区（method-error）"><span class="nav-number">1.5.</span> <span class="nav-text">方法区（method error）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#直接内存（direct-memory）"><span class="nav-number">2.</span> <span class="nav-text">直接内存（direct memory）</span></a></li></ol></div>
             
 
           </div>
