@@ -116,10 +116,10 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/26324355/50731234-6fcf4080-119a-11e9-9f4d-4cf6a429f7d8.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/26324355/50731235-807fb680-119a-11e9-8ce3-1d5d27c62d63.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/26324355/50731237-88d7f180-119a-11e9-89ee-6780ebdf4acd.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/26324355/50731258-0996ed80-119b-11e9-958b-5a6e7ad7b59a">
+<meta property="og:image" content="https://user-images.githubusercontent.com/26324355/50731258-0996ed80-119b-11e9-958b-5a6e7ad7b59a.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/26324355/50731259-0b60b100-119b-11e9-9ccd-e850e308af1f.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/26324355/50731242-b6249f80-119a-11e9-8108-f1cdedd1851f.png">
-<meta property="og:updated_time" content="2019-01-06T02:10:08.524Z">
+<meta property="og:updated_time" content="2019-01-06T02:19:32.485Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机网络（四）——传输层">
 <meta name="twitter:description" content="TCP和UDP协议；TCP的各种机制（面向连接的可靠服务、序号、确认、窗口、拥塞控制等），TCP传输连接管理，TCP的有限状态机。传输层传输的数据单位是segment，TCP中叫报文段，UDP中叫用户数据报。运输层向它上面的应用层提供通信服务。它是面向通信的最高层，同时也是用户功能的最底层。通信子网中没有运输层，运输层只存在于通信子网外的主机中。 TCP/IP体系中的传输层  端口TCP和UDP都">
@@ -254,7 +254,7 @@
             
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
             
-            Search
+            検索
           </a>
         </li>
       
@@ -339,7 +339,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">投稿日</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-15T19:45:54+08:00">
                 2018-08-15
@@ -534,8 +534,8 @@
 <p><img src="https://user-images.githubusercontent.com/26324355/50731237-88d7f180-119a-11e9-89ee-6780ebdf4acd.png" alt="慢开始和拥塞避免算法举例"></p>
 <h3 id="快重传和快恢复"><a href="#快重传和快恢复" class="headerlink" title="快重传和快恢复"></a>快重传和快恢复</h3><p>慢开始和拥塞避免算法是TCP中最早使用的拥塞控制算法。有时在TCP连接中国会出现一种情况：发送端发送的Mn数据丢失，接收端只能返回ACK(n-1)，若此时为Mn设置的超时定时没有到，发送端继续发送后面的数据，会出现接收端返回多个ACK(n-1)的情况，直到Mn的超时定时器到了才重传Mn，为了避免这种情况，又增加了两个新的算法。<br>a.    快重传算法<br>发送端只要<font color="red">收到n个（一般为3个）重复的ACK</font>即可判定有报文段丢失了，就应该立即重传丢失的报文段，而不是等待这个报文段的超时定时器到了。快重传算法在某些情况下可以更早地重传丢失的报文段。<br>b.    快恢复算法<br>前面的慢开始和拥塞避免算法中，只要出现网络拥塞，就将cwnd（拥塞窗口）降为1，然后执行慢开始算法，其缺点是网络不能很快地恢复到正常工作状态。<br>a）    建立TCP连接时使用慢开始算法；<br>b）    当发送端收到n个重复ACK时，就将ssthresh（慢开始门限）的值减小到一半（但不能小于2）；<br>c）    然后<span style="background-color:yellow">cwnd=ssthresh+n*MSS</span>（拥塞窗口增大了n*MSS），重新开始慢开始算法；（这样做是因为已经有n个分组离开了网络，因此拥塞窗口扩大并不会加剧网络拥塞。而拥慢开始和拥塞避免算法中是将cwnd降为1。）<br>d）    若发送窗口值还允许发送报文段，则按拥塞避免算法继续发送报文段；<br>e）    若收到了确认新报文的ACK，则将cwnd缩小到ssthresh。</p>
 <h2 id="TCP的重传机制"><a href="#TCP的重传机制" class="headerlink" title="TCP的重传机制"></a>TCP的重传机制</h2><p>TCP每发送一个报文，就对这个报文设置一次定时器，当定时器设置的重传时间到了但还没有收到确认，则重传这一段报文。<br>报文段的往返时延：报文发出时间与收到相应确认报文的时间之差。平均RTT（round trip time，往返时延）：<br>    平均RTT=a*旧的RTT+(1-a)新的往返时延样本<br>运输层使用一种自适应算法设置RTO（retransmission time-out，超时重传时间）：<br>    RTO=b*RTT（其中b&gt;1，通常取2）</p>
-<h2 id="TCP的传输连接管理"><a href="#TCP的传输连接管理" class="headerlink" title="TCP的传输连接管理"></a>TCP的传输连接管理</h2><p>TCP是面向连接的，因此传输连接分三个阶段：建立连接、数据传送、释放连接。<br>TCP的连接和建立是采用客户-服务器方式。SYN同步比特位，SEQ报文序列号，ACK确认号（表示期望A发送的下一个报文段序号字段的值）<br><img src="https://user-images.githubusercontent.com/26324355/50731258-0996ed80-119b-11e9-958b-5a6e7ad7b59a" alt="TCP的三次握手和四次挥手"></p>
-<h3 id="三次握手建立连接"><a href="#三次握手建立连接" class="headerlink" title="三次握手建立连接"></a>三次握手建立连接</h3><h3 id="四次挥手释放连接"><a href="#四次挥手释放连接" class="headerlink" title="四次挥手释放连接"></a>四次挥手释放连接</h3><p>具体三次握手和四次挥手过程请见<a href="https://lichtmiao.github.io/2018/08/14/TCP%E7%9A%84%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/">TCP的三次握手和四次挥手</a></p>
+<h2 id="TCP的传输连接管理"><a href="#TCP的传输连接管理" class="headerlink" title="TCP的传输连接管理"></a>TCP的传输连接管理</h2><p>TCP是面向连接的，因此传输连接分三个阶段：建立连接、数据传送、释放连接。<br>TCP的连接和建立是采用客户-服务器方式。SYN同步比特位，SEQ报文序列号，ACK确认号（表示期望A发送的下一个报文段序号字段的值）<br><img src="https://user-images.githubusercontent.com/26324355/50731258-0996ed80-119b-11e9-958b-5a6e7ad7b59a.png" alt="TCP的三次握手和四次挥手"></p>
+<h3 id="三次握手建立连接"><a href="#三次握手建立连接" class="headerlink" title="三次握手建立连接"></a>三次握手建立连接</h3><h3 id="四次挥手释放连接"><a href="#四次挥手释放连接" class="headerlink" title="四次挥手释放连接"></a>四次挥手释放连接</h3><p>具体三次握手和四次挥手过程请见：<a href="https://lichtmiao.github.io/2018/08/14/Tech/Computer%20Network/TCP%E7%9A%84%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/">TCP的三次握手和四次挥手</a></p>
 <h2 id="TCP的有限状态机"><a href="#TCP的有限状态机" class="headerlink" title="TCP的有限状态机"></a>TCP的有限状态机</h2><p>为了管理因特网，在网络管理中心设有管理信息库（MIB，management information base），里面存放着各主机的TCP连接表（connection table），如下</p>
 <p><img src="https://user-images.githubusercontent.com/26324355/50731259-0b60b100-119b-11e9-9ccd-e850e308af1f.png" alt="TCP的连接表"> </p>
 <p>有限状态机：TCP可能处于的状态和各状态可能发生的变迁，如下</p>
@@ -632,10 +632,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            見出し
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            概要
           </li>
         </ul>
       
@@ -658,7 +658,7 @@
               <a href="/archives">
             
                 <span class="site-state-item-count">157</span>
-                <span class="site-state-item-name">posts</span>
+                <span class="site-state-item-name">ポスト</span>
               </a>
             </div>
           
@@ -669,7 +669,7 @@
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
                 <span class="site-state-item-count">24</span>
-                <span class="site-state-item-name">categories</span>
+                <span class="site-state-item-name">カテゴリ</span>
               </a>
             </div>
           
@@ -680,7 +680,7 @@
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">7</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">タグ</span>
               
             </div>
            -->
