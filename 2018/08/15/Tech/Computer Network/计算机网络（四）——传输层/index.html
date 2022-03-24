@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en.yml">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Learning, Life" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="LichtMiao's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="TCP和UDP协议；TCP的各种机制（面向连接的可靠服务、序号、确认、窗口、拥塞控制等），TCP传输连接管理，TCP的有限状态机。传输层传输的数据单位是segment，TCP中叫报文段，UDP中叫用户数据报。运输层向它上面的应用层提供通信服务。它是面向通信的最高层，同时也是用户功能的最底层。通信子网中没有运输层，运输层只存在于通信子网外的主机中。 TCP&#x2F;IP体系中的传输层      端口TCP和">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络（四）——传输层">
+<meta property="og:url" content="https://lichtmiao.github.io/2018/08/15/Tech/Computer%20Network/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E5%9B%9B%EF%BC%89%E2%80%94%E2%80%94%E4%BC%A0%E8%BE%93%E5%B1%82/index.html">
+<meta property="og:site_name" content="LichtMiao&#39;s Blog">
+<meta property="og:description" content="TCP和UDP协议；TCP的各种机制（面向连接的可靠服务、序号、确认、窗口、拥塞控制等），TCP传输连接管理，TCP的有限状态机。传输层传输的数据单位是segment，TCP中叫报文段，UDP中叫用户数据报。运输层向它上面的应用层提供通信服务。它是面向通信的最高层，同时也是用户功能的最底层。通信子网中没有运输层，运输层只存在于通信子网外的主机中。 TCP&#x2F;IP体系中的传输层      端口TCP和">
+<meta property="og:image" content="https://user-images.githubusercontent.com/26324355/50731222-e6b80980-1199-11e9-92b9-c80ca3b20fca.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/26324355/50731231-5d550700-119a-11e9-955a-637f4a869c92.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/26324355/50731232-5fb76100-119a-11e9-888f-59d1cad0051c.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/26324355/50731234-6fcf4080-119a-11e9-9f4d-4cf6a429f7d8.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/26324355/50731235-807fb680-119a-11e9-8ce3-1d5d27c62d63.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/26324355/50731237-88d7f180-119a-11e9-89ee-6780ebdf4acd.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/26324355/50731258-0996ed80-119b-11e9-958b-5a6e7ad7b59a.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/26324355/50731259-0b60b100-119b-11e9-9ccd-e850e308af1f.png">
+<meta property="article:published_time" content="2018-08-15T11:45:54.000Z">
+<meta property="article:modified_time" content="2019-01-07T05:52:10.000Z">
+<meta property="article:author" content="LichtMiao">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/26324355/50731222-e6b80980-1199-11e9-92b9-c80ca3b20fca.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.2',
+    sidebar: {"position":"right","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://lichtmiao.github.io/2018/08/15/Tech/Computer Network/计算机网络（四）——传输层/"/>
+
+
+
+
+
+<!-- 网页加载条 -->
+<script src="https://neveryu.github.io/js/src/pace.min.js"></script>
+  <title>计算机网络（四）——传输层 | LichtMiao's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en.yml">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LichtMiao's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lichtmiao.github.io/2018/08/15/Tech/Computer%20Network/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E5%9B%9B%EF%BC%89%E2%80%94%E2%80%94%E4%BC%A0%E8%BE%93%E5%B1%82/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LichtMiao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LichtMiao's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">计算机网络（四）——传输层</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-15T19:45:54+08:00">
+                2018-08-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/Computer-Network/" itemprop="url" rel="index">
+                    <span itemprop="name">Computer Network</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>TCP和UDP协议；TCP的各种机制（面向连接的可靠服务、序号、确认、窗口、拥塞控制等），TCP传输连接管理，TCP的有限状态机。<br>传输层传输的数据单位是segment，TCP中叫报文段，UDP中叫用户数据报。<br>运输层向它上面的应用层提供通信服务。<br>它是面向通信的最高层，同时也是用户功能的最底层。通信子网中没有运输层，运输层只存在于通信子网外的主机中。</p>
+<h1 id="TCP-IP体系中的传输层"><a href="#TCP-IP体系中的传输层" class="headerlink" title="TCP/IP体系中的传输层"></a>TCP/IP体系中的传输层</h1><div align="center">
+<img src = "https://user-images.githubusercontent.com/26324355/50731221-e4ee4600-1199-11e9-8f43-1c0c0445b513.png" />
+
+<img src="https://user-images.githubusercontent.com/26324355/50731222-e6b80980-1199-11e9-92b9-c80ca3b20fca.png"/>
+</div>
+
+<h2 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h2><p>TCP和UDP都使用了端口（port）与应用进程进行通信。复用和分用都需要端口才能实现。端口用16 bit端口号进行标识。<br>网络层为主机之间提供逻辑通信，而传输层为应用进程之间提供端到端逻辑通信。<br>应用层程序固定使用的熟知端口（well-known port）：</p>
+<table>
+<thead>
+<tr>
+<th>应用程序</th>
+<th align="center">FTP</th>
+<th align="center">TELNET</th>
+<th align="center">SMTP</th>
+<th align="center">DNS</th>
+<th align="center">TFTP</th>
+<th align="center">HTTP</th>
+<th align="center">SNMP</th>
+<th align="left">SNMP(trap)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>熟知端口</td>
+<td align="center">21</td>
+<td align="center">23</td>
+<td align="center">25</td>
+<td align="center">53</td>
+<td align="center">69</td>
+<td align="center">80</td>
+<td align="center">161</td>
+<td align="left">162</td>
+</tr>
+</tbody></table>
+<h2 id="插口"><a href="#插口" class="headerlink" title="插口"></a>插口</h2><p>TCP连接的端点称为插口（socket，套接字、套接口）。对于无连接的UDP，虽然相互通信的进程之间没有虚连接，但发送端和接收端也有端口，同样有插口概念。</p>
+<div align="center">
+<img src = "https://user-images.githubusercontent.com/26324355/50731227-1535e480-119a-11e9-9f13-58a21d263f08.png" />
+</div>
+
+<h2 id="应用和应用层协议主要使用的传输层协议（UDP和TCP协议）"><a href="#应用和应用层协议主要使用的传输层协议（UDP和TCP协议）" class="headerlink" title="应用和应用层协议主要使用的传输层协议（UDP和TCP协议）"></a>应用和应用层协议主要使用的传输层协议（UDP和TCP协议）</h2><table>
+<thead>
+<tr>
+<th>应用</th>
+<th align="center">应用层协议</th>
+<th align="center">传输层协议</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>名字转换</td>
+<td align="center">DNS</td>
+<td align="center">UDP</td>
+</tr>
+<tr>
+<td>简单文件传送</td>
+<td align="center">TFTP</td>
+<td align="center">UDP</td>
+</tr>
+<tr>
+<td>路由选择（网络层）</td>
+<td align="center">RIP</td>
+<td align="center">UDP</td>
+</tr>
+<tr>
+<td>IP地址配置</td>
+<td align="center">BOOTP, DHCP</td>
+<td align="center">UDP</td>
+</tr>
+<tr>
+<td>网络管理</td>
+<td align="center">SNMP</td>
+<td align="center">UDP</td>
+</tr>
+<tr>
+<td>远程文件服务器</td>
+<td align="center">NFS</td>
+<td align="center">UDP</td>
+</tr>
+<tr>
+<td>IP电话</td>
+<td align="center">专用协议</td>
+<td align="center">UDP</td>
+</tr>
+<tr>
+<td>流式多媒体信息</td>
+<td align="center">专用协议</td>
+<td align="center">UDP</td>
+</tr>
+<tr>
+<td>多播（网络层）</td>
+<td align="center">IGMP</td>
+<td align="center">UDP</td>
+</tr>
+<tr>
+<td>电子邮件</td>
+<td align="center">SMTP</td>
+<td align="center">TCP</td>
+</tr>
+<tr>
+<td>远程终端接入</td>
+<td align="center">TELNET</td>
+<td align="center">TCP</td>
+</tr>
+<tr>
+<td>万维网</td>
+<td align="center">HTTP</td>
+<td align="center">TCP</td>
+</tr>
+<tr>
+<td>文件传送</td>
+<td align="center">FTP</td>
+<td align="center">TCP</td>
+</tr>
+</tbody></table>
+<p>UDP/TCP与应用层之间的端口都是用报文队列来实现的，客户端或服务器端各有一个出队列和入队列。</p>
+<h1 id="UDP（user-datagram-protocol，用户数据报协议）"><a href="#UDP（user-datagram-protocol，用户数据报协议）" class="headerlink" title="UDP（user datagram protocol，用户数据报协议）"></a>UDP（user datagram protocol，用户数据报协议）</h1><h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>（1）    发送数据前不需要建立连接，减少了开销和发送数据之前的时延；<br>（2）    不使用拥塞控制，因此网络拥塞不会使源主机的发送速率降低；<br>（3）    也不保证可靠交互，因此主机不需要维持具有许多参数的复杂状态表；<br>（4）    UDP首部8字节，比TCP首部20字节少。IP数据报的协议字段中，UDP的协议号为17。<br>（5）    UDP是在IP数据报的基础上增加了端口（有了端口，就能进行复用和分用）和差错检测功能。</p>
+<h2 id="报文队列"><a href="#报文队列" class="headerlink" title="报文队列"></a>报文队列</h2><p>为了对UDP的不可靠传输进行适量改进以减少数据的丢失，可以使用向前纠错或重传已丢失的报文。<br>UDP与应用程序之间的端口都是用报文队列来实现的。下图以UDP使用TFTP（简单文件传输协议）为例。<br><img src="https://user-images.githubusercontent.com/26324355/50731231-5d550700-119a-11e9-955a-637f4a869c92.png" alt="UDP用户数据报"></p>
+<p>TFTP服务器一直在运行，等待TFTP客户服务器的请求。服务器端使用熟知端口号69（TFTP）。当客户进程启动时，操作系统就请求一个临时分配的端口号，然后操作系统为该进程创建两个队列：出队列和入队列。客户进程将报文发至出队列，加上UDP首部，然后发送至IP（网络）层。出队列有可能溢出，则操作系统通知应用层的TFTP进程暂停发送。<br>客户进程接收来自IP层的报文时，先判断是否是目的端口号，如不正确就丢弃该报文，并请ICMP发送“端口不可达”差错报文给服务器端；若目的端口号正确，则UDP将收到的报文放在入队列队尾，客户进程按队列的先后顺序将其一并取走。入队列也可能发生队列溢出，如果溢出则丢弃但不通知对方，这里没有流量控制机制来通知对方降低发送速率，并请ICMP发送“端口不可达”差错报文给服务器。</p>
+<h2 id="UDP首部格式"><a href="#UDP首部格式" class="headerlink" title="UDP首部格式"></a>UDP首部格式</h2><p><img src="https://user-images.githubusercontent.com/26324355/50731232-5fb76100-119a-11e9-888f-59d1cad0051c.png" alt="UDP用户数据报的首部和伪首部"><br>UDP计算检验和的方式和IP数据报首部检验和的方法类似。不同之处在于IP数据报只检验IP数据报的首部，而UDP是将首部和数据部分一起都检验。而由于UDP数据报是在IP数据报的开头添加的UDP数据报首部，所以UDP的检验和既检查了UDP用户数据报的源端口号和目的端口号以及用户数据报的数据部分，又检查了IP数据报的源IP地址和目的IP地址。<br>伪首部：只是为了计算校验和而存在，并不真实存在。</p>
+<h1 id="TCP（transfer-control-protocol，传输控制协议）"><a href="#TCP（transfer-control-protocol，传输控制协议）" class="headerlink" title="TCP（transfer control protocol，传输控制协议）"></a>TCP（transfer control protocol，传输控制协议）</h1><h2 id="TCP报文段首部（20字节-lt-TCP首部长度-lt-60字节）"><a href="#TCP报文段首部（20字节-lt-TCP首部长度-lt-60字节）" class="headerlink" title="TCP报文段首部（20字节&lt;=TCP首部长度&lt;=60字节）"></a>TCP报文段首部（20字节&lt;=TCP首部长度&lt;=60字节）</h2><p>TCP提供全双工的可靠的交互服务。<br>在IP数据报协议字段中，TCP协议号为6。<br>TCP报文段的全部功能都体现在TCP首部各字段中。<br><img src="https://user-images.githubusercontent.com/26324355/50731234-6fcf4080-119a-11e9-9f4d-4cf6a429f7d8.png" alt="TCP报文的首部"></p>
+<h3 id="源端口和目的端口"><a href="#源端口和目的端口" class="headerlink" title="源端口和目的端口"></a>源端口和目的端口</h3><p>各占2个字节。端口是传输层和应用层之间的接口，传输层的复用和分用功能都要通过端口才能实现。</p>
+<h3 id="序号"><a href="#序号" class="headerlink" title="序号"></a>序号</h3><p>占4个字节。TCP是面向数据流的，把TCP连接中的每个数据流都编上序号，其中序号值是本报段发送的第一个字节的序号。如一个报文段序号字段值为201，所携带的数据有100字节，则数据的最后一个字节的序号为300，而下一个报文的序号字段值为301。</p>
+<h3 id="确认号"><a href="#确认号" class="headerlink" title="确认号"></a>确认号</h3><p>占4个字节。确认号字段的内容是期望收到的下一个报文段序号字段值。如A收到了一段报文，序号值为201，数据长度为100，则最后一个字节的序号为300，则确认号为301。与ACK比特位配合使用，ACK=1时确认字段才有效。<br>若发送M0，接收端收到后发回ACK1（携带了接收端的数据，表明期望收到下一个报文M1）。（与后面的快重传算法对比，发送M0，接收端收到后立即发送ACK0，而不是在自己需要发送数据时才将ACK捎带上。注意收到一个ACKn，表明前面的n个数据都收到了。）</p>
+<h3 id="数据偏移"><a href="#数据偏移" class="headerlink" title="数据偏移"></a>数据偏移</h3><p>占4 bit。由于TCP报文首部长度不固定，数据偏移字段指出了TCP报文数据起始距报文起始处有多远。由于4 bit所能表示的最大值为15，因此数据偏移的最大值为60字节，即TCP首部的最长长度。</p>
+<h3 id="保留"><a href="#保留" class="headerlink" title="保留"></a>保留</h3><h3 id="特殊的比特位"><a href="#特殊的比特位" class="headerlink" title="特殊的比特位"></a>特殊的比特位</h3><p>a.    URG（紧急比特位，urgent） URG=1，表示有紧急数据，需要优先发送。如若要取消该程序，从键盘发出中断命令Ctrl C。URG与紧急指针字段配合使用。紧急指针指出本报文中最后一个紧急数据的字节序号。<br>b.    ACK（确认比特位，acknowledge）<br>c.    PSH（推送比特位，push）当两个应用进程进项交互式通信时，有时一端应用进程希望在键入一个命令后能够立刻得到对方的回应，而不需要整个缓存满再向上交付。<br>d.    RST（复位比特位，reset）RST=1表明TCP连接中出现严重差错，需要释放连接，重新建立TCP连接；也可用于拒绝一个非法报文或拒绝打开一个连接。<br>e.    SYN（同步比特位，synchronize）在连接建立时用来同步序列。<br>若SYN=1, ACK=0，表明这是一个请求连接报文段；若对方同意连接请求，则在响应报文段中使SYN=1, ACK=1。<br>f.    FIN（终止比特位，final）FIN=1，释放连接，此报文段的数据发送完毕，要求释放传输连接。</p>
+<h3 id="窗口"><a href="#窗口" class="headerlink" title="窗口"></a>窗口</h3><p>占2个字节。即滑动窗口，用来控制对方发送数据量，单位为字节。计算机网络通常是根据接收端的接收能力来控制发送端的数量。若A确定自己的接收能力（窗口值）大小为WIN，则A发送给B的报文段中应该写入WIN的值。</p>
+<h3 id="检验和"><a href="#检验和" class="headerlink" title="检验和"></a>检验和</h3><p>占2个字节。</p>
+<h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><p>选项字段的长度可变，它规定了MSS（maximum segment size，最大报文长度），没有用此字段时，默认首部长度为20字节。<br>若TCP报文非常长，则在IP层传输时可能要分成多个片，容易出错，也使开销增大。在连接建立时双方都把自己的MSS写入报文，取较小的那个（报文长=首部长+MSS长）。默认536字节，则主机所能接收的报文长为536+20=556。</p>
+<h2 id="TCP的数据编号与确认"><a href="#TCP的数据编号与确认" class="headerlink" title="TCP的数据编号与确认"></a>TCP的数据编号与确认</h2><p>TCP传输的可靠是因为使用了序号与确认。TCP发送一段报文，它同时在自己的重传队列中存放一个<font color="red">副本</font>，若收到ACK，则删除该副本。<br>由于TCP连接能提供全双工通信，因此通信中的每一方都不必专门发送确认字段，而只是在<font color="red">传送数据时顺便把确认信息捎带传送</font>，这样可以提高传输效率。<br>TCP有三种机制控制报文段的发送：<br>a.    TCP维护一个MSS变量，当发送缓存从发送进程中得到的数据量达到MSS字节，则组装成TCP报文段发送出去；<br>b.    TCP的PSH=1（推送）操作；<br>c.    发送端计时器到了。<br>如何控制发送报文段的时机：使用Negle算法。先发送一个字符，得到确认后再将缓存中的数据组装成报文段发送出去；在收到对前一个报文段的确认才继续发送下一个报文段。算法还规定，当到达的字符以达到窗口的一半或达到MSS，则立即发送。但Negle算法容易导致糊涂窗口综合征（silly window syndrome）。</p>
+<h2 id="TCP的流量控制和拥塞控制"><a href="#TCP的流量控制和拥塞控制" class="headerlink" title="TCP的流量控制和拥塞控制"></a>TCP的流量控制和拥塞控制</h2><p>采用<font color="red">可变的滑动窗口</font>进行流量控制，窗口大小为字节。TCP报文段首部的窗口字段就是给对方设置窗口数值的上限。<br>发送窗口在连接建立时由双方商定，但在同信道过程中，接收端可以根据自己的资源情况，随时动态地控制发送端的窗口大小。</p>
+<p><img src="https://user-images.githubusercontent.com/26324355/50731235-807fb680-119a-11e9-8ce3-1d5d27c62d63.png" alt="利用可变窗口进行流量控制举例"></p>
+<p>传输层拥塞控制算法：慢开始（slow-start）、拥塞避免（congestion avoidance）、快重传（fast retransmit）、快恢复（fast recovery）</p>
+<h3 id="慢开始和拥塞避免"><a href="#慢开始和拥塞避免" class="headerlink" title="慢开始和拥塞避免"></a>慢开始和拥塞避免</h3><p>接收窗口（rwnd，receiver window）是来自<font color="red">接收端</font>的流量控制，是接收端根据目前缓存的大小所许诺的最新窗口值；<br>拥塞窗口（cwnd，congestion window）是来自<font color="red">发送端</font>的流量控制，是发送端根据自己的流量拥塞情况而设置的窗口值。<br>发送窗口是取接收窗口和拥塞窗口中的最小值，即<span style="background-color:yellow">t_wnd = min{rwnd, cwnd}</span>。<br>a.    慢开始算法<br>由小到大逐步增大拥塞窗口（cwnd）的值。通常先将cwnd设置为MSS（最大报文段），每接收到一个新报文段的ACK，则将cwnd增大一个MSS数值。这样做使分组注入到网络的速率更加合理。但这样做容易导致cwnd增长过快，cwnd的大小是按<font color="red">指数</font>增长的。<br>例：在一开始，先将cwnd=1，发送第一个报文M0，接收端收到后发回ACK1（表示期望收到的下一个报文为M1）。发送端收到ACK1后，将cwnd+1，于是就可以发送两个报文M1和M2。接收端收到后发回ACK3和ACK4，发送端接收到ACK3和ACK4后，又将自己的cwnd+1+1，即每收到一个ACK，cwnd就加1。<br>b.    拥塞避免算法<br>发送端的cwnd（拥塞窗口）每经过一次RTT（round trip time，往返时延）就增加一个MSS大小（拥塞避免算法也叫“加法增大”）。这种cwnd大小的增长是<font color="red">线性</font>的，比慢开始算法的拥塞窗口增长速率慢得多。<br>c.    慢开始和拥塞避免算法的结合<br>为了防止拥塞窗口的快速增长引起网络拥塞，需要<font color="red">设置ssthresh（slow start threshold，慢开始门限）</font>。<br>若cwnd &lt; ssthresh，使用慢开始算法；<br>若cwnd &gt; ssthresh，使用拥塞避免算法；<br>若cwnd = ssthresh，两种算法都可以。<br>无论在慢开始阶段还是拥塞避免阶段，只要出现了网络拥塞（即网络出现超时），就将ssthresh（慢开始门限）的值减小到一半（但不能小于2）（这一步也叫“乘法减小”）；然后cwnd=1（拥塞窗口降为1），重新开始慢开始算法。（这样做的缺点是网络不能很快地恢复到正常状态。）</p>
+<p><img src="https://user-images.githubusercontent.com/26324355/50731237-88d7f180-119a-11e9-89ee-6780ebdf4acd.png" alt="慢开始和拥塞避免算法举例"></p>
+<h3 id="快重传和快恢复"><a href="#快重传和快恢复" class="headerlink" title="快重传和快恢复"></a>快重传和快恢复</h3><p>慢开始和拥塞避免算法是TCP中最早使用的拥塞控制算法。有时在TCP连接中国会出现一种情况：发送端发送的Mn数据丢失，接收端只能返回ACK(n-1)，若此时为Mn设置的超时定时没有到，发送端继续发送后面的数据，会出现接收端返回多个ACK(n-1)的情况，直到Mn的超时定时器到了才重传Mn，为了避免这种情况，又增加了两个新的算法。<br>a.    快重传算法<br>发送端只要<font color="red">收到n个（一般为3个）重复的ACK</font>即可判定有报文段丢失了，就应该立即重传丢失的报文段，而不是等待这个报文段的超时定时器到了。快重传算法在某些情况下可以更早地重传丢失的报文段。<br>b.    快恢复算法<br>前面的慢开始和拥塞避免算法中，只要出现网络拥塞，就将cwnd（拥塞窗口）降为1，然后执行慢开始算法，其缺点是网络不能很快地恢复到正常工作状态。<br>a）    建立TCP连接时使用慢开始算法；<br>b）    当发送端收到n个重复ACK时，就将ssthresh（慢开始门限）的值减小到一半（但不能小于2）；<br>c）    然后<span style="background-color:yellow">cwnd=ssthresh+n*MSS</span>（拥塞窗口增大了n*MSS），重新开始慢开始算法；（这样做是因为已经有n个分组离开了网络，因此拥塞窗口扩大并不会加剧网络拥塞。而拥慢开始和拥塞避免算法中是将cwnd降为1。）<br>d）    若发送窗口值还允许发送报文段，则按拥塞避免算法继续发送报文段；<br>e）    若收到了确认新报文的ACK，则将cwnd缩小到ssthresh。</p>
+<h2 id="TCP的重传机制"><a href="#TCP的重传机制" class="headerlink" title="TCP的重传机制"></a>TCP的重传机制</h2><p>TCP每发送一个报文，就对这个报文设置一次定时器，当定时器设置的重传时间到了但还没有收到确认，则重传这一段报文。<br>报文段的往返时延：报文发出时间与收到相应确认报文的时间之差。平均RTT（round trip time，往返时延）：<br>    平均RTT=a*旧的RTT+(1-a)新的往返时延样本<br>运输层使用一种自适应算法设置RTO（retransmission time-out，超时重传时间）：<br>    RTO=b*RTT（其中b&gt;1，通常取2）</p>
+<h2 id="TCP的传输连接管理"><a href="#TCP的传输连接管理" class="headerlink" title="TCP的传输连接管理"></a>TCP的传输连接管理</h2><p>TCP是面向连接的，因此传输连接分三个阶段：建立连接、数据传送、释放连接。<br>TCP的连接和建立是采用客户-服务器方式。SYN同步比特位，SEQ报文序列号，ACK确认号（表示期望A发送的下一个报文段序号字段的值）<br><img src="https://user-images.githubusercontent.com/26324355/50731258-0996ed80-119b-11e9-958b-5a6e7ad7b59a.png" alt="TCP的三次握手和四次挥手"></p>
+<h3 id="三次握手建立连接"><a href="#三次握手建立连接" class="headerlink" title="三次握手建立连接"></a>三次握手建立连接</h3><h3 id="四次挥手释放连接"><a href="#四次挥手释放连接" class="headerlink" title="四次挥手释放连接"></a>四次挥手释放连接</h3><p>具体三次握手和四次挥手过程请见：<a href="https://lichtmiao.github.io/2018/08/14/Tech/Computer%20Network/TCP%E7%9A%84%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/">TCP的三次握手和四次挥手</a></p>
+<h2 id="TCP的有限状态机"><a href="#TCP的有限状态机" class="headerlink" title="TCP的有限状态机"></a>TCP的有限状态机</h2><p>为了管理因特网，在网络管理中心设有管理信息库（MIB，management information base），里面存放着各主机的TCP连接表（connection table），如下</p>
+<p><img src="https://user-images.githubusercontent.com/26324355/50731259-0b60b100-119b-11e9-9ccd-e850e308af1f.png" alt="TCP的连接表"> </p>
+<p>有限状态机：TCP可能处于的状态和各状态可能发生的变迁，如下</p>
+<div align="center">
+<img width = "700" height = "900" src = "https://user-images.githubusercontent.com/26324355/50731242-b6249f80-119a-11e9-8108-f1cdedd1851f.png" align=center />
+</div>
+
+<p>其中粗实线表示对客户进程的正常变迁，粗虚线表示对服务进程的正常变迁，细线箭头表示非正常变迁。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/15/Tech/Data%20Structures%20and%20Algorithms/%E5%90%84%E7%A7%8D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%AF%94%E8%BE%83/" rel="next" title="各种排序算法比较">
+                <i class="fa fa-chevron-left"></i> 各种排序算法比较
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/16/Tech/Computer%20Network/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E4%BA%94%EF%BC%89%E2%80%94%E2%80%94%E5%BA%94%E7%94%A8%E5%B1%82/" rel="prev" title="计算机网络（五）——应用层">
+                计算机网络（五）——应用层 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="LichtMiao" />
+          <p class="site-author-name" itemprop="name">LichtMiao</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">186</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          <!-- 
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+           -->
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/LichtMiao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Miaomi4" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                    
+                      Twitter
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-IP体系中的传输层"><span class="nav-number">1.</span> <span class="nav-text">TCP&#x2F;IP体系中的传输层</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#端口"><span class="nav-number">1.1.</span> <span class="nav-text">端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插口"><span class="nav-number">1.2.</span> <span class="nav-text">插口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用和应用层协议主要使用的传输层协议（UDP和TCP协议）"><span class="nav-number">1.3.</span> <span class="nav-text">应用和应用层协议主要使用的传输层协议（UDP和TCP协议）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UDP（user-datagram-protocol，用户数据报协议）"><span class="nav-number">2.</span> <span class="nav-text">UDP（user datagram protocol，用户数据报协议）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#特点"><span class="nav-number">2.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#报文队列"><span class="nav-number">2.2.</span> <span class="nav-text">报文队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UDP首部格式"><span class="nav-number">2.3.</span> <span class="nav-text">UDP首部格式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP（transfer-control-protocol，传输控制协议）"><span class="nav-number">3.</span> <span class="nav-text">TCP（transfer control protocol，传输控制协议）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP报文段首部（20字节-lt-TCP首部长度-lt-60字节）"><span class="nav-number">3.1.</span> <span class="nav-text">TCP报文段首部（20字节&lt;&#x3D;TCP首部长度&lt;&#x3D;60字节）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#源端口和目的端口"><span class="nav-number">3.1.1.</span> <span class="nav-text">源端口和目的端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#序号"><span class="nav-number">3.1.2.</span> <span class="nav-text">序号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#确认号"><span class="nav-number">3.1.3.</span> <span class="nav-text">确认号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据偏移"><span class="nav-number">3.1.4.</span> <span class="nav-text">数据偏移</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#保留"><span class="nav-number">3.1.5.</span> <span class="nav-text">保留</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特殊的比特位"><span class="nav-number">3.1.6.</span> <span class="nav-text">特殊的比特位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#窗口"><span class="nav-number">3.1.7.</span> <span class="nav-text">窗口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检验和"><span class="nav-number">3.1.8.</span> <span class="nav-text">检验和</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选项"><span class="nav-number">3.1.9.</span> <span class="nav-text">选项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP的数据编号与确认"><span class="nav-number">3.2.</span> <span class="nav-text">TCP的数据编号与确认</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP的流量控制和拥塞控制"><span class="nav-number">3.3.</span> <span class="nav-text">TCP的流量控制和拥塞控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#慢开始和拥塞避免"><span class="nav-number">3.3.1.</span> <span class="nav-text">慢开始和拥塞避免</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快重传和快恢复"><span class="nav-number">3.3.2.</span> <span class="nav-text">快重传和快恢复</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP的重传机制"><span class="nav-number">3.4.</span> <span class="nav-text">TCP的重传机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP的传输连接管理"><span class="nav-number">3.5.</span> <span class="nav-text">TCP的传输连接管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三次握手建立连接"><span class="nav-number">3.5.1.</span> <span class="nav-text">三次握手建立连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四次挥手释放连接"><span class="nav-number">3.5.2.</span> <span class="nav-text">四次挥手释放连接</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP的有限状态机"><span class="nav-number">3.6.</span> <span class="nav-text">TCP的有限状态机</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LichtMiao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+  Powered by <a>Hexo</a>
+</div>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+  <!-- 背景动画 -->
+  
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>

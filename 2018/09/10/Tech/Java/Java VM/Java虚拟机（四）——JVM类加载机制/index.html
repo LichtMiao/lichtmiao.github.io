@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en.yml">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Learning, Life" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="LichtMiao's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="类加载的时机从类被加载到JVM内存，到卸载出内存，它的整个生命周期包括：加载（loading）、验证（verification）、准备（preparation）、解析（resolution）、初始化（initialization）、使用（using）、卸载（unloading）。          加载、验证、准备、初始化、卸载这5个阶段的顺序是确定的，类的加载必须按照这种顺序按部就班地进行，而解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java虚拟机（四）——JVM类加载机制">
+<meta property="og:url" content="https://lichtmiao.github.io/2018/09/10/Tech/Java/Java%20VM/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%88%E5%9B%9B%EF%BC%89%E2%80%94%E2%80%94JVM%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/index.html">
+<meta property="og:site_name" content="LichtMiao&#39;s Blog">
+<meta property="og:description" content="类加载的时机从类被加载到JVM内存，到卸载出内存，它的整个生命周期包括：加载（loading）、验证（verification）、准备（preparation）、解析（resolution）、初始化（initialization）、使用（using）、卸载（unloading）。          加载、验证、准备、初始化、卸载这5个阶段的顺序是确定的，类的加载必须按照这种顺序按部就班地进行，而解">
+<meta property="article:published_time" content="2018-09-10T04:37:00.000Z">
+<meta property="article:modified_time" content="2019-01-08T03:18:58.000Z">
+<meta property="article:author" content="LichtMiao">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.2',
+    sidebar: {"position":"right","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://lichtmiao.github.io/2018/09/10/Tech/Java/Java VM/Java虚拟机（四）——JVM类加载机制/"/>
+
+
+
+
+
+<!-- 网页加载条 -->
+<script src="https://neveryu.github.io/js/src/pace.min.js"></script>
+  <title>Java虚拟机（四）——JVM类加载机制 | LichtMiao's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en.yml">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LichtMiao's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lichtmiao.github.io/2018/09/10/Tech/Java/Java%20VM/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%88%E5%9B%9B%EF%BC%89%E2%80%94%E2%80%94JVM%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LichtMiao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LichtMiao's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java虚拟机（四）——JVM类加载机制</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-10T12:37:00+08:00">
+                2018-09-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/Java/Java-VM/" itemprop="url" rel="index">
+                    <span itemprop="name">Java VM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="类加载的时机"><a href="#类加载的时机" class="headerlink" title="类加载的时机"></a>类加载的时机</h1><p>从类被加载到JVM内存，到卸载出内存，它的整个生命周期包括：加载（loading）、验证（verification）、准备（preparation）、解析（resolution）、初始化（initialization）、使用（using）、卸载（unloading）。</p>
+<div align="center">
+    <img src=https://user-images.githubusercontent.com/26324355/50731492-09015580-11a1-11e9-9226-d98532ad5f19.png>
+</div> 
+
+<p>加载、验证、准备、初始化、卸载这5个阶段的顺序是确定的，类的加载必须按照这种顺序按部就班地进行，而解析阶段则不一定。</p>
+<h2 id="对一个类主动引用"><a href="#对一个类主动引用" class="headerlink" title="对一个类主动引用"></a>对一个类主动引用</h2><p>JVM规范规定了有且只有5种情况必须立即对类进行初始化（而加载、验证、准备自然需要在此之前进行）。<br>（1）遇到new、getstatic、putstatic、invokestatic这4条字节码指令时，如果类没有进行初始化，则先触发其初始化。生成这4条指令最常见的代码场景是：使用new关键字实例化对象的时候；读取或设置一个类的静态字段（被final修饰、已在编译阶段把结果送入常量池的静态字段除外）的时候；调用一个类的静态方法的时候。<br>（2）使用java.lang.reflect包的方法对类进行反射调用的时候，如果类没有进行初始化，则先触发其初始化。<br>（3）当初始化一个类的时候，如果发现其父类还没有进行过初始化，则先触发其父类的初始化。<br>（4）当JVM启动时，用户需要先确定执行的主类（有main()方法的那个类），JVM会先初始化这个主类。<br>（5）当使用JDK1.7的动态语言支持时，当使用java.lang.invoke.MethodHandle实例最后的解析结果是REF_getstatic、REF_putstatic、REF_invokeStatic的方法句柄时，若这个方法对应的句柄没有进行初始化，则触发其初始化。</p>
+<h2 id="对一个类被动引用"><a href="#对一个类被动引用" class="headerlink" title="对一个类被动引用"></a>对一个类被动引用</h2><p><font color="red">所有引用类的方式都不会触发其初始化</font>。<br>（1）子类引用父类的静态字段，不会导致子类初始化，而是父类的静态字段被初始化。<br>（2）通过数组定义来引用类，不会触发此类的初始化。<br>（3）常量在编译阶段会存入调用类的常量池中（常量的传播优化），本质上并没有直接引用到定义常量的类，因此不会触发定义常量的类初始化。</p>
+<h1 id="类加载的过程"><a href="#类加载的过程" class="headerlink" title="类加载的过程"></a>类加载的过程</h1><p>即加载、验证、准备、解析、初始化这5个过程。在类加载过程中，除了在加载阶段用于应用程序可以使用自定义的类加载器外，其余动作完全由虚拟机主导和控制。到了初始化阶段，才是真正执行类中定义的Java源代码（或者说是字节码）。</p>
+<h2 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h2><p>在加载阶段需要完成以下三件事：<br>（1）    通过一个类的全限定名来获取此类的<font color="red">二进制字节流</font>。<br>此处并没有指明从哪里获取、怎样获取。如从ZIP包中获取；从网络中获取，典型应用是Applet；运行时计算生成，这种场景用得最多的是动态代理技术，java.lang.reflect.Proxy；从其他文件中生成，典型场景是JSP文件生成对应的Class类。<br>（2）    将这个字节流所代表的静态存储结构转化为<font color="red">方法区</font>的运行时数据结构。<br>（3）    在内存中生成一个代表这个类的java.lang.Class对象，作为方法区这个类的各种数据的访问入口。<br>相对于类加载过程的其它阶段，一个非数组的加载类（即加载阶段获取类的二进制字节流的动作）是开发人员可控性最强的，因为既可以使用系统提供的引导类加载器来完成，又可以使用自定义的类加载器去控制二进制字节流的获取方式（即重写一个类加载器的loadClass()方法）。<br>而数组类本身不通过类加载器创建，它是由Java虚拟机直接创建的。</p>
+<h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><p>验证是连接阶段的第一阶段，验证的目的是为了确保Class文件的字节流中包含的信息符合当前<font color="red">虚拟机</font>的要求，并且不会危害虚拟机自身的安全。<br>在验证阶段需要完成以下4个阶段的验证动作：<br>（1）    文件格式验证<br>第一阶段是验证字节流是否符合Class文件格式的规范，并能被当前版本的虚拟机处理。<br>包含的验证：是否已<font color="red">魔数0xCAFEBABE</font>开头；主、次版本号；常量类型等。<br>这个阶段是验证基于二进制字节流的，只有通过了这个阶段，字节流才会进入内存的方法区进行存储，后面的三个阶段都是基于方法区的存储结构进行的，不会直接操作字节流。<br><strong>标识文件类型的“魔数”</strong><br>大多数情况下，我们都是通过扩展名来识别一个文件的类型的，比如我们看到一个.txt类型的文件我们就知道他是一个纯文本文件。但是，扩展名是可以修改的，那一旦一个文件的扩展名被修改过，那么怎么识别一个文件的类型呢。这就用到了 “魔数”。很多类型的文件，其起始的几个字节的内容是固定的（或是有意填充，或是本就如此）。这几个字节的内容也被称为魔数 (magic number)，因为根据这几个字节的内容就可以确定文件类型。有了这些魔术数字，我们就可以很方便的区别不同的文件。为了方便虚拟机识别一个文件是否是class类型的文件，SUN公司规定每个class文件都必须以一个<font color="red">四个字节</font>作为开始，这个数字就是魔数。魔数是由四个字节的无符号数组成的，而class文件的名字还挺好听的的，其魔数就是0xCAFEBABE。<br>（2）    元数据验证<br>第二阶段是对字节码的描述信息进行寓意分析，以保证其描述的信息符合Java语言规范的要求。<br>包含的验证：这个类是否有父类；这个类的父类是否继承了不允许被继承的类（即被final修饰的类）；是否实现了父类或接口中的方法。<br>（3）    字节码验证<br>第三阶段是对<font color="red">类的方法体</font>进行校验，主要通过数据流和控制流分析，确定程序语义是否合法、符合逻辑。<br>包含的验证：类型转换有效；保证跳转指令不会跳转到方法体以外的字节码指令上等。JDK1.6之后，将字节码验证的类型推导转变为类型检查（不需要通过程序检查，因为根据Halting problem，通过程序区校验程序逻辑是无法做到绝对准确的。而只需要检查StackMapTable属性中的记录是否合法）。<br>（4）    符号引用验证<br>最后一个阶段的校验发生在<font color="red">解析阶段</font>：虚拟机将符号引用转化为直接引用的时候。符号引用验证的目的是确保解析动作能正常执行。如果无法通过符号引用验证，将会抛出java.lang.IncompatibleClassChangeError异常的子类。</p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>准备阶段是<span style="background-color:yellow">正式为<font color="red">类变量</font>分配内存并设置类变量初始值</span>阶段，这些变量所使用的内存都将在方法区中进行分配。仅包含类变量（被static修饰），不包含实例变量，实例变量将会在对象实例化时，随对象一起分配到Java堆中。这里的初始化<font color="red">通常是基本数据类型的零值</font>，比如：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在准备阶段之后初始值为0，在初始化阶段才会被赋值为123。</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="keyword">value</span> = <span class="number">123</span>；</span><br></pre></td></tr></table></figure>
+<p><font color="red">但若存在ConstantValue属性，则类变量在准备阶段就会被初始化为ConstantValue属性所指定的值</font>，如：</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> static <span class="keyword">final</span> <span class="built_in">int</span> value = <span class="number">123</span>;<span class="comment">//在准备阶段之后初始值为123。</span></span><br></pre></td></tr></table></figure>
+<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>虚拟机将<span style="background-color:yellow">常量池内的符号引用替换为直接引用</span>的过程。符号引用见<a href="https://lichtmiao.github.io/2018/08/18/Tech/Java/Java%20VM/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E7%B1%BB%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">Java虚拟机（三）——类文件结构</a>。</p>
+<ul>
+<li>符号引用（symbolic reference）：以一组符号来描述所引用的目标，引用的目标不一定已经加载到内存中。</li>
+<li>直接引用（direct reference）：直接指向目标的指针、相对偏移量或是一个能间接定位到目标的句柄。直接引用和虚拟机实现的内存布局相关，同一符号引用在不同虚拟机实例上翻译出来的直接引用一般不同。</li>
+</ul>
+<p>对同一个符号引用进行多次解析，虚拟机可以对第一次的解析结果进行缓存，即在运行时常量池中记录直接引用，并把常量标识为以解析状态，从而避免解析动作重复执行。<br>解析动作主要针对：类或接口、字段、类方法、接口方法、方法类型、方法句柄和调用点限定符这7类符号引用。分别对应于常量池的CONSTANT_Class_info、CONSTANT_Fieldref_info、CONSTANT_Methodref_info、CONSTANT_Interfaceref_info、CONSTANT_InterfaceMethodref_info、CONSTANT_MethodType_info、CONSTANT_MethodHandle_info、CONSTANT_invokeDynamic_info7种常量类型。后面三种与JDK1.7新增的动态语言支持相关。</p>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>类初始化阶段是类加载过程的最后一步。到了初始化阶段，才是<font color="red">真正开始执行类中定义的Java源代码（或者说是字节码）</font>。初始化阶段是执行<span style="background-color:yellow">类构造器&lt;clinit&gt;()方法</span>的过程。<br>在准备阶段，类变量已经赋值一次系统要求的初始值，而在初始化阶段，通过执行类构造器去初始化类变量和其它资源。<br>（1）<strong>&lt;clinit&gt;()与&lt;init&gt;()方法的区别</strong><br>&lt;clinit&gt;()：在jvm第一次加载class文件时调用，包括静态变量初始化语句和静态块的执行<br>&lt;init&gt;()：在实例创建出来的时候调用，包括调用new操作符；调用Class或java.lang.reflect.Constructor对象的newInstance()方法；调用任何现有对象的clone()方法；通过java.io.ObjectInputStream类的getObject()方法反序列化。<br>（2）<strong>&lt;clinit&gt;()方法的特点</strong><br><b>a. &lt;clinit&gt;()方法是由编译器自动收集类中的所有类变量的赋值动作和静态语句块（static）中的语句合并产生的，编译器收集的顺序是由<font color="red">语句在源文件中出现的顺序所决定</font>的，<font color="red">静态语句块只能访问到定义在静态语句块之前的变量，定义在它之后的变量，在前面的静态语句块中可以赋值但不能访问</font>。</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="symbol">Test</span>&#123;</span><br><span class="line">static&#123;</span><br><span class="line">i = <span class="number">0</span>;    <span class="comment">//给变量赋值可以正常通过</span></span><br><span class="line">System.<span class="keyword">out</span>.println(i);  <span class="comment">//编译出错</span></span><br><span class="line">&#125;</span><br><span class="line">static <span class="built_in">int</span> i = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编译错误：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">Exception</span> <span class="selector-tag">in</span> <span class="selector-tag">thread</span> "<span class="selector-tag">main</span>" <span class="selector-tag">java</span><span class="selector-class">.lang</span><span class="selector-class">.Error</span>: <span class="selector-tag">Unresolved</span> <span class="selector-tag">compilation</span> <span class="selector-tag">problem</span>: </span><br><span class="line"></span><br><span class="line">	<span class="selector-tag">at</span> <span class="selector-tag">TestOrder</span><span class="selector-class">.main</span>(<span class="selector-tag">TestOrder</span><span class="selector-class">.java</span><span class="selector-pseudo">:16)</span></span><br></pre></td></tr></table></figure>
+<p>b. &lt;clinit&gt;()方法<font color="red">与实例构造器中的&lt;init&gt;()方法不同， 它不需要显示的调用父类构造器</font>，虚拟机会保证在子类的&lt;init&gt;()方法执行之前，父类的&lt;clinit&gt;()方法已经执行完毕。因为在虚拟机中第一个被执行的&lt;clinit&gt;()方法的类肯定是java.lang.Object。<br>c. <font color="red">由于父类的&lt;clinit&gt;()方法先执行，也就意味着父类中定义的静态语句块要优先于子类类的变量赋值操作</font>。<br>d. &lt;clinit&gt;()方法对于类或者接口来说并<font color="red">不是必须的</font>，如果一个类没有静态语句块，也就没有变量的赋值操作，那么编译器可以不为这个类生成&lt;clinit&gt;()方法。<br>e. <font color="red">接口中不能使用静态语句块，但仍然可以有变量初始化的赋值操作，因此接口与类一样都会生成&lt;clinit&gt;()方法</font>。但接口与类不同，<font color="red">执行接口或接口的实现类的&lt;clinit&gt;()方法不需要先执行父接口的&lt;clinit&gt;()方法</font>。<font color="red">只有当父接口中定义的变量使用时，父接口才会初始化</font>。<br>f. 虚拟机会保证一个类的&lt;clinit&gt;()方法在多线程环境中被正确地加锁、同步，<font color="red">如果多个线程同时去初始化一个类，那么只有一个线程去执行这个类的&lt;clinit&gt;()方法</font>，直至活动线程执行&lt;clinit&gt;()方法完毕。<br></b></p>
+<h1 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h1><p>类加载阶段中的“通过一个类的全限定名来获取描述此类的二进制字节流”这个动作放到JVM外部去实现，以便让应用程序<font color="red">自己去决定如何获取需要的类</font>。实现这个动作的代码模块称为类加载器。</p>
+<h2 id="类与类加载器"><a href="#类与类加载器" class="headerlink" title="类与类加载器"></a>类与类加载器</h2><p>对于任意一个类，都需要由加载它的类加载器和这个类本身确立在虚拟机中的唯一性，每一个类加载器，都拥有独立的类名称空间。<br>比较两个类是否相等，只有这两个类是由<font color="red">同一个类加载器的前提下</font>才有意义。</p>
+<h2 id="双亲委派模型（parent-delegation-model）"><a href="#双亲委派模型（parent-delegation-model）" class="headerlink" title="双亲委派模型（parent delegation model）"></a>双亲委派模型（parent delegation model）</h2><p>（1）类加载器的分类<br>从Java JVM的角度来讲，只存在两种不同类型的类加载器：一种是启动类加载器（Bootstrap ClassLoader），用C++语言实现，是虚拟机自身的一部分；一种是所有其他的类加载器，用Java语言实现，独立于虚拟机外部，并且全部继承自抽象类java.lang.ClassLoader。<br>从Java开发人员的角度来看，可以分得更细些：</p>
+<ul>
+<li><strong>启动类加载器（Bootstrap ClassLoader）</strong>：负责加载&lt;JAVA_HOME&gt;\lib目录，或被-Xbootclasspath参数所指定路径中的类库到虚拟机内存中。启动类加载器无法被Java程序直接引用。</li>
+<li><strong>扩展类加载器（Extension ClassLoader）</strong>：负责加载&lt;JAVA_HOME&gt;\lib\ext目录，或被java.ext.dirs所指定路径中的类库到虚拟机内存中。可以被直接引用。</li>
+<li><strong>应用程序类加载器（Application ClassLoader）</strong>：负责加载用户类路径（ClassPath）上所指定的类库。这个类加载器是ClassLoader中的getSystemClassLoader()方法的返回值。可以被直接使用，如果应用程序中没有自定义类加载器，<font color="red">一般情况下应用程序类加载器就是默认的类加载器</font>。</li>
+</ul>
+<p>（2）什么是双亲委派模型<br>“<span style="background-color:yellow"><b>启动类 &lt;- 扩展类 &lt;- 应用程序类 &lt;- 自定义类</b></span>”展示的类加载器之间的层次关系，叫类加载器的双亲委派模型，一般使用<font color = "red">组合（composition）关系</font>来复用父加载器的代码。<br>（3）双亲委派模型的工作原理<br>如果一个类加载器收到了类加载的请求，它首先不会自己去加载这个类，而是把这个请求委派给其父加载器去完成，每一层都是如此，最后所有的加载请求都会被传送到顶层的启动类加载器中，只有当父加载器无法完成这个加载请求时，子加载器才会尝试自己加载。<br>（4）双亲委派模型的好处<br>对于一个类，无论哪一个加载器加载这个类，最终都委派给了启动类加载器，因此这个类在每种类加载器中都是<strong>同一个类</strong>（因为类的唯一性是类加载器和类名一起保证的）；否则会产生多个不同的类，造成应用程序混乱。</p>
+<p><strong>参考</strong><br><a href="https://mp.weixin.qq.com/s?__biz=MzI3NzE0NjcwMg%3D%3D&idx=1&mid=2650121162&sn=581b70bf1975f9194fe12553a4dc80680" target="_blank" rel="noopener">小知识|Java中的“魔数”</a><br><a href="https://blog.csdn.net/java528416037/article/details/48463639" target="_blank" rel="noopener">java中init()和clinit()方法的区别</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/09/Life/Test%20and%20Interview/%E4%BA%AC%E4%B8%9CJava%E5%BC%80%E5%8F%91/" rel="next" title="京东Java开发">
+                <i class="fa fa-chevron-left"></i> 京东Java开发
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/10/Tech/Java/Java%20VM/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%88%E4%BA%94%EF%BC%89%E2%80%94%E2%80%94%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E4%B8%8E%E6%95%85%E9%9A%9C%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7/" rel="prev" title="Java虚拟机（五）——虚拟机性能监控与故障处理工具">
+                Java虚拟机（五）——虚拟机性能监控与故障处理工具 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="LichtMiao" />
+          <p class="site-author-name" itemprop="name">LichtMiao</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">186</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          <!-- 
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+           -->
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/LichtMiao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Miaomi4" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                    
+                      Twitter
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#类加载的时机"><span class="nav-number">1.</span> <span class="nav-text">类加载的时机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#对一个类主动引用"><span class="nav-number">1.1.</span> <span class="nav-text">对一个类主动引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对一个类被动引用"><span class="nav-number">1.2.</span> <span class="nav-text">对一个类被动引用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类加载的过程"><span class="nav-number">2.</span> <span class="nav-text">类加载的过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#加载"><span class="nav-number">2.1.</span> <span class="nav-text">加载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证"><span class="nav-number">2.2.</span> <span class="nav-text">验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备"><span class="nav-number">2.3.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解析"><span class="nav-number">2.4.</span> <span class="nav-text">解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化"><span class="nav-number">2.5.</span> <span class="nav-text">初始化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类加载器"><span class="nav-number">3.</span> <span class="nav-text">类加载器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#类与类加载器"><span class="nav-number">3.1.</span> <span class="nav-text">类与类加载器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#双亲委派模型（parent-delegation-model）"><span class="nav-number">3.2.</span> <span class="nav-text">双亲委派模型（parent delegation model）</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LichtMiao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+  Powered by <a>Hexo</a>
+</div>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+  <!-- 背景动画 -->
+  
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>

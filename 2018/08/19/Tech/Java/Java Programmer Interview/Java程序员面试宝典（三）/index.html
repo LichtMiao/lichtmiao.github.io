@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en.yml">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Learning, Life" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="LichtMiao's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="61.    目录和文件操作Java的I&#x2F;O操作一般需要进行异常检查。Java对待目录和文件同一使用File来表示，在创建File对象时，并不检查该目录或文件是否存在。若需要，可使用isDirectory()或isFile方法进行判断。 1234567891011121314151617181920212223242526import java.io.File;import java.io.IOE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java程序员面试宝典（三）">
+<meta property="og:url" content="https://lichtmiao.github.io/2018/08/19/Tech/Java/Java%20Programmer%20Interview/Java%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%EF%BC%88%E4%B8%89%EF%BC%89/index.html">
+<meta property="og:site_name" content="LichtMiao&#39;s Blog">
+<meta property="og:description" content="61.    目录和文件操作Java的I&#x2F;O操作一般需要进行异常检查。Java对待目录和文件同一使用File来表示，在创建File对象时，并不检查该目录或文件是否存在。若需要，可使用isDirectory()或isFile方法进行判断。 1234567891011121314151617181920212223242526import java.io.File;import java.io.IOE">
+<meta property="og:image" content="http://ovfkr5e4k.bkt.clouddn.com/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E8%BF%87%E7%A8%8B.jpg">
+<meta property="article:published_time" content="2018-08-19T08:36:49.000Z">
+<meta property="article:modified_time" content="2019-01-21T05:44:50.000Z">
+<meta property="article:author" content="LichtMiao">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://ovfkr5e4k.bkt.clouddn.com/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E8%BF%87%E7%A8%8B.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.2',
+    sidebar: {"position":"right","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://lichtmiao.github.io/2018/08/19/Tech/Java/Java Programmer Interview/Java程序员面试宝典（三）/"/>
+
+
+
+
+
+<!-- 网页加载条 -->
+<script src="https://neveryu.github.io/js/src/pace.min.js"></script>
+  <title>Java程序员面试宝典（三） | LichtMiao's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en.yml">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LichtMiao's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lichtmiao.github.io/2018/08/19/Tech/Java/Java%20Programmer%20Interview/Java%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%EF%BC%88%E4%B8%89%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LichtMiao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LichtMiao's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java程序员面试宝典（三）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-19T16:36:49+08:00">
+                2018-08-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/Java/Java-Programmer-Interview/" itemprop="url" rel="index">
+                    <span itemprop="name">Java Programmer Interview</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="61-目录和文件操作"><a href="#61-目录和文件操作" class="headerlink" title="61.    目录和文件操作"></a>61.    目录和文件操作</h1><p>Java的I/O操作一般需要进行异常检查。<br>Java对待目录和文件同一使用File来表示，在创建File对象时，并不检查该目录或文件是否存在。若需要，可使用isDirectory()或isFile方法进行判断。</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.<span class="built_in">File</span>;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FileDirTest</span>&#123;</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">String</span>[] args)</span></span>&#123;</span><br><span class="line">		<span class="built_in">File</span> file = <span class="keyword">new</span> <span class="built_in">File</span>(“D:/test/a.txt”); <span class="comment">//创建文件对象</span></span><br><span class="line">		<span class="keyword">if</span> (!file.<span class="built_in">exists</span>())&#123;</span><br><span class="line">			<span class="keyword">try</span>&#123;</span><br><span class="line">				file.createNewFile();</span><br><span class="line">			&#125; <span class="keyword">catch</span>(IOException e)&#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">File</span> dir = <span class="keyword">new</span> <span class="built_in">File</span>(“D:/test”); <span class="comment">//创建目录对象</span></span><br><span class="line">		<span class="keyword">if</span> (dir.<span class="built_in">isDirectory</span>())&#123; <span class="comment">//如果为目录，则打印里面的所有文件</span></span><br><span class="line">			<span class="keyword">String</span>[] files = dir.<span class="built_in">list</span>();</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">String</span> fileName : files)&#123;</span><br><span class="line">				<span class="comment">//用目录名和文件名生成File对象</span></span><br><span class="line">				<span class="comment">//separator:系统相关的默认名称分隔符,表示为字符串。</span></span><br><span class="line">				<span class="built_in">File</span> f= <span class="keyword">new</span> <span class="built_in">File</span>(dir.getPath() + <span class="built_in">File</span>.separator + fileName);</span><br><span class="line">				<span class="comment">//将文件和目录分类打印</span></span><br><span class="line">				<span class="keyword">if</span> (f.isFile()) System.out.<span class="built_in">println</span>(“file:” + f.getName());</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">if</span> (f.<span class="built_in">isDirectory</span>()) System.out.<span class="built_in">println</span>(“directory:” + f.getName());</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>常用方法：<br>构造方法：创建File对象，但并不会检查该目录或文件是否已存在；<br>isDirectory()和isFile()方法：判断是目录还是普通文件；<br>createNewFile()：创建新文件；<br>list()：用于目录，得到目录下的所有文件，类型为字符串数组；<br>getName()：得到文件名，但不包括路径；<br>delete()：删除文件。</p>
+<h1 id="62-写一个复制文件的程序"><a href="#62-写一个复制文件的程序" class="headerlink" title="62.    写一个复制文件的程序"></a>62.    写一个复制文件的程序</h1><p>1）    用a文件（被复制的文件）路径创建一个InputStream对象；<br>2）    用b文件（新文件）路径创建一个OutputStream对象；<br>3）    定义固定长度的byte类型数组，用read()方法读取a文件的内容，read()方法返回读取到数组中的字节数，当没有数据了，就返回-1；<br>4）    用write()方法把数组中的字节写入到b；<br>5）    关闭输入输出流。</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FileCopy</span>&#123;</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">String</span>[] args)</span></span>&#123;</span><br><span class="line">		FileInputStream fis = <span class="keyword">new</span> FileInputStream(“D:/test/a.txt”);</span><br><span class="line">		FileOutputStream fos = <span class="keyword">new</span> FileOutputStream(“D:/test/b.txt”);</span><br><span class="line">		<span class="keyword">byte</span>[] buff = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">256</span>];</span><br><span class="line">		<span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span>((len = fis.<span class="built_in">read</span>(buff)) &gt; <span class="number">0</span>)&#123;</span><br><span class="line">			fos.<span class="built_in">write</span>(buff, <span class="number">0</span>, len);</span><br><span class="line">		&#125;</span><br><span class="line">		fis.<span class="built_in">close</span>();</span><br><span class="line">		fos.<span class="built_in">close</span>();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中int read(byte[] b)方法：Reads up to b.length bytes of data from this input stream into an array of bytes. Return total number of bytes read into the buffer, or -1 if there is no more data because the end of the file has been reached.<br>read()和write()方法的处理目标通常是异构byte数组，即将这些byte写入或读出。</p>
+<h1 id="63-使用随机存取文件RandomAccesFile类"><a href="#63-使用随机存取文件RandomAccesFile类" class="headerlink" title="63.    使用随机存取文件RandomAccesFile类"></a>63.    使用随机存取文件RandomAccesFile类</h1><p>RandomAccessFile类把字节用下标数字来进行定位，通过调用RandomAccessFile的API方法，把指针向前后向后移动，达到随机存取数据的目的。主要方法：<br>length()：得到文件的字节长度；<br>seek()：设置文件指针位置，在该位置发生读取操作；<br>read()和write()：读取和写入一个字节数据。</p>
+<h1 id="64-字节流、字符流"><a href="#64-字节流、字符流" class="headerlink" title="64.    字节流、字符流"></a>64.    字节流、字符流</h1><p>字符流是字节流包装来的，因此在创建BufferedReader和BufferedWriter对象的时候，需要提供一个InputStreamReader或OutputStreamWriter对象。使用read()或readLine()方法得到数据（<font color="red">readLine()直接读取一行数据，并返回String对象</font>），使用write()或print()方法进行字符输出。最后关闭reader或writer。<br>如FileInputStream -&gt; InputStreamReader -&gt; BufferedReader</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> void main(<span class="keyword">String</span>[] args)&#123;</span><br><span class="line">	InputStream <span class="keyword">in</span> = <span class="keyword">new</span> <span class="type">FileInputStream</span>(“D:<span class="type"></span>/test/a.txt”);</span><br><span class="line">	InputStreamReader isr = <span class="keyword">new</span> <span class="type">InputStreamReader</span>(<span class="keyword">in</span>, “GBK); <span class="comment">//用GBK编码方式读取文本文件内容，不需要关心字节流是如何组装成字符流的</span></span><br><span class="line">	BufferReader br = <span class="keyword">new</span> <span class="type">BufferReader</span>(isr);</span><br><span class="line">	StringBuffer sb = <span class="keyword">new</span> <span class="type">StringBuffer</span>(); <span class="comment">//临时字符内容</span></span><br><span class="line">	<span class="keyword">String</span> str = <span class="literal">null</span>;</span><br><span class="line">	<span class="keyword">while</span> ((br.readLine()) != <span class="literal">null</span>)&#123; <span class="comment">//循环读取一行数据，并返回String对象</span></span><br><span class="line">		sb.append(br);</span><br><span class="line">	&#125;</span><br><span class="line">	br.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="65-序列化（Serialize）和反序列化（Deserialize）"><a href="#65-序列化（Serialize）和反序列化（Deserialize）" class="headerlink" title="65.    序列化（Serialize）和反序列化（Deserialize）"></a>65.    序列化（Serialize）和反序列化（Deserialize）</h1><p>为什么要进行序列化与反序列化：在Java中，我们可以通过多种方式来创建对象，并且只要对象没有被回收我们都可以复用该对象。但是，<strong>我们创建出来的这些Java对象都是存在于JVM的堆内存中的。只有JVM处于运行状态的时候，这些对象才可能存在。一旦JVM停止运行，这些对象的状态也就随之而丢失了</strong>。但是在真实的应用场景中，我们需要将这些对象持久化下来，并且能够在需要的时候把对象重新读取出来。Java的对象序列化可以帮助我们实现该功能。<br>对象序列化机制（object serialization）是Java语言内建的一种对象持久化方式，通过对象序列化，可以把对象的状态保存为字节数组，并且可以在有需要的时候将这个字节数组通过反序列化的方式再转换成对象。对象序列化可以很容易的在JVM中的活动对象和字节数组（流）之间进行转换。<br>在Java中，对象的序列化与反序列化被广泛应用到RMI(远程方法调用)及网络传输中。<br>序列化：<font color="red">把内存中的Java对象转换成平台无关的二进制流（字节序列）</font>，将对象保存到磁盘中，或允许在网络中直接传输对象；反序列化：读取字节数据，重新组装成Java对象。<br>所有进行序列化的对象都必须实现Serializable接口，必要时还需要提供序列化ID，即静态常量serialVersionUID。<br>1）    序列化对象：用一个输出流创建ObjectOutputStream对象，然后调用writeObject()方法；<br>2）    反序列化：用一个输入流创建ObjectInputStream对象，然后调用readObject()方法。</p>
+<h1 id="66-多线程"><a href="#66-多线程" class="headerlink" title="66.    多线程"></a>66.    多线程</h1><p>每个正在系统上运行的程序都是一个进程，每个进程包含一个或多个线程。进程是程序的一次执行，线程可以理解为进程中执行的一段程序片段。<br>多线程允许在程序中并发执行多个线程，彼此之间相互独立。多线程共享内存，通过并发执行的方式来提高程序的效率和性能。</p>
+<h1 id="67-Runnable接口和Thread类的区别"><a href="#67-Runnable接口和Thread类的区别" class="headerlink" title="67.    Runnable接口和Thread类的区别"></a>67.    Runnable接口和Thread类的区别</h1><h2 id="1）一个类如何成为线程类"><a href="#1）一个类如何成为线程类" class="headerlink" title="1）一个类如何成为线程类"></a>1）一个类如何成为线程类</h2><p>（1）    实现java.lang.Runnable接口；<br>（2）    继承自java.lang.Thread类（实际上Thread类是实现了Runnable接口的）。<br>Runnable接口和Thread类都需要实现<span style="background-color:yellow">run()方法</span>，当每个线程执行的时候JVM会自动调用这个方法。</p>
+<h2 id="2）线程的启动和执行"><a href="#2）线程的启动和执行" class="headerlink" title="2）线程的启动和执行"></a>2）线程的启动和执行</h2><p>（1）    线程启动：通过new创建线程对象后，执行start()方法启动一个线程。<br>（2）    线程执行：run()方法中是线程的主体，也就是线程被启动后将要运行的代码</p>
+<h2 id="3）Runnable接口和Thread类的区别"><a href="#3）Runnable接口和Thread类的区别" class="headerlink" title="3）Runnable接口和Thread类的区别"></a>3）Runnable接口和Thread类的区别</h2><p>（1）    由于Java只能单继承但能实现多个接口，所以线程类继承了Thread类后就不能继承其它类了，而Runnable接口可以；<br>（2）    线程类继承Thread类使用线程的方法会更方便一些，因为Thread类提供了一些额外的方法，如获取线程的Id、线程名、线程状态等方法；<br>（3）    实现Runnable接口的线程类的多线程，可以更方便地访问同一变量，而Thread类则需要内部类来替代，利用的是内部类可以任意访问外部变量这一特性。如</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="symbol">MyThread</span> <span class="symbol">implements</span> <span class="symbol">Runnable</span>&#123;</span><br><span class="line">	<span class="built_in">int</span> index = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">void</span> run()&#123;</span><br><span class="line">	…</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public <span class="type">MyThread</span>&#123;</span><br><span class="line">	int index = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">InnerClass</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line">		public void run()&#123;</span><br><span class="line">		…</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">Thread</span> getThread()&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="type">InnerClass</span>(); <span class="comment">//返回InnerClass的一个匿名对象</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="68-线程同步"><a href="#68-线程同步" class="headerlink" title="68.    线程同步"></a>68.    线程同步</h1><p>多线程操作同一块内存区域的数据可能会造成数据混乱，即线程安全问题。<br>synchronized工作原理：每个对象都可以有一个线程锁，synchronized可以用任何一个<font color="red">对象的线程锁来锁住一段代码</font>，任何想要进入该段代码的线程必须在解锁后才能执行，否则就进入等待状态。</p>
+<h2 id="1）-同步代码块"><a href="#1）-同步代码块" class="headerlink" title="1）    同步代码块"></a>1）    同步代码块</h2><p>Java多线程引入了同步监视器，使用同步监视器的通用方法是同步代码块：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">synchronized</span><span class="params">(obj)</span></span>&#123;</span><br><span class="line">	…</span><br><span class="line">	<span class="comment">//同步代码块</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>obj就是<font color="red">同步监视器：阻止两个线程对同一个共享资源进行并发访问</font>。<br>线程开始执行同步代码块之前，必须先获得同步监视器的锁定。<br>任何时候只能有一个线程可以获得同步监视器的锁定。</p>
+<h2 id="2）-同步方法"><a href="#2）-同步方法" class="headerlink" title="2）    同步方法"></a>2）    同步方法</h2><p>对于synchronized修饰的实例方法（没有static修饰的方法）无需显示指定同步监视器，同步方法的同步监视器是this，也就是调用该方法的对象。</p>
+<h2 id="3）-同步锁（Lock）"><a href="#3）-同步锁（Lock）" class="headerlink" title="3）    同步锁（Lock）"></a>3）    同步锁（Lock）</h2><p>Java5提供了功能更强大的同步机制：通过显式定义同步锁对象来实现同步，同步锁由Lock对象充当。<br>Lock提供了比synchronized代码块和synchronized方法更广泛的锁定操作。Lock是控制多个线程对共享资源进行访问的工具，<font color="red">每次只能有一个线程对Lock对象加锁</font>。<br>Java5提供的两个根接口：Lock、ReadWriteLock，并为Lock提供<span style="background-color:yellow">ReentrantLock（可重入锁）</span>实现类，为ReadWriteLock提供ReentrantReadWrieteLock实现类。Java8新增StampedLock类，大多数场景下可代替ReentrantReadWrieteLock实现类。<br>可重入即一个线程可以对已被加锁的ReentrantLock再次加锁。<br>在实现线程安全的控制中，ReentrantLock（可重入锁）对象可以显示地加锁、释放锁。通常代码格式如下：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">X</span>&#123;</span><br><span class="line">	<span class="keyword">private</span> final ReentrantLock <span class="keyword">lock</span> = <span class="keyword">new</span> ReentrantLock(); <span class="comment">//定义锁对象</span></span><br><span class="line">	…</span><br><span class="line">	<span class="comment">//定义需要保证线程安全的方法</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">m</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">lock</span>.<span class="keyword">lock</span>(); <span class="comment">//加锁</span></span><br><span class="line">		<span class="keyword">try</span>&#123;</span><br><span class="line">			<span class="comment">//需要保证线程安全的代码</span></span><br><span class="line">		&#125; <span class="keyword">finally</span>&#123; <span class="comment">//使用finally块来保证释放锁，finally用于回收在try块中打开的物理资源</span></span><br><span class="line">			<span class="keyword">lock</span>.unlock();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>同步锁与使用同步方法有点类似，只是使用Lock时显式使用Lock对象作为同步锁，而使用同步方法时系统隐式使用当前对象作为同步监视器。</p>
+<h1 id="69-Java线程池（ThreadPool）"><a href="#69-Java线程池（ThreadPool）" class="headerlink" title="69.    Java线程池（ThreadPool）"></a>69.    Java线程池（ThreadPool）</h1><p>系统启动一个新线程的成本是比较高的，因为它涉及操作系统交互。当系统中需要创建大量生存周期短暂的线程时，更应该考虑用线程池。除此之外，使用线程池还可有效控制系统中并发线程的数量，分离了业务代码和线程本身的管理代码。<br>线程池就是一个或多个线程的集合。线程池有以下几个部分：<br>（1）    完成任务的一个或多个线程；<br>（2）    用户调度管理的管理线程；<br>（3）    要求执行的任务队列。<br>线程池对应的类为java.util.concurrent.ThreadPoolExecutor，它在构造的时候一般需要提供池大小等参数，常用的构造方法如下：</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ThreadPoolExecutor(<span class="keyword">int</span> coreSize,</span><br><span class="line">	<span class="keyword">int</span> maximumPoolSize,</span><br><span class="line">	<span class="keyword">long</span> keepAliveTime,</span><br><span class="line">	TimeUnit unit,</span><br><span class="line">	BlockingQueue&lt;Runnable&gt; workQueue, <span class="comment">//缓冲队列</span></span><br><span class="line">	RejectedExecutionHandler <span class="keyword">handler</span>);</span><br></pre></td></tr></table></figure>
+<p>一个线程任务通过execute(Runnable)方法被添加到线程池，任务就是一个Runnable类型的对象，任务的执行方法就是Runnable类型对象的run()方法。</p>
+<h1 id="70-反射（reflect）的原理"><a href="#70-反射（reflect）的原理" class="headerlink" title="70.    反射（reflect）的原理"></a>70.    反射（reflect）的原理</h1><p>反射是为了动态地调用一个类，动态地调用一个方法，动态地访问一个属性等动态要求而设计的。它的出发点就在于<font color="red">JVM会为每个类创建一个java.lang.Class类的实例，通过该对象可以获取这个类的信息，然后通过使用java.lang.reflect包下的API（application programming interface）达到各种动态需求</font>。大多数的框架，如Struts、Hibernate、Spring都会频繁地使用反射API来完成它们的动态功能。</p>
+<h1 id="71-类初始化的时机"><a href="#71-类初始化的时机" class="headerlink" title="71.    类初始化的时机"></a>71.    类初始化的时机</h1><p>即什么情况下，Java类会被加载到JVM。<br>1）    创建类的实例。为某个类创建实例的方式包括：new关键字、反射、反序列化；<br>2）    调用某个类的静态方法（类方法）；<br>3）    访问某个类或接口的静态方法（类方法），或为该静态变量赋值；<br>4）    使用<font color="red">反射</font>方式来<font color="red">强制创建</font>某个类或接口对应的<font color="red">java.lang.Class对象</font>。如<font color="red">使用Class类的静态方法forName()会强制初始化该类</font>，Class.forName(“Person”)，如果系统还未初始化Person类，则初始化Person类，并返回Person类对应的java.lang.Class对象；<br>5）    初始化某个类的子类。当初始化某个类的子类时，该子类的所有父类都会被初始化；<br>6）    直接使用java.exe命令来运行某个主类。当<font color="red">运行某个主类</font>时，程序会先初始化该主类。</p>
+<h1 id="72-如何得到Class对象"><a href="#72-如何得到Class对象" class="headerlink" title="72.    如何得到Class对象"></a>72.    如何得到Class对象</h1><p>不管通过什么形式，一旦类被加载进JVM，就会为它们创建一个Class类的实例对象。那么如何得到一个类的Class对象呢，有以下几种方法。<br>1）    使用<font color="red">Class类的forName(String className)方法</font>，其中传入的字符串参数为某个类的全限定包名（有完整包名）；（比如使用反射加载数据库驱动程序）<br>2）    <font color="red">直接调用某个类的class静态属性</font>。如Person.class将会返回Person类对应的Class对象。（这种方法比1）更好，直接调用该类的Class对象，编译阶段就可检查，不用调用方法性能更好）<br>3）    <font color="red">调用某个对象的getClass()方法</font>。它是Object类中的一个方法。如stu.getClass()。</p>
+<h1 id="73-获取Class对象对应的类信息"><a href="#73-获取Class对象对应的类信息" class="headerlink" title="73.    获取Class对象对应的类信息"></a>73.    获取Class对象对应的类信息</h1><p>获取到Class对象以后，就可通过调用它的一些成员方法来获取它所对应的类的全限定包名（getName()）、成员变量（getField()）、构造器（getConstructor()）、方法（getMethod()）、修饰符（getModifier()）等信息。</p>
+<h2 id="74-如何操作类的Field（成员变量、属性、字段）"><a href="#74-如何操作类的Field（成员变量、属性、字段）" class="headerlink" title="74.    如何操作类的Field（成员变量、属性、字段）"></a>74.    如何操作类的Field（成员变量、属性、字段）</h2><p>Field提供有关类或接口的单个成员变量信息，以及对它的动态访问权限，反射的变量可能是一个静态变量或实例的变量。<br>Field对象通过Class类的getField()或getDeclaredField()（获取带指定形参的列表的方法）获取到，Field类处于java.lang.reflect包下。<br>Field的方法主要分为两类：get***()和set***()。get***()主要为了获取某个对象的变量，如getInt()；set***()用于设置值，有两个形参，一个是对象的引用，一个是需要设置的值。</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过反射比较两个对象的大小</span></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Field;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FieldTestClass</span> &#123;</span></span><br><span class="line">	<span class="keyword">String</span> name;</span><br><span class="line">	<span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">FieldTestClass</span><span class="params">(<span class="keyword">String</span> name, <span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.name = name;</span><br><span class="line">		<span class="keyword">this</span>.age = age;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.reflect.Field;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FieldTest</span> &#123;</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">String</span>[] args)</span> </span>&#123;</span><br><span class="line">		FieldTestClass obj1 = <span class="keyword">new</span> FieldTestClass(<span class="string">"张三"</span>, <span class="number">30</span>);</span><br><span class="line">		FieldTestClass obj2 = <span class="keyword">new</span> FieldTestClass(<span class="string">"李四"</span>, <span class="number">40</span>);</span><br><span class="line">		System.out.<span class="built_in">println</span>(compare(obj1, obj2).name + <span class="string">"is bigger."</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 根据age返回成员变量对象</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> FieldTestClass <span class="title">compare</span><span class="params">(FieldTestClass obj1, FieldTestClass obj2)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			Field field1 = obj1.getClass().getDeclaredField(<span class="string">"age"</span>);</span><br><span class="line">			Field field2 = FieldTestClass.class.getDeclaredField(<span class="string">"age"</span>);</span><br><span class="line">			<span class="comment">// 获取两个对象的age值</span></span><br><span class="line">			<span class="keyword">int</span> val1 = (Integer) field1.<span class="built_in">get</span>(obj1);</span><br><span class="line">			<span class="comment">// 或int val1 = field1.getInt(obj1);</span></span><br><span class="line">			<span class="keyword">int</span> val2 = (Integer) field2.<span class="built_in">get</span>(obj2);</span><br><span class="line">			<span class="keyword">if</span> (val1 &gt; val2)</span><br><span class="line">				<span class="keyword">return</span> obj1;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				<span class="keyword">return</span> obj2;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> null;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="75-如何操作类的Method（方法）"><a href="#75-如何操作类的Method（方法）" class="headerlink" title="75.    如何操作类的Method（方法）"></a>75.    如何操作类的Method（方法）</h1><p>Method类提供关于类或接口中某个方法（以及如何访问该方法）的信息，所反映的方法可能是类方法或实例方法（包括抽象方法在内）。<br>Method对象通过Class类的getMethod()或getDeclaredMethod()获取到，Method类也处于java.lang.reglect包下。<br>Method类中最常用的方法是Object inveke()方法，即方法调用。它的第一个参数为Class类对应的实例对象，后面则是不定长Object类型参数列表。</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MethodTestClass</span> &#123;</span></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">m1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.<span class="built_in">println</span>(<span class="string">"m1 is called..."</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">m2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.<span class="built_in">println</span>(<span class="string">"m2 is called..."</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MethodTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> void main(<span class="keyword">String</span>[] args) &#123;</span><br><span class="line">		args = <span class="keyword">new</span> <span class="type">String</span>[]&#123;<span class="string">"m2"</span>&#125;;</span><br><span class="line">		<span class="keyword">String</span> methodName = args[<span class="number">0</span>]; <span class="comment">//得到方法名参数</span></span><br><span class="line">		<span class="keyword">if</span> (methodName != <span class="literal">null</span>) &#123;</span><br><span class="line">			Class clazz = MethodTestClass.class;</span><br><span class="line">			<span class="keyword">try</span>&#123;</span><br><span class="line">				<span class="comment">//获取指定方法名的Method对象</span></span><br><span class="line">				Method m = clazz.getDeclaredMethod(methodName);</span><br><span class="line">				<span class="keyword">if</span> (m != <span class="literal">null</span>) &#123;</span><br><span class="line">					MethodTestClass obj = (MethodTestClass) clazz.<span class="keyword">new</span><span class="type">Instance</span>(); <span class="comment">//创建一个新对象</span></span><br><span class="line">					m.invoke(obj); <span class="comment">//调用obj对象的指定方法</span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="76-如何利用反射实例化一个类"><a href="#76-如何利用反射实例化一个类" class="headerlink" title="76.    如何利用反射实例化一个类"></a>76.    如何利用反射实例化一个类</h1><p>使用反射来<font color="red">创建对象</font>的时候，也需要调用构造器。<br>（1）    对于默认的无参构造器，用Class类的newInstance()方法即可；</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;Student&gt; clazz1 = <span class="module-access"><span class="module"><span class="identifier">Student</span>.</span></span><span class="keyword">class</span>; <span class="comment">//先获取Student类对应的对象</span></span><br><span class="line">Student obj1 = clazz1.<span class="keyword">new</span><span class="constructor">Instance()</span>; <span class="comment">//创建对象</span></span><br></pre></td></tr></table></figure>
+<p>（2）    对于有参构造器，用java.lang.reflect.Constructor类，它代表了类的构造器方法。为了获取构造器的实例，用Class类的getConstructor()方法。getConstructor()传递的参数就是对应的构造器参数类型的Class实例。得到Constructor对象后，在调用newInstance()方法来创建对象。</p>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Student stu = <span class="keyword">new</span> Student(“张三”, <span class="number">20</span>);</span><br><span class="line"><span class="keyword">Class</span>&lt;Student&gt; clazz2 = stu.getClass(); <span class="comment">//获取Student类的对象</span></span><br><span class="line"><span class="function"><span class="keyword">Constructor</span>&lt;<span class="title">Student</span>&gt; <span class="title">con</span> = <span class="title">clazz2</span>.<span class="title">getConstructor</span><span class="params">()</span>;</span> <span class="comment">//获取Constructor实例</span></span><br><span class="line">Student obj2 = con.newInstance(); <span class="comment">//创建对象</span></span><br></pre></td></tr></table></figure>
+<h1 id="77-如何使用反射机制访问私有成员"><a href="#77-如何使用反射机制访问私有成员" class="headerlink" title="77.    如何使用反射机制访问私有成员"></a>77.    如何使用反射机制访问私有成员</h1><p>类的私有成员只能被内部的方法所访问，但通过反射，可以访问一个类的所有成员。调用Field类的setAccessible(true)方法。</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> String name；</span><br><span class="line">…</span><br><span class="line">Class clazz = <span class="module-access"><span class="module"><span class="identifier">Student</span>.</span></span><span class="keyword">class</span>; <span class="comment">//获取类对应的对象</span></span><br><span class="line">Field f = clazz.get<span class="constructor">FieldDeclared(“<span class="params">name</span>”)</span>; <span class="comment">//获取f对象的name变量</span></span><br><span class="line">f.set<span class="constructor">Accessible(<span class="params">true</span>)</span>;</span><br></pre></td></tr></table></figure>
+<h1 id="78-Java的TCP编程模型"><a href="#78-Java的TCP编程模型" class="headerlink" title="78.    Java的TCP编程模型"></a>78.    Java的TCP编程模型</h1><p>TCP一般用C/S（客户端/服务器端）模式的应用程序，它们都会存在于客户端和服务器端。一般来说，任何的TCP程序，都是先运行服务器端，再运行客户端。<br>1）对于服务器端：<br>（1）创建服务器端的Socket，指定一个端口号。java.net.ServerSocket类<br>ServerSocket ss = new ServerSocket(端口号);<br>（2）开始监听来自客户端的请求。调用ServerSocket的accept()方法。<br>aa.accept();<br>（3）获取输入或输入流。调用Socket的getInputStream()或getOutputStream()方法。<br>Socekt s = aa.accept();<br>InputStream is = s.getInputStream(); //获取输入流<br>OutputStream os = s.getOutputStream(); //获取输出流<br>（4）调用输入或输出流的read()或write()方法，进行数据的传输。如果是字符流数据，使用BufferedReader或PrintWriter类。<br>输出：<br>PrintWriter pw = new PrintWriter(os);<br>pw.print(内容); //输出内容<br>pw.flush(); //清空缓存<br>输入：<br>InputStreamReader isr = new InputStreamReader(is); //byte（外界）转char（内存）<br>BufferedReader br = new BufferedReader(isr);<br>（4）释放资源<br>pw.close(); //关闭输出流<br>s.close(); //关闭socket<br>ss.close(); //关闭server socket<br><img src="http://ovfkr5e4k.bkt.clouddn.com/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E8%BF%87%E7%A8%8B.jpg" alt="服务器端过策划稿"><br>2）客户端<br>（1）创建Socket对象，与服务器建立连接。<br>Socket s = new Socket(“IP地址”, 端口号);<br>（2）获得输出或输入流。<br>（3）调用输出或输入流的write()或read()方法，进行数据传输。<br>（4）释放资源，关闭输出或输入流，socket对象</p>
+<h1 id="79-Java的UDP编程模型"><a href="#79-Java的UDP编程模型" class="headerlink" title="79.    Java的UDP编程模型"></a>79.    Java的UDP编程模型</h1><p>UDP一般用于安全性要求不高的点对点传输模式的应用程序，不存在谁是服务器端，谁是客户端。两端的编程方式类似。<br>（1）创建数据Socket，指定端口号，两端端口号可以不一样。使用java.net.DatagramSocket类。<br>DatagramSocket s = new DatagramSocket(端口号);<br>（2）对于发送和接收端，需要byte类型数组用于存储数据，而发送端还需要提供对方的IP地址和端口号。使用<font color="red">DatagramPacket类创建用户数据包对象</font>。<br>接收方：<br>byte[] buff = new byte[1024];<br>DatagramPacket dp = new DatagramPacket(buff, 1024); //创建长度小于等于1024(buff长度)的用户数据报对象<br>发送端：<br>String str = “数据”; //需要发送的字符串char<br>DatagtemPacket dp = new<br>DatagramPacket(str.getBytes(), 0, str.length, InetAddress,getByName(“localhost”), 端口号);<br>其中byte[] getBytes()将String或charset等转换为byte类型数组。<br>（3）调用DatagramSocket类的receive()或send()方法，进行数据传输。参数为DatagramPacket对象。<br>s.receive(dp);<br>（4）调用DatagramPacket的getData()方法得到byte数组的数据。<br>dp.getData();<br>（5）释放资源，关闭DatagramSocket对象<br>s.close();</p>
+<h1 id="80-创建TCP通信服务器端的多线程模型"><a href="#80-创建TCP通信服务器端的多线程模型" class="headerlink" title="80.    创建TCP通信服务器端的多线程模型"></a>80.    创建TCP通信服务器端的多线程模型</h1><p>（1）    创建ServerSocket对象，指定端口号；<br>（2）    把accept()方法的返回值作为循环条件，监听客户端请求；<br>（3）    创建线程类，定义一个Socket类型的成员变量，并定义一个可以为它赋值的构造器；<br>（4）    在run()方法使用socket变量进行任意操作；<br>（5）    在主线程的<span style="background-color:yellow">循环体内</span>开启一个线程，并传入accept()方法的返回值。</p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ServerSocket ss = <span class="keyword">new</span> <span class="built_in">ServerSocket</span>(端口号);</span><br><span class="line">Socket s = <span class="built_in">null</span>;</span><br><span class="line"><span class="keyword">while</span>((s==ss.<span class="built_in">accept</span>()) != <span class="built_in">null</span>) &#123;</span><br><span class="line">	…</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此时循环体内需要开启一个线程来处理本次请求，而主线程还要去监听和处理其他请求，必须尽快结束主线程的单次循环。TCP使用连接的输入输出流，如何给线程类的run()方法提供呢？在线程类定义一个Socket类型对象引用，把accept()方法返回的Socket对象通过构造器的方式传递给线程类的对象。</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="type">Socket</span> s;</span><br><span class="line">	public <span class="type">MyThread</span>(<span class="type">Socket</span> s) &#123;</span><br><span class="line">	<span class="keyword">super</span>();</span><br><span class="line">	<span class="keyword">this</span>.s = s; <span class="comment">//将accept()方法的返回值传给线程类对象</span></span><br><span class="line">	&#125;</span><br><span class="line">	public void run()&#123;</span><br><span class="line">		<span class="comment">//线程的具体操作内容</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">`</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/18/Tech/Java/Java%20Programmer%20Interview/Java%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%EF%BC%88%E4%BA%8C%EF%BC%89/" rel="next" title="Java程序员面试宝典（二）">
+                <i class="fa fa-chevron-left"></i> Java程序员面试宝典（二）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/20/Tech/Java/Java%20Basis/Java%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94JDK%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%92%8CEclipse%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" rel="prev" title="Java基础（一）——JDK开发环境和Eclipse开发工具">
+                Java基础（一）——JDK开发环境和Eclipse开发工具 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="LichtMiao" />
+          <p class="site-author-name" itemprop="name">LichtMiao</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">186</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          <!-- 
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+           -->
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/LichtMiao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Miaomi4" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                    
+                      Twitter
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#61-目录和文件操作"><span class="nav-number">1.</span> <span class="nav-text">61.    目录和文件操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#62-写一个复制文件的程序"><span class="nav-number">2.</span> <span class="nav-text">62.    写一个复制文件的程序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#63-使用随机存取文件RandomAccesFile类"><span class="nav-number">3.</span> <span class="nav-text">63.    使用随机存取文件RandomAccesFile类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#64-字节流、字符流"><span class="nav-number">4.</span> <span class="nav-text">64.    字节流、字符流</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#65-序列化（Serialize）和反序列化（Deserialize）"><span class="nav-number">5.</span> <span class="nav-text">65.    序列化（Serialize）和反序列化（Deserialize）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#66-多线程"><span class="nav-number">6.</span> <span class="nav-text">66.    多线程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#67-Runnable接口和Thread类的区别"><span class="nav-number">7.</span> <span class="nav-text">67.    Runnable接口和Thread类的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1）一个类如何成为线程类"><span class="nav-number">7.1.</span> <span class="nav-text">1）一个类如何成为线程类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2）线程的启动和执行"><span class="nav-number">7.2.</span> <span class="nav-text">2）线程的启动和执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3）Runnable接口和Thread类的区别"><span class="nav-number">7.3.</span> <span class="nav-text">3）Runnable接口和Thread类的区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#68-线程同步"><span class="nav-number">8.</span> <span class="nav-text">68.    线程同步</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1）-同步代码块"><span class="nav-number">8.1.</span> <span class="nav-text">1）    同步代码块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2）-同步方法"><span class="nav-number">8.2.</span> <span class="nav-text">2）    同步方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3）-同步锁（Lock）"><span class="nav-number">8.3.</span> <span class="nav-text">3）    同步锁（Lock）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#69-Java线程池（ThreadPool）"><span class="nav-number">9.</span> <span class="nav-text">69.    Java线程池（ThreadPool）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#70-反射（reflect）的原理"><span class="nav-number">10.</span> <span class="nav-text">70.    反射（reflect）的原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#71-类初始化的时机"><span class="nav-number">11.</span> <span class="nav-text">71.    类初始化的时机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#72-如何得到Class对象"><span class="nav-number">12.</span> <span class="nav-text">72.    如何得到Class对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#73-获取Class对象对应的类信息"><span class="nav-number">13.</span> <span class="nav-text">73.    获取Class对象对应的类信息</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#74-如何操作类的Field（成员变量、属性、字段）"><span class="nav-number">13.1.</span> <span class="nav-text">74.    如何操作类的Field（成员变量、属性、字段）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#75-如何操作类的Method（方法）"><span class="nav-number">14.</span> <span class="nav-text">75.    如何操作类的Method（方法）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#76-如何利用反射实例化一个类"><span class="nav-number">15.</span> <span class="nav-text">76.    如何利用反射实例化一个类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#77-如何使用反射机制访问私有成员"><span class="nav-number">16.</span> <span class="nav-text">77.    如何使用反射机制访问私有成员</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#78-Java的TCP编程模型"><span class="nav-number">17.</span> <span class="nav-text">78.    Java的TCP编程模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#79-Java的UDP编程模型"><span class="nav-number">18.</span> <span class="nav-text">79.    Java的UDP编程模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#80-创建TCP通信服务器端的多线程模型"><span class="nav-number">19.</span> <span class="nav-text">80.    创建TCP通信服务器端的多线程模型</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LichtMiao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+  Powered by <a>Hexo</a>
+</div>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+  <!-- 背景动画 -->
+  
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>

@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en.yml">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="blog," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="LichtMiao's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="数通信基础知识1）    从通信双方信息交互来看：单工通信（有线电、无线电或电视广播）、半双工通信、全双工通信。2）    信道上传输的信号有基带信号和宽带信号之分。基带信号是原始0、1信号，宽带信号是将基带信号进行调制后形成的频分复用模拟信号。3）    信道的极限容量（1）    最高码元传输速率奈奎斯特准则：理想低通最高码元传输速率是2W Baud，表示每赫兹带宽的最高码元传输速率是每秒两个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络（一）——计算机网络基础">
+<meta property="og:url" content="https://lichtmiao.github.io/2018/08/14/Tech/Computer%20Network/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="LichtMiao&#39;s Blog">
+<meta property="og:description" content="数通信基础知识1）    从通信双方信息交互来看：单工通信（有线电、无线电或电视广播）、半双工通信、全双工通信。2）    信道上传输的信号有基带信号和宽带信号之分。基带信号是原始0、1信号，宽带信号是将基带信号进行调制后形成的频分复用模拟信号。3）    信道的极限容量（1）    最高码元传输速率奈奎斯特准则：理想低通最高码元传输速率是2W Baud，表示每赫兹带宽的最高码元传输速率是每秒两个">
+<meta property="article:published_time" content="2018-08-14T01:39:47.000Z">
+<meta property="article:modified_time" content="2019-01-07T05:52:10.000Z">
+<meta property="article:author" content="LichtMiao">
+<meta property="article:tag" content="blog">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.2',
+    sidebar: {"position":"right","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://lichtmiao.github.io/2018/08/14/Tech/Computer Network/计算机网络（一）——计算机网络基础/"/>
+
+
+
+
+
+<!-- 网页加载条 -->
+<script src="https://neveryu.github.io/js/src/pace.min.js"></script>
+  <title>计算机网络（一）——计算机网络基础 | LichtMiao's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en.yml">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LichtMiao's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lichtmiao.github.io/2018/08/14/Tech/Computer%20Network/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LichtMiao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LichtMiao's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">计算机网络（一）——计算机网络基础</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-14T09:39:47+08:00">
+                2018-08-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/Computer-Network/" itemprop="url" rel="index">
+                    <span itemprop="name">Computer Network</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="数通信基础知识"><a href="#数通信基础知识" class="headerlink" title="数通信基础知识"></a>数通信基础知识</h1><p>1）    从通信双方信息交互来看：单工通信（有线电、无线电或电视广播）、半双工通信、全双工通信。<br>2）    信道上传输的信号有基带信号和宽带信号之分。基带信号是原始0、1信号，宽带信号是将基带信号进行调制后形成的频分复用模拟信号。<br>3）    信道的极限容量<br>（1）    最高码元传输速率<br>奈奎斯特准则：理想低通最高码元传输速率是2W Baud，表示每赫兹带宽的最高码元传输速率是每秒两个码元。<br>理想带通最高码元传输速率是W Baud。<br>波特：码元传输速率的单位，1Baud为每秒传输一个码元。<br>比特：信息量的单位。<br>1个码元可能携带n bit的信息量，则M baud码元传输速率对应的信息传输速率为M*n bit/s。<br>如何使1个码元携带3 bit的信息量呢？如将110 001 111…的基带信号每3 bit分为一组，有2^3种不同排列，可以用8种不同的振幅、频率或相位进行调制。<br>（2）    信道最高信息传输速率</p>
+<pre><code>香农公式：C=Wlog(1+S/N) b/s</code></pre><p>若要提高信息传输速率：由于码元速率受奈氏准则的约束，因此必须设法使一个码元携带更多的比特数-&gt;多进制调制；由于香农公式的约束，需要提高信噪比或带宽。</p>
+<p>交换就是按照某种方式动态地分配传输线路的资源。</p>
+<h1 id="面向连接和无连接"><a href="#面向连接和无连接" class="headerlink" title="面向连接和无连接"></a>面向连接和无连接</h1><p>1）    面向连接的（connection-oriented）：可靠的服务，必须经过“建立连接-通信-释放连接”这三个步骤的连网方式。数据传输是按序传送的。适合在一定期间内向同一目的地发送许多报文的情况，若只是发送很短报文，则开销过大。<br>2）    无连接的（connectionless）：不可靠的服务，尽最大努力交付，在传送数据前可以不必先建立一条连接，两个通信实体下层的有关资源不需要进行预留，随时可以发送数据的连网方式。不需要两个实体是活跃的，只是在发送或接收才必须是活跃的。减少了建立连接和释放连接所需的开销，使得数据的传输效率更高。但不能防止报文丢失、重复或失序。</p>
+<h1 id="电路交换、报文交换和分组交换"><a href="#电路交换、报文交换和分组交换" class="headerlink" title="电路交换、报文交换和分组交换"></a>电路交换、报文交换和分组交换</h1><p>1）电路交换是面向连接的。在通话的全部时间内，通话的两个用户始终占用端到端的固定传输带宽。绝大多数时间，已被用户占用的通信线路是空闲的，因此线路的传输效率较低。<br>2）分组交换可以面向非连接（也可面向连接，如广域网），它采用<strong>存储转发</strong>技术，动态地分配传输带宽。分组是计算机网络中传送的数据单元。<br>分组交换在发送报文（message）之前，先将较长的报文划分为更小的等长的数据段，在每一个数据段首部（header）加一些必要的控制信息（如源地址和目标地址），构成分组（packet，也叫包），正是因为首部的这些控制信息，才能使每一个分组在分组交换网中独立地选择路由。<br>分组交换网由若干个结点交换机（node switch）和连接这些交换机的链路组成。分组交换网以网络为中心，而不是以前的以主机为中心的星形网。<br>结点交换机处理分组的过程：先将分组放入缓存，查找转发表，找到目的地址应该从哪个端口转发，然后由交换机构将该分组给适时的端口转发出去。<br>交换机的缓存存的是一个个短分组，暂存在交换机的存储器（即内存）中，而不是存在磁盘中，因此保证了较高的交换速率。<br>为了提高分组交换网的可靠性，采用<strong>网状拓扑</strong>结构，使得当网络发生拥塞或少数链路出现故障时，可灵活地改变路由而不致引起通信的中断或全网的瘫痪。此外，通信网络的主干网络通常由一些高速链路组成，这样就能以较高的数据率迅速地传送计算机数据。<br><strong>分组的缺点</strong>：<br>1）分组在各结点存储转发时需要排队，这会造成一定的时延；<br>2）各分组必须携带控制信息，这带来了一定的开销（overhead）。<br>当需要连续传输大量数据，且其传送时间远大于建立连接的时间，则电路交换有传输速度较快的特点；而报文交换和分组交换不需要预先分配传输带宽，在传送突发数据时，可提高整个网络的信道利用率；分组交换比报文交换的时延小。</p>
+<h1 id="计算机网络的定义"><a href="#计算机网络的定义" class="headerlink" title="计算机网络的定义"></a>计算机网络的定义</h1><p>最简单的计算机网络就只有两台计算机和连接他们的一条链路。最庞大的计算机网络就是因特网。<br>计算机网络和分布式计算机系统有相同有不同：分布式计算机系统主要特点是整个系统中各计算机对用户都是透明的（即对于用户来说，分布式计算机系统就好像只有一个计算机一样）。</p>
+<h1 id="计算机网络的分类"><a href="#计算机网络的分类" class="headerlink" title="计算机网络的分类"></a>计算机网络的分类</h1><p>1）    从网络交换的功能进行分：电路交换、报文交换、分组交换、混合交换。<br>2）    从网络的作用范围：<br>广域网WAN（wide are network）：作用范围为几十到几千公里，广域网各结点通常用高速链路相连，具有较大的通信容量；<br>城域网（metropolitan area network）：作用范围在广域网与局域网之间，通常是一个城市或街区，城域网各结点或内部也需要高速链路相连。因为要与多种局域网相接，因此必须式样多种业务、多种协议和多种数据传输速率，同时能搞保证将各种局域网连接到校园网；<br>局域网LAN（local area network）：一般用于一个学校和一个企业范围内，局域网通常用微型计算机或工作站通过高速通信线路相连；<br>接入网（access network）：也是由于用户对高速上网需求而增加的一种网络技术。它是局域网和城域网之间的桥接区。<br>3）    按使用者分类<br>公用网、专用网</p>
+<h1 id="计算机网络的主要性能指标"><a href="#计算机网络的主要性能指标" class="headerlink" title="计算机网络的主要性能指标"></a>计算机网络的主要性能指标</h1><p>1）    带宽（习惯上将带宽与数据速率、吞吐量同义）<br>数字信道传输数字信号的速率称为数据率或比特率（bit，简写为b），是计算机中的最小单元，也是信息量的度量单位。网络或链路的的带宽单位为比特每秒（bit/s，b/s，bps），每秒发送的比特数。因此单位时间内，信号在时间轴上随着带宽的增大而变窄。（通常说的的线路带宽10M是省略了后面的bit/s，为Mb/s）<br>2）时延（delay，latency）</p>
+<pre><code>总时延=处理时延+发送时延（传输时延）+传播时延</code></pre><p>处理时延：数据在交换结点为存储转发而进行一些必要处理所花费的时间。有时用排队时延作为，当通信量很大时，还会发生队列溢出，相当于时延无穷大。<br>发送时延（传输时延）：发送数据时使数据进入传输媒介所需要的时间。</p>
+<pre><code>发送时延=数据块长度/信道带宽（数据率，bit/s）</code></pre><p>信道带宽就是数据在信道上的发送速率，即在信道上的传输速率（bit/s）。<br>传播时延：电磁波在信道中发送一定距离需要的时间。</p>
+<pre><code>传播时延=信道长度/电磁波在信道中的传播速率</code></pre><p>通常不为光速3<em>10^8m/s，铜线中为2.3</em>10^8m/s，光纤中为2*10^8m/s。<br>注意高速链路（提高贷款），减小的是数据的发送时延。<br>2）    时延带宽积</p>
+<pre><code>（传播）时延带宽积=传播时延*带宽</code></pre><p>表示若连续发送数据，发送的第一个比特即将到达终点时，发送端已经发送了多少个比特，且它们都在链路上传输。又称以比特为单位的链路长度。<br>若数据需要经过多次转发，则时延就可能是时延带宽积的时延就可能是时延总和（即包括处理时延、发送时延、传播时延）。<br>往返时延带宽积：当发送端连续发送数据时，在受到对方的确认信号之前，就已经发送了这么多比特在链路上了。</p>
+<h1 id="计算机网络体系的形成"><a href="#计算机网络体系的形成" class="headerlink" title="计算机网络体系的形成"></a>计算机网络体系的形成</h1><p>需要进行通信的计算机之间，必须高度协调，这种协调非常复杂，通过分层将复杂问题简化。<br>分层的好处：各层之间独立，降低通信的复杂度；灵活性好；易于实现和维护；能促进标准化工作。<br>通常每一层实现的功能是以下一种或多种：差错控制；流量控制；分段和重装；复用和分用（高层会话费用底层连接，在接收端再进行分用）；连接和释放（交换数据前先建立逻辑连接）。</p>
+<h1 id="计算机网络协议体系：各层及其协议的集合"><a href="#计算机网络协议体系：各层及其协议的集合" class="headerlink" title="计算机网络协议体系：各层及其协议的集合"></a>计算机网络协议体系：各层及其协议的集合</h1><p>OSI（Open systems interconnection reference model，开放系统互连参考模型）：层析划分不合理，有重叠；缺乏实际经验，没有商业驱动力；运行效率低；制定周期长。<br>TCP/IP是事实上的国际标准。</p>
+<h1 id="折中的5层网络协议体系"><a href="#折中的5层网络协议体系" class="headerlink" title="折中的5层网络协议体系"></a>折中的5层网络协议体系</h1><table>
+
+</table>
+|应用层|    应用层|应用层|
+|表示层|      |     |
+|会话层|         |     |
+|传输层|传输层（网络层以上的中继系统称为网关（gateway））|传输层|
+|网络层|网络层（路由器（router），有的文献将网络层使用的路由器叫网关）|网络层|    
+|数据链路层|数据链路层（网桥或桥接器（bridge））|网络接口层|
+|-----|--------------|-----|
+|物理层|物理层（转发器（repeater））|      |
+|OSI 7层参考模型|折中的5层参考模型    |TCP/IP 4层参考模型|
+
+<p>对于TCP/IP模型：应用层和传输层的协议较多，网际层的IP层很小。<br>中继（relay）：将网络互相连接起来使用的中间设备。<br>网络协议：为了进行网络中数据交换而建立的规则、标准或约定。包括语法（格式）、语义（具体何时发送控制信息、何时响应）、同步（事件实现的详细说明）。<br>在自己PC上操作就不需要任何协议，除非这个存储文件的磁盘是网络上某个文件服务器的磁盘。<br>1）    应用层（application layer）：直接为用户进程提供服务。协议：http、SMTP、FTP等。<br>TCP/IP的应用层协议使用的是<strong>客户-服务器</strong>方式，其中客户服务器是指通信中所涉及的两个应用进程（即计算机软件）。硬件通常说的是客户端和服务器端。<br>大多数应用进程都是使用TCP/IP协议进行通信。<br>2）    传输层（transport layer）：负责主机中两个进程之间的通信。<br>面向连接的TCP（transport control protocol，传输控制协议）：提供可靠交付；<br>无连接的UDP（user datagram protocol，用户数据报协议）：尽最大努力交付。<br>传输层只位于分组交换网外的主机中，各个交换结点机都没有传输层。<br>3）    网络层（network layer，也叫IP层）：负责为分组交换网上的不同主机进行通信。在TCP/IP体系中，分组也叫IP数据报或数据报。选择合适的路由，使源主机传下来的分组能交付到目的主机。无连接的网络IP协议和许多路由选择协议。<br>路由器没有应用层和传输层。<br>4）    数据链路层（data link layer）：将网络层的IP数据报组装成帧（frame），帧包括必要的控制信息（同步信息、地址信息、差错控制、流量控制等）和数据。<br>5）    物理层（physical layer）：透明地传输比特流。物理层考虑以多大电压发送1或0，以及如何在接收端能识别。确定连接的电缆插头应当如何连接。<br>6）传输比特流的物理媒介是在物理层的下面，如<br>（1）导向传输介质：双绞线（模拟和数字信号都可使用双绞线，导线越粗，通信距离越远。衰减随频率升高而增大）、同轴电缆（50欧基带同轴电缆：由于接收端无法识别同步信号，引入了曼彻斯特编码和差分曼彻斯特编码；75欧宽带同轴电缆：用于模拟传输系统，有线电视CATV）、光缆（利用光导纤维传递光脉冲；单模多模光纤：若光纤直径减小到一个光波长，则光线直线传播不会发生折射；多模光纤：许多条不同入射角的光在同一光纤内传播，根据折射率分为梯度型和阶跃型）等。<br>（2）非导向传输介质：电磁波<br>微波频率范围300MHz~300GHz。微波设备信道容量最多960路。<br>光纤、无线信道只能传输模拟信号。<br>出于经济考虑，远距离传输都是串行传输。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/blog/" rel="tag"><i class="fa fa-tag"></i> blog</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/12/Life/Test%20and%20Interview/%E7%BD%91%E6%98%93%E3%80%81%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E5%86%85%E6%8E%A8%E7%AC%94%E8%AF%95/" rel="next" title="网易/字节跳动内推笔试">
+                <i class="fa fa-chevron-left"></i> 网易/字节跳动内推笔试
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/14/Tech/Computer%20Network/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/" rel="prev" title="计算机网络（二）——数据链路层">
+                计算机网络（二）——数据链路层 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="LichtMiao" />
+          <p class="site-author-name" itemprop="name">LichtMiao</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">186</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          <!-- 
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+           -->
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/LichtMiao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Miaomi4" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                    
+                      Twitter
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数通信基础知识"><span class="nav-number">1.</span> <span class="nav-text">数通信基础知识</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#面向连接和无连接"><span class="nav-number">2.</span> <span class="nav-text">面向连接和无连接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#电路交换、报文交换和分组交换"><span class="nav-number">3.</span> <span class="nav-text">电路交换、报文交换和分组交换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#计算机网络的定义"><span class="nav-number">4.</span> <span class="nav-text">计算机网络的定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#计算机网络的分类"><span class="nav-number">5.</span> <span class="nav-text">计算机网络的分类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#计算机网络的主要性能指标"><span class="nav-number">6.</span> <span class="nav-text">计算机网络的主要性能指标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#计算机网络体系的形成"><span class="nav-number">7.</span> <span class="nav-text">计算机网络体系的形成</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#计算机网络协议体系：各层及其协议的集合"><span class="nav-number">8.</span> <span class="nav-text">计算机网络协议体系：各层及其协议的集合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#折中的5层网络协议体系"><span class="nav-number">9.</span> <span class="nav-text">折中的5层网络协议体系</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LichtMiao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+  Powered by <a>Hexo</a>
+</div>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+  <!-- 背景动画 -->
+  
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>

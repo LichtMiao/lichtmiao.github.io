@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en.yml">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Learning, Life" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="LichtMiao's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="应用层的具体内容就是规定应用进程在通信时所要遵循的协议。应用层的许多协议都是基于客户-服务器方式。 DNS（domain name system，域名系统，端口号53）因特网的域名系统被设计为一个联机分布式数据库系统，并使用客户服务器方式。域名服务器：完成域名到IP地址的解析，还具有连到其它域名服务器的信息。 因特网的域名结构层次树状结构：*.三级域名.二级域名.一级域名各级域名由其上级域名管理机">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络（五）——应用层">
+<meta property="og:url" content="https://lichtmiao.github.io/2018/08/16/Tech/Computer%20Network/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E4%BA%94%EF%BC%89%E2%80%94%E2%80%94%E5%BA%94%E7%94%A8%E5%B1%82/index.html">
+<meta property="og:site_name" content="LichtMiao&#39;s Blog">
+<meta property="og:description" content="应用层的具体内容就是规定应用进程在通信时所要遵循的协议。应用层的许多协议都是基于客户-服务器方式。 DNS（domain name system，域名系统，端口号53）因特网的域名系统被设计为一个联机分布式数据库系统，并使用客户服务器方式。域名服务器：完成域名到IP地址的解析，还具有连到其它域名服务器的信息。 因特网的域名结构层次树状结构：*.三级域名.二级域名.一级域名各级域名由其上级域名管理机">
+<meta property="og:image" content="http://ovfkr5e4k.bkt.clouddn.com/%E5%9F%9F%E5%90%8D%E8%BD%AC%E6%8D%A2%E7%9A%84%E9%80%92%E5%BD%92%E6%9F%A5%E8%AF%A2%E4%B8%BE%E4%BE%8B.png">
+<meta property="og:image" content="http://ovfkr5e4k.bkt.clouddn.com/TFTP%20PDU%E6%A0%BC%E5%BC%8F.png">
+<meta property="og:image" content="http://ovfkr5e4k.bkt.clouddn.com/%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6%E6%9C%80%E4%B8%BB%E8%A6%81%E7%9A%84%E7%BB%84%E6%88%90%E6%9E%84%E4%BB%B6.png">
+<meta property="og:image" content="http://ovfkr5e4k.bkt.clouddn.com/MIME%E4%B8%8ESMTP%E7%9A%84%E5%85%B3%E7%B3%BB.png">
+<meta property="og:image" content="http://ovfkr5e4k.bkt.clouddn.com/HTTP%E7%9A%84%E6%8A%A5%E6%96%87%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="http://ovfkr5e4k.bkt.clouddn.com/HTTP%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87%E7%9A%84%E4%B8%80%E4%BA%9B%E6%96%B9%E6%B3%95.png">
+<meta property="og:image" content="http://ovfkr5e4k.bkt.clouddn.com/%E6%89%A9%E5%85%85%E4%BA%86%E5%8A%9F%E8%83%BD%E7%9A%84%E4%B8%87%E7%BB%B4%E7%BD%91%E6%9C%8D%E5%8A%A1%E5%99%A8.png">
+<meta property="og:image" content="http://ovfkr5e4k.bkt.clouddn.com/%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E4%B8%AD%E4%BD%BF%E7%94%A8%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="http://ovfkr5e4k.bkt.clouddn.com/%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%E7%9A%84%E4%B8%80%E8%88%AC%E6%A8%A1%E5%9E%8B.png">
+<meta property="article:published_time" content="2018-08-15T17:53:36.000Z">
+<meta property="article:modified_time" content="2019-01-07T05:52:10.000Z">
+<meta property="article:author" content="LichtMiao">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://ovfkr5e4k.bkt.clouddn.com/%E5%9F%9F%E5%90%8D%E8%BD%AC%E6%8D%A2%E7%9A%84%E9%80%92%E5%BD%92%E6%9F%A5%E8%AF%A2%E4%B8%BE%E4%BE%8B.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.2',
+    sidebar: {"position":"right","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://lichtmiao.github.io/2018/08/16/Tech/Computer Network/计算机网络（五）——应用层/"/>
+
+
+
+
+
+<!-- 网页加载条 -->
+<script src="https://neveryu.github.io/js/src/pace.min.js"></script>
+  <title>计算机网络（五）——应用层 | LichtMiao's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en.yml">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LichtMiao's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lichtmiao.github.io/2018/08/16/Tech/Computer%20Network/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E4%BA%94%EF%BC%89%E2%80%94%E2%80%94%E5%BA%94%E7%94%A8%E5%B1%82/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LichtMiao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LichtMiao's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">计算机网络（五）——应用层</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-16T01:53:36+08:00">
+                2018-08-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/Computer-Network/" itemprop="url" rel="index">
+                    <span itemprop="name">Computer Network</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>应用层的具体内容就是规定应用进程在通信时所要遵循的协议。<br>应用层的许多协议都是基于客户-服务器方式。</p>
+<h1 id="DNS（domain-name-system，域名系统，端口号53）"><a href="#DNS（domain-name-system，域名系统，端口号53）" class="headerlink" title="DNS（domain name system，域名系统，端口号53）"></a>DNS（domain name system，域名系统，端口号53）</h1><p>因特网的域名系统被设计为一个联机分布式数据库系统，并使用客户服务器方式。<br>域名服务器：完成域名到IP地址的解析，还具有连到其它域名服务器的信息。</p>
+<h2 id="因特网的域名结构"><a href="#因特网的域名结构" class="headerlink" title="因特网的域名结构"></a>因特网的域名结构</h2><p>层次树状结构：*.三级域名.二级域名.一级域名<br>各级域名由其上级域名管理机构管理。</p>
+<h2 id="用域名服务器进行域名解析"><a href="#用域名服务器进行域名解析" class="headerlink" title="用域名服务器进行域名解析"></a>用域名服务器进行域名解析</h2><p>域名服务器能够将域名解析到IP地址，同时还具有连向其它域名服务器的信息。<br>三种域名服务器：<br>本地域名服务器（local name server，也叫默认域名服务器）：本地域名服务器距离主机较近，一般不超过几个路由的距离。当主机发出DNS（域名系统）查询报文时，它首先被送往该主机的本地域名服务器；<br>根域名服务器（root name server）：目前因特网上有十几个根域名服务器，大部分在北美。当一个本地域名服务器不能回答某个主机的查询时，该本地域名服务器就以DNS客户的身份向某一个根域名服务器查询；<br>授权域名服务器（authoritative name server）：每一个主机都必须在授权域名服务器处登记。一个主机的授权域名服务器就是它的ISP（因特网服务提供商）的一个本地域名服务器，它总能将管辖范围内的主机名转换为主机的IP地址。将本单位的域名划分为若干域名服务器管辖区（zone），在各管辖区内设置授权域名服务器。</p>
+<div align="center">
+<img src="http://ovfkr5e4k.bkt.clouddn.com/%E5%9F%9F%E5%90%8D%E8%BD%AC%E6%8D%A2%E7%9A%84%E9%80%92%E5%BD%92%E6%9F%A5%E8%AF%A2%E4%B8%BE%E4%BE%8B.png">
+</div>
+
+<p>使用名字的高速缓存可以优化查询的开销。每个域名服务器都维护一个高速缓存，存放最近用过的名字以及从何处获得名字的映射信息。<br>并发：两个进程交替执行；并行：同时。</p>
+<h1 id="FTP（file-transfer-protocol，文件传送协议，端口号21）"><a href="#FTP（file-transfer-protocol，文件传送协议，端口号21）" class="headerlink" title="FTP（file transfer protocol，文件传送协议，端口号21）"></a>FTP（file transfer protocol，文件传送协议，端口号21）</h1><p>文件共享协议。<br>FTP：基于TCP。只提供一些基本的服务，主要功能是减少或消除在不同操作系统下处理文件的不兼容性。</p>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>复制整个文件。若要存取一个文件，就必须先获得文件的副本；若要修改文件，只能对文件的副本进行修改，然后将修改后的文件副本传回原结点。</p>
+<h2 id="FTP的工作原理"><a href="#FTP的工作原理" class="headerlink" title="FTP的工作原理"></a>FTP的工作原理</h2><p>本地主机运行客户进程，远程主机运行服务器进程。服务器有一个主进程，负责等待新的请求，有多个从属进程，用来处理单个请求。</p>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><p>在计算机A上运行的应用程序要在远程计算机B的很大的文件末尾添加一行信息，若使用FTP，需要先将文件从B传到A，在A上添加信息后，再将文件传送给B。而NFS（网络文件系统，network file system）弥补了这个缺点，它允许应用进程打开一个远程文件，并能在该文件的某个特定位置上读写数据。</p>
+<h2 id="FTP交互式工作的一些命令"><a href="#FTP交互式工作的一些命令" class="headerlink" title="FTP交互式工作的一些命令"></a>FTP交互式工作的一些命令</h2><p>230服务就绪；331用户命令正确；CWD（change working directory，切换工作路径）；PORT建立数据连接；200命令正确；150文件状态正确，即将建立数据连接；226释放数据连接；quit退出。</p>
+<h1 id="TFTP（trivial-file-transfer-protocol，简单文件传输协议，端口号69）"><a href="#TFTP（trivial-file-transfer-protocol，简单文件传输协议，端口号69）" class="headerlink" title="TFTP（trivial file transfer protocol，简单文件传输协议，端口号69）"></a>TFTP（trivial file transfer protocol，简单文件传输协议，端口号69）</h1><p>TFTP：基于UDP，因此需要有自己的差错改正措施。它只传输文件而不进行交互。</p>
+<h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><p>与停止等待协议很像。A发送完一个文件块就等待B确认，确认时应指明所确认的编号。A发完后若在规定时间内收不到确认就要重发数据PDU。B发送确认PDU若在规定时间内收不到下一个文件块，也要重发确认PDU。保证文件的传输不因某一个数据报的丢失而失败。<br>PDU（protocol data unit，协议数据单元）：即报文。<br>TFTP有五种PDU（协议数据单元、报文）：读请求PDU、写、数据、确认、差错。</p>
+<div align="center">
+<img src="http://ovfkr5e4k.bkt.clouddn.com/TFTP%20PDU%E6%A0%BC%E5%BC%8F.png">
+</div>
+
+<p>每种PDU的第一个字段是操作码字段，分别为1~5。读或写PDU中的<font color="red">方式字段用来区分不同的类型文件（如ASCII或二进制文件）</font>。</p>
+<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><p>优点：可用于UDP环境，如需要将程序和文件同时向许多机器下载时；TFTP代码所占的内存小。<br>缺点：基于UDP，需要有自己的差错改正措施；只支持文件传输不支持交互；没有庞大的命令集，没有列目录的功能，也不能对用户身份进行鉴别。</p>
+<h1 id="TELNET（远程终端协议，端口号23）"><a href="#TELNET（远程终端协议，端口号23）" class="headerlink" title="TELNET（远程终端协议，端口号23）"></a>TELNET（远程终端协议，端口号23）</h1><p>TELNET通过TCP连接注册（登录）到远程主机。能够将用户的击键传递到远程主机，同时也能将远程主机的输出通过TCP连接返回到屏幕。</p>
+<h2 id="工作原理-1"><a href="#工作原理-1" class="headerlink" title="工作原理"></a>工作原理</h2><p>与FTP类似。本地主机运行客户进程，远程主机运行服务器进程。服务器有一个主进程，负责等待新的请求，有多个从属进程，用来处理单个请求。</p>
+<h2 id="NVT（network-virtual-terminal，网络虚拟终端）"><a href="#NVT（network-virtual-terminal，网络虚拟终端）" class="headerlink" title="NVT（network virtual terminal，网络虚拟终端）"></a>NVT（network virtual terminal，网络虚拟终端）</h2><p>TELNET能够适应不同的操作系统，<font color = "red"/>不同操作系统要实现相同的功能命令可能不一样，NVT将命令转换成远程服务器需要的格式</font>；当用户数据返回时，NVT将远程服务器的格式转换为本地需要的格式。<br>NVT格式：8bit，高位为1用作控制命令，低7位使用ASCII码传送数据。<br>同时TELNET自己也通过选项协商（option negotiation）定义了一些控制命令。DO WILL, DO WON’T, WILL DO, WILL DON’T。<br>TELNET将225代码规定为IAC（interpret as command，解释为命令），出现在IAC之后的一个字节，才是TELNET命令。</p>
+<h1 id="电子邮件（发送协议：SMTP端口号25，接收协议：POP3（或IMAP））"><a href="#电子邮件（发送协议：SMTP端口号25，接收协议：POP3（或IMAP））" class="headerlink" title="电子邮件（发送协议：SMTP端口号25，接收协议：POP3（或IMAP））"></a>电子邮件（发送协议：SMTP端口号25，接收协议：POP3（或IMAP））</h1><p>发件人的用户代理向源邮件服务器发送邮件，以及源邮件服务器向目的邮件服务器发送邮件：SMTP；<br>用户从目的邮件服务器上读取邮件：POP3或IMAP。</p>
+<h2 id="电子邮件系统的组成"><a href="#电子邮件系统的组成" class="headerlink" title="电子邮件系统的组成"></a>电子邮件系统的组成</h2><h3 id="用户代理（user-agent）"><a href="#用户代理（user-agent）" class="headerlink" title="用户代理（user agent）"></a>用户代理（user agent）</h3><p>用户代理用户与电子邮件系统的接口，通常就是电子邮件的窗口界面。具有撰写、显示、处理功能。</p>
+<h3 id="邮件服务器"><a href="#邮件服务器" class="headerlink" title="邮件服务器"></a>邮件服务器</h3><p>邮件服务器基于客户-服务器模式工作。主要功能是发送和接收邮件，同时向发信人报告邮件传送情况。有两个协议：一个用于发送邮件，即SMTP协议；一个用于接收邮件，即POP（post office protocol，邮局协议）。<br>邮件服务器既可以是客户，又可以是服务器。当A向B发邮件，A是客户；当A从B收邮件，A是服务器。</p>
+<h2 id="工作过程"><a href="#工作过程" class="headerlink" title="工作过程"></a>工作过程</h2><div align="center">
+<img src="http://ovfkr5e4k.bkt.clouddn.com/%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6%E6%9C%80%E4%B8%BB%E8%A6%81%E7%9A%84%E7%BB%84%E6%88%90%E6%9E%84%E4%BB%B6.png">
+</div> 
+
+<p>由于邮件服务器（程序）必须不间断地运行，因此不在计算机上运行邮件服务器程序，而是将来信暂存在ISP（Internet server provider，因特网服务提供商）的邮件服务器中。<br>电子邮件由信封（envelope）和内容（content）两部分组成。电子邮件的传输程序通过<font color = "red">信封上的信息</font>来传送邮件。<br>TCP/IP体系的电子邮件地址（email address）格式：收件人邮箱名@邮箱所在主机的域名。</p>
+<h2 id="SMTP（simple-mail-transfer-protocol，简单邮件传送协议，端口号25）"><a href="#SMTP（simple-mail-transfer-protocol，简单邮件传送协议，端口号25）" class="headerlink" title="SMTP（simple mail transfer protocol，简单邮件传送协议，端口号25）"></a>SMTP（simple mail transfer protocol，简单邮件传送协议，端口号25）</h2><p>SMTP规定了两个相互通信的SMTP进程应该如何交换信息。</p>
+<h3 id="SMTP通信的三阶段"><a href="#SMTP通信的三阶段" class="headerlink" title="SMTP通信的三阶段"></a>SMTP通信的三阶段</h3><p>建立连接、邮件传送、连接释放。发件服务器每发送一个命令，都应该有相应的信息从SMTP服务器返回。<br>a.    建立连接<br>220  service ready（服务就绪）、250 OK（有能力接收邮件）、421 service not available（服务不可用）<br>b.    邮件传送<br>MAIL FROM: &lt;发件人邮箱地址&gt;命令：若SMTP服务器已经准备好接收邮件，则回到250 OK；否则返回一个代码指示原因，如451（处理出错）、452（存储空间不够）、500（命令无法识别）等。<br>RCPT TO:&lt;收件人邮箱地址&gt;命令：先弄清接收端是否已经准备好接收邮件，然后才发送邮件。550 No such user here（无此用户）。<br>DATA命令：开始传送邮件内容。SMTP服务器返回354 Start mail input; end with &lt;CRLF&gt;.&lt;CRLF&gt;。<br><CRLF>表示回车换行符，若不能接收邮件，则返回421（服务器不可用），500等。接着SMTP客户开始发送邮件内容。发送完毕后再发送&lt;CRLF&gt;.&lt;CRLF&gt;，邮件内容结束。若SMTP服务器收到邮件则返回250 OK，否则返回差错代码。<br>CR：carriage return回车；LF：line feed换行。<br>c.    连接释放<br>邮件发送完毕后，SMTP客户发送QUIT命令。服务器返回221（服务关闭），SMTP同时释放TCP连接。</p>
+<h3 id="邮件内容"><a href="#邮件内容" class="headerlink" title="邮件内容"></a>邮件内容</h3><p>To:  Subject:  Cc:（carbon copy，复写副本）</p>
+<h3 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h3><p>SMTP（simple mail transfer protocol，简单邮件传送协议），只能传送7位ASCII码邮件，不能传送可执行文件或其它的二进制对象；（ASCII码本来只有7位，后来为了增加检错能力在高位增加了奇偶校验位，因此使用8 bit代表一个ASCII码，最高位一定是0。）<br>服务器会拒绝超过一定长度的邮件。</p>
+<h2 id="MIME（multipurpose-Internet-mail-extension，通用因特网邮件扩充）"><a href="#MIME（multipurpose-Internet-mail-extension，通用因特网邮件扩充）" class="headerlink" title="MIME（multipurpose Internet mail extension，通用因特网邮件扩充）"></a>MIME（multipurpose Internet mail extension，通用因特网邮件扩充）</h2><p>为了弥补SMTP协议缺点，MIME并没有取代SMTP，而是增加了邮件主体的结构，并定义了传送非ASCII码的编码规则。</p>
+<div align="center">
+<img src="http://ovfkr5e4k.bkt.clouddn.com/MIME%E4%B8%8ESMTP%E7%9A%84%E5%85%B3%E7%B3%BB.png">
+</div>
+
+<p>一个汉字占两个字节。</p>
+<h2 id="POP3、IMAP（邮件读取协议）"><a href="#POP3、IMAP（邮件读取协议）" class="headerlink" title="POP3、IMAP（邮件读取协议）"></a>POP3、IMAP（邮件读取协议）</h2><p>注意：ISP邮件服务器-（TCP连接）用户代理（用户PC）是固定的名称，而POP3服务器（程序），POP3客户端（程序）则是发信过程对ISP邮件服务器和用户代理的叫法。</p>
+<h3 id="POP3（post-office-protocol，邮局协议第3版本）"><a href="#POP3（post-office-protocol，邮局协议第3版本）" class="headerlink" title="POP3（post office protocol，邮局协议第3版本）"></a>POP3（post office protocol，邮局协议第3版本）</h3><p>POP协议的特点：只要收件方从POP服务器读取了邮件，POP服务器就将该邮件删除。因此不能在其它PC上处理邮件。因此POP3扩充了一些功能，如用户能事先设置邮件被读取后仍存放在POP3服务器中的时间。</p>
+<h3 id="IMAP4（Internet-message-access-protocol，因特网报文存取协议）"><a href="#IMAP4（Internet-message-access-protocol，因特网报文存取协议）" class="headerlink" title="IMAP4（Internet message access protocol，因特网报文存取协议）"></a>IMAP4（Internet message access protocol，因特网报文存取协议）</h3><p>优点：IMAP可以使用户可以在自己的PC上操作ISP服务器中的邮件；用户在不同的地方使用不同的计算机随时阅读或处理自己的邮件。<br>缺点：如果用户没有将邮件复制到自己的PC上，邮件将一直放在IMAP服务上，因此用户需要经常与IMAP服务器建立连接。</p>
+<h1 id="WWW（world-wide-web，万维网）"><a href="#WWW（world-wide-web，万维网）" class="headerlink" title="WWW（world wide web，万维网）"></a>WWW（world wide web，万维网）</h1><p>万维网是一个分布式的超媒体（hypermedia）系统，是超文本（hypertext）系统的扩充。</p>
+<h2 id="URL（uniform-resource-locator，统一资源定位符）"><a href="#URL（uniform-resource-locator，统一资源定位符）" class="headerlink" title="URL（uniform resource locator，统一资源定位符）"></a>URL（uniform resource locator，统一资源定位符）</h2><p>URL用来标识分布在整个因特网上的万维网文档。</p>
+<h3 id="URL的一般形式"><a href="#URL的一般形式" class="headerlink" title="URL的一般形式"></a>URL的一般形式</h3><p>&lt;URL的访问方式&gt;://&lt;主机&gt;:&lt;端口&gt;/&lt;路径&gt;<br>其中，URL访问方式中，最常用的是http，ftp，news（USENE新闻）。默认端口号、路径可以省略，主机不可省略。URL中的字母不区分大小写。</p>
+<h3 id="使用http的URL"><a href="#使用http的URL" class="headerlink" title="使用http的URL"></a>使用http的URL</h3><p>http://&lt;主机&gt;:&lt;端口&gt;/&lt;路径&gt;</p>
+<h3 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点"></a>缺点</h3><p>URL必须指向一个特定的主机，如果有的页面被频繁访问，网络通信量可能比较大。而URI（universal resource identifier，通用资源标志符）使资源的名字与位置无关。URI包括了URL和URN（uniform resource name，统一资源名字），可看成是URL的一种扩展。</p>
+<h2 id="HTTP（hypertext-transfer-protocol，超文本传输协议）"><a href="#HTTP（hypertext-transfer-protocol，超文本传输协议）" class="headerlink" title="HTTP（hypertext transfer protocol，超文本传输协议）"></a>HTTP（hypertext transfer protocol，超文本传输协议）</h2><p>关于HTTP协议的详细报文结构和用法可参见<a href="https://www.cnblogs.com/xdp-gacl/p/3751277.html" target="_blank" rel="noopener">javaweb学习总结(四)——Http协议</a><br>HTTP可实现万维网上各种超链的链接。HTTP是应用层协议，使用TCP连接进行可靠的传送。<br>用户在屏幕点击了超链后：浏览器分析超链指向的URL；浏览器向DNS请求将域名解析为IP地址；浏览器与服务器建立TCP连接；服务器给出相应，将所需文件发送给浏览器；释放TCP连接；浏览器显示文件的所有文本。</p>
+<h3 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h3><p>面向事务的客户-服务器协议，是无状态的（stateless，同一客户多次访问同一服务器上的页面时，服务器的响应与第一次相同）；HTTP协议本身是无连接的，虽然它使用了面向连接的TCP向上提供服务。<br>用户通过拨号方式连接到因特网，使用PPP协议与ISP接通，待ISP为用户分配一个临时IP后，用户才能浏览WWW。（面向字节的链路层控制协议：PPP（point-to-point，点对点）协议）</p>
+<h3 id="万维网高速缓存（Web-cache）"><a href="#万维网高速缓存（Web-cache）" class="headerlink" title="万维网高速缓存（Web cache）"></a>万维网高速缓存（Web cache）</h3><p>万维网高速缓存是一种网络实体，能代替浏览器发出HTTP请求，因此也叫代理服务器（proxy server）。它将最近的一些请求和相应暂存在本地磁盘中，当新请求与暂存的请求相同时，则将暂存的响应发出去，不需要按URL的地址去因特网上访问该资源。</p>
+<h3 id="HTTP的报文结构"><a href="#HTTP的报文结构" class="headerlink" title="HTTP的报文结构"></a>HTTP的报文结构</h3><p>有两种报文：请求报文和响应报文。</p>
+<div align="center">
+<img src="http://ovfkr5e4k.bkt.clouddn.com/HTTP%E7%9A%84%E6%8A%A5%E6%96%87%E7%BB%93%E6%9E%84.png">
+</div>
+
+<p>可以看出请求报文和响应报文由三部分组成，它们只有第一行不同。<br>a.    请求报文<br>请求行：有方法、URL、版本。<br>方法：对请求的对象进行操作，即一些常用的命令；</p>
+<div align="center">
+<img src="http://ovfkr5e4k.bkt.clouddn.com/HTTP%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87%E7%9A%84%E4%B8%80%E4%BA%9B%E6%96%B9%E6%B3%95.png">
+</div>
+
+<p>URL：请求资源的URL；<br>版本：HTTP的版本。<br>b.    响应报文<br>状态行：版本、状态码、短语。<br>版本：HTTP版本；<br><strong>状态码（status code</strong>）：5大类共33种；</p>
+<p><font color="red">
+1--：通知信息，如请求收到了或正在进行处理
+2--：成功，如接受或知道了
+3--：重定向，要完成请求还必须采取进一步行动
+4--：客户的差错，如请求中有错误的语法或不能完成
+5--：服务器差错，如服务器失效无法完成请求。
+</font></p>
+短语：解释状态码的简单短语。
+
+<h2 id="HTML（hypertext-markup-language，超文本标记语言）"><a href="#HTML（hypertext-markup-language，超文本标记语言）" class="headerlink" title="HTML（hypertext markup language，超文本标记语言）"></a>HTML（hypertext markup language，超文本标记语言）</h2><h3 id="HTML格式与标签"><a href="#HTML格式与标签" class="headerlink" title="HTML格式与标签"></a>HTML格式与标签</h3><p>计算机的字处理器多样，HTML是一种排版语言。<br>标签：用于排版的命令。<br>HTML文档是一中可以用任何文本编辑器创建的ASCII码文件，文件名后缀为.html。<br>HTML中有三个字符具有特殊意义：&lt; 表示一个标签开始；&gt; 表示一个标签结束；&amp; 表示转义序列开始，以分号结束。&amp;\lt; &amp;\gt; &amp;\amp; &amp;\copy表示版权符号。<br>标签&lt;PRE&gt;表示已排版（preformatted）</p>
+<h3 id="网页中的超链"><a href="#网页中的超链" class="headerlink" title="网页中的超链"></a>网页中的超链</h3><p>远程链接：&lt;a href = “链接地址”&gt; 链接&lt;/a&gt;，h代表超文本，ref表示reference（访问，引用）。<br>本地链接。<br>文本的内连接使用命名锚（name anchor），若链接的终点abc的前面，则文档内链接为：<br>&lt;a name=destination&gt;abc&lt;/a&gt;。<br>静态文档：文档创作完成后放在服务器中，用户浏览过程中不会改变。</p>
+<h3 id="动态文档与CGI程序（CGI脚本）"><a href="#动态文档与CGI程序（CGI脚本）" class="headerlink" title="动态文档与CGI程序（CGI脚本）"></a>动态文档与CGI程序（CGI脚本）</h3><p>文档的内容是在浏览器访问服务器时，服务器运行另一个应用程序，并将控制转移到此程序。如股市、天气预报、售票等。<br>CGI（common gateway interference，通用网关接口）标准：定义了动态文档应该如何创建，输入数据应该如何提供给应用程序，输出结果应该如何使用。<br>在万维网服务器中新增的应用程序叫CGI程序（CGI脚本（CGI script））。</p>
+<div align="center">
+<img src="http://ovfkr5e4k.bkt.clouddn.com/%E6%89%A9%E5%85%85%E4%BA%86%E5%8A%9F%E8%83%BD%E7%9A%84%E4%B8%87%E7%BB%B4%E7%BD%91%E6%9C%8D%E5%8A%A1%E5%99%A8.png">
+</div>
+
+<p>脚本（script）：是一个程序，它被另一个程序（解释程序）执行，而不是计算机的处理机来执行。有一些语言专门作为脚本语言，如Perl，JavaScript等，脚本也可用常用的语言写出，如C，C++等。脚本语言可以更容易更快地进行编码，但脚本运行起来比一般的编译程序要慢，因为它的每一条指令要先被另一个程序（解释程序）执行，而不是被计算机指令处理机直接执行。</p>
+<h3 id="表单（form）"><a href="#表单（form）" class="headerlink" title="表单（form）"></a>表单（form）</h3><p>在创建动态文档时，表单常和CGI程序一起使用，<form>标签中首先要声明一个action参数，指出万维网服务器中的CGI程序在何处，一般就是指明一个URL或URI。<br>&lt;input&gt;标签表示用户需要输入的项目。<br>浏览器向CGI程序发送的数据格式：name1=valuable1&amp;name2=valuable2&amp;…，其中变量中的特殊字符用%+字符的ASCII码，如空格：%20，@符号：%40</p>
+<h3 id="活动万维网文档"><a href="#活动万维网文档" class="headerlink" title="活动万维网文档"></a>活动万维网文档</h3><p>动态文档一旦建立，它所包含的信息内容也就固定下来而无法及时刷新。为了让屏幕连续刷新，有几种技术可以实现：<br>a.    服务器推送（server push）技术：将所有工作交给服务器，服务器不断运行与动态文档相关联的应用程序。可能造成服务器的过多开销；<br>b.    活动文档（active document）技术：将所有工作转移给浏览器端。每当浏览器请求一个活动文档时，服务器端就返回一个程序副本，使该程序副本在浏览器端执行；<br>c.    Java技术：Java中的applet（小应用程序）是用来描述活动文档的程序。<br>Java提高高级图形接口软甲：AWT（abstract window toolkit，抽象窗口工具箱）</p>
+<h3 id="万维网信息检索系统"><a href="#万维网信息检索系统" class="headerlink" title="万维网信息检索系统"></a>万维网信息检索系统</h3><p>万维网上的信息检索程序叫搜索引擎（search engine）。<br>为了检索，将网页标题中的关键字作为索引，索引算法包含三种数据结构：一个线性数组url_table，存放已经找到的URL；每个页面都有一项，每项两个指针，一个指向页面的URL，一个指向标题。由于URL和标题是可变长的，因此使用堆（heap）来存放它们；由于URL数量太大，使用长度为n的hash表，每个URL被hash后都产生一个小于n的数，hash值相同的URL连接到同一个链表后面。<br>搜索引擎的核心是递归过程process_url。</p>
+<div align="center">
+<img src="http://ovfkr5e4k.bkt.clouddn.com/%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E4%B8%AD%E4%BD%BF%E7%94%A8%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.png">
+</div>
+
+<h2 id="BOOTP和DHCP"><a href="#BOOTP和DHCP" class="headerlink" title="BOOTP和DHCP"></a>BOOTP和DHCP</h2><h3 id="BOOTP（bootstrap-protocol，引导程序协议）"><a href="#BOOTP（bootstrap-protocol，引导程序协议）" class="headerlink" title="BOOTP（bootstrap protocol，引导程序协议）"></a>BOOTP（bootstrap protocol，引导程序协议）</h3><p>BOOTP使用UDP来使一个<font color="red">无盘工作站</font>自动获取配置信息，它是一个静态配置协议。计算机发送BOOTP请求报文时自己还没有IP地址，因此它用全0作为源地址，用全1作为目的地址（本网络上广播地址）。<br>BOOTP只发送一个广播报文就可以获取全部的配置信息，而RARP可获取IP地址（将物理地址解析成IP地址），ICMP可获取子网掩码（ICMP的询问报文有四种，其中有掩码地址请求和回答）。</p>
+<h3 id="DHCP（dynamic-host-configuration-protocol，动态主机配置协议）"><a href="#DHCP（dynamic-host-configuration-protocol，动态主机配置协议）" class="headerlink" title="DHCP（dynamic host configuration protocol，动态主机配置协议）"></a>DHCP（dynamic host configuration protocol，动态主机配置协议）</h3><p>BOOTP由于使用静态配置协议，当主机移动到另一个网络或需要一个临时IP地址时，需要管理员手动修改数据库中主机的地址绑定信息。而DHCP为即插即用网络（plug-and-play networking），它是对BOOTP的扩展，它允许计算机加入新的网络和获取IP地址都是自动的。<br>DHCP分配给DHCP用户的IP地址是临时的，因此它有租用期（lease period），DHCP只能在有限时间内使用这个IP地址，具体时限由服务器决定。</p>
+<h2 id="SNMP（simple-network-management-protocol，简单网络管理协议）"><a href="#SNMP（simple-network-management-protocol，简单网络管理协议）" class="headerlink" title="SNMP（simple network management protocol，简单网络管理协议）"></a>SNMP（simple network management protocol，简单网络管理协议）</h2><p>SNMP的重要思想是尽可能简单。</p>
+<div align="center">
+<img src="http://ovfkr5e4k.bkt.clouddn.com/%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%E7%9A%84%E4%B8%80%E8%88%AC%E6%A8%A1%E5%9E%8B.png">
+</div> 
+
+<p>管理程序（图中的M）： 管理站是整个网络管理系统的核心，通常是个有良好图像界面的高性能工作站，并由网络管理员直接操作和控制。其中的关键构件是管理程序，管理程序运行时成为管理进程。<br>代理程序（图中的A）：在每个被管设备中都要运行一个程序与管理站中的管理程序进行通信。<br><strong>网络管理（网管）协议</strong>：管理程序和代理程序之间通信的规则。<br>系统管理的5个功能域：故障管理（fault management）、配置管理（configuration management）、计费管理（accounting management）、性能管理（performance management）、安全管理（security management）。</p>
+<h2 id="应用进程跨越网络的通信"><a href="#应用进程跨越网络的通信" class="headerlink" title="应用进程跨越网络的通信"></a>应用进程跨越网络的通信</h2><h3 id="系统调用和应用编程接口"><a href="#系统调用和应用编程接口" class="headerlink" title="系统调用和应用编程接口"></a>系统调用和应用编程接口</h3><p>大多数操作系统使用<strong>系统调用（system call）机制</strong>在应用程序和操作系统之间传递控制权。<br>API（application programming interface，应用个编程接口）：应用层和传输层之间的一种接口，称为socket API。</p>
+<h3 id="服务器工作的两种方式"><a href="#服务器工作的两种方式" class="headerlink" title="服务器工作的两种方式"></a>服务器工作的两种方式</h3><p>循环方式（iterative mode）：在计算机中只运行一个服务器进程，当有多个客户进程同时请求服务时，服务器进程就按请求的先后顺序做出响应；<br>并发方式（concurrent mode）：在计算机中可以运行多个服务器进程，每个服务器进程都对某个特定的客户进程做出响应。<br>a.    无连接循环服务器<br>使用无连接的UDP服务器通常都工作在循环方式。主要特点是一个服务器在同一时刻只能向一个客户提供服务。<br>b.    面向连接并发服务器<br>使用面向连接的TCP服务器通常都工作在并发方式。主要特点是一个服务器在同一时刻可以向多个客户提供服务。由于是面向TCP连接，因此服务器和多个客户之间必然建立多条连接，而每一条连接需要等数据传送完后才能释放。<br>由于服务器使用一个端口提供服务，因此并发服务器采用这样的工作方式：一个主服务器（即原来的服务器）在熟知端口等待客户请求，一旦收到客户请求就立即创建从属服务器，从属服务器使用临时端口与客户建立连接。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/15/Tech/Computer%20Network/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E5%9B%9B%EF%BC%89%E2%80%94%E2%80%94%E4%BC%A0%E8%BE%93%E5%B1%82/" rel="next" title="计算机网络（四）——传输层">
+                <i class="fa fa-chevron-left"></i> 计算机网络（四）——传输层
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/17/Tech/Java/Java%20Programmer%20Interview/Java%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%EF%BC%88%E4%B8%80%EF%BC%89/" rel="prev" title="Java程序员面试宝典（一）">
+                Java程序员面试宝典（一） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="LichtMiao" />
+          <p class="site-author-name" itemprop="name">LichtMiao</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">186</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          <!-- 
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+           -->
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/LichtMiao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Miaomi4" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                    
+                      Twitter
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DNS（domain-name-system，域名系统，端口号53）"><span class="nav-number">1.</span> <span class="nav-text">DNS（domain name system，域名系统，端口号53）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#因特网的域名结构"><span class="nav-number">1.1.</span> <span class="nav-text">因特网的域名结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用域名服务器进行域名解析"><span class="nav-number">1.2.</span> <span class="nav-text">用域名服务器进行域名解析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#FTP（file-transfer-protocol，文件传送协议，端口号21）"><span class="nav-number">2.</span> <span class="nav-text">FTP（file transfer protocol，文件传送协议，端口号21）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#特点"><span class="nav-number">2.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FTP的工作原理"><span class="nav-number">2.2.</span> <span class="nav-text">FTP的工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缺点"><span class="nav-number">2.3.</span> <span class="nav-text">缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FTP交互式工作的一些命令"><span class="nav-number">2.4.</span> <span class="nav-text">FTP交互式工作的一些命令</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TFTP（trivial-file-transfer-protocol，简单文件传输协议，端口号69）"><span class="nav-number">3.</span> <span class="nav-text">TFTP（trivial file transfer protocol，简单文件传输协议，端口号69）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#工作原理"><span class="nav-number">3.1.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优缺点"><span class="nav-number">3.2.</span> <span class="nav-text">优缺点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TELNET（远程终端协议，端口号23）"><span class="nav-number">4.</span> <span class="nav-text">TELNET（远程终端协议，端口号23）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#工作原理-1"><span class="nav-number">4.1.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NVT（network-virtual-terminal，网络虚拟终端）"><span class="nav-number">4.2.</span> <span class="nav-text">NVT（network virtual terminal，网络虚拟终端）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#电子邮件（发送协议：SMTP端口号25，接收协议：POP3（或IMAP））"><span class="nav-number">5.</span> <span class="nav-text">电子邮件（发送协议：SMTP端口号25，接收协议：POP3（或IMAP））</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#电子邮件系统的组成"><span class="nav-number">5.1.</span> <span class="nav-text">电子邮件系统的组成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用户代理（user-agent）"><span class="nav-number">5.1.1.</span> <span class="nav-text">用户代理（user agent）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#邮件服务器"><span class="nav-number">5.1.2.</span> <span class="nav-text">邮件服务器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工作过程"><span class="nav-number">5.2.</span> <span class="nav-text">工作过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SMTP（simple-mail-transfer-protocol，简单邮件传送协议，端口号25）"><span class="nav-number">5.3.</span> <span class="nav-text">SMTP（simple mail transfer protocol，简单邮件传送协议，端口号25）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SMTP通信的三阶段"><span class="nav-number">5.3.1.</span> <span class="nav-text">SMTP通信的三阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#邮件内容"><span class="nav-number">5.3.2.</span> <span class="nav-text">邮件内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点-1"><span class="nav-number">5.3.3.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MIME（multipurpose-Internet-mail-extension，通用因特网邮件扩充）"><span class="nav-number">5.4.</span> <span class="nav-text">MIME（multipurpose Internet mail extension，通用因特网邮件扩充）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#POP3、IMAP（邮件读取协议）"><span class="nav-number">5.5.</span> <span class="nav-text">POP3、IMAP（邮件读取协议）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#POP3（post-office-protocol，邮局协议第3版本）"><span class="nav-number">5.5.1.</span> <span class="nav-text">POP3（post office protocol，邮局协议第3版本）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IMAP4（Internet-message-access-protocol，因特网报文存取协议）"><span class="nav-number">5.5.2.</span> <span class="nav-text">IMAP4（Internet message access protocol，因特网报文存取协议）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WWW（world-wide-web，万维网）"><span class="nav-number">6.</span> <span class="nav-text">WWW（world wide web，万维网）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#URL（uniform-resource-locator，统一资源定位符）"><span class="nav-number">6.1.</span> <span class="nav-text">URL（uniform resource locator，统一资源定位符）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#URL的一般形式"><span class="nav-number">6.1.1.</span> <span class="nav-text">URL的一般形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用http的URL"><span class="nav-number">6.1.2.</span> <span class="nav-text">使用http的URL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点-2"><span class="nav-number">6.1.3.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP（hypertext-transfer-protocol，超文本传输协议）"><span class="nav-number">6.2.</span> <span class="nav-text">HTTP（hypertext transfer protocol，超文本传输协议）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特点-1"><span class="nav-number">6.2.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#万维网高速缓存（Web-cache）"><span class="nav-number">6.2.2.</span> <span class="nav-text">万维网高速缓存（Web cache）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP的报文结构"><span class="nav-number">6.2.3.</span> <span class="nav-text">HTTP的报文结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML（hypertext-markup-language，超文本标记语言）"><span class="nav-number">6.3.</span> <span class="nav-text">HTML（hypertext markup language，超文本标记语言）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML格式与标签"><span class="nav-number">6.3.1.</span> <span class="nav-text">HTML格式与标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网页中的超链"><span class="nav-number">6.3.2.</span> <span class="nav-text">网页中的超链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态文档与CGI程序（CGI脚本）"><span class="nav-number">6.3.3.</span> <span class="nav-text">动态文档与CGI程序（CGI脚本）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表单（form）"><span class="nav-number">6.3.4.</span> <span class="nav-text">表单（form）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#活动万维网文档"><span class="nav-number">6.3.5.</span> <span class="nav-text">活动万维网文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#万维网信息检索系统"><span class="nav-number">6.3.6.</span> <span class="nav-text">万维网信息检索系统</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BOOTP和DHCP"><span class="nav-number">6.4.</span> <span class="nav-text">BOOTP和DHCP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BOOTP（bootstrap-protocol，引导程序协议）"><span class="nav-number">6.4.1.</span> <span class="nav-text">BOOTP（bootstrap protocol，引导程序协议）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DHCP（dynamic-host-configuration-protocol，动态主机配置协议）"><span class="nav-number">6.4.2.</span> <span class="nav-text">DHCP（dynamic host configuration protocol，动态主机配置协议）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SNMP（simple-network-management-protocol，简单网络管理协议）"><span class="nav-number">6.5.</span> <span class="nav-text">SNMP（simple network management protocol，简单网络管理协议）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用进程跨越网络的通信"><span class="nav-number">6.6.</span> <span class="nav-text">应用进程跨越网络的通信</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#系统调用和应用编程接口"><span class="nav-number">6.6.1.</span> <span class="nav-text">系统调用和应用编程接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器工作的两种方式"><span class="nav-number">6.6.2.</span> <span class="nav-text">服务器工作的两种方式</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LichtMiao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+  Powered by <a>Hexo</a>
+</div>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+  <!-- 背景动画 -->
+  
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>

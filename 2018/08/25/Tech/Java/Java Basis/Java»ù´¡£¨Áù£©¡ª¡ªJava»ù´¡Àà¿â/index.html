@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en.yml">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Learning, Life" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="LichtMiao's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="Java8提供了4000多个基础类库，通过这些基础类库可以提高开发效率，降低开发难度。对于合格的java程序员而言，至少要熟悉Java SE中70%以上的类，在反复查阅API文档的过程中，会自动记住大部分的功能、方法，因此程序员一定要多练，多敲代码。Java提供了String、StringBuffer和StringBuilder来处理字符串，它们之间存在少许差别。使用Calender来处理日期、时">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java基础（六）——Java基础类库">
+<meta property="og:url" content="https://lichtmiao.github.io/2018/08/25/Tech/Java/Java%20Basis/Java%C2%BBu%CC%80%C2%B4%C2%A1%C2%A3%C2%A8A%CC%81u%CC%80%C2%A3%C2%A9%C2%A1%C2%AA%C2%A1%C2%AAJava%C2%BBu%CC%80%C2%B4%C2%A1A%CC%80a%CC%80%C2%BFa%CC%82/index.html">
+<meta property="og:site_name" content="LichtMiao&#39;s Blog">
+<meta property="og:description" content="Java8提供了4000多个基础类库，通过这些基础类库可以提高开发效率，降低开发难度。对于合格的java程序员而言，至少要熟悉Java SE中70%以上的类，在反复查阅API文档的过程中，会自动记住大部分的功能、方法，因此程序员一定要多练，多敲代码。Java提供了String、StringBuffer和StringBuilder来处理字符串，它们之间存在少许差别。使用Calender来处理日期、时">
+<meta property="og:image" content="http://ovfkr5e4k.bkt.clouddn.com/Java%E7%A8%8B%E5%BA%8F%E5%9B%BD%E9%99%85%E5%8C%96%E7%9A%84%E6%80%9D%E8%B7%AF.png">
+<meta property="og:image" content="http://ovfkr5e4k.bkt.clouddn.com/NumberFormat%E5%92%8CDateFormat%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD.png">
+<meta property="article:published_time" content="2018-08-25T05:32:49.000Z">
+<meta property="article:modified_time" content="2019-01-21T09:12:10.000Z">
+<meta property="article:author" content="LichtMiao">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://ovfkr5e4k.bkt.clouddn.com/Java%E7%A8%8B%E5%BA%8F%E5%9B%BD%E9%99%85%E5%8C%96%E7%9A%84%E6%80%9D%E8%B7%AF.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.2',
+    sidebar: {"position":"right","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://lichtmiao.github.io/2018/08/25/Tech/Java/Java Basis/Java»ù´¡£¨Áù£©¡ª¡ªJava»ù´¡Àà¿â/"/>
+
+
+
+
+
+<!-- 网页加载条 -->
+<script src="https://neveryu.github.io/js/src/pace.min.js"></script>
+  <title>Java基础（六）——Java基础类库 | LichtMiao's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en.yml">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LichtMiao's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lichtmiao.github.io/2018/08/25/Tech/Java/Java%20Basis/Java%C2%BBu%CC%80%C2%B4%C2%A1%C2%A3%C2%A8A%CC%81u%CC%80%C2%A3%C2%A9%C2%A1%C2%AA%C2%A1%C2%AAJava%C2%BBu%CC%80%C2%B4%C2%A1A%CC%80a%CC%80%C2%BFa%CC%82/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LichtMiao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LichtMiao's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java基础（六）——Java基础类库</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-25T13:32:49+08:00">
+                2018-08-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/Java/Java-Basis/" itemprop="url" rel="index">
+                    <span itemprop="name">Java Basis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Java8提供了4000多个基础类库，通过这些基础类库可以提高开发效率，降低开发难度。对于合格的java程序员而言，至少要熟悉Java SE中70%以上的类，在反复查阅API文档的过程中，会自动记住大部分的功能、方法，因此程序员一定要多练，多敲代码。<br>Java提供了String、StringBuffer和StringBuilder来处理字符串，它们之间存在少许差别。<br>使用Calender来处理日期、时间。<br>正则表达式是一个强大的文本处理工具，通过正则表达式可以对文本内容改进型查找、替换、分割等操作。<br>Java使用Locale对象封装一个国家、语言环境，在使用ResourceBundle根据Locale加载语言资源包，当ResourceBundle加载了指定Locale对应的语言资源文件后，ResourceBundle对象就可以调用getString()方法来去除指定key所对应的消息字符串。</p>
+<p>方法的调用规则：谁调用该方法，谁负责为形参赋值。则main方法由JVM调用，形参args应该由JVM赋值。</p>
+<h1 id="Scanner类"><a href="#Scanner类" class="headerlink" title="Scanner类"></a>Scanner类</h1><p>Scanner是一个<font color="red">基于正则表达式的文本扫描器</font>，它可以从文件、输入流、字符串中解析出基本类型值和字符串值。它主要提供两个方法来<span style="background:yellow">扫描输入</span>：<br>（1）hasNext*** ()：是否还有下一个输入项，***可以是Int、Long等代表基本数据类型的字符串。<font color="red">如果只是判断是否包含下一个字符串，则直接使用hasNext()</font>。<br>（2）next***()：获取下一个输入项。</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ScannerKeyBoardTest</span> &#123;</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">String</span>[] args)</span></span>&#123;</span><br><span class="line">		<span class="comment">//System.in标准输入，即键盘输入</span></span><br><span class="line">		Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		<span class="comment">//使用回车作为分隔符（de’limiter定界符</span></span><br><span class="line">		<span class="comment">//sc.useDelimiter("\n");</span></span><br><span class="line">		<span class="comment">//判断是否还有下一项（String类型）输入</span></span><br><span class="line">		<span class="keyword">while</span>(sc.hasNext())&#123;</span><br><span class="line">			System.out.<span class="built_in">println</span>(<span class="string">"键盘输入的内容是："</span></span><br><span class="line">					+ sc.next());</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果不需要Scanner类通过空白键作为分隔符，可以使用useDelimiter(String pattern)方法，该方法的参数是一个正则表达式。如在上面程序的构造器后添加代码：<br>sc.useDelimiter(“\n”); // 使用回车作为分隔符（de’limiter定界符）<br>Scanner提供两个简单的方法来<span style="background:yellow">逐行读取</span>：<br>(1) boolean hasNextLine ()：返回输入源中是否还有下一行。<br>(2) String nextLine ()：返回输入源中下一行的字符串。</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.<span class="built_in">File</span>;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ScannerFileTest</span> &#123;</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">String</span>[] args)</span> </span></span><br><span class="line"><span class="function">	<span class="comment">//程序涉及文件输入，可能引发IO异常，throws Exception表明</span></span></span><br><span class="line"><span class="function">	<span class="comment">//main方法不处理任何异常，将异常抛给JVM</span></span></span><br><span class="line"><span class="function">	throws Exception</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="comment">//将File对象最为Scanner构造器的参数，Scanner读取文件内容</span></span><br><span class="line">		Scanner sc = <span class="keyword">new</span> Scanner(<span class="keyword">new</span> <span class="built_in">File</span>(<span class="string">"ScannerFileTest.java"</span>));</span><br><span class="line">		<span class="comment">// 判断是否还有下一行</span></span><br><span class="line">		<span class="keyword">while</span>(sc.hasNextLine())</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="comment">// 逐行读取</span></span><br><span class="line">			System.out.<span class="built_in">println</span>(sc.nextLine());</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="系统相关（System类、Runtime类）"><a href="#系统相关（System类、Runtime类）" class="headerlink" title="系统相关（System类、Runtime类）"></a>系统相关（System类、Runtime类）</h1><p>Java提供了System类和Runtime类来与程序的运行平台进行交互。<br>System类代表当前Java程序的运行平台，程序不能创建System类的对象。<br>System类提供了代表标准输入、标准输出和错误输出的类变量，并提供了一些类方法用于访问环境变量、系统属性的方法，还提供了加载文件和动态链接库的方法。</p>
+<h2 id="System类"><a href="#System类" class="headerlink" title="System类"></a>System类</h2><p>以下程序通过调用System类的getenv()、getProperties()、getProperty()（这个方法是getProperties()方法的特例形式，专门获取某些方法）等方法来访问程序所在平台的环境变量和系统属性，程序运行结果会输出操作系统所有的环境变量值，放在项目根目录文件中F:\eclipsework\Crazy-java。</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"><span class="keyword">import</span> java.util.Properties;</span><br><span class="line"><span class="keyword">import</span> java.io.FileOutputStream;</span><br><span class="line"><span class="built_in">public</span> <span class="keyword">class</span> SystemTest &#123;</span><br><span class="line">	<span class="built_in">public</span> static <span class="type">void</span> main(String[] args) throws <span class="keyword">Exception</span></span><br><span class="line">	&#123;</span><br><span class="line">		//获取系统所有环境变量：环境变量名与其对应的值或地址</span><br><span class="line">		Map&lt;String,String&gt; env = <span class="keyword">System</span>.getenv();</span><br><span class="line">		<span class="keyword">for</span>(String <span class="type">name</span> : env.keySet())</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">System</span>.<span class="keyword">out</span>.println(<span class="type">name</span> + "---&gt; " + env.<span class="keyword">get</span>(<span class="type">name</span>));</span><br><span class="line">		&#125;</span><br><span class="line">		//获取指定环境变量的值</span><br><span class="line">		<span class="keyword">System</span>.<span class="keyword">out</span>.println(<span class="keyword">System</span>.getenv("JAVA_HOME"));</span><br><span class="line">		//获取所有系统属性</span><br><span class="line">		Properties props = <span class="keyword">System</span>.getProperties();</span><br><span class="line">		//将所有的系统属性<span class="keyword">System</span>.Properties存储到props.text文件中，<span class="keyword">System</span> Properties是对属性列表的描述</span><br><span class="line">		props.store(<span class="built_in">new</span> FileOutputStream("props.txt"),"System Properties");</span><br><span class="line">		//输出特定系统属性os.name</span><br><span class="line">		<span class="keyword">System</span>.<span class="keyword">out</span>.println(<span class="keyword">System</span>.getProperty("os.name"));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>System类的in、out和err分别代表系统的标准输入（通常是键盘输入）、标准输入（通常是显示器输出）和错误输出流。并提供了setIn()、setOut()和setErr()方法来改变系统的标准输入、标准输出和标准错误输出流。<br><font color="red">System类提供identityHashCode(Object x)方法</font>来访问指定对象的精确HashCode值（可以用来判断是否是同一对象，<font color="red">==</font>也有此功能）。当某个类的HashCode()方法被重写，HashCode()方法就不能唯一地标识该对象；但通过identityHashCode()方法返回的HashCode值是根据该对象的地址得到的HashCode值。如果调用该方法得到的identityHashCode值是一样的，则两个对象一定是同一个对象。</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public <span class="keyword">class</span> IdentityHashCodeTest &#123;</span><br><span class="line">	public static void main(String<span class="literal">[]</span> args)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//s1和s2是不同的字符串对象</span></span><br><span class="line">		String s1 = <span class="keyword">new</span> <span class="constructor">String(<span class="string">"Hello"</span>)</span>;</span><br><span class="line">		String s2 = <span class="keyword">new</span> <span class="constructor">String(<span class="string">"Hello"</span>)</span>;</span><br><span class="line">		<span class="comment">//String重写了HashCode()方法，根据字符序列计算hashcode值</span></span><br><span class="line">		<span class="comment">//因为s1和s2字符串序列，所以hashCode()值也相同</span></span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">System</span>.</span></span>out.println(s1.hash<span class="constructor">Code()</span> + <span class="string">"---"</span> + s2.hash<span class="constructor">Code()</span>);</span><br><span class="line">		<span class="comment">//s1和s2是不同的字符串对象，identityHashCode()值不同</span></span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">System</span>.</span></span>out.println(<span class="module-access"><span class="module"><span class="identifier">System</span>.</span></span>identity<span class="constructor">HashCode(<span class="params">s1</span>)</span> </span><br><span class="line">				+ <span class="string">"---"</span> + <span class="module-access"><span class="module"><span class="identifier">System</span>.</span></span>identity<span class="constructor">HashCode(<span class="params">s2</span>)</span>);</span><br><span class="line">		String s3 = <span class="string">"Java"</span>;</span><br><span class="line">		String s4 = <span class="string">"Java"</span>;</span><br><span class="line">		<span class="comment">//s3和s4是不同的字符串对象，identityHashCode()值不同ͬ</span></span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">System</span>.</span></span>out.println(<span class="module-access"><span class="module"><span class="identifier">System</span>.</span></span>identity<span class="constructor">HashCode(<span class="params">s3</span>)</span> </span><br><span class="line">				+ <span class="string">"---"</span> + <span class="module-access"><span class="module"><span class="identifier">System</span>.</span></span>identity<span class="constructor">HashCode(<span class="params">s4</span>)</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：栈内存中存放基本类型变量和引用类型变量；Java堆用来存放new创建的对象和数组；方法区用来存放常量和静态变量。具体请见<a href="https://lichtmiao.github.io/2018/08/18/Tech/Java/Java%20VM/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E4%B8%8E%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA%E5%BC%82%E5%B8%B8/">Java虚拟机（一）——Java内存区域与内存溢出异常</a></p>
+<h2 id="Runtime类"><a href="#Runtime类" class="headerlink" title="Runtime类"></a>Runtime类</h2><p>Runtime类代表java程序运行时的环境，每个java程序都有一个与之相对应的实例，应用程序通过该实例（对象）与其运行时环境相连。应用程序不能创建自己的Runtime实例，但可以通过getRuntime()方法获取与之关联的Runtime对象。<br>Runtime类提供访问JVM相关信息的方法：</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public <span class="keyword">class</span> RuntimeTest &#123;</span><br><span class="line">	public static void main(String<span class="literal">[]</span> args)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//运行Java程序关联的运行时对象</span></span><br><span class="line">		Runtime rt = <span class="module-access"><span class="module"><span class="identifier">Runtime</span>.</span></span>get<span class="constructor">Runtime()</span>;</span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">System</span>.</span></span>out.println(<span class="string">"处理器数量:"</span> + rt.available<span class="constructor">Processors()</span>);</span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">System</span>.</span></span>out.println(<span class="string">"空闲内存数:"</span> + rt.free<span class="constructor">Memory()</span>);</span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">System</span>.</span></span>out.println(<span class="string">"总内存数:"</span> + rt.total<span class="constructor">Memory()</span>);</span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">System</span>.</span></span>out.println(<span class="string">"可用最大内存数:"</span> + rt.max<span class="constructor">Memory()</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Runtime类还能利用<font color="red">exec()方法启动进程</font>来运行操作系统的命令：</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExecTest</span> &#123;</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">String</span>[] args)</span> throws Exception</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Runtime rt = Runtime.getRuntime();</span><br><span class="line">		<span class="comment">//打开记事本</span></span><br><span class="line">		rt.exec(<span class="string">"notepad.exe"</span>); <span class="comment">//调用的是计算机自带程序</span></span><br><span class="line">		<span class="comment">//打开画图 </span></span><br><span class="line">	    rt.exec(<span class="string">"mspaint.exe"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="常用类"><a href="#常用类" class="headerlink" title="常用类"></a>常用类</h1><p>String、Math、BigDecimal类等</p>
+<h2 id="Object类"><a href="#Object类" class="headerlink" title="Object类"></a>Object类</h2><p>Object类是所有类、数组、枚举类的父类。所有java类都是Object类的子类，所以任何java对象都可以调用Object类的方法。<br>Protected void finalize()<br>Class&lt;?&gt; getClass()：返回该对象的<font color="red">运行时类</font>。<br>int hashCode()：返回该对象的hashCode值。<br>String toString()：返回该对象的字符串表示。<font color="red">Object类的toString()方法</font>返回的是“<font color="red">运行时类名@十六进制hashCode值</font>”的字符串。但很多类都重写了toString()方法，用户返回表述该对象信息的字符串。<br>wait()、notify()、notifyAll()：控制线程的暂停与运行。<br>protected修饰的clone()方法：帮助其他对象来实现“自我克隆”，<font color="red">得到当前对象的副本，而且二者之间完全隔离</font>。protected修饰：只能被子类重写或调用。自定义类实现“自我克隆”的步骤：</p>
+<p>1)    自定义类实现Cloneable接口<br>2)    自定义类实现自己的clone()方法。<br>3)    通过super.clone()实现clone()方法。（调用父类的clone()方法实现自我克隆）</p>
+<p>注意：Object类的clone()方法虽简单、易用，但它<font color="red">只是克隆对象的所有成员变量的值</font>，不会对引用类型的成员变量值所引用的对象进行克隆。<br>Java7新增的Objects工具类，它提供了一些工具方法。<span style="background-color:yellow">Java为工具类的命名习惯是添加字母s</span>，如操作数组的工具类Arrays，操作集合的工具类Collections。</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Objects;</span><br><span class="line">public <span class="keyword">class</span> ObjectTest &#123;</span><br><span class="line">	<span class="comment">//定义obj变量，默认值是null</span></span><br><span class="line">	static ObjectTest obj;</span><br><span class="line">	public static void main(String<span class="literal">[]</span> args)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//输出一个null对象的hashCode = 0</span></span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">System</span>.</span></span>out.println(<span class="module-access"><span class="module"><span class="identifier">Objects</span>.</span></span>hash<span class="constructor">Code(<span class="params">obj</span>)</span>);</span><br><span class="line">		<span class="comment">//输出一个null对象的toString = null</span></span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">System</span>.</span></span>out.println(<span class="module-access"><span class="module"><span class="identifier">Objects</span>.</span></span><span class="keyword">to</span><span class="constructor">String(<span class="params">obj</span>)</span>);</span><br><span class="line">		<span class="comment">//要求obj不能为null，否则引发异常</span></span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">System</span>.</span></span>out.println(<span class="module-access"><span class="module"><span class="identifier">Objects</span>.</span></span>require<span class="constructor">NonNull(<span class="params">obj</span>, <span class="string">"obj不能为null"</span>)</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述程序还示范了Objects提供的requireNonNull()方法，当传入的参数不为null时，返回参数本身，否则将引发NullPointerException异常。</p>
+<h2 id="String类"><a href="#String类" class="headerlink" title="String类"></a>String类</h2><p>1) String类、StringBuffer类、StringBuilder类。<br>String类是不可变类。<br>2) <span style="background-color:yellow">StringBuffer（线程安全）</span>对象则代表一个字符序列可变（内容可变，长度可变）的字符串。当一个StringBuffer对象被创建以后，可以通过StringBuffer提供的append()、insert()、reverse()（追加、插入、相反（倒转））、setCharAt()、setLength()等可以改变这个字符串对象的字符序列。一旦通过StringBuffer生成了最终想要的字符串，就可以调用它的toString()方法将其转换为一个String对象。<br>3) <span style="background-color:yellow">StringBuilder类（线程不安全，适合单线程）</span>也是代表字符串对象，与StringBuffer类的使用类似。不同是StringBuffer类是线程安全的，而StringBuilder类没有实现线程安全功能，因此性能略高。（线程安全是指某个函数、函数库在多线程环境中被调用时，能够正确地处理多个线程之间的共享变量不致发生混乱，使程序功能正确完成）。因此在通常情况下，如果需要创建一个内容可变的字符串对象，则应该优先考虑使用StringBuiler类。</p>
+<p>String、StringBuilder、StringBuffer类都实现了CharSequence接口，因此CharSquence接口可认为是一个字符串的协议接口。</p>
+<p>String(byte[] bytes, int offset, int length, String charsetName)<br>int compareTo(String anotherString)：比较两个字符串的大小。如果相当则返回0；不相等时，从两个字符串第0个字符开始比较，返回第一个不相同的字符值之差（this.charAt(i) – anotherString.charAt(i)）。另一种情况是，长字符串前面部分刚好是短字符串，则返回它们的字符个数差（this.length() – anotherString.length()）。<br>int length()：返回当前字符串长度。<br><font color="red">byte[] getBytes()</font>：将该String对象转换成byte数组。<br><font color="red">char[] toCharArray()</font>：将该String对象转换成char数组。<br>StringBuilder、StringBuffer类与String类不同的是，它提供length()来访问字符序列长度、提供setLength()方法来修改器字符序列长度。</p>
+<h2 id="Math类"><a href="#Math类" class="headerlink" title="Math类"></a>Math类</h2><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">public <span class="keyword">class</span> mathTest &#123;</span><br><span class="line">	public static void main(String<span class="literal">[]</span> args)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//为简化，本段并未输出</span></span><br><span class="line">		<span class="comment">/*---以下是三角运算---*/</span></span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">Math</span>.</span></span><span class="keyword">to</span><span class="constructor">Degrees(1.57)</span>; <span class="comment">//将弧度转化成角度</span></span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">Math</span>.</span></span><span class="keyword">to</span><span class="constructor">Radians(90)</span>; <span class="comment">//将角度转换成弧度</span></span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">Math</span>.</span></span>acos(<span class="number">1.2</span>); <span class="comment">//计算反余弦值，返回的角度范围在0.0到pi之间</span></span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">Math</span>.</span></span>asin(<span class="number">0.8</span>); <span class="comment">//计算反正弦值，返回的角度在-pi/2到pi/2之间</span></span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">Math</span>.</span></span>atan(<span class="number">2.3</span>); <span class="comment">//计算反正切值，返回的角度在-pi/2到pi/2之间</span></span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">Math</span>.</span></span>cos(<span class="number">1.57</span>); <span class="comment">//计算余弦</span></span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">Math</span>.</span></span>cosh(<span class="number">1.2</span>); <span class="comment">//计算双曲余弦</span></span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">Math</span>.</span></span>sin(<span class="number">1.57</span>); <span class="comment">//计算正弦</span></span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">Math</span>.</span></span>sinh(<span class="number">1.2</span>); <span class="comment">//计算双曲正弦</span></span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">Math</span>.</span></span>tan(<span class="number">0.8</span>); <span class="comment">//计算正切</span></span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">Math</span>.</span></span>tanh(<span class="number">2.1</span>); <span class="comment">//计算双曲正切</span></span><br><span class="line">		<span class="comment">//将二维坐标(x,y)转换成极坐标(r,thet)</span></span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">Math</span>.</span></span>atan2(<span class="number">0.1</span>, <span class="number">0.2</span>);</span><br><span class="line">		<span class="comment">/*---以下是取整运算---*/</span></span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">Math</span>.</span></span>floor<span class="number">(-1.2)</span>; <span class="comment">//向下取整，返回小于目标数的最大整数</span></span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">Math</span>.</span></span>ceil(<span class="number">1.2</span>); <span class="comment">//向上取整，返回大于目标数的最小整数</span></span><br><span class="line">		<span class="comment">//四舍五入取整</span></span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">Math</span>.</span></span>round(<span class="number">2.3</span>);</span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">Math</span>.</span></span>sqrt(<span class="number">2.3</span>); <span class="comment">//计算平方根</span></span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">Math</span>.</span></span>cbrt(<span class="number">9</span>); <span class="comment">//计算立方根</span></span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">Math</span>.</span></span>exp(<span class="number">2</span>); <span class="comment">//返回欧拉数e的n次幂</span></span><br><span class="line">		<span class="comment">//返回sqrt(x2+y2)，没有中间溢出或下溢</span></span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">Math</span>.</span></span>hypot(<span class="number">4</span>, <span class="number">4</span>);</span><br><span class="line">		<span class="comment">//按照IEEE 754的规定，对两个参数进行余数运算</span></span><br><span class="line">		Math.<span class="constructor">IEEEremainder(5, 2)</span>;</span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">Math</span>.</span></span>pow(<span class="number">3</span>,<span class="number">2</span>); <span class="comment">//计算乘方</span></span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">Math</span>.</span></span>log(<span class="number">12</span>); <span class="comment">//计算自然对数</span></span><br><span class="line">		<span class="comment">//计算底数为10的对数</span></span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">Math</span>.</span></span>log10(<span class="number">9</span>);</span><br><span class="line">		<span class="comment">//返回参数与1之和的自然对数</span></span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">Math</span>.</span></span>log1p(<span class="number">9</span>);</span><br><span class="line">		<span class="comment">/*---以下是符号相关的运算---*/</span></span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">Math</span>.</span></span>abs<span class="number">(-4.5)</span>; <span class="comment">//计算绝对值</span></span><br><span class="line">		<span class="comment">//符号赋值，返回带有第二个浮点数符号的第一个浮点参数</span></span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">Math</span>.</span></span>copy<span class="constructor">Sign(1.2,-1.0)</span>;</span><br><span class="line">		<span class="comment">//符号函数，如果参数为0，则返回0；如果参数大于0，则返回1.0；如果参数小于0，则返回-1.0</span></span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">Math</span>.</span></span>signum(<span class="number">2.3</span>);;</span><br><span class="line">		<span class="comment">/*---下面是大小相关的运算---*/</span></span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">Math</span>.</span></span>max(<span class="number">2.3</span>, <span class="number">4.5</span>);<span class="comment">//找出最大值</span></span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">Math</span>.</span></span>min(<span class="number">1.2</span>, <span class="number">3.4</span>); <span class="comment">//找出最小值</span></span><br><span class="line">		<span class="comment">//返回第一个参数和第二个参数相邻的浮点数</span></span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">Math</span>.</span></span>next<span class="constructor">After(1.2, 1.0)</span>;</span><br><span class="line">		<span class="comment">//返回比目标数略大的浮点数</span></span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">Math</span>.</span></span>next<span class="constructor">Up(1.2)</span>;</span><br><span class="line">		<span class="comment">//返回一个伪随机数，该值大于等于0.0且小于1.0</span></span><br><span class="line">		<span class="module-access"><span class="module"><span class="identifier">Math</span>.</span></span>random<span class="literal">()</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Java7的ThreadLocalRandom和Random"><a href="#Java7的ThreadLocalRandom和Random" class="headerlink" title="Java7的ThreadLocalRandom和Random"></a>Java7的ThreadLocalRandom和Random</h2><p>ThreadLocalRandom类与Random类的用法类似，它提供一个<font color="red">current()方法获取当前ThreadLocalRandom对象（随机对象）</font>，获取该对象之后即可调用各种next ()方法来获取伪随机数了。<br>byte[] buffer = new byte[16];<br>buffer.nextBytes();<br>Random使用一个48位的种子，当两个Random对象种子相同时，它们会产生相同的数字序列。即<font color="red">Random产生的数字并不是真正随机的，而是一种伪随机</font>。为了避免两个Random对象产生相同的数字序列，通常<font color="red">推荐使用当前时间作为Random对象</font>，如：<br>Random rand = new Random(System.currentTimeMillis()); （millisecond毫秒）<br>在多线程环境下使用ThreadLocalRandom的方式与使用Random基本类似，如：<br>ThreadLocalRandom rand = new ThreadLocalRandom.current();<br>//生成一个4<del>20之间的伪随机数<br>int val1 = rand.nextInt(4,20);<br>//生成一个2.0</del>10.0之间的伪随机数<br>int val2 = rand.nextDouble(2.0,10.0);</p>
+<h2 id="BigDecimal类"><a href="#BigDecimal类" class="headerlink" title="BigDecimal类"></a>BigDecimal类</h2><p>import java.math.BigDecimal;<br>float、double这两种基本类型浮点数容易引起精度丢失。<br>BigDecimal类，通常<font color="red">优先使用基于String的构造器</font>。如new BigDecimal(“0.1”);<br>如果必须使用double浮点数作为BigDecimal构造器的参数时，不要直接将该double浮点数作为构造器参数创建BigDecimal对象，而应该通过<font color="red">BigDecimal.valueOf(double value)</font>静态方法来创建BigDecimal对象。<br>BigDecimal类对精确浮点数进行常规运算的方法：add()、subtract()、multiply()、divide()、pow()等。<br>例：<br>BigDecimal f1 = new BigDecimal(“0.05”);<br>BigDecimal f2 = BigDecimal.valueOf(0.05);</p>
+<h1 id="Java8的日期、时间类"><a href="#Java8的日期、时间类" class="headerlink" title="Java8的日期、时间类"></a>Java8的日期、时间类</h1><p>Java原本提供了Date和Calendar类用于处理日期、时间的类。</p>
+<h2 id="Date类"><a href="#Date类" class="headerlink" title="Date类"></a>Date类</h2><p>import java.util.Data<br>Data类较糟糕，不推荐使用</p>
+<h2 id="Calendar类"><a href="#Calendar类" class="headerlink" title="Calendar类"></a>Calendar类</h2><p>Import java.util.Calendar;<br><font color="red">Calendar类是一个抽象类，所以不能使用构造器来创建Calendar对象。可以使用它提供的静态方法getInstance()来获取Calendar对象</font>。<br>Calendar calendar = Calendar.gerInstance();<br>注意：<font color="red">第一个月从0开始</font>，因此需要get(Calender.MONTH) + 1。<br>add与roll的区别：add修改的字段超过它允许的范围时，会发生进位。如果下一字段也需要改变，则该字段会修正到变化最小的值。<br>而roll上一级字段不会进位，下一级字段修正规则与add类似。<br>（1）默认是设置了容错性的，setLenient()方法用于设置Calendar类的容错性，<font color="red">防止产生不合理的输入值导致进位或减位</font>。<br>（2）要关闭容错性使用setLenient(false); 此时让程序进行严格的参数检查。程序会抛出异常。<br>set()方法延迟修改，尽管日历字段通过set()方法后会被立即更改，但Calendar所代表的时间却不会立即更改，它只是使用内部变量表记录这个被修改字段的值，直到调用get()、getTime()、getTimeInMillis()、add()、roll()方法时，才会重新计算日历时间。这样，多次调用set()方法不会产生不必要的计算。<br>Java8新增了java.time包。</p>
+<h1 id="正则表达式（regular-expression）"><a href="#正则表达式（regular-expression）" class="headerlink" title="正则表达式（regular expression）"></a>正则表达式（regular expression）</h1><p>//regex正则表达式<br>import java.util.regex.Pattern;<br>import java.util.regex.Matcher; </p>
+<p>是一个强大的字符串处理工具，可以对字符串进行查找、提取、分割、替换等操作。<br>Java专门提供了<span style="background-color:yellow">Pattern和Matcher类</span>用于提供正则表达式支持。<br>对于字符：\\w{3,20}@\\w+\.(com|org|cn|net|gov)， 花括号表示单词长度3<del>20，括号表示选择。<br>Java字符串中反斜杠本身需要转义，如若要输出”?”，需要写”?”，但由于反斜杠本身需要转义，则最终写成”\?”。前一个反斜杠用于转义，后一个反斜杠用于匹配。<br>Java正则表达式中还可以使用“通配符”：预定义字符。一般小写表示这种类型字符，大写表示非这种类型的字符。\w：单词字符，包含字母或数字。<br>方括号表达式：若只想匹配a</del>f的字母，或者匹配中文字符。方括号一般用来限定一个范围。</p>
+<p>一旦程序中定义了正则表达式，正则表达式字符串先编译为Pattern对象，再利用该Pattern对象创建对应的Matcher对象。典型的调用顺序如下：</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Pattern p = Pattern.compile<span class="params">(“a\*b”)</span>; <span class="string">//</span>将字符串编译成Pattern对象（即&lt;font color=<span class="string">"red"</span>&gt;创建匹配模板&lt;<span class="string">/font</span>&gt;）</span><br><span class="line">Matcher m = p.matcher<span class="params">(“aaaaab”)</span>; <span class="string">//</span>使用Pattern对象&lt;font color=<span class="string">"red"</span>&gt;创建需要匹配的对象&lt;<span class="string">/font</span>&gt;</span><br><span class="line"><span class="string">//Matcher</span> m = Pattern.compile<span class="params">(“a*b”)</span><span class="string">.matcher</span><span class="params">(“aaaab”)</span>; <span class="string">//</span>上面两段与这段等价</span><br><span class="line">boolean b = m.matches<span class="params">()</span>; <span class="string">//</span>是否匹配。返回boolean值<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>Matcher类的常用方法：<br>find()：返回目标字符串中是否包含与Pattern匹配的子串。<br>group()：返回上次与Pattern匹配的子串。<br>matches()：返回整个目标字符串与Pattern是否匹配。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.regex.<span class="built_in">Pattern</span>;</span><br><span class="line"><span class="keyword">import</span> java.util.regex.Matcher;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">**创建一个邮箱地址的Pattern，用这个Pattern与多个邮箱地址进行匹配，</span></span><br><span class="line"><span class="comment">**当Matcher为null时，调用matcher()方法来创建一个Matcher对象，</span></span><br><span class="line"><span class="comment">**然后调用Matcher的reset()防范将该Matcher应用于新的字符序列</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">MatchesTest</span></span>&#123;</span><br><span class="line">	public <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="built_in">String</span>[] args)&#123;</span><br><span class="line">		<span class="built_in">String</span>[] mails = </span><br><span class="line">		&#123;</span><br><span class="line">			<span class="string">"kongyeeku@163.com"</span>,</span><br><span class="line">			<span class="string">"kongyeeku@gmail.com"</span>,</span><br><span class="line">			<span class="string">"ligan@crazyit.org"</span>,</span><br><span class="line">			<span class="string">"wawa@abc.xx"</span></span><br><span class="line">		&#125;;</span><br><span class="line">		<span class="built_in">String</span> mailRegx = <span class="string">"\\w&#123;3,20&#125;@\\w+\\.(com|org|cn|net|gov)"</span>;</span><br><span class="line">		<span class="built_in">Pattern</span> mailPattern = <span class="built_in">Pattern</span>.compile(mailRegx);</span><br><span class="line">		Matcher matcher = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="built_in">String</span> mail : mails)&#123;</span><br><span class="line">			<span class="keyword">if</span>(matcher == <span class="keyword">null</span>)&#123;</span><br><span class="line">				matcher = mailPattern.matcher(mail);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span>&#123;</span><br><span class="line">				matcher.reset(mail);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">String</span> result = mail + (matcher.matches() ? <span class="string">"是"</span> : <span class="string">"不是"</span>)</span><br><span class="line">				+ <span class="string">"一个有效的邮箱地址！"</span>;</span><br><span class="line">				System.out.println(result);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>普通循环：for(int i = 0; i &lt; mails.length; i ++) 等价于<br>foreach循环：for(String str : mails)</p>
+<p>可以利用正则表达式对目标字符串进行分割、查找、替换等操作。<br>replaceAll()替换所有匹配的字符串；replaceFirst()替换第一次匹配的字符串。</p>
+<h1 id="国际化与格式化"><a href="#国际化与格式化" class="headerlink" title="国际化与格式化"></a>国际化与格式化</h1><p><img src="http://ovfkr5e4k.bkt.clouddn.com/Java%E7%A8%8B%E5%BA%8F%E5%9B%BD%E9%99%85%E5%8C%96%E7%9A%84%E6%80%9D%E8%B7%AF.png" alt="Java程序国际化的思路"></p>
+<p>getDisplayCountry()显示国家，getCountry()显示国家的简写；<br>getDisplayLanguage()显示语言，getLanguage()显示语言的简写。<br>完成程序国际化：</p>
+<p><img src="http://ovfkr5e4k.bkt.clouddn.com/NumberFormat%E5%92%8CDateFormat%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD.png" alt="NumberFormat和DateFormat的主要功能"> </p>
+<p>MessageFormat类处理包含占位符的字符串，它包含一个有用的方法format(String pattern, Object… value)：返回后面的多个参数值填充前面的字符串，其中pattern字符串不是正则表达式，而是一个带占位符的字符串。<br>Format抽象类的子类：MessageFormat类、NumberFormat类、DataFormat类。</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Locale;</span><br><span class="line">import java.text.NumberFormat;</span><br><span class="line">public <span class="keyword">class</span> NumberFormatTest&#123;</span><br><span class="line">	public static void main(String<span class="literal">[]</span> args)&#123;</span><br><span class="line">		<span class="comment">//需要被格式化的数字</span></span><br><span class="line">		double db = <span class="number">1234000.567</span>;</span><br><span class="line">		<span class="comment">//创建四个Locale，分别代表中、日、德、美</span></span><br><span class="line">		Locale<span class="literal">[]</span> locales = &#123;Locale.CHINA, Locale.JAPAN</span><br><span class="line">			, Locale.GERMAN, Locale.US&#125;;</span><br><span class="line">		<span class="comment">//为上面四个Locale创建12个NuberFormat对象，</span></span><br><span class="line">		<span class="comment">//每个Locale分别有通用数值格式器、百分数格式器、货币格式器</span></span><br><span class="line">		NumberFormat<span class="literal">[]</span> nf = <span class="keyword">new</span> NumberFormat<span class="literal">[<span class="number">12</span>]</span>;</span><br><span class="line">		for (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; locales.length; i++)&#123;</span><br><span class="line">			nf<span class="literal">[<span class="identifier">i</span><span class="operator">*</span><span class="number">3</span>]</span> = <span class="module-access"><span class="module"><span class="identifier">NumberFormat</span>.</span></span>get<span class="constructor">NumberInstance(<span class="params">locales</span>[<span class="params">i</span>])</span>;</span><br><span class="line">			nf<span class="literal">[<span class="identifier">i</span><span class="operator">*</span><span class="number">3</span> + <span class="number">1</span>]</span> = <span class="module-access"><span class="module"><span class="identifier">NumberFormat</span>.</span></span>get<span class="constructor">PercentInstance(<span class="params">locales</span>[<span class="params">i</span>])</span>;</span><br><span class="line">			nf<span class="literal">[<span class="identifier">i</span><span class="operator">*</span><span class="number">3</span> + <span class="number">2</span>]</span> = <span class="module-access"><span class="module"><span class="identifier">NumberFormat</span>.</span></span>get<span class="constructor">CurrencyInstance(<span class="params">locales</span>[<span class="params">i</span>])</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		for (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; locales.length; i++)&#123;</span><br><span class="line">			String tip = i==<span class="number">0</span> ? <span class="string">"---中国的格式---"</span> :</span><br><span class="line">				i==<span class="number">1</span> ? <span class="string">"---日本的格式---"</span> :</span><br><span class="line">				i==<span class="number">2</span> ? <span class="string">"---德国的格式---"</span> : <span class="string">"---美国的格式---"</span>;</span><br><span class="line">			<span class="module-access"><span class="module"><span class="identifier">System</span>.</span></span>out.println(tip);</span><br><span class="line">			<span class="module-access"><span class="module"><span class="identifier">System</span>.</span></span>out.println(<span class="string">"通用数值格式"</span> + nf<span class="literal">[<span class="identifier">i</span><span class="operator">*</span><span class="number">3</span>]</span>.format(db));</span><br><span class="line">			<span class="module-access"><span class="module"><span class="identifier">System</span>.</span></span>out.println(<span class="string">"百分比数值格式"</span> + nf<span class="literal">[<span class="identifier">i</span><span class="operator">*</span><span class="number">3</span> + <span class="number">1</span>]</span>.format(db));</span><br><span class="line">			<span class="module-access"><span class="module"><span class="identifier">System</span>.</span></span>out.println(<span class="string">"货币数值格式"</span> + nf<span class="literal">[<span class="identifier">i</span><span class="operator">*</span><span class="number">3</span> + <span class="number">2</span>]</span>.format(db));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用HTML方法表示code：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">pre</span>&gt;</span><span class="tag">&lt;<span class="name">code</span> <span class="attr">class</span>=<span class="string">"language-java"</span>&gt;</span> code <span class="tag">&lt;/<span class="name">code</span>&gt;</span><span class="tag">&lt;/<span class="name">pre</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/24/Tech/Design%20Pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E5%9B%9B%EF%BC%89%E2%80%94%E2%80%9411%E4%B8%AA%E8%A1%8C%E4%B8%BA%E6%A8%A1%E5%BC%8F/" rel="next" title="设计模式（四）——11个行为模式">
+                <i class="fa fa-chevron-left"></i> 设计模式（四）——11个行为模式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/26/Tech/Java/Java%20Basis/Java%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%83%EF%BC%89%E2%80%94%E2%80%94Java%E9%9B%86%E5%90%88/" rel="prev" title="Java基础（七）——Java集合">
+                Java基础（七）——Java集合 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="LichtMiao" />
+          <p class="site-author-name" itemprop="name">LichtMiao</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">186</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          <!-- 
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+           -->
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/LichtMiao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Miaomi4" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                    
+                      Twitter
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Scanner类"><span class="nav-number">1.</span> <span class="nav-text">Scanner类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#系统相关（System类、Runtime类）"><span class="nav-number">2.</span> <span class="nav-text">系统相关（System类、Runtime类）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#System类"><span class="nav-number">2.1.</span> <span class="nav-text">System类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Runtime类"><span class="nav-number">2.2.</span> <span class="nav-text">Runtime类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用类"><span class="nav-number">3.</span> <span class="nav-text">常用类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Object类"><span class="nav-number">3.1.</span> <span class="nav-text">Object类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String类"><span class="nav-number">3.2.</span> <span class="nav-text">String类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Math类"><span class="nav-number">3.3.</span> <span class="nav-text">Math类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java7的ThreadLocalRandom和Random"><span class="nav-number">3.4.</span> <span class="nav-text">Java7的ThreadLocalRandom和Random</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BigDecimal类"><span class="nav-number">3.5.</span> <span class="nav-text">BigDecimal类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java8的日期、时间类"><span class="nav-number">4.</span> <span class="nav-text">Java8的日期、时间类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Date类"><span class="nav-number">4.1.</span> <span class="nav-text">Date类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Calendar类"><span class="nav-number">4.2.</span> <span class="nav-text">Calendar类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正则表达式（regular-expression）"><span class="nav-number">5.</span> <span class="nav-text">正则表达式（regular expression）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#国际化与格式化"><span class="nav-number">6.</span> <span class="nav-text">国际化与格式化</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LichtMiao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+  Powered by <a>Hexo</a>
+</div>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+  <!-- 背景动画 -->
+  
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>

@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en.yml">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Learning, Life" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="LichtMiao's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="平常所说的工厂模式即工厂方法模式，它是最常用的一种工厂模式。注意，本章的抽象类与接口不做具体区分。 简单工厂模式（simple factory pattern）定义定义一个工厂类，创建工厂类的静态（static）方法根据传入参数的不同创建不同的实例，被创建的实例通常具有相同的父类。简单工厂方法又称静态工厂方法。 在没有工厂类之前，客户端通过new关键字创建对象，但有了工厂类之后，通过工厂类中提供的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计模式（二）—6个创建模式">
+<meta property="og:url" content="https://lichtmiao.github.io/2018/08/23/Tech/Design%20Pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%946%E4%B8%AA%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:site_name" content="LichtMiao&#39;s Blog">
+<meta property="og:description" content="平常所说的工厂模式即工厂方法模式，它是最常用的一种工厂模式。注意，本章的抽象类与接口不做具体区分。 简单工厂模式（simple factory pattern）定义定义一个工厂类，创建工厂类的静态（static）方法根据传入参数的不同创建不同的实例，被创建的实例通常具有相同的父类。简单工厂方法又称静态工厂方法。 在没有工厂类之前，客户端通过new关键字创建对象，但有了工厂类之后，通过工厂类中提供的">
+<meta property="article:published_time" content="2018-08-23T10:48:17.000Z">
+<meta property="article:modified_time" content="2019-01-21T08:25:14.000Z">
+<meta property="article:author" content="LichtMiao">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.2',
+    sidebar: {"position":"right","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://lichtmiao.github.io/2018/08/23/Tech/Design Pattern/设计模式（二）——6个创建模式/"/>
+
+
+
+
+
+<!-- 网页加载条 -->
+<script src="https://neveryu.github.io/js/src/pace.min.js"></script>
+  <title>设计模式（二）—6个创建模式 | LichtMiao's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en.yml">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LichtMiao's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lichtmiao.github.io/2018/08/23/Tech/Design%20Pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%946%E4%B8%AA%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LichtMiao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LichtMiao's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">设计模式（二）—6个创建模式</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-23T18:48:17+08:00">
+                2018-08-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/Design-Pattern/" itemprop="url" rel="index">
+                    <span itemprop="name">Design Pattern</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>平常所说的工厂模式即工厂方法模式，它是最常用的一种工厂模式。注意，本章的抽象类与接口不做具体区分。</p>
+<h1 id="简单工厂模式（simple-factory-pattern）"><a href="#简单工厂模式（simple-factory-pattern）" class="headerlink" title="简单工厂模式（simple factory pattern）"></a>简单工厂模式（simple factory pattern）</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>定义一个工厂类，创建工厂类的静态（static）方法根据传入参数的不同创建不同的实例，被创建的实例通常具有相同的父类。简单工厂方法又称静态工厂方法。</p>
+<p>在没有工厂类之前，客户端通过new关键字创建对象，但有了工厂类之后，通过工厂类中提供的静态方法创建实例。</p>
+<p>首先将需要创建的不同对象（具体产品）的相关代码封装到一个抽象类（抽象产品）中，作为这些对象的父类。然后提供一个工厂类用于创建不同的对象产品，在工厂类中提供一个创建不同对象的方法，可以根据不同的传入参数创建不同的对象。</p>
+<h2 id="简单工厂模式的3个角色（类）"><a href="#简单工厂模式的3个角色（类）" class="headerlink" title="简单工厂模式的3个角色（类）"></a>简单工厂模式的3个角色（类）</h2><p>（1）<span style="background-color:yellow">Factory（工厂角色）</span>：即工厂类，它是简单工厂模式的核心，它包含了必要的判断逻辑，根据外界给定的信息（即工厂方法的传入参数），决定应该创建哪个具体类的对象。工厂类可以被外界调用，创建所需的产品对象。在工厂类中提供静态工厂方法factoryMethod()，它的返回类型为抽象产品角色Product。<br>（2）<span style="background-color:yellow">Procuct（抽象产品角色）</span>：它是工厂类所创建的所有具体产品类的父类，封装了各种产品类都公有方法，它的引入提供了系统的灵活性，使得在工厂类中只需要定义一个通用的工厂方法，因为所有创建的具体产品对象都是其子类对象。<br>（3）<span style="background-color:yellow">ConcreteProduct（具体产品角色）</span>：它是简单工厂模式的创建目标。所有被创建的对象都是这个角色的某个具体类的实例。每一个具体产品角色都继承了抽象产品角色，所以需要实现抽象产品角色中的抽象方法。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//抽象类</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">Product</span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodSame</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="comment">//所有产品类的公共方法</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//抽象业务方法，不同具体产品有不同实现</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">methodDiff</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//具体实现类ConcreteProductA</span></span><br><span class="line"><span class="keyword">public</span> ConcreteProductA <span class="keyword">extends</span> Product&#123; <span class="comment">//若抽象类成员全是抽象的，它就是接口，用implements关键字</span></span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">methodDiff</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="comment">//不同实现类对业务方法有不同实现</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//具体实现类ConcreteProductB</span></span><br><span class="line"><span class="keyword">public</span> ConcreteProductB <span class="keyword">extends</span> Product&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">methodDiff</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="comment">//不同实现类对业务方法有不同实现</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//工厂类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Factory</span></span>&#123;</span><br><span class="line">	<span class="comment">//静态工厂方法，用于创建不同类的实现对象</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> Product getProduct(String <span class="keyword">str</span>) &#123;</span><br><span class="line">		Product product = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">if</span> (<span class="keyword">str</span>.equalsIgnoreCase(“A”))&#123;</span><br><span class="line">			product = <span class="keyword">new</span> ConcreteProductA();</span><br><span class="line">			<span class="comment">//初始化设置product</span></span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">str</span>.equalsIgnoreCase(“A”))&#123;</span><br><span class="line">			product = <span class="keyword">new</span> ConcreteProductA();</span><br><span class="line">			<span class="comment">//初始化设置product</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> product;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在客户端代码中，通过调用工厂类的工厂方法即可得到产品对象，如</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Client&#123;</span><br><span class="line">	public static void main(String args)&#123;</span><br><span class="line">		Product product = <span class="module-access"><span class="module"><span class="identifier">Factory</span>.</span></span>get<span class="constructor">Product(“A”)</span>;</span><br><span class="line">		product.<span class="keyword">method</span><span class="constructor">Same()</span>;</span><br><span class="line">		produc.<span class="keyword">method</span><span class="constructor">Diff()</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="客户端的重构"><a href="#客户端的重构" class="headerlink" title="客户端的重构"></a>客户端的重构</h2><p>每更换一次对象都要修改客户端中静态方法的参数，客户端代码将要重新编译，这对于客户端而言，违反了开闭原则。如何在不修改客户端代码的前提下更换具体产品对象？<br>可以将工厂类中静态方法的参数放在XML或properties格式的配置文件中。如下config.xml所示：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=”1.0”?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">config</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">charType</span>&gt;</span>histogram<span class="tag">&lt;/<span class="name">charType</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">config</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>再通过工具类XMLUtil来读取配置文件中的字符串参数：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.xml.parsers.*;</span><br><span class="line"><span class="keyword">import</span> org.xml.sax.SAXException;</span><br><span class="line">…</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">XMLUtil</span></span>&#123;</span><br><span class="line">	<span class="comment">//从XML文件中读取charType并返回类型名</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">String</span> getCharType()&#123;</span><br><span class="line">		<span class="keyword">try</span>&#123;</span><br><span class="line">		<span class="comment">//创建文档对象</span></span><br><span class="line">		DocumentBuilderFactory dbf = <span class="keyword">new</span> <span class="type">DocumentBuilderFactory</span>();</span><br><span class="line">		DocumentBuilder db = dbf.<span class="keyword">new</span><span class="type">DocumentBuilder</span>();</span><br><span class="line">		Document doc = db.parse(<span class="keyword">new</span> <span class="type">File</span>(“config.xml”));</span><br><span class="line">		<span class="comment">//获取包含charType类型的文本节点</span></span><br><span class="line">		NodeList nl = doc.getElementByTagName(“charType”);</span><br><span class="line">		Node n = nl.item().getFirstChild();</span><br><span class="line">		<span class="keyword">String</span> charType = n.getNodeValue().trim();</span><br><span class="line">		<span class="keyword">return</span> charType;</span><br><span class="line">		&#125; <span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="简单工厂模式的简化"><a href="#简单工厂模式的简化" class="headerlink" title="简单工厂模式的简化"></a>简单工厂模式的简化</h2><p>有时候为了简化简单工厂模式，可以将抽象产品类和工厂类进行合并，将静态工厂方法转移到抽象产品中。</p>
+<h1 id="工厂方法模式（factory-method-pattern）"><a href="#工厂方法模式（factory-method-pattern）" class="headerlink" title="工厂方法模式（factory method pattern）"></a>工厂方法模式（factory method pattern）</h1><p>简单工厂模式存在两个严重的问题：<br>（1）工厂类过于庞大，大量if..else语句会造成维护困难；<br>（2）当系统中需要引进新产品时，由于静态工厂方法通过传入不同的参数来创建不同的产品，这必定要修改工厂类的源代码，需要在其中加入必要的业务逻辑，这将违背“开闭原则”。<br>如何实现增加新产品而不影响已有代码？（也可以通过上一节提到的将静态方法的参数放在config.xml和propertise文件中实现。）在工厂方法模式中，不再提供统一的工厂类来创建所有的产品对象，而是针对不同的对象提供不同的工厂。（<span style="background-color:yellow">将简单工厂模式中的工厂类抽象化了</span>。）</p>
+<h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h2><p>定义一个用于创建对象的接口（抽象工厂），让子类决定将哪一个类实例化。工厂方法模式让一个列的实例化延迟到其子类。工厂方法模式又叫工厂模式（factory pattern）、虚拟构造器模式（virtual constructor pattern）或多态工厂模式（polymorphic factory pattern）。</p>
+<p>工厂方法模式提供一个抽象工厂接口来声明抽象工厂方法，而由其子类来具体实现工厂方法，创建具体的产品对象。</p>
+<h2 id="工厂方法模式的4个角色（类）"><a href="#工厂方法模式的4个角色（类）" class="headerlink" title="工厂方法模式的4个角色（类）"></a>工厂方法模式的4个角色（类）</h2><p>（1）Product（抽象产品）<br>它是定义产品的接口，是产品对象的公共父类。<br>（2）ConcreteProduct（具体产品）<br>它实现了抽象产品接口，某种类型的具体产品由专门的工厂创建。<br>（3）<span style="background-color:yellow">Factory（抽象工厂）</span><br>声明了一个工厂方法，用于返回具体产品对象。抽象工厂是工厂方法模式的核心，所有创建对象的工厂类都必须实现该接口。<br>（4）<span style="background-color:yellow">ConcreteFactory（具体工厂）</span><br>它是抽象工厂的子类，实现了抽象工厂中定义的工厂方法，并可由客户端调用，返回一个具体产品类的实例。</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//抽象工厂</span></span><br><span class="line"><span class="keyword">interface</span> <span class="symbol">Factory</span>&#123;</span><br><span class="line">	<span class="keyword">public</span> Product factoryMethod();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//具体工厂</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteFactory</span> <span class="keyword"><span class="keyword">implements</span> <span class="type">Factory</span></span></span>&#123;</span><br><span class="line">	<span class="keyword">public</span> Product factoryMethod()&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="type">ConcreteProduct</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//或对象的初始化工作，资源和环境配置工作，如连接数据库，创建文件等。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//抽象产品</span></span><br><span class="line"><span class="keyword">interface</span> <span class="symbol">Product</span>&#123;</span><br><span class="line">	…</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//具体产品</span></span><br><span class="line">…</span><br></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//客户端代码</span></span><br><span class="line">…</span><br><span class="line">Factory <span class="keyword">factory</span> = <span class="keyword">new</span> ConcreteFactory(); <span class="comment">//实例化具体工厂类</span></span><br><span class="line">Product product = <span class="keyword">factory</span>.factoryMethod(); <span class="comment">//实例化具体产品类</span></span><br><span class="line">…</span><br></pre></td></tr></table></figure>
+<h2 id="反射与配置文件"><a href="#反射与配置文件" class="headerlink" title="反射与配置文件"></a>反射与配置文件</h2><p>客户端的重构：不再使用new关键字创建工厂对象，而是将具体工厂类的类名存储在配置文件中。通过读取配置文件读取类名字符串，再使用Java的反射机制，根据类名生成字符串对象.</p>
+<figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过类名生成实例对象并返回</span></span><br><span class="line"><span class="keyword">Class</span> c = <span class="keyword">Class</span>.forName(“&lt;类名&gt;”)<span class="comment">;</span></span><br><span class="line">Object obj = c.getInstance<span class="comment">;</span></span><br><span class="line"><span class="keyword">return</span> obj<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<h2 id="重载的工厂方法"><a href="#重载的工厂方法" class="headerlink" title="重载的工厂方法"></a>重载的工厂方法</h2><p>可以有多种方法来初始化具体产品，即在具体工厂类中对构造器进行重载。</p>
+<h1 id="抽象工厂模式（abstract-factory-pattern）"><a href="#抽象工厂模式（abstract-factory-pattern）" class="headerlink" title="抽象工厂模式（abstract factory pattern）"></a>抽象工厂模式（abstract factory pattern）</h1><p>工厂方法模式由于每个工厂类只生产一类产品，可能会导致系统中存在大量的工厂类，增加系统开销。考虑将相关的产品组成“产品族”，由同一个工厂来产生。</p>
+<h2 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h2><p>提供一个创建一些列相关或相互依赖对象的接口，而无需指定它们的具体类。抽象工厂模式又称Kit模式。与工厂方法模式不同的是，抽象工厂模式中的具体工厂不只是创建一种产品，而是创建一族产品。<br><font color="red">抽象工厂中定义了多个抽象工厂方法，每一个具体工厂实现了这些工厂方法用于产生多种不同类型的产品</font>，一个工厂类的产品构成了一个<span style="background-color:yellow">产品族</span>。</p>
+<h2 id="抽象工厂模式包含4种角色（类）"><a href="#抽象工厂模式包含4种角色（类）" class="headerlink" title="抽象工厂模式包含4种角色（类）"></a>抽象工厂模式包含4种角色（类）</h2><p>（1）Factory（抽象工厂）<br><font color="red">声明了一组方法，用于创建一族产品</font>。每个方法对应一种产品。<br>（2）ConcreteFactory（具体工厂）<br>实现了在抽象工厂中声明的创建具体产品的方法，一个具体工厂生成一族产品，构成一个产品族。<br>（3）Product（抽象产品）<br>为每种产品声明接口，在抽象产品中声明了产品所具有的业务方法。<br>（4）ConcreteProduct（具体产品）<br>定义具体工厂生产的具体产品对象，实现抽闲产品中声明的业务方法。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//抽象工厂</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">Factory</span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> ProductA <span class="title">createProductA</span>(<span class="params"></span>)</span>;</span><br><span class="line">	<span class="function">puclib <span class="keyword">abstract</span> ProductB <span class="title">createProductB</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//具体工厂类1</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteFactory1</span> <span class="keyword">extends</span> <span class="title">Factory</span></span>&#123;</span><br><span class="line">	public <span class="type">ProductA</span> createProductA()&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="type">ConcreteProductA1</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	puclib <span class="type">ProductB</span> createProductB()&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="type">ConcreteProductB1</span>();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//具体工厂类2</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteFactory2</span> <span class="keyword">extends</span> <span class="title">Factory</span></span>&#123;</span><br><span class="line">	public <span class="type">ProductA</span> createProductA()&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="type">ConcreteProductA2</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	puclib <span class="type">ProductB</span> createProductB()&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="type">ConcreteProductB2</span>();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//抽象产品</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//具体产品</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//客户端类</span></span><br></pre></td></tr></table></figure>
+<p>为了让系统局部良好的灵活性和可扩展性，引入XML配置文件和XMLUtil工具类。</p>
+<h2 id="“开闭原则”的倾斜性"><a href="#“开闭原则”的倾斜性" class="headerlink" title="“开闭原则”的倾斜性"></a>“开闭原则”的倾斜性</h2><p>在抽象工厂模式中，增加新的产品族（即增加一个具体产品类）很方便，但增加新的产品等级结构（即在一个工厂类中增加方法）很麻烦，需要修改所欲的工厂角色。这种性质称为“开闭原则”的倾斜性。</p>
+<h1 id="单例模式（singleton-pattern）"><a href="#单例模式（singleton-pattern）" class="headerlink" title="单例模式（singleton pattern）"></a>单例模式（singleton pattern）</h1><h2 id="定义-3"><a href="#定义-3" class="headerlink" title="定义"></a>定义</h2><p>单例就是保证始终只有一个实例。确保对象的唯一性，如Windows的任务管理器，打印控制器，数据库连接池等。实现单例注意点：<br>（1）构造器私有，外部无法创建实例；<br>（2）因此需要提供公有的方法来获取实例getInstance();<br>（3）静态类私有成员变量，保证只有一个变量引用。</p>
+<h2 id="单例模式的两种实现形式"><a href="#单例模式的两种实现形式" class="headerlink" title="单例模式的两种实现形式"></a>单例模式的两种实现形式</h2><p>（1）<span style="background-color:yellow">懒汉式</span>：在第一次获取实例时才创建对象。<br>如果在获取实例前线程A暂停了，此时线程B获取实例并创建了对象并返回了，然后线程A恢复，又创建了一个对象，不能保证单例，因此需要为getInstance()方法加上synchronized关键字保证线程同步。</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> ConObject obj = <span class="keyword">null</span>;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="title">ConObject</span> <span class="params">()</span></span>&#123;&#125;            <span class="comment">//私有构造器</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> <span class="function">ConObject <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (obj == <span class="keyword">null</span>) &#123; <span class="comment">//创建对象前保证只有一个对象</span></span><br><span class="line">		obj = <span class="keyword">new</span> ConObject ();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>（2）<span style="background-color:yellow">饿汉式</span>：在类加载时就已经创建对象了。<br>饿汉式不存在线程安全问题，但容易造成资源浪费，因为实例在类加载的时候随着静态变量的初始化而创建，但有时候可能并不会使用该实例。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> ConObject obj = <span class="keyword">new</span> ConObject ();</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="title">ConObject</span> <span class="params">()</span></span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ConObject <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="原型模式（prototype-pattern）"><a href="#原型模式（prototype-pattern）" class="headerlink" title="原型模式（prototype pattern）"></a>原型模式（prototype pattern）</h1><h1 id="建造者模式（builder-pattern）"><a href="#建造者模式（builder-pattern）" class="headerlink" title="建造者模式（builder pattern）"></a>建造者模式（builder pattern）</h1>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/23/Tech/Design%20Pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/" rel="next" title="设计模式（一）——面向对象设计原则">
+                <i class="fa fa-chevron-left"></i> 设计模式（一）——面向对象设计原则
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/23/Tech/Java/Java%20Basis/Java%E5%9F%BA%E7%A1%80%EF%BC%88%E5%9B%9B%EF%BC%89%E2%80%94%E2%80%94%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B8%8A%EF%BC%89/" rel="prev" title="Java基础（四）——面向对象（上）">
+                Java基础（四）——面向对象（上） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="LichtMiao" />
+          <p class="site-author-name" itemprop="name">LichtMiao</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">186</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          <!-- 
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+           -->
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/LichtMiao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Miaomi4" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                    
+                      Twitter
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简单工厂模式（simple-factory-pattern）"><span class="nav-number">1.</span> <span class="nav-text">简单工厂模式（simple factory pattern）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单工厂模式的3个角色（类）"><span class="nav-number">1.2.</span> <span class="nav-text">简单工厂模式的3个角色（类）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端的重构"><span class="nav-number">1.3.</span> <span class="nav-text">客户端的重构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单工厂模式的简化"><span class="nav-number">1.4.</span> <span class="nav-text">简单工厂模式的简化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#工厂方法模式（factory-method-pattern）"><span class="nav-number">2.</span> <span class="nav-text">工厂方法模式（factory method pattern）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-1"><span class="nav-number">2.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工厂方法模式的4个角色（类）"><span class="nav-number">2.2.</span> <span class="nav-text">工厂方法模式的4个角色（类）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反射与配置文件"><span class="nav-number">2.3.</span> <span class="nav-text">反射与配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重载的工厂方法"><span class="nav-number">2.4.</span> <span class="nav-text">重载的工厂方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#抽象工厂模式（abstract-factory-pattern）"><span class="nav-number">3.</span> <span class="nav-text">抽象工厂模式（abstract factory pattern）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-2"><span class="nav-number">3.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抽象工厂模式包含4种角色（类）"><span class="nav-number">3.2.</span> <span class="nav-text">抽象工厂模式包含4种角色（类）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#“开闭原则”的倾斜性"><span class="nav-number">3.3.</span> <span class="nav-text">“开闭原则”的倾斜性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#单例模式（singleton-pattern）"><span class="nav-number">4.</span> <span class="nav-text">单例模式（singleton pattern）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-3"><span class="nav-number">4.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单例模式的两种实现形式"><span class="nav-number">4.2.</span> <span class="nav-text">单例模式的两种实现形式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原型模式（prototype-pattern）"><span class="nav-number">5.</span> <span class="nav-text">原型模式（prototype pattern）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#建造者模式（builder-pattern）"><span class="nav-number">6.</span> <span class="nav-text">建造者模式（builder pattern）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LichtMiao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+  Powered by <a>Hexo</a>
+</div>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+  <!-- 背景动画 -->
+  
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>

@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en.yml">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Learning, Life" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="LichtMiao's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="Linux系统启动过程当计算机打开电源后，首先是BIOS（basic input output sysstem，基本输入输出设备）开机自检，并按照BIOS中设置的启动设备（通常是硬盘）来启动。本章讨论操作系统接管硬件后，操作系统的启动流程。 Linux系统的启动主要分为5个阶段：内核的引导；运行init；系统初始化；建立终端；用户登录系统。 内核的引导操作系统接管硬件以后，首先读入&#x2F;boot目录下">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux——Linux基础">
+<meta property="og:url" content="https://lichtmiao.github.io/2018/09/04/Tech/Linux/Linux%C2%A1%C2%AA%C2%A1%C2%AALinux%C2%BBu%CC%80%C2%B4%C2%A1/index.html">
+<meta property="og:site_name" content="LichtMiao&#39;s Blog">
+<meta property="og:description" content="Linux系统启动过程当计算机打开电源后，首先是BIOS（basic input output sysstem，基本输入输出设备）开机自检，并按照BIOS中设置的启动设备（通常是硬盘）来启动。本章讨论操作系统接管硬件后，操作系统的启动流程。 Linux系统的启动主要分为5个阶段：内核的引导；运行init；系统初始化；建立终端；用户登录系统。 内核的引导操作系统接管硬件以后，首先读入&#x2F;boot目录下">
+<meta property="og:image" content="http://ovfkr5e4k.bkt.clouddn.com/bg2013081701.png">
+<meta property="og:image" content="http://ovfkr5e4k.bkt.clouddn.com/bg2013081702.png">
+<meta property="og:image" content="http://ovfkr5e4k.bkt.clouddn.com/bg2013081703.png">
+<meta property="og:image" content="http://ovfkr5e4k.bkt.clouddn.com/bg2013081704.png">
+<meta property="og:image" content="http://ovfkr5e4k.bkt.clouddn.com/bg2013081705.png">
+<meta property="og:image" content="http://ovfkr5e4k.bkt.clouddn.com/bg2013081706.png">
+<meta property="og:image" content="http://ovfkr5e4k.bkt.clouddn.com/bg2013081707.png">
+<meta property="og:image" content="http://ovfkr5e4k.bkt.clouddn.com/%E9%A1%B6%E5%B1%82%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="http://ovfkr5e4k.bkt.clouddn.com/363003_1227493859FdXT.png">
+<meta property="article:published_time" content="2018-09-03T19:02:44.000Z">
+<meta property="article:modified_time" content="2019-01-07T06:49:52.000Z">
+<meta property="article:author" content="LichtMiao">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://ovfkr5e4k.bkt.clouddn.com/bg2013081701.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.2',
+    sidebar: {"position":"right","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://lichtmiao.github.io/2018/09/04/Tech/Linux/Linux¡ª¡ªLinux»ù´¡/"/>
+
+
+
+
+
+<!-- 网页加载条 -->
+<script src="https://neveryu.github.io/js/src/pace.min.js"></script>
+  <title>Linux——Linux基础 | LichtMiao's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en.yml">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LichtMiao's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lichtmiao.github.io/2018/09/04/Tech/Linux/Linux%C2%A1%C2%AA%C2%A1%C2%AALinux%C2%BBu%CC%80%C2%B4%C2%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LichtMiao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LichtMiao's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Linux——Linux基础</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-04T03:02:44+08:00">
+                2018-09-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Linux系统启动过程"><a href="#Linux系统启动过程" class="headerlink" title="Linux系统启动过程"></a>Linux系统启动过程</h1><p>当计算机打开电源后，首先是BIOS（basic input output sysstem，基本输入输出设备）开机自检，并按照BIOS中设置的启动设备（通常是硬盘）来启动。本章讨论操作系统接管硬件后，操作系统的启动流程。</p>
+<p><img src="http://ovfkr5e4k.bkt.clouddn.com/bg2013081701.png" alt="通电到操作系统"><br>Linux系统的启动主要分为5个阶段：内核的引导；运行init；系统初始化；建立终端；用户登录系统。</p>
+<h2 id="内核的引导"><a href="#内核的引导" class="headerlink" title="内核的引导"></a>内核的引导</h2><p>操作系统接管硬件以后，首先读入/boot目录下的内核文件。<br><img src="http://ovfkr5e4k.bkt.clouddn.com/bg2013081702.png" alt="内核引导"></p>
+<h2 id="运行init"><a href="#运行init" class="headerlink" title="运行init"></a>运行init</h2><p>内核文件加载以后，就开始运行第一个程序 /sbin/init，它的作用是初始化系统环境。init进程是所有进程的起点，它的编号（pid）为1。<br><img src="http://ovfkr5e4k.bkt.clouddn.com/bg2013081703.png" alt="运行init"></p>
+<h2 id="运行级别"><a href="#运行级别" class="headerlink" title="运行级别"></a>运行级别</h2><p>许多程序需要开机启动。它们在Windows叫做”服务”（service），在Linux就叫做”守护进程”（daemon）。<br>init进程的一大任务，就是去运行这些开机启动的程序。但是，不同的场合需要启动不同的程序，比如用作服务器时，需要启动Apache，用作桌面就不需要。Linux允许为不同的场合，分配不同的开机启动程序，这就叫做”运行级别”（run level）。也就是说，启动时根据”运行级别”，确定要运行哪些程序。<br>Linux系统有7个运行级别(runlevel)：</p>
+<style>
+table th:first-of-type {
+    width: 100px;
+}
+</style>
+
+<table>
+<thead>
+<tr>
+<th align="center">运行级别</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td>系统停机状态，系统默认运行级别不能设为0，否则不能正常启动</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td>单用户工作状态，root权限，用于系统维护，禁止远程登陆</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td>多用户状态(没有NFS)</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td>完全的多用户状态(有NFS)，登陆后进入控制台命令行模式</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td>系统未使用，保留</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td>X11控制台，登陆后进入图形GUI模式</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td>系统正常关闭并重启，默认运行级别不能设为6，否则不能正常启动</td>
+</tr>
+</tbody></table>
+<p><img src="http://ovfkr5e4k.bkt.clouddn.com/bg2013081704.png" alt="运行级别">)<a href="http://ovfkr5e4k.bkt.clouddn.com/bg2013081707.png" target="_blank" rel="noopener"></a><br>init进程首先读取文件 /etc/inittab，它是运行级别的设置文件。每个运行级别在/etc目录下面，都有一个对应的子目录，指定要加载的程序。<br>运行级别对应的子目录里的所有文件（除了README）就是启动时要加载的程序。如果想增加或删除某些程序，不建议手动修改 /etc/rcN.d 目录，最好是用一些专门命令进行管理。</p>
+<h2 id="系统初始化"><a href="#系统初始化" class="headerlink" title="系统初始化"></a>系统初始化</h2><p>七种预设的”运行级别”各自有一个目录，存放需要开机启动的程序。为了防止多个运行级别需要启动多个脚本造成的冗余，Linux将七个/etc/rcN.d目录里列出的程序，都设为链接文件，指向另外一个目录/etc/init.d，真正的启动脚本都统一放在这个目录中。<br>注意：/etc/init.d 这个目录名最后一个字母d（directory），表示这是一个目录，用来与程序 /etc/init区分。<br><img src="http://ovfkr5e4k.bkt.clouddn.com/bg2013081705.png" alt="系统初始化"></p>
+<h2 id="用户登录"><a href="#用户登录" class="headerlink" title="用户登录"></a>用户登录</h2><p>开机启动程序加载完后，就该让用户登录了。<br><img src="http://ovfkr5e4k.bkt.clouddn.com/bg2013081706.png" alt="用户登录"><br>一般来说，用户的登录方式有三种：</p>
+<h3 id="1-命令行登录"><a href="#1-命令行登录" class="headerlink" title="1) 命令行登录"></a>1) 命令行登录</h3><p>init进程调用getty程序（意为get teletype），让用户输入用户名和密码。输入完成后，再调用login程序，核对密码（Debian还会再多运行一个身份核对程序/etc/pam.d/login）。如果密码正确，就从文件 /etc/passwd 读取该用户指定的shell，然后启动这个shell。</p>
+<h3 id="2-SSH登录"><a href="#2-SSH登录" class="headerlink" title="2) SSH登录"></a>2) SSH登录</h3><p>系统调用sshd程序（Debian还会再运行/etc/pam.d/ssh ），取代getty和login，然后启动shell。</p>
+<h3 id="3-图形界面登录"><a href="#3-图形界面登录" class="headerlink" title="3) 图形界面登录"></a>3) 图形界面登录</h3><p>init进程调用显示管理器，Gnome图形界面对应的显示管理器为gdm（GNOME Display Manager），然后用户输入用户名和密码。如果密码正确，就读取/etc/gdm3/Xsession，启动用户的会话。 </p>
+<h3 id="4-进入login-shell"><a href="#4-进入login-shell" class="headerlink" title="4) 进入login shell"></a>4) 进入login shell</h3><p>所谓shell，简单说就是命令行界面，让用户可以直接与操作系统对话。用户登录时打开的shell，就叫做login shell。<br><img src="http://ovfkr5e4k.bkt.clouddn.com/bg2013081707.png" alt="Login Shell"><br><strong>Linux 关机</strong><br>在linux领域内大多用在服务器上，很少遇到关机的操作。毕竟服务器上跑一个服务是永无止境的，除非特殊情况下，不得已才会关机。<br>正确的关机流程为：sync &gt; shutdown &gt; reboot &gt; halt<br>关机指令为：shutdown，可以用man shutdown 来看一下帮助文档。<br>不管是重启系统还是关闭系统，首先要运行 sync 命令，把内存中的数据写到磁盘中。</p>
+<p>参考：<a href="http://www.ruanyifeng.com/blog/2013/08/linux_boot_process.html" target="_blank" rel="noopener">Linux的启动流程</a></p>
+<h1 id="Linux目录结构"><a href="#Linux目录结构" class="headerlink" title="Linux目录结构"></a>Linux目录结构</h1><p><img src="http://ovfkr5e4k.bkt.clouddn.com/%E9%A1%B6%E5%B1%82%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png" alt="Linux顶层目录结构"><br><font face="黑体"><center>Linux顶层目录结构</center></font></p>
+<style>
+table th:first-of-type {
+    width: 100px;
+}
+</style>
+
+<p>|目录|    说明|<br>|:-:||——|<br>|/root|    根目录|<br>|/boot|    存放内核引导配置文件，启动 Linux 时使用的一些核心文件|<br>|/bin|    存放用户二进制文件，这个目录存放着最经常使用的命令|<br>|/sbin|    s就是Super User的意思，这里存放的是系统管理员使用的系统管理程序|<br>|/usr|    这是一个非常重要的目录，用户的很多应用程序和文件都放在这个目录下，类似于 windows 下的 program files 目录。usr (unix software resource)|<br>|/usr/bin|    系统用户使用的应用程序|<br>|/usr/sbin|    超级用户使用的比较高级的管理程序和系统守护程序|<br>|/usr/src|    内核源代码默认的放置目录|<br>|/proc|    这个目录是一个虚拟的目录，它是系统内存的映射目录，提供内核与进程信息。这个目录的内容不在硬盘上而是在内存里|<br>|/lost+found|    一般情况下是空的，当系统非法关机后，这里就存放了一些文件，文件系统恢复时的恢复文件|<br>|/var|    这个目录中存放着在不断扩充着的东西，我们习惯将那些经常被修改的目录放在这个目录下。存放邮件、系统日志等变化文件，存放系统或程序运行过程中的数据文件(variable)|<br>|/tmp|    这个目录是用来存放一些临时文件的|<br>|/etc|    存放系统配置文件|<br>|/home|    用户主目录，在 Linux 中，每个用户都有一个自己的目录，一般该目录名是以用户的账号命名的|<br>|/dev|    存放设备文件|<br>|/lib|    动态连接共享库，.so 文件，类似于 Windows 里的 dll 文件。|<br>|/mn|t    系统提供该目录是为了让用户临时挂载别的文件系统的，我们可以将光驱挂载在/mnt/上，然后进入该目录就可以查看光驱里的内容了。|<br>|/media|    系统会自动识别一些设备，例如U盘、光驱等等，把识别的设备挂载到这个目录下。<br>|/sys|    sys 虚拟文件系统挂载点|<br>|/srv|    存放服务相关数据|<br>|/opt|    这是给主机额外安装软件所摆放的目录。比如你安装一个 ORACLE 数据库则就可以放到这个目录下。默认是空的。|<br>|/srv|    该目录存放一些服务启动之后需要提取的数据。|<br>|/selinux|    这个目录是 Redhat/CentOS 所特有的目录，Selinux 是一个安全机制，类似于windows 的防火墙，但是这套机制比较复杂，这个目录就是存放selinux 相关的文件的。|</p>
+<p><a href="http://www.runoob.com/linux/linux-forget-password.html" target="_blank" rel="noopener">忘记密码怎么办</a></p>
+<p><strong>Linux远程登录</strong><br>Linux一般作为服务器使用，而服务器一般放在机房，你不可能在机房操作你的Linux服务器。这时我们就需要远程登录到Linux服务器来管理维护系统。<br>Linux系统中是通过SSH（Secure Shell）服务实现的远程登录功能，<font color="red">默认ssh服务端口号为22</font>。SSH 为建立在应用层和传输层基础上的安全协议。<br>Window系统上 Linux 远程登录客户端有SecureCRT、Putty、SSH Secure Shell等。<br>我使用老师推荐的<strong>MobaXterm_Personal_8.0</strong>。</p>
+<h1 id="文件基本属性"><a href="#文件基本属性" class="headerlink" title="文件基本属性"></a>文件基本属性</h1><p>Linux系统是一种典型的多用户系统，不同的用户处于不同的地位，拥有不同的权限。为了保护系统的安全性，Linux系统对不同的用户访问同一文件（包括目录文件）的权限做了不同的规定。</p>
+<h2 id="文件属主和属组"><a href="#文件属主和属组" class="headerlink" title="文件属主和属组"></a>文件属主和属组</h2><p>在Linux中我们可以使用ll或者ls –l命令来显示一个文件的属性以及文件所属的用户和组。在Linux中第一个字符代表这个文件是目录、文件或链接文件等。<br><img src="http://ovfkr5e4k.bkt.clouddn.com/363003_1227493859FdXT.png" alt="文件基本属性"></p>
+<ul>
+<li>d目录</li>
+<li>-文件；</li>
+<li>l链接文档(link file)；</li>
+<li>b装置文件里面的可供储存的接口设备(可随机存取装置)；</li>
+<li>c 装置文件里面的串行端口设备，例如键盘、鼠标(一次性读取装置)。</li>
+</ul>
+<p>接下来的字符中，以三个为一组，且均为『rwx』 的三个参数的组合。其中，[ r ]代表可读(read)、[ w ]代表可写(write)、[ x ]代表可执行(execute)。 要注意的是，这三个权限的位置不会改变，如果没有权限，就会出现减号[ - ]而已<br>每个文件的属性由从左至右的0-9这10个数字来表示。第0位确定文件类型，第1-3位确定属主（该文件的所有者）拥有该文件的权限。第4-6位确定属组（所有者的同组用户）拥有该文件的权限，第7-9位确定其他用户拥有该文件的权限。</p>
+<h2 id="更改文件属性"><a href="#更改文件属性" class="headerlink" title="更改文件属性"></a>更改文件属性</h2><h3 id="1）chgrp：更改文件属组"><a href="#1）chgrp：更改文件属组" class="headerlink" title="1）chgrp：更改文件属组"></a>1）chgrp：更改文件属组</h3><p>语法：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">chgrp</span> <span class="selector-attr">[-R]</span> 属组名 文件名</span><br></pre></td></tr></table></figure>
+<p>-R：递归更改文件属组，就是在更改某个目录文件的属组时，如果加上-R的参数，那么该目录下的所有文件的属组都会更改。</p>
+<h3 id="2）chown：更改文件属主，也可以同时更改文件属组"><a href="#2）chown：更改文件属主，也可以同时更改文件属组" class="headerlink" title="2）chown：更改文件属主，也可以同时更改文件属组"></a>2）chown：更改文件属主，也可以同时更改文件属组</h3><p>语法：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">chown</span> <span class="selector-attr">[–R]</span> 属主名 文件名</span><br><span class="line"><span class="selector-tag">chown</span> <span class="selector-attr">[-R]</span> 属主名：属组名 文件名</span><br></pre></td></tr></table></figure>
+<h3 id="3）chmod：更改文件9个属性"><a href="#3）chmod：更改文件9个属性" class="headerlink" title="3）chmod：更改文件9个属性"></a>3）chmod：更改文件9个属性</h3><p>Linux文件属性有两种设置方法，一种是数字，一种是符号。<br>Linux文件的基本权限就有九个，分别是owner/group/others三种身份各有自己的read/write/execute权限。<br>（1）    数字方法改变<br>语法：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">chmod</span> <span class="selector-attr">[-R]</span> <span class="selector-tag">xyz</span> 文件或目录</span><br></pre></td></tr></table></figure>
+<p>（2）    符号方法改变<br>九个权限分别是(1)user (2)group (3)others三种身份，那么我们就可以藉由u, g, o来代表三种身份的权限。<br>如果我们需要将文件权限设置为-rwxr-xr–，可以使用 chmod u=rwx,g=rx,o=r 文件名来设定。</p>
+<h1 id="文件目录管理"><a href="#文件目录管理" class="headerlink" title="文件目录管理"></a>文件目录管理</h1><p>绝对路径：由根目录 / 写起，例如： /usr/share/doc 这个目录。<br>相对路径：不是由 / 写起，例如由 /usr/share/doc 要到 /usr/share/man 底下时，可以写成： cd ../man。<br>可以使用man [命令]来查看各个命令的使用文档，如：man cp。</p>
+<h2 id="处理目录的常用命令"><a href="#处理目录的常用命令" class="headerlink" title="处理目录的常用命令"></a>处理目录的常用命令</h2><h3 id="1）ls-列出目录"><a href="#1）ls-列出目录" class="headerlink" title="1）ls: 列出目录"></a>1）ls: 列出目录</h3><p>选项与参数：<br>-a ：全部的文件，连同隐藏档( 开头为 . 的文件) 一起列出来(常用)<br>-d ：仅列出目录本身，而不是列出目录内的文件数据(常用)<br>-l ：长数据串列出，包含文件的属性与权限等等数据；(常用)<br>如ls –al ~列出目录所有文件，含属性和隐藏档。</p>
+<h3 id="2）cd（change-directory，切换目录）"><a href="#2）cd（change-directory，切换目录）" class="headerlink" title="2）cd（change directory，切换目录）"></a>2）cd（change directory，切换目录）</h3><p>语法：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">cd</span><span class="meta"> [相对路径或绝对路径]</span></span><br></pre></td></tr></table></figure>
+<p>使用 mkdir 命令创建 runoob 目录：mkdir runoob<br>使用绝对路径切换到 runoob 目录：cd /root/runoob/<br>使用相对路径切换到 runoob 目录：cd ./runoob/<br>表示回到自己的家目录，亦即是 /root 这个目录：cd ~<br>表示去到目前的上一级目录，亦即是 /root 的上一级目录：cd ..</p>
+<h3 id="3）pwd（print-working-directory，显示目前的目录）"><a href="#3）pwd（print-working-directory，显示目前的目录）" class="headerlink" title="3）pwd（print working directory，显示目前的目录）"></a>3）pwd（print working directory，显示目前的目录）</h3><p>语法：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">pwd</span><span class="meta"> [-P]</span></span><br></pre></td></tr></table></figure>
+<p>不加-P只是显示当前工作路径；<br>加了-P，如果当前的工作路径是链接的话，显示链接的原始路径。</p>
+<h3 id="4）mkdir（make-directory，创建一个新的目录）"><a href="#4）mkdir（make-directory，创建一个新的目录）" class="headerlink" title="4）mkdir（make directory，创建一个新的目录）"></a>4）mkdir（make directory，创建一个新的目录）</h3><p>语法：</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> [-mp] 目录名称</span><br></pre></td></tr></table></figure>
+<p>选项与参数：<br>-m ：直接配置文件权限，不需要看默认权限 (umask) 的脸色～<br>-p ：直接将多层目录(包含上一级目录)递归创建起来</p>
+<h3 id="5）rmdir（删除一个空的目录）"><a href="#5）rmdir（删除一个空的目录）" class="headerlink" title="5）rmdir（删除一个空的目录）"></a>5）rmdir（删除一个空的目录）</h3><p>语法：</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rmdir</span> [-p] 目录名称</span><br></pre></td></tr></table></figure>
+<p>选项与参数：<br>-p：连同上一级的空目录也一起删除<br>注意mkdir只能用来删除空目录，要删除非空目录可以使用rm 命令。</p>
+<h3 id="6）cp-复制文件或目录"><a href="#6）cp-复制文件或目录" class="headerlink" title="6）cp: 复制文件或目录"></a>6）cp: 复制文件或目录</h3><p>语法:</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">cp</span> <span class="selector-attr">[-adfilprsu]</span> 来源档(source) 目标档(destination)</span><br><span class="line"><span class="selector-tag">cp</span> <span class="selector-attr">[options]</span> <span class="selector-tag">source1</span> <span class="selector-tag">source2</span> <span class="selector-tag">source3</span> .... <span class="selector-tag">directory</span></span><br></pre></td></tr></table></figure>
+<p>选项与参数：<br>-a：相当於-pdr的意思，pdr 请参考下列说明；(常用)<br>-d：若来源档为连结档的属性(link file)，则复制连结档属性而非文件本身；<br>-f：为强制(force)的意思，若目标文件已经存在且无法开启，则移除后再尝试一次；<br>-i：若目标档(destination)已经存在时，在覆盖时会先询问动作的进行(常用)<br>-l：进行硬式连结(hard link)的连结档创建，而非复制文件本身；<br>-p：连同文件的属性一起复制过去，而非使用默认属性(备份常用)；<br>-r：递归持续复制，用于目录的复制行为；(常用)<br>-s：复制成为符号连结档 (symbolic link)，亦即『捷径』文件；<br>-u：若 destination 比 source 旧才升级 destination ！</p>
+<h3 id="7）rm（移除文件或目录）"><a href="#7）rm（移除文件或目录）" class="headerlink" title="7）rm（移除文件或目录）"></a>7）rm（移除文件或目录）</h3><p>语法：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">rm</span> <span class="selector-attr">[-fir]</span> 文件或目录</span><br></pre></td></tr></table></figure>
+<p>选项与参数：<br>-f ：就是 force 的意思，忽略不存在的文件，不会出现警告信息；<br>-i ：互动模式，在删除前会询问使用者是否动作<br>-r ：递归删除，最常用在目录的删除，这是非常危险的选项！</p>
+<h3 id="8）mv（移动文件与目录，或修改名称）"><a href="#8）mv（移动文件与目录，或修改名称）" class="headerlink" title="8）mv（移动文件与目录，或修改名称）"></a>8）mv（移动文件与目录，或修改名称）</h3><p>语法：</p>
+<figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mv</span> [-fiu] source destination</span><br><span class="line"><span class="keyword">mv</span> [options] source1 source2 source3 .... directory</span><br></pre></td></tr></table></figure>
+<p>选项与参数：<br>-f ：force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖；<br>-i ：若目标文件 (destination) 已经存在时，就会询问是否覆盖！<br>-u ：若目标文件已经存在，且 source 比较新，才会升级 (update)</p>
+<h2 id="文件内容查看"><a href="#文件内容查看" class="headerlink" title="文件内容查看"></a>文件内容查看</h2><h3 id="1）cat（由第一行开始显示文件内容）"><a href="#1）cat（由第一行开始显示文件内容）" class="headerlink" title="1）cat（由第一行开始显示文件内容）"></a>1）cat（由第一行开始显示文件内容）</h3><p>语法：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">cat</span><span class="meta"> [-AbEnTv]</span></span><br></pre></td></tr></table></figure>
+<p>选项与参数：<br>-A ：相当於 -vET 的整合选项，可列出一些特殊字符而不是空白而已；<br>-b ：列出行号，仅针对非空白行做行号显示，空白行不标行号！<br>-E ：将结尾的断行字节 $ 显示出来；<br>-n ：列印出行号，连同空白行也会有行号，与 -b 的选项不同；<br>-T ：将 [tab] 按键以 ^I 显示出来；<br>-v ：列出一些看不出来的特殊字符</p>
+<h3 id="2）tac（从最后一行开始显示，可以看出-tac-是-cat-的倒著写）"><a href="#2）tac（从最后一行开始显示，可以看出-tac-是-cat-的倒著写）" class="headerlink" title="2）tac（从最后一行开始显示，可以看出 tac 是 cat 的倒著写）"></a>2）tac（从最后一行开始显示，可以看出 tac 是 cat 的倒著写）</h3><h3 id="3）nl（显示的时候，顺道输出行号）"><a href="#3）nl（显示的时候，顺道输出行号）" class="headerlink" title="3）nl（显示的时候，顺道输出行号）"></a>3）nl（显示的时候，顺道输出行号）</h3><p>语法：</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">nl</span> [-<span class="keyword">bnw] </span>文件</span><br></pre></td></tr></table></figure>
+<p>选项与参数：<br>-b ：指定行号指定的方式，主要有两种：<br>-b a ：表示不论是否为空行，也同样列出行号(类似 cat -n)；<br>-b t ：如果有空行，空的那一行不要列出行号(默认值)；<br>-n ：列出行号表示的方法，主要有三种：<br>-n ln ：行号在荧幕的最左方显示；<br>-n rn ：行号在自己栏位的最右方显示，且不加 0 ；<br>-n rz ：行号在自己栏位的最右方显示，且加 0 ；<br>-w ：行号栏位的占用的位数。</p>
+<h3 id="4）more-一页一页的显示文件内容"><a href="#4）more-一页一页的显示文件内容" class="headerlink" title="4）more 一页一页的显示文件内容"></a>4）more 一页一页的显示文件内容</h3><p>在 more 这个程序的运行过程中，你有几个按键可以按的：</p>
+<ul>
+<li>空白键 (space)：代表向下翻一页；</li>
+<li>Enter：代表向下翻『一行』；</li>
+<li>/字串：代表在这个显示的内容当中，向下搜寻『字串』这个关键字；</li>
+<li>:f：立刻显示出档名以及目前显示的行数；</li>
+<li>q：代表立刻离开 more ，不再显示该文件内容。</li>
+<li>b 或 [ctrl]-b：代表往回翻页，不过这动作只对文件有用，对管线无用</li>
+</ul>
+<h3 id="5）less-与-more-类似，不同的是它可以往前翻页"><a href="#5）less-与-more-类似，不同的是它可以往前翻页" class="headerlink" title="5）less 与 more 类似，不同的是它可以往前翻页"></a>5）less 与 more 类似，不同的是它可以往前翻页</h3><p>less运行时可以输入的命令有：</p>
+<ul>
+<li>空白键：向下翻动一页；</li>
+<li>[pagedown]：向下翻动一页；</li>
+<li>[pageup]：向上翻动一页；</li>
+<li>/字串：向下搜寻『字串』的功能；</li>
+<li>?字串：向上搜寻『字串』的功能；</li>
+<li>n：重复前一个搜寻 (与 / 或 ? 有关！)</li>
+<li>N：反向的重复前一个搜寻 (与 / 或 ? 有关！)</li>
+<li>q：离开 less 这个程序；</li>
+</ul>
+<h3 id="6）head-只看头几行"><a href="#6）head-只看头几行" class="headerlink" title="6）head 只看头几行"></a>6）head 只看头几行</h3><p>语法：</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">head [-n <span class="built_in">number</span>] 文件</span><br></pre></td></tr></table></figure>
+<p>选项与参数：<br>-n ：后面接数字，代表显示几行的意思<br>默认只显示前面10行。</p>
+<h3 id="7）tail-只看尾巴几行"><a href="#7）tail-只看尾巴几行" class="headerlink" title="7）tail 只看尾巴几行"></a>7）tail 只看尾巴几行</h3><p>语法：</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail [-n <span class="built_in">number</span>] 文件</span><br></pre></td></tr></table></figure>
+<p>选项与参数：<br>-n ：后面接数字，代表显示几行的意思<br>-f ：表示持续侦测后面所接的档名，要等到按下[ctrl]-c才会结束tail的侦测</p>
+<h1 id="用户和用户组管理"><a href="#用户和用户组管理" class="headerlink" title="用户和用户组管理"></a>用户和用户组管理</h1><p>用户在登录时键入正确的用户名和口令后，就能够进入系统和自己的主目录。实现用户账号的管理，要完成的工作主要有如下几个方面：</p>
+<ul>
+<li>用户账号的添加、删除与修改。</li>
+<li>用户口令的管理。</li>
+<li>用户组的管理。</li>
+</ul>
+<h2 id="用户账号的管理"><a href="#用户账号的管理" class="headerlink" title="用户账号的管理"></a>用户账号的管理</h2><p>用户账号的管理工作主要涉及到用户账号的添加、修改和删除。添加用户账号就是在系统中创建一个新账号，然后为新账号分配用户号、用户组、主目录和登录Shell等资源。刚添加的账号是被锁定的，无法使用。</p>
+<h3 id="1）useradd（添加新用户）"><a href="#1）useradd（添加新用户）" class="headerlink" title="1）useradd（添加新用户）"></a>1）useradd（添加新用户）</h3><p>语法：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">useradd</span> 选项 用户名</span><br></pre></td></tr></table></figure>
+<p>选项:<br>-c comment 指定一段注释性描述。<br>-d 目录 指定用户主目录，如果此目录不存在，则同时使用-m选项，可以创建主目录。<br>-g 用户组 指定用户所属的用户组。<br>-G 用户组，用户组 指定用户所属的附加组。<br>-s Shell文件 指定用户的登录Shell。<br>-u 用户号 指定用户的用户号，如果同时有-o选项，则可以重复使用其他用户的标识号。<br>用户名:指定新账号的登录名。</p>
+<h3 id="2）userdel（删除用户）"><a href="#2）userdel（删除用户）" class="headerlink" title="2）userdel（删除用户）"></a>2）userdel（删除用户）</h3><p>如果一个用户的账号不再使用，可以从系统中删除。删除用户账号就是要将/etc/passwd等系统文件中的该用户记录删除，必要时还删除用户的主目录。<br>语法：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">userdel</span> <span class="selector-attr">[-r]</span> 用户名</span><br></pre></td></tr></table></figure>
+<p>选项：<br>-r，它的作用是把用户的主目录一起删除。</p>
+<h3 id="3）usermode（修改用户）"><a href="#3）usermode（修改用户）" class="headerlink" title="3）usermode（修改用户）"></a>3）usermode（修改用户）</h3><p>修改用户账号就是根据实际情况更改用户的有关属性，如用户号、主目录、用户组、登录Shell等。<br>语法：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">usermod</span> 选项 用户名</span><br></pre></td></tr></table></figure>
+<p>选项：<br>包括-c, -d, -m, -g, -G, -s, -u以及-o等，这些选项的意义与useradd命令中的选项一样，可以为用户指定新的资源值。<br>-l 新用户名：-l选项指定一个新的账号，即将原来的用户名改为新的用户名。</p>
+<h3 id="4）passwd（用户口令管理）"><a href="#4）passwd（用户口令管理）" class="headerlink" title="4）passwd（用户口令管理）"></a>4）passwd（用户口令管理）</h3><p>用户管理的一项重要内容是用户口令的管理。用户账号刚创建时没有口令，但是被系统锁定，无法使用，必须为其指定口令后才可以使用，即使是指定空口令。<br>指定和修改用户口令的Shell命令是passwd。超级用户可以为自己和其他用户指定口令，普通用户只能用它修改自己的口令。命令的格式为：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">passwd</span> 选项 用户名</span><br></pre></td></tr></table></figure>
+<p>选项：<br>-l 锁定口令，即禁用账号。<br>-u 口令解锁。<br>-d 使账号无口令，即指定空口令。<br>-f 强迫用户下次登录时修改口令。<br>如果默认用户名，则修改当前用户的口令。</p>
+<h2 id="用户组的管理"><a href="#用户组的管理" class="headerlink" title="用户组的管理"></a>用户组的管理</h2><p>每个用户都有一个用户组，系统可以对一个用户组中的所有用户进行集中管理。不同Linux 系统对用户组的规定有所不同，如Linux下的用户属于与它同名的用户组，这个用户组在创建用户时同时创建。<br>用户组的管理涉及用户组的添加、删除和修改。组的增加、删除和修改实际上就是对/etc/group文件的更新</p>
+<h3 id="1）groupadd（添加新用户组）"><a href="#1）groupadd（添加新用户组）" class="headerlink" title="1）groupadd（添加新用户组）"></a>1）groupadd（添加新用户组）</h3><p>语法：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">groupadd</span> 选项 用户组</span><br></pre></td></tr></table></figure>
+<p>选项：<br>-g GID 指定新用户组的组标识号（GID）。<br>-o 一般与-g选项同时使用，表示新用户组的GID可以与系统已有用户组的GID相同</p>
+<h3 id="2）groupdel（删除一个已有的用户组）"><a href="#2）groupdel（删除一个已有的用户组）" class="headerlink" title="2）groupdel（删除一个已有的用户组）"></a>2）groupdel（删除一个已有的用户组）</h3><p>语法：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">groupdel</span> 用户组</span><br></pre></td></tr></table></figure>
+<h3 id="3）groupmod（修改用户组的属性）"><a href="#3）groupmod（修改用户组的属性）" class="headerlink" title="3）groupmod（修改用户组的属性）"></a>3）groupmod（修改用户组的属性）</h3><p>语法：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">groupmod</span> 选项 用户组</span><br></pre></td></tr></table></figure>
+<p>选项：<br>-g GID 为用户组指定新的组标识号。<br>-o 与-g选项同时使用，用户组的新GID可以与系统已有用户组的GID相同。<br>-n新用户组 将用户组的名字改为新名字</p>
+<h3 id="4）newgrp（切换到其他用户组）"><a href="#4）newgrp（切换到其他用户组）" class="headerlink" title="4）newgrp（切换到其他用户组）"></a>4）newgrp（切换到其他用户组）</h3><p>如果一个用户同时属于多个用户组，那么用户可以在用户组之间切换，以便具有其他用户组的权限。<br>语法：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span><span class="type">grp</span> 其它用户组</span><br></pre></td></tr></table></figure>
+
+<h2 id="与用户账号有关的系统文件"><a href="#与用户账号有关的系统文件" class="headerlink" title="与用户账号有关的系统文件"></a>与用户账号有关的系统文件</h2><p>完成用户管理的工作有许多种方法，但是每一种方法实际上都是对有关的系统文件进行修改。<br>与用户和用户组相关的信息都存放在一些系统文件中，这些文件包括/etc/passwd, /etc/shadow, /etc/group等。</p>
+<h3 id="etc-passwd文件"><a href="#etc-passwd文件" class="headerlink" title="/etc/passwd文件"></a>/etc/passwd文件</h3><p>/etc/passwd中一行记录对应着一个用户，记录了这个用户的一些基本属性，每行记录又被冒号(:)分隔为7个字段，其格式和具体含义如下：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">用户名:口令:用户标识号:组标识号:注释性描述:主目录:登录<span class="keyword">Shell</span></span><br></pre></td></tr></table></figure>
+<p>（1）”用户名”是代表用户账号的字符串。<br>通常长度不超过8个字符，并且由大小写字母和/或数字组成。登录名中不能有冒号(:)，因为冒号在这里是分隔符。为了兼容起见，登录名中最好不要包含点字符(.)，并且不使用连字符(-)和加号(+)打头。<br>（2）“口令”一些系统中，存放着加密后的用户口令字。<br>虽然这个字段存放的只是用户口令的加密串，不是明文，但是由于/etc/passwd文件对所有用户都可读，所以这仍是一个安全隐患。因此，现在许多Linux 系统（如SVR4）都使用了shadow技术，把真正的加密后的用户口令字存放到/etc/shadow文件中，而在/etc/passwd文件的口令字段中只存放一个特殊的字符，例如“x”或者“*”。<br>（3）“用户标识号”是一个整数，系统内部用它来标识用户。<br>一般情况下它与用户名是一一对应的。如果几个用户名对应的用户标识号是一样的，系统内部将把它们视为同一个用户，但是它们可以有不同的口令、不同的主目录以及不同的登录Shell等。<br>通常用户标识号的取值范围是0～65 535。0是超级用户root的标识号，1～99由系统保留，作为管理账号，普通用户的标识号从100开始。在Linux系统中，这个界限是500。<br>（4）“组标识号”字段记录的是用户所属的用户组。<br>它对应着/etc/group文件中的一条记录。<br>（5）“注释性描述”字段记录着用户的一些个人情况。<br>例如用户的真实姓名、电话、地址等，这个字段并没有什么实际的用途。在不同的Linux 系统中，这个字段的格式并没有统一。在许多Linux系统中，这个字段存放的是一段任意的注释性描述文字，用做finger命令的输出。<br>（6）“主目录”，也就是用户的起始工作目录。<br>它是用户在登录到系统之后所处的目录。在大多数系统中，各用户的主目录都被组织在同一个特定的目录下，而用户主目录的名称就是该用户的登录名。各用户对自己的主目录有读、写、执行（搜索）权限，其他用户对此目录的访问权限则根据具体情况设置。<br>（7）用户登录后，要启动一个进程，负责将用户的操作传给内核，这个进程是用户登录到系统后运行的命令解释器或某个特定的程序，即Shell。<br>Shell是用户与Linux系统之间的接口。Linux的Shell有许多种，每种都有不同的特点。常用的有sh(Bourne Shell), csh(C Shell), ksh(Korn Shell), tcsh(TENEX/TOPS-20 type C Shell), bash(Bourne Again Shell)等。<br>系统管理员可以根据系统情况和用户习惯为用户指定某个Shell。如果不指定Shell，那么系统使用sh为默认的登录Shell，即这个字段的值为/bin/sh。<br>用户的登录Shell也可以指定为某个特定的程序（此程序不是一个命令解释器）。<br>利用这一特点，我们可以限制用户只能运行指定的应用程序，在该应用程序运行结束后，用户就自动退出了系统。有些Linux 系统要求只有那些在系统中登记了的程序才能出现在这个字段中。<br>（8）系统中有一类用户称为伪用户（pseudo users）。<br>这些用户在/etc/passwd文件中也占有一条记录，但是不能登录，因为它们的登录Shell为空。它们的存在主要是方便系统管理，满足相应的系统进程对文件属主的要求。<br>伪用户含义<br>bin 拥有可执行的用户命令文件<br>sys 拥有系统文件<br>adm 拥有帐户文件<br>uucp UUCP使用<br>lp lp或lpd子系统使用<br>nobody NFS使用</p>
+<h1 id="磁盘管理"><a href="#磁盘管理" class="headerlink" title="磁盘管理"></a>磁盘管理</h1><p>Linux磁盘管理常用三个命令为df、du和fdisk。</p>
+<h2 id="df（disk-free，列出文件系统的整体磁盘使用量）"><a href="#df（disk-free，列出文件系统的整体磁盘使用量）" class="headerlink" title="df（disk free，列出文件系统的整体磁盘使用量）"></a>df（disk free，列出文件系统的整体磁盘使用量）</h2><p>df命令参数功能：检查文件系统的磁盘空间占用情况。可以利用该命令来获取硬盘被占用了多少空间，目前还剩下多少空间等信息。<br>语法：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">df</span> <span class="selector-attr">[-ahikHTm]</span> <span class="selector-attr">[目录或文件名]</span></span><br></pre></td></tr></table></figure>
+<p>选项与参数：<br>-a ：列出所有的文件系统，包括系统特有的 /proc 等文件系统；<br>-k ：以 KBytes 的容量显示各文件系统；<br>-m ：以 MBytes 的容量显示各文件系统；<br>-h ：以人们较易阅读的 GBytes, MBytes, KBytes 等格式自行显示；<br>-H ：以 M=1000K 取代 M=1024K 的进位方式；<br>-T ：显示文件系统类型, 连同该 partition 的 filesystem 名称 (例如 ext3) 也列出；<br>-i ：不用硬盘容量，而以 inode 的数量来显示</p>
+<h2 id="du（检查文件和目录磁盘空间使用量）"><a href="#du（检查文件和目录磁盘空间使用量）" class="headerlink" title="du（检查文件和目录磁盘空间使用量）"></a>du（检查文件和目录磁盘空间使用量）</h2><p>语法：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">du</span> <span class="selector-attr">[-ahskm]</span> 文件或目录名称</span><br></pre></td></tr></table></figure>
+<p>选项与参数：<br>-a ：列出所有的文件与目录容量，因为默认仅统计目录底下的文件量而已。<br>-h ：以人们较易读的容量格式 (G/M) 显示；<br>-s ：列出总量而已，而不列出每个各别的目录占用容量；<br>-S ：不包括子目录下的总计，与 -s 有点差别。<br>-k ：以 KBytes 列出容量显示；<br>-m ：以 MBytes 列出容量显示</p>
+<h2 id="fdisk（磁盘分区表工具）"><a href="#fdisk（磁盘分区表工具）" class="headerlink" title="fdisk（磁盘分区表工具）"></a>fdisk（磁盘分区表工具）</h2><p>语法：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">fdisk</span> <span class="selector-attr">[-l]</span> 装置名称</span><br></pre></td></tr></table></figure>
+<p>选项与参数：<br>-l ：输出后面接的装置所有的分区内容。若仅有 fdisk -l 时， 则系统将会把整个系统内能够搜寻到的装置的分区均列出来</p>
+<h2 id="mkfs（make-filesystem，磁盘格式化）"><a href="#mkfs（make-filesystem，磁盘格式化）" class="headerlink" title="mkfs（make filesystem，磁盘格式化）"></a>mkfs（make filesystem，磁盘格式化）</h2><p>磁盘分割完毕后自然就是要进行文件系统的格式化，格式化的命令非常的简单，使用 mkfs（make filesystem）命令。<br>语法：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">mkfs</span> <span class="selector-attr">[-t 文件系统格式]</span> 装置文件名</span><br></pre></td></tr></table></figure>
+<p>选项与参数：<br>-t ：可以接文件系统格式，例如 ext3, ext2, vfat 等(系统有支持才会生效)</p>
+<h2 id="fsck（file-system-check，磁盘检验）"><a href="#fsck（file-system-check，磁盘检验）" class="headerlink" title="fsck（file system check，磁盘检验）"></a>fsck（file system check，磁盘检验）</h2><p>用来检查和维护不一致的文件系统。若系统掉电或磁盘发生问题，可利用fsck命令对文件系统进行检查。<br>语法：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">fsck</span> <span class="selector-attr">[-t 文件系统]</span> <span class="selector-attr">[-ACay]</span> 装置名称</span><br></pre></td></tr></table></figure>
+<p>选项与参数：<br>-t : 给定档案系统的型式，若在 /etc/fstab 中已有定义或 kernel 本身已支援的则不需加上此参数<br>-s : 依序一个一个地执行 fsck 的指令来检查<br>-A : 对/etc/fstab 中所有列出来的 分区（partition）做检查<br>-C : 显示完整的检查进度<br>-d : 打印出 e2fsck 的 debug 结果<br>-p : 同时有 -A 条件时，同时有多个 fsck 的检查一起执行<br>-R : 同时有 -A 条件时，省略 / 不检查<br>-V : 详细显示模式<br>-a : 如果检查有错则自动修复<br>-r : 如果检查有错则由使用者回答是否修复<br>-y : 选项指定检测每个文件是自动输入yes，在不确定那些是不正常的时候，可以执行 # fsck -y 全部检查修复</p>
+<h2 id="磁盘mount（挂载）与umount（卸除）"><a href="#磁盘mount（挂载）与umount（卸除）" class="headerlink" title="磁盘mount（挂载）与umount（卸除）"></a>磁盘mount（挂载）与umount（卸除）</h2><p>磁盘挂载语法：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">mount</span> <span class="selector-attr">[-t 文件系统]</span> <span class="selector-attr">[-L Label名]</span> <span class="selector-attr">[-o 额外选项]</span> <span class="selector-attr">[-n]</span>  装置文件名  挂载点</span><br></pre></td></tr></table></figure>
+<p>磁盘卸载语法：</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">umount</span> [-<span class="meta">fn</span>] 装置文件名或挂载点</span><br></pre></td></tr></table></figure>
+<p>选项与参数：<br>-f ：强制卸除！可用在类似网络文件系统 (NFS) 无法读取到的情况下；<br>-n ：不升级 /etc/mtab 情况下卸除。</p>
+<h1 id="vi-vim"><a href="#vi-vim" class="headerlink" title="vi/vim"></a>vi/vim</h1><p>Vim是从 vi 发展出来的一个文本编辑器。基本上vi/vim共分为三种模式，分别是命令模式（Command mode），输入模式（Insert mode）和底线命令模式（Last line mode）。 </p>
+<h2 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h2><dl><dt>用户刚刚启动 vi/vim，便进入了命令模式。此状态下敲击键盘动作会被Vim识别为命令，而非输入字符。<br>常用的几个命令：<br>:i 切换到输入模式，以输入字符。<br>:x 删除当前光标所在处的字符。</dt><dd>切换到底线命令模式，以在最底一行输入命令。<br>若想要编辑文本：启动Vim，进入了命令模式，按下i，切换到输入模式。<br>命令模式只有一些最基本的命令，因此仍要依靠底线命令模式输入更多命令。<br>命令    作用<br>:w    写入磁盘<br>:w!    当文件为只读时，强制写入磁盘。到底能不能写入，与用户对该文件的权限有关<br>:q    离开<br>:q!    强制离开不保存<br>:wq    写入磁盘后离开<br>:wq! 强制写入磁盘后离开</dd></dl><h2 id="输入模式"><a href="#输入模式" class="headerlink" title="输入模式"></a>输入模式</h2><p>在命令模式下按下i就进入了输入模式。在输入模式中，可以使用以下按键：<br>字符按键以及Shift组合，输入字符<br>ENTER，回车键，换行<br>BACK SPACE，退格键，删除光标前一个字符<br>DEL，删除键，删除光标后一个字符<br>方向键，在文本中移动光标<br>HOME/END，移动光标到行首/行尾<br>Page Up/Page Down，上/下翻页<br>Insert，切换光标为输入/替换模式，光标将变成竖线/下划线<br>ESC，退出输入模式，切换到命令模式</p>
+<h2 id="底线命令模式"><a href="#底线命令模式" class="headerlink" title="底线命令模式"></a>底线命令模式</h2><p>在命令模式下按下:（英文冒号）就进入了底线命令模式。<br>:q 退出程序<br>:w 保存文件<br>按ESC键可随时退出底线命令模式。</p>
+<h1 id="yum命令"><a href="#yum命令" class="headerlink" title="yum命令"></a>yum命令</h1><p>yum（ yellow dog updater, Modified）是一个在Fedora和RedHat以及SUSE中的Shell前端软件包管理器。<br>基於RPM包管理，能够从指定的服务器自动下载RPM包并且安装，可以自动处理依赖性关系，并且一次安装所有依赖的软体包，无须繁琐地一次次下载、安装。<br>yum提供了查找、安装、删除某一个、一组甚至全部软件包的命令，而且命令简洁而又好记。<br>yum 语法：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">yum</span> <span class="selector-attr">[options]</span> <span class="selector-attr">[command]</span> <span class="selector-attr">[package ...]</span></span><br></pre></td></tr></table></figure>
+<p>options：可选，选项包括-h（帮助），-y（当安装过程提示选择全部为”yes”），-q（不显示安装的过程）等等。<br>command：要进行的操作。<br>package操作的对象<br>yum常用命令<br>1）列出所有可更新的软件清单命令：yum check-update<br>2）更新所有软件命令：yum update<br>3）仅安装指定的软件命令：yum install <package_name><br>4）仅更新指定的软件命令：yum update <package_name><br>5）列出所有可安裝的软件清单命令：yum list<br>6）删除软件包命令：yum remove <package_name><br>7）查找软件包 命令：yum search <keyword><br>8）清除缓存命令:<br>yum clean packages: 清除缓存目录下的软件包<br>yum clean headers: 清除缓存目录下的 headers<br>yum clean oldheaders: 清除缓存目录下旧的 headers<br>yum clean, yum clean all (= yum clean packages; yum clean oldheaders) :清除缓存目录下的软件包及旧的head</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="http://www.runoob.com/linux/linux-command-manual.html" target="_blank" rel="noopener">Linux命令大全</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/04/Tech/Linux/Linux%E2%80%94%E2%80%94%E7%AE%80%E4%BB%8B%E5%8F%8A%E5%AE%89%E8%A3%85/" rel="next" title="Linux——简介及安装">
+                <i class="fa fa-chevron-left"></i> Linux——简介及安装
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/04/Tech/Java/Java%20Basis/Pattern%C2%BAI%CC%81Matcher/" rel="prev" title="Pattern和Matcher">
+                Pattern和Matcher <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="LichtMiao" />
+          <p class="site-author-name" itemprop="name">LichtMiao</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">186</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          <!-- 
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+           -->
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/LichtMiao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Miaomi4" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                    
+                      Twitter
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux系统启动过程"><span class="nav-number">1.</span> <span class="nav-text">Linux系统启动过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#内核的引导"><span class="nav-number">1.1.</span> <span class="nav-text">内核的引导</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行init"><span class="nav-number">1.2.</span> <span class="nav-text">运行init</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行级别"><span class="nav-number">1.3.</span> <span class="nav-text">运行级别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统初始化"><span class="nav-number">1.4.</span> <span class="nav-text">系统初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户登录"><span class="nav-number">1.5.</span> <span class="nav-text">用户登录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-命令行登录"><span class="nav-number">1.5.1.</span> <span class="nav-text">1) 命令行登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-SSH登录"><span class="nav-number">1.5.2.</span> <span class="nav-text">2) SSH登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-图形界面登录"><span class="nav-number">1.5.3.</span> <span class="nav-text">3) 图形界面登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-进入login-shell"><span class="nav-number">1.5.4.</span> <span class="nav-text">4) 进入login shell</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux目录结构"><span class="nav-number">2.</span> <span class="nav-text">Linux目录结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件基本属性"><span class="nav-number">3.</span> <span class="nav-text">文件基本属性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件属主和属组"><span class="nav-number">3.1.</span> <span class="nav-text">文件属主和属组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更改文件属性"><span class="nav-number">3.2.</span> <span class="nav-text">更改文件属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）chgrp：更改文件属组"><span class="nav-number">3.2.1.</span> <span class="nav-text">1）chgrp：更改文件属组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）chown：更改文件属主，也可以同时更改文件属组"><span class="nav-number">3.2.2.</span> <span class="nav-text">2）chown：更改文件属主，也可以同时更改文件属组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3）chmod：更改文件9个属性"><span class="nav-number">3.2.3.</span> <span class="nav-text">3）chmod：更改文件9个属性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件目录管理"><span class="nav-number">4.</span> <span class="nav-text">文件目录管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#处理目录的常用命令"><span class="nav-number">4.1.</span> <span class="nav-text">处理目录的常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）ls-列出目录"><span class="nav-number">4.1.1.</span> <span class="nav-text">1）ls: 列出目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）cd（change-directory，切换目录）"><span class="nav-number">4.1.2.</span> <span class="nav-text">2）cd（change directory，切换目录）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3）pwd（print-working-directory，显示目前的目录）"><span class="nav-number">4.1.3.</span> <span class="nav-text">3）pwd（print working directory，显示目前的目录）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4）mkdir（make-directory，创建一个新的目录）"><span class="nav-number">4.1.4.</span> <span class="nav-text">4）mkdir（make directory，创建一个新的目录）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5）rmdir（删除一个空的目录）"><span class="nav-number">4.1.5.</span> <span class="nav-text">5）rmdir（删除一个空的目录）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6）cp-复制文件或目录"><span class="nav-number">4.1.6.</span> <span class="nav-text">6）cp: 复制文件或目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7）rm（移除文件或目录）"><span class="nav-number">4.1.7.</span> <span class="nav-text">7）rm（移除文件或目录）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8）mv（移动文件与目录，或修改名称）"><span class="nav-number">4.1.8.</span> <span class="nav-text">8）mv（移动文件与目录，或修改名称）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件内容查看"><span class="nav-number">4.2.</span> <span class="nav-text">文件内容查看</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）cat（由第一行开始显示文件内容）"><span class="nav-number">4.2.1.</span> <span class="nav-text">1）cat（由第一行开始显示文件内容）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）tac（从最后一行开始显示，可以看出-tac-是-cat-的倒著写）"><span class="nav-number">4.2.2.</span> <span class="nav-text">2）tac（从最后一行开始显示，可以看出 tac 是 cat 的倒著写）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3）nl（显示的时候，顺道输出行号）"><span class="nav-number">4.2.3.</span> <span class="nav-text">3）nl（显示的时候，顺道输出行号）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4）more-一页一页的显示文件内容"><span class="nav-number">4.2.4.</span> <span class="nav-text">4）more 一页一页的显示文件内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5）less-与-more-类似，不同的是它可以往前翻页"><span class="nav-number">4.2.5.</span> <span class="nav-text">5）less 与 more 类似，不同的是它可以往前翻页</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6）head-只看头几行"><span class="nav-number">4.2.6.</span> <span class="nav-text">6）head 只看头几行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7）tail-只看尾巴几行"><span class="nav-number">4.2.7.</span> <span class="nav-text">7）tail 只看尾巴几行</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用户和用户组管理"><span class="nav-number">5.</span> <span class="nav-text">用户和用户组管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#用户账号的管理"><span class="nav-number">5.1.</span> <span class="nav-text">用户账号的管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）useradd（添加新用户）"><span class="nav-number">5.1.1.</span> <span class="nav-text">1）useradd（添加新用户）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）userdel（删除用户）"><span class="nav-number">5.1.2.</span> <span class="nav-text">2）userdel（删除用户）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3）usermode（修改用户）"><span class="nav-number">5.1.3.</span> <span class="nav-text">3）usermode（修改用户）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4）passwd（用户口令管理）"><span class="nav-number">5.1.4.</span> <span class="nav-text">4）passwd（用户口令管理）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户组的管理"><span class="nav-number">5.2.</span> <span class="nav-text">用户组的管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）groupadd（添加新用户组）"><span class="nav-number">5.2.1.</span> <span class="nav-text">1）groupadd（添加新用户组）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）groupdel（删除一个已有的用户组）"><span class="nav-number">5.2.2.</span> <span class="nav-text">2）groupdel（删除一个已有的用户组）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3）groupmod（修改用户组的属性）"><span class="nav-number">5.2.3.</span> <span class="nav-text">3）groupmod（修改用户组的属性）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4）newgrp（切换到其他用户组）"><span class="nav-number">5.2.4.</span> <span class="nav-text">4）newgrp（切换到其他用户组）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#与用户账号有关的系统文件"><span class="nav-number">5.3.</span> <span class="nav-text">与用户账号有关的系统文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#etc-passwd文件"><span class="nav-number">5.3.1.</span> <span class="nav-text">&#x2F;etc&#x2F;passwd文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#磁盘管理"><span class="nav-number">6.</span> <span class="nav-text">磁盘管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#df（disk-free，列出文件系统的整体磁盘使用量）"><span class="nav-number">6.1.</span> <span class="nav-text">df（disk free，列出文件系统的整体磁盘使用量）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#du（检查文件和目录磁盘空间使用量）"><span class="nav-number">6.2.</span> <span class="nav-text">du（检查文件和目录磁盘空间使用量）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fdisk（磁盘分区表工具）"><span class="nav-number">6.3.</span> <span class="nav-text">fdisk（磁盘分区表工具）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mkfs（make-filesystem，磁盘格式化）"><span class="nav-number">6.4.</span> <span class="nav-text">mkfs（make filesystem，磁盘格式化）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fsck（file-system-check，磁盘检验）"><span class="nav-number">6.5.</span> <span class="nav-text">fsck（file system check，磁盘检验）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#磁盘mount（挂载）与umount（卸除）"><span class="nav-number">6.6.</span> <span class="nav-text">磁盘mount（挂载）与umount（卸除）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vi-vim"><span class="nav-number">7.</span> <span class="nav-text">vi&#x2F;vim</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#命令模式"><span class="nav-number">7.1.</span> <span class="nav-text">命令模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入模式"><span class="nav-number">7.2.</span> <span class="nav-text">输入模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#底线命令模式"><span class="nav-number">7.3.</span> <span class="nav-text">底线命令模式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#yum命令"><span class="nav-number">8.</span> <span class="nav-text">yum命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">9.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LichtMiao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+  Powered by <a>Hexo</a>
+</div>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+  <!-- 背景动画 -->
+  
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>

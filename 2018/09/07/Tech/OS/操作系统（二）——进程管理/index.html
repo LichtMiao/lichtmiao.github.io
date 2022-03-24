@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en.yml">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Learning, Life" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="LichtMiao's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="进程的概念前趋图(Precedence Graph)前趋图是一个有向无循环图（Directed Acyclic Graph, DAG），用于描述进程之间执行的前后关系。Pi→Pj，称Pi是Pj的直接前趋，而称Pj是Pi的直接后继。 程序并发执行的特征1）    间断性：程序在并发执行时，由于它们共享系统资源，以及为完成同一项任务而相互合作，致使在这些并发执行的程序之间，形成了相互制约的关系。2）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统（二）——进程管理">
+<meta property="og:url" content="https://lichtmiao.github.io/2018/09/07/Tech/OS/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/index.html">
+<meta property="og:site_name" content="LichtMiao&#39;s Blog">
+<meta property="og:description" content="进程的概念前趋图(Precedence Graph)前趋图是一个有向无循环图（Directed Acyclic Graph, DAG），用于描述进程之间执行的前后关系。Pi→Pj，称Pi是Pj的直接前趋，而称Pj是Pi的直接后继。 程序并发执行的特征1）    间断性：程序在并发执行时，由于它们共享系统资源，以及为完成同一项任务而相互合作，致使在这些并发执行的程序之间，形成了相互制约的关系。2）">
+<meta property="article:published_time" content="2018-09-07T14:06:30.000Z">
+<meta property="article:modified_time" content="2019-01-21T03:51:00.000Z">
+<meta property="article:author" content="LichtMiao">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.2',
+    sidebar: {"position":"right","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://lichtmiao.github.io/2018/09/07/Tech/OS/操作系统（二）——进程管理/"/>
+
+
+
+
+
+<!-- 网页加载条 -->
+<script src="https://neveryu.github.io/js/src/pace.min.js"></script>
+  <title>操作系统（二）——进程管理 | LichtMiao's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en.yml">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LichtMiao's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lichtmiao.github.io/2018/09/07/Tech/OS/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LichtMiao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LichtMiao's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">操作系统（二）——进程管理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-07T22:06:30+08:00">
+                2018-09-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/OS/" itemprop="url" rel="index">
+                    <span itemprop="name">OS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="进程的概念"><a href="#进程的概念" class="headerlink" title="进程的概念"></a>进程的概念</h1><h2 id="前趋图-Precedence-Graph"><a href="#前趋图-Precedence-Graph" class="headerlink" title="前趋图(Precedence Graph)"></a>前趋图(Precedence Graph)</h2><p>前趋图是一个有向无循环图（Directed Acyclic Graph, DAG），用于描述进程之间执行的前后关系。Pi→Pj，称Pi是Pj的直接前趋，而称Pj是Pi的直接后继。</p>
+<h2 id="程序并发执行的特征"><a href="#程序并发执行的特征" class="headerlink" title="程序并发执行的特征"></a>程序并发执行的特征</h2><p>1）    间断性：程序在并发执行时，由于它们共享系统资源，以及为完成同一项任务而相互合作，致使在这些并发执行的程序之间，形成了相互制约的关系。<br>2）    失去封闭性：程序在并发执行时，是多个程序共享系统中的各种资源，因而这些资源的状态将由多个程序来改变，致使程序的运行失去了封闭性。<br>3）    不可再现性：程序经过多次执行后，虽然它们执行时的环境和初始条件相同，但得到的结果却各不相同。</p>
+<h2 id="进程的三种基本状态：就绪、执行、阻塞"><a href="#进程的三种基本状态：就绪、执行、阻塞" class="headerlink" title="进程的三种基本状态：就绪、执行、阻塞"></a>进程的三种基本状态：就绪、执行、阻塞</h2><p>1）就绪(Ready)状态<br>当进程已分配到除CPU以外的所有必要资源后，只要再获得CPU，便可立即执行。在一个系统中处于就绪状态的进程可能有多个，通常将它们排成一个队列，称为就绪队列。<br>2）执行状态<br>进程已获得CPU，其程序正在执行。在单处理机系统中，只有一个进程处于执行状态；<br>在多处理机系统中，则有多个进程处于执行状态。<br>3）阻塞状态<br>正在执行的进程由于发生某事件而暂时无法继续执行时，便放弃处理机而处于暂停状态，也叫等待状态或封锁状态。致使进程阻塞的典型事件有：请求I/O，申请缓冲空间等（缺少资源，如进程请求访问某临界资源，而该资源正被其他资源访问时）。通常将这种处于阻塞状态的进程也排成一个队列。<br>注意：<br>只有就绪态和运行态可以相互转换，其它的都是单向转换。就绪状态的进程通过调度算法从而获得 CPU 时间，转为运行状态；而运行状态的进程，在分配给它的 CPU 时间片用完之后就会转为就绪状态，等待下一次调度。<br>阻塞状态是缺少需要的资源从而由运行状态转换而来，但是该资源不包括 CPU 时间，缺少 CPU 时间会从运行态转换为就绪态。</p>
+<h2 id="挂起状态"><a href="#挂起状态" class="headerlink" title="挂起状态"></a>挂起状态</h2><p>上面三种是系统的基本状态，一些系统引起了挂起状态。<br>1）    引入挂起状态的原因<br>（1）终端用户的请求。当终端用户在自己的程序运行期间发现有可疑问题时，希望暂时使自己的程序静止下来。<br>（2）父进程请求。有时父进程希望挂起自己的某个子进程，以便考查和修改该子进程，或者协调各子进程间的活动。<br>（3）负荷调节的需要。当实时系统中的工作负荷较重，已可能影响到对实时任务的控制时，可由系统把一些不重要的进程挂起，以保证系统能正常运行。<br>（4）操作系统的需要。操作系统有时希望挂起某些进程，以便检查运行中的资源使用情况或进行记账。<br>2）    进程状态的转换<br>引入挂起状态后，又将增加从挂起状态（静止状态）到非挂起状态（活动状态）的转换。</p>
+<h2 id="创建状态和终止状态"><a href="#创建状态和终止状态" class="headerlink" title="创建状态和终止状态"></a>创建状态和终止状态</h2><p>为了管理的需要，又增加了创建状态和终止状态。<br>1）    创建状态一般两个步骤：一是为新进程创建一个PCB，并填写必要的管理信息；二是把该进程转入就绪状态并插入到就绪队列之中。<br>2）    终止状态一般也有两个状态：一是等待操作系统进行善后处理，然后将其PCB清零，并将PCB空间返还系统。</p>
+<h2 id="进程控制块"><a href="#进程控制块" class="headerlink" title="进程控制块"></a>进程控制块</h2><p>1）    进程控制块 (Process Control Block, PCB) 的作用<br>PCB是进程实体的一部分，是操作系统中重要的记录型数据结构，它描述了进程的基本信息和运行状态，所谓的创建进程和撤销进程，都是指对 PCB 的操作。当系统创建一个新进程时，就为它建立了一个PCB；进程结束时又回收其PCB，进程于是也随之消亡。OS是根据PCB来对并发执行的进程进行控制和管理的。<br>由于PCB经常被系统访问，因此PCB应常驻内存。系统将所有的PCB组织成若干个链表(或队列)，存放在操作系统中专门开辟的PCB 区内。例如在Linux 系统中用task_struct数据结构来描述每个进程的PCB；在Windows操作系统中则使用一个执行体进程块(EPROCESS)来表示进程对象的基本属性。<br>2） 进程控制块中的信息<br>（1）进程标识符<br>内部标识：操作系统为每个进程赋予的唯一一个数字标识，通常是进行序号。<br>外部标识：由用户（进程）在访问该进程时使用的标识。<br>（2）处理机状态<br>处理机状态信息由处理机的各种寄存器中的内容组成的。处理机在运行时，许多信息都放在寄存器中。当处理机被中断时，所有这些信息都必须保存在PCB中，以便在该进程重新执行时，能从断点继续执行。<br>（3）进程调度信息<br>包括进程状态、进程优先级、进程调度算法、事件（即阻塞原因）。<br>（4）进程控制信息<br>程序和数据的地址、进程同步和通信机制（如消息队列、信号量等）、资源清单、链接指针（本进程（PCB）所在队列的下一个进程的PCB首地址）。<br>3） PCB的组织方式<br>（1）链接方式<br>把具有相同状态的PCB用链接字连接成一个队列。<br>（2）索引方式<br>根据PCB的状态建立几张索引表。</p>
+<h1 id="进程控制"><a href="#进程控制" class="headerlink" title="进程控制"></a>进程控制</h1><p>原语（primitive）：原语是由若干指令组成的，用于完成一定功能的一个过程。原语与一般过程的区别在于，原语是原子操作（atomic operation），一个原子操作中的操作要么全做，要么全不做，即它是一个不可分割的基本的单位。它在执行过程中不能被中断，原子操作在管态下执行，常驻内存。<br>原语的作用：进程的控制和通信。</p>
+<h2 id="进程的创建"><a href="#进程的创建" class="headerlink" title="进程的创建"></a>进程的创建</h2><p>1）    进程图（process graph）<br>子进程可以继承父进程所拥有的资源，例如，继承父进程打开的文件，继承父进程所分配到的缓冲区等。当子进程被撤消时，应将其从父进程那里获得的资源归还给父进程。此外，在撤消父进程时，也必须同时撤消其所有的子进程。、<br>2）    引起创建进程的事件<br>（1）用户登录<br>（2）作业调度<br>（3）提供服务<br>（4）应用进程<br>3）    进程的创建过程<br>一旦操作系统发现了要求创建新进程的事件后，便调用进程创建原语Creat( )按下述步骤创建一个新进程。<br>（1）申请空白PCB<br>（2）为新进程分配资源<br>（3）初始化PCB将<br>（4）新进程插入就绪队列</p>
+<h2 id="进程的终止"><a href="#进程的终止" class="headerlink" title="进程的终止"></a>进程的终止</h2><p>1）    引起进程终止的事件<br>（1）正常结束。如在批处理系统中，通常在程序最后加一条Holt指令终止系统的调用<br>（2）异常结束<br>如越界错误、保护错、非法指令、特权指令错、运行超时、等待超时、算术运算错、I/O故障。<br>（3）外界干预<br>操作员或操作系统干扰、父进程请求、父进程终止。<br>2）    进程的终止过程<br>如果系统中发生了上述要求终止进程的某事件，OS便调用进程终止原语，按下述过程去终止指定的进程。<br>（1）根据被终止进程的标识符，从PCB 集合中检索出该进程的PCB，从中读出该进程<br>的状态。<br>（2）若被终止进程正处于执行状态，应立即终止该进程的执行，并置调度标志为真，用<br>于指示该进程被终止后应重新进行调度。<br>（3）若该进程还有子孙进程，还应将其所有子孙进程予以终止，以防它们成为不可控的<br>进程。<br>（4）将被终止进程所拥有的全部资源，或者归还给其父进程，或者归还给系统。<br>（5）将被终止进程(PCB)从所在队列(或链表)中移出，等待其他程序来搜集信息。</p>
+<h2 id="进程的阻塞与唤醒"><a href="#进程的阻塞与唤醒" class="headerlink" title="进程的阻塞与唤醒"></a>进程的阻塞与唤醒</h2><p>1）    引起进程阻塞和唤醒的事件<br>（1）当正在执行的进程请求操作系统提供服务时，由于某种原因，操作系统并不立即满足该进程的要求时。<br>（2）当进程启动某种操作后，如果该进程必须在该操作完成之后才能继续执行。<br>（3）对于相互合作的进程，如果其中一个进程需要先获得另一(合作)进程提供的数据后才能对数据进行处理，则只要其所需数据尚未到达，该进程只有(等待)阻塞。<br>（4）系统往往设置一些具有某特定功能的系统进程，每当这种进程完成任务后，便把自己阻塞起来以等待新任务到来。<br>2）    进程的阻塞过程<br>正在执行的进程，当发现上述某事件时，由于无法继续执行，于是进程便通过调用<font color="red">阻塞原语block()</font>把自己阻塞。可见，进程的阻塞是进程自身的一种主动行为。<br>3）    进程的唤醒过程<br>调用<font color="red">唤醒原语wakeup()</font>，将等待该事件的进程唤。唤醒过程：把被阻塞的进程从等待该事件的阻塞队列中移出，将其PCB中的现行状态由阻塞改为就绪，然后再将该PCB插入到就绪队列中。<br>block()和wakeup()是一对相反的原语。</p>
+<h2 id="进程的挂起与激活"><a href="#进程的挂起与激活" class="headerlink" title="进程的挂起与激活"></a>进程的挂起与激活</h2><p>1）    进程的挂起<br>当出现了引起进程挂起的事件时，比如用户进程请求将自己挂起，或父进程请求将自己的某个子进程挂起，系统将利用<font color="red">挂起原语suspend()</font>将指定进程或处于阻塞状态的进程挂起。<br>2）    进程的激活<br>当发生激活进程的事件时，比如父进程或用户进程请求激活指定进程，若该进程驻留在外存而内存中已有足够的空间时，则可将在外存上处于静止就绪状态的该进程换入内存。这时，系统将利用<font color="red">激活原语active()</font>将指定进程激活。</p>
+<h1 id="进程同步"><a href="#进程同步" class="headerlink" title="进程同步"></a>进程同步</h1><h2 id="进程同步的概念"><a href="#进程同步的概念" class="headerlink" title="进程同步的概念"></a>进程同步的概念</h2><p>1）    临界资源与临界区<br>许多硬件资源如打印机、磁带机等，都属于临界资源(Critical Resouce)，进程间应采取互斥方式实现对这种资源的共享。<br>每个进程中访问临界资源（critical resource）的那段代码称为临界区（critical section）。若能保证各个进程互斥地进入临界区，便可实现各个进程对临界资源的互斥访问。<br>在临界区前增加一段用于进行互斥检查的代码，这段代码称为进入区（entry section）。相应地，在临界区后面也要增加一段称为退出区（exit section）的代码，用于将临界区正被访问的标识恢复为未被访问的标识。<br>经典的进程同步问题：生产者-消费者（producer-consumer）问题；哲学家进餐问题。<br>2）    同步机制应遵循的规则<br>空闲让进、忙则等待、有限等待（有限时间内进入临界区）、让权等待（对不能进入临界区的进程，应立即释放处理机）。</p>
+<h2 id="信号量机制"><a href="#信号量机制" class="headerlink" title="信号量机制"></a>信号量机制</h2><p>Dijkstra提出的信号量(Semaphores)机制是一种卓有成效的进程同步工具。<br>1）    整型信号量<br>最初Dijkstra把整型信号量定义为表示资源数目的整型量S，它仅能通过两个原子操作wait(S)和signal(S)来访问，通常将这两个操作称为P、V操作。</p>
+<ul>
+<li>wait(S)：即P操作，进程请求一个单位的资源，使系统中可供分配的资源少一个。</li>
+<li>signal(S)：即V操作，执行进程释放一个单位的资源，使系统中可供分配的资源增加一个。</li>
+</ul>
+<p>P、V操作可描述为：</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wait(S) : <span class="keyword">while</span> S &lt;= <span class="number">0</span> <span class="keyword">do</span> noop;</span><br><span class="line">		S:=S<span class="number">-1</span>;</span><br><span class="line">signal(S): S:=S+<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<p>2）    记录型信号量<br>由于整型信号量没有遵循“让权等待”的准则，只要S&lt;=0就会不断测试，让进程处于“忙等”状态。而记录型信号量除了有一个记录资源数目的整型变量value外，还增加了一个进程链表指针L，用于链接上述的所有进程。<br>3）    AND型信号量<br>若一个进程需要获得多个共享资源后才能执行任务，可以将临界资源（共享的数据）设置为多个互斥的信号量，并令他们的初值为1。<br>对若干个临界资源的分配（wait操作），采取原子操作方式：要么把它所请求的资源全部分配到进程，要么一个也不分配。避免多个进程处于死锁状态（每个进程都请求不到资源，都陷入阻塞状态）。为此，在wait 操作中，增加了一个“AND”条件，故称为AND 同步，或称为同时wait（Swait，Simultaneous wait）。<br>4）    信号量集<br>在有些情况下，当资源数量低于某一下限值时，便不予以分配。因而，在每次分配之前，都必须测试该资源的数量，看其是否大于其下限值t。基于上述两点，可以对AND 信号量机制加以扩充，形成一般化的“信号量集”机制。Swait操作可描述如下，其中S为信号量，d为需求值，而t为下限值。<br>5）    信号量的作用<br>（1）实现进程互斥<br>（2）实现前趋关系<br>设有两个并发执行的进程P1和P2。P1中有语句S1；P2中有语句S2。我们希望在S1执行后再执行S2。为实现这种前趋关系，我们只须使进程P1和P2共享一个公用信号量S，并赋予其初值为0，将signal(S)操作放在语句S1后面；而在S2语句前面插入wait(S)操作，即<br>在进程 P1中，用S1；signal(S)；<br>在进程 P2中，用wait(S)；S2；<br>由于S被初始化为0，这样，若P2先执行必定阻塞，只有在进程P1执行完S1；signal(S)；操作后使S增为1时，P2 进程方能执行语句S2 成功。<br>对前趋图，一层一层地进行P、V操作。</p>
+<h2 id="管程机制"><a href="#管程机制" class="headerlink" title="管程机制"></a>管程机制</h2><p>由于信号量机制造成大量同步操作wait(S)和signal(S)分散在进程中，给管理带来了麻烦，同时操作不当也容易造成死锁。为了解决这个问题，提出了新的进程同步工具——管程（monitors）。<br>1）    管程的定义<br>一个管程定义了一个数据结构，和能为并发进程所执行(在该数据结构上)的一组操作，这组操作能同步进程和改变管程中的数据。管程相当于围墙，它把共享变量和对它进行操作的若干过程围了起来，<font color="red">所有进程要访问临界资源时，都必须经过管程(相当于通过围墙的门)才能进入，而管程每次只准许一个进程进入管程，从而实现了进程互斥</font>。</p>
+<p>2）    条件变量<br>为了防止当前进程不释放管程，而使其它进程被迫长时间等待，引入了条件变量。条件变量中是进程被阻塞或挂起的原因。管程中对每个条件变量都须予以说明，其形式为：Var x，y：condition。对条件变量的操作仅仅是wait和signal。</p>
+<h1 id="进程通信"><a href="#进程通信" class="headerlink" title="进程通信"></a>进程通信</h1><p>进程通信是指进程间的信息交换。进程之间的互斥和同步，由于其所交换的信息量少而被归结为低级通信。在进程互斥中，进程通过只修改信号量来向其他进程表明临界资源是否可用。<br>信号量机制作为同步工具是有效的，但作为通信工具则不理想，其效率低，通信对用户不透明。<br>本节所要介绍的是高级进程通信，是指用户可直接利用操作系统所提供的一组通信命令高效地传送大量数据的一种通信方式。操作系统隐藏了进程通信的实现细节。或者说，通信过程对用户是透明的。这样就大大减少了通信程序编制上的复杂性。</p>
+<h2 id="进程通信的类型"><a href="#进程通信的类型" class="headerlink" title="进程通信的类型"></a>进程通信的类型</h2><p>目前，高级通信机制可归结为三大类：共享存储器系统、消息传递系统以及管道通信系统。<br>1）    共享存储器系统（shared-memory system）<br>相互通信的进程共享某些数据结构或共享存储区，进程之间能够通过这些空间进行通信。<br>2）    消息传递系统<br>消息传递系统(Message passing system)是当前应用最为广泛的一种进程间的通信机制。在该机制中，进程间的数据交换是以格式化的消息(message)为单位的；在计算机网络中，又把message称为报文。<br>3）    管道通信系统<br>所谓“管道”，是指用于连接一个读进程和一个写进程以实现它们之间通信的一个共享文件，又名pipe文件。向管道(共享文件)提供输入的发送进程(即写进程)，以字符流形式将大量的数据送入管道；而接受管道输出的接收进程(即读进程)，则从管道中接收(读)数据。</p>
+<h2 id="消息缓冲队列机制"><a href="#消息缓冲队列机制" class="headerlink" title="消息缓冲队列机制"></a>消息缓冲队列机制</h2><p>发送进程利用Send原语将消息直接发送给接收进程；接收进程则利用Receive原语接收消息。</p>
+<h1 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h1><p>如果说，在操作系统中引入进程的目的，是为了使多个程序能并发执行，以提高资源利用率和系统吞吐量，那么在操作系统中再引入线程，则是为了减少程序在并发执行时所付出的时空开销，使OS具有更好的并发性。<br>由于进程是一个资源的拥有者，因而在创建、撤消和切换进程过程中，系统必须为之付出较大的时空开销。正因如此，在系统中所设置的进程，其数目不宜过多，进程切换的频率也不宜过高，这也就限制了并发程度的进一步提高。</p>
+<h2 id="进程与线程的比较"><a href="#进程与线程的比较" class="headerlink" title="进程与线程的比较"></a><span style="background-color:yellow">进程与线程的比较</span></h2><p>1）    调度<br><font color="red">进程是资源拥有的基本单位，而线程是调度和分派的基本单位</font>，在多线程OS中，线程是能独立运行的基本单位，切换速度快，开销小。<br>2）    并发性<br>不仅进程之间可以并发执行，同一进程和不同进程的线程间也可以并发执行。<br>3）    拥有资源<br>一般而言，<font color="red">线程不自己拥有资源，但它可以访问它所属进程的资源。同一进程的多个线程可以共享该进程的所有资源，这表现在同一进程的多个线程拥有相同的地址空间</font>，因此在同步和通信方面，线程比进程容易。<br>4）    系统开销<br>进程的创建、撤消和切换，所付出的开销大于线程。</p>
+<h2 id="线程间的同步和通信"><a href="#线程间的同步和通信" class="headerlink" title="线程间的同步和通信"></a>线程间的同步和通信</h2><p>为了支持不同频率的交互操作和不同程度的并行性，在多线程OS中通常提供多种同步机制，如<strong><font color="red">互斥锁、条件变量、计数信号量以及多读、单写锁</font></strong>等。<br>1）互斥锁（mutex）<br>互斥锁是一种比较简单的、用于实现线程间对资源互斥访问的机制。由于操作互斥锁<br>的时间和空间开销都较低，因而较适合于高频度使用的关键共享数据和程序段。互斥锁可<br>以有两种状态，即开锁(unlock)和关锁(lock)状态。<br>当一个线程需要读/写一个共享数据段时，关锁命令首先判别mutex 的状态，如果它已处于关锁状态，则试图访问该数据段的线程将被阻塞；而如果mutex 是处于开锁状态，则将mutex 关上后便去读/写该数据段，而进入临界区不一定表示该资源区就能够被访问，也可能该资源正被其它资源使用。在线程完成对数据的读/写后，必须再发出开锁命令将mutex 打开，同时还须将阻塞在该互斥锁上的一个线程唤醒，其它的线程仍被阻塞在等待mutex打开的队列上。<br>2）    条件变量<br>在许多情况下，只利用mutex来实现互斥访问可能会引起死锁。<br>在创建一个互斥锁时联系着一个条件变量。单纯的互斥锁用于短期锁定，主要是用来保证对临界区的互斥进入。而条件变量则用于线程的长期等待，直至所等待的资源成为可用的资源。<br>3）    信号量机制<br>前面所说的用于实现进程同步的信号量机制，也可用于多线程OS中。<br>私用信号量(private samephore)当某线程需利用信号量来实现同一进程中各线程之间的同步，OS并不知道私用信号量的存在；公用信号量是为实现不同进程间或不同进程中各线程之间的同步而设置的。</p>
+<h2 id="线程的的实现"><a href="#线程的的实现" class="headerlink" title="线程的的实现"></a>线程的的实现</h2><p>1）    内核支持线程<br>无论是系统进程还是用户进程，进程的创建、撤消，以及要求由系统设备完成的I/O 操作，都是利用系统调用而进入内核，再由内核中的相应处理程序予以完成的。进程的切换同样是在内核的支持下实现的。<br>2）    用户级线程<br>用户级线程ULT(User Level Threads)仅存在于用户空间中。对于这种线程的创建、撤消、线程之间的同步与通信等功能，都无须利用系统调用来实现。</p>
+<p>不论是进程还是线程，都必须直接或间接地取得内核的支持。由于内核支持线程可以直接利用系统调用为它服务，故线程的控制相当简单；而用户级线程必须借助于某种形式的中间系统的帮助方能取得内核的服务，故在对线程的控制上要稍复杂些。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/07/Tech/OS/%E7%A1%AC%E9%93%BE%E6%8E%A5%E5%92%8C%E8%BD%AF%E9%93%BE%E6%8E%A5/" rel="next" title="硬链接和软链接">
+                <i class="fa fa-chevron-left"></i> 硬链接和软链接
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/08/Tech/OS/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E5%A4%84%E7%90%86%E6%9C%BA%E7%AE%A1%E7%90%86/" rel="prev" title="操作系统（三）——处理机管理">
+                操作系统（三）——处理机管理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="LichtMiao" />
+          <p class="site-author-name" itemprop="name">LichtMiao</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">186</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          <!-- 
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+           -->
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/LichtMiao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Miaomi4" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                    
+                      Twitter
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#进程的概念"><span class="nav-number">1.</span> <span class="nav-text">进程的概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前趋图-Precedence-Graph"><span class="nav-number">1.1.</span> <span class="nav-text">前趋图(Precedence Graph)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序并发执行的特征"><span class="nav-number">1.2.</span> <span class="nav-text">程序并发执行的特征</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程的三种基本状态：就绪、执行、阻塞"><span class="nav-number">1.3.</span> <span class="nav-text">进程的三种基本状态：就绪、执行、阻塞</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#挂起状态"><span class="nav-number">1.4.</span> <span class="nav-text">挂起状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建状态和终止状态"><span class="nav-number">1.5.</span> <span class="nav-text">创建状态和终止状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程控制块"><span class="nav-number">1.6.</span> <span class="nav-text">进程控制块</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程控制"><span class="nav-number">2.</span> <span class="nav-text">进程控制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#进程的创建"><span class="nav-number">2.1.</span> <span class="nav-text">进程的创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程的终止"><span class="nav-number">2.2.</span> <span class="nav-text">进程的终止</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程的阻塞与唤醒"><span class="nav-number">2.3.</span> <span class="nav-text">进程的阻塞与唤醒</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程的挂起与激活"><span class="nav-number">2.4.</span> <span class="nav-text">进程的挂起与激活</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程同步"><span class="nav-number">3.</span> <span class="nav-text">进程同步</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#进程同步的概念"><span class="nav-number">3.1.</span> <span class="nav-text">进程同步的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信号量机制"><span class="nav-number">3.2.</span> <span class="nav-text">信号量机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#管程机制"><span class="nav-number">3.3.</span> <span class="nav-text">管程机制</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程通信"><span class="nav-number">4.</span> <span class="nav-text">进程通信</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#进程通信的类型"><span class="nav-number">4.1.</span> <span class="nav-text">进程通信的类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#消息缓冲队列机制"><span class="nav-number">4.2.</span> <span class="nav-text">消息缓冲队列机制</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程"><span class="nav-number">5.</span> <span class="nav-text">线程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#进程与线程的比较"><span class="nav-number">5.1.</span> <span class="nav-text">进程与线程的比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程间的同步和通信"><span class="nav-number">5.2.</span> <span class="nav-text">线程间的同步和通信</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程的的实现"><span class="nav-number">5.3.</span> <span class="nav-text">线程的的实现</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LichtMiao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+  Powered by <a>Hexo</a>
+</div>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+  <!-- 背景动画 -->
+  
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>

@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en.yml">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Learning, Life" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="LichtMiao's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="九点做完了京东的Java开发工程师的笔试题。30道选择，两道编程。选择题里有一半是看代码选结果，问的是初始化方面的知识。线程优先级对输出结果的影响。Linux chmod命令，Shell表达式echo &#96;expr 3&#x2F;4&#96;结果为3&#x2F;4。 Java类的初始化顺序参见Java虚拟机（四）——JVM类加载机制中初始化阶段的内容。静态变量和静态初始化块是依照他们在类中的定义顺序进行初始化的。同样，变量和初">
+<meta property="og:type" content="article">
+<meta property="og:title" content="京东Java开发">
+<meta property="og:url" content="https://lichtmiao.github.io/2018/09/09/Life/Test%20and%20Interview/%E4%BA%AC%E4%B8%9CJava%E5%BC%80%E5%8F%91/index.html">
+<meta property="og:site_name" content="LichtMiao&#39;s Blog">
+<meta property="og:description" content="九点做完了京东的Java开发工程师的笔试题。30道选择，两道编程。选择题里有一半是看代码选结果，问的是初始化方面的知识。线程优先级对输出结果的影响。Linux chmod命令，Shell表达式echo &#96;expr 3&#x2F;4&#96;结果为3&#x2F;4。 Java类的初始化顺序参见Java虚拟机（四）——JVM类加载机制中初始化阶段的内容。静态变量和静态初始化块是依照他们在类中的定义顺序进行初始化的。同样，变量和初">
+<meta property="og:image" content="http://ovfkr5e4k.bkt.clouddn.com/%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B.png">
+<meta property="article:published_time" content="2018-09-09T14:10:30.000Z">
+<meta property="article:modified_time" content="2019-01-21T03:33:46.000Z">
+<meta property="article:author" content="LichtMiao">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://ovfkr5e4k.bkt.clouddn.com/%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.2',
+    sidebar: {"position":"right","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://lichtmiao.github.io/2018/09/09/Life/Test and Interview/京东Java开发/"/>
+
+
+
+
+
+<!-- 网页加载条 -->
+<script src="https://neveryu.github.io/js/src/pace.min.js"></script>
+  <title>京东Java开发 | LichtMiao's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en.yml">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LichtMiao's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lichtmiao.github.io/2018/09/09/Life/Test%20and%20Interview/%E4%BA%AC%E4%B8%9CJava%E5%BC%80%E5%8F%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LichtMiao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LichtMiao's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">京东Java开发</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-09T22:10:30+08:00">
+                2018-09-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Life/" itemprop="url" rel="index">
+                    <span itemprop="name">Life</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Life/Test-and-Interview/" itemprop="url" rel="index">
+                    <span itemprop="name">Test and Interview</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>九点做完了京东的Java开发工程师的笔试题。30道选择，两道编程。<br>选择题里有一半是看代码选结果，问的是初始化方面的知识。线程优先级对输出结果的影响。Linux chmod命令，Shell表达式echo `expr 3/4`结果为3/4。</p>
+<h1 id="Java类的初始化顺序"><a href="#Java类的初始化顺序" class="headerlink" title="Java类的初始化顺序"></a>Java类的初始化顺序</h1><p>参见<a href="https://lichtmiao.github.io/2018/09/10/Tech/Java/Java%20VM/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%88%E5%9B%9B%EF%BC%89%E2%80%94%E2%80%94JVM%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/">Java虚拟机（四）——JVM类加载机制</a>中初始化阶段的内容。<span style = "background-color:yellow">静态变量和静态初始化块是依照他们在类中的定义顺序进行初始化的</span>。同样，变量和初始化块也遵循这个规律。遇到new进行初始化（在此之前的加载、验证、准备阶段自然也要完成）。<br>1）没有继承<br>（静态变量、静态初始化块）-&gt;(变量、变量初始化块)-&gt;构造方法<br>2）有继承的情况<br>（父类静态变量、父类静态初始化块）-&gt;（子类静态变量、子类静态变量初始化块）-&gt;（父类变量初始化、父类变量初始化块）-&gt;父类构造方法-&gt;（子类变量初始化、子类变量初始化块）-&gt;子类构造方法</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution2</span> &#123;</span>	</span><br><span class="line">	<span class="comment">// 静态变量</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">String</span> staticField1 = <span class="string">"静态变量前"</span>;</span><br><span class="line">	<span class="comment">// 静态初始化块</span></span><br><span class="line">	<span class="keyword">static</span> &#123;</span><br><span class="line">		System.out.<span class="built_in">println</span>(<span class="string">"静态初始化块"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 静态变量</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">String</span> staticField2 = <span class="string">"静态变量后"</span>;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">String</span> staticField3 = <span class="string">"静态变量后2"</span>;</span><br><span class="line">	<span class="comment">//构造器</span></span><br><span class="line">	Solution2() &#123;</span><br><span class="line">		System.out.<span class="built_in">println</span>(<span class="string">"构造器初始化"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">String</span>[] args)</span> </span>&#123;</span><br><span class="line">		System.out.<span class="built_in">println</span>(staticField1); <span class="comment">//this调用，默认类名</span></span><br><span class="line">		<span class="comment">//Solution2 so = new Solution2(); //如果实例化，一定是先初始化静态代码块</span></span><br><span class="line">		System.out.<span class="built_in">println</span>(Solution2.staticField2); <span class="comment">//类名显式调用</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">静态初始化块</span><br><span class="line">静态变量前</span><br><span class="line">静态变量后</span><br></pre></td></tr></table></figure>
+<p>可见，就算没有进行实例化，由于调用了静态变量，也初始化了类。静态块与静态成员的初始化工作与实例化过程无关，实例化必须先执行静态块和静态成员，但并不代表实例化一定会执行静态块和静态成员。只有当实例化的对应的类加载入虚拟机的时候，才会进行这种操作。有些时候执行静态块或者初始化静态成员不一定就是实例化该类对象才会进行的，例如调研该类的某静态成员或者静态方法，又例如该类的子类被实例化或者调用了静态成员或静态方法等。<br>静态变量和静态初始化块的初始化时根据它们的先后顺序进行的。上例中<strong>加载了main()方法对应的类</strong>，所以按顺序加载了静态变量、静态初始化块。由于静态初始化块中有输出，所以才先输出了静态初始化块的内容。为了验证这点，给出了下面的例子：</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestOrder</span> &#123;</span> </span><br><span class="line">	<span class="comment">// 静态变量 </span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> TestA a = <span class="keyword">new</span> TestA(); </span><br><span class="line">	<span class="comment">// 静态初始化块 </span></span><br><span class="line">	<span class="keyword">static</span> &#123; </span><br><span class="line">		System.out.<span class="built_in">println</span>(<span class="string">"静态初始化块"</span>); </span><br><span class="line">	&#125; </span><br><span class="line">	<span class="comment">// 静态变量 </span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> TestB b = <span class="keyword">new</span> TestB(); 	</span><br><span class="line">	<span class="comment">//Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">String</span>[] args)</span> </span>&#123; </span><br><span class="line">		<span class="keyword">new</span> TestOrder(); </span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestA</span> &#123;</span> </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">TestA</span><span class="params">()</span> </span>&#123; </span><br><span class="line">		System.out.<span class="built_in">println</span>(<span class="string">"Test--A"</span>); </span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestB</span> &#123;</span> </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">TestB</span><span class="params">()</span> </span>&#123; </span><br><span class="line">		System.out.<span class="built_in">println</span>(<span class="string">"Test--B"</span>); </span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Test<span class="comment">--A </span></span><br><span class="line">静态初始化块 </span><br><span class="line">Test<span class="comment">--B</span></span><br></pre></td></tr></table></figure>
+<p>静态语句块只能访问到定义在静态语句块之前的变量，定义在它之后的变量，在前面的静态语句块中可以赋值但不能访问。</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestOrder</span> &#123;</span> </span><br><span class="line">	<span class="comment">// 静态变量 </span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> TestA a = <span class="keyword">new</span> TestA(); </span><br><span class="line">	<span class="comment">// 静态初始化块 </span></span><br><span class="line">	<span class="keyword">static</span> &#123; </span><br><span class="line">		<span class="comment">//c = 0; </span></span><br><span class="line">		<span class="comment">//System.out.println(c); //可以赋值但不能访问，报错Unresolved compilation problem</span></span><br><span class="line">		System.out.<span class="built_in">println</span>(<span class="string">"静态初始化块"</span>); </span><br><span class="line">	&#125; </span><br><span class="line">	<span class="comment">// 静态变量 </span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> TestB b = <span class="keyword">new</span> TestB();</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> c = <span class="number">1</span>;</span><br><span class="line">	<span class="comment">//Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">String</span>[] args)</span> </span>&#123; </span><br><span class="line">		<span class="keyword">new</span> TestOrder(); </span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>去掉静态初始化块中的注释会报错：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">Exception</span> <span class="selector-tag">in</span> <span class="selector-tag">thread</span> "<span class="selector-tag">main</span>" <span class="selector-tag">java</span><span class="selector-class">.lang</span><span class="selector-class">.Error</span>: <span class="selector-tag">Unresolved</span> <span class="selector-tag">compilation</span> <span class="selector-tag">problem</span>: </span><br><span class="line">	<span class="selector-tag">at</span> <span class="selector-tag">TestOrder</span><span class="selector-class">.main</span>(<span class="selector-tag">TestOrder</span><span class="selector-class">.java</span><span class="selector-pseudo">:16)</span></span><br></pre></td></tr></table></figure>
+<p>下面加上实例，比较构造器的位置对输出顺序有没有影响：</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution2</span> &#123;</span></span><br><span class="line">	<span class="comment">// 静态变量</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">String</span> staticField1 = <span class="string">"静态变量前"</span>;	</span><br><span class="line">	<span class="comment">// 静态初始化块</span></span><br><span class="line">	<span class="keyword">static</span> &#123;</span><br><span class="line">		System.out.<span class="built_in">println</span>(<span class="string">"静态初始化块"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 静态变量</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">String</span> staticField2 = <span class="string">"静态变量后"</span>;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">String</span> staticField3 = <span class="string">"静态变量后2"</span>;</span><br><span class="line">	<span class="comment">//构造器</span></span><br><span class="line">	Solution2() &#123;</span><br><span class="line">		System.out.<span class="built_in">println</span>(<span class="string">"构造器初始化"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">String</span>[] args)</span> </span>&#123;</span><br><span class="line">		System.out.<span class="built_in">println</span>(staticField1);</span><br><span class="line">		Solution2 so = <span class="keyword">new</span> Solution2(); <span class="comment">//如果实例化，一定是先初始化静态代码块</span></span><br><span class="line">		System.out.<span class="built_in">println</span>(Solution2.staticField2);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution2</span> &#123;</span></span><br><span class="line">	<span class="comment">//构造器</span></span><br><span class="line">	Solution2() &#123;</span><br><span class="line">		System.out.<span class="built_in">println</span>(<span class="string">"构造器初始化"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 静态变量</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">String</span> staticField1 = <span class="string">"静态变量前"</span>;	</span><br><span class="line">	<span class="comment">// 静态初始化块</span></span><br><span class="line">	<span class="keyword">static</span> &#123;</span><br><span class="line">		System.out.<span class="built_in">println</span>(<span class="string">"静态初始化块"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 静态变量</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">String</span> staticField2 = <span class="string">"静态变量后"</span>;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">String</span> staticField3 = <span class="string">"静态变量后2"</span>;	</span><br><span class="line">	<span class="comment">// Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">String</span>[] args)</span> </span>&#123;</span><br><span class="line">		System.out.<span class="built_in">println</span>(staticField1);</span><br><span class="line">		Solution2 so = <span class="keyword">new</span> Solution2(); <span class="comment">//如果实例化，一定是先初始化静态代码块</span></span><br><span class="line">		System.out.<span class="built_in">println</span>(Solution2.staticField2);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出都是相同的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">静态初始化块</span><br><span class="line">静态变量前</span><br><span class="line">构造器初始化</span><br><span class="line">静态变量后</span><br></pre></td></tr></table></figure>
+<p>可见，构造器在任何地方，都不会改变它的输出顺序。注意遇到new才初始化了构造器。</p>
+<h1 id="B-S（brower-server）模式的优缺点"><a href="#B-S（brower-server）模式的优缺点" class="headerlink" title="B/S（brower/server）模式的优缺点"></a>B/S（brower/server）模式的优缺点</h1><p>(1) 优点:</p>
+<ul>
+<li>具有分布性特点，可以随时随地进行查询、浏览等业务处理。 </li>
+<li>业务扩展简单方便，通过增加网页即可增加服务器功能。 </li>
+<li>维护简单方便，只需要改变网页，即可实现所有用户的同步更新。 </li>
+<li>开发简单，共享性强</li>
+</ul>
+<p>(2) B/S 模式的缺点</p>
+<ul>
+<li>个性化特点明显降低，无法实现具有个性化的功能要求。 </li>
+<li>操作是以鼠标为最基本的操作方式，无法满足快速操作的要求。 </li>
+<li>页面动态刷新，响应速度明显降低。 </li>
+<li>无法实现分页显示，给数据库访问造成较大的压力。 </li>
+<li>功能弱化，难以实现传统模式下的特殊功能要求。</li>
+</ul>
+<p>2)C/S （client/server）模式的优点和缺点<br>(1) 优点 </p>
+<ul>
+<li>由于客户端实现与服务器的直接相连，没有中间环节，因此响应速度快。 </li>
+<li>操作界面漂亮、形式多样，可以充分满足客户自身的个性化要求。 </li>
+<li>结构的管理信息系统具有较强的事务处理能力，能实现复杂的业务流程。 </li>
+</ul>
+<p>(2) 缺点 </p>
+<ul>
+<li>需要专门的客户端安装程序，分布功能弱，针对点多面广且不具备网络条件的用户群体，不能够实现快速部署安装和配置。 </li>
+<li>兼容性差，对于不同的开发工具，具有较大的局限性。若采用不同工具，需要重新改写程序。 </li>
+<li>开发成本较高，需要具有一定专业水准的技术人员才能完成。</li>
+</ul>
+<h1 id="值类型和引用类型的区别"><a href="#值类型和引用类型的区别" class="headerlink" title="值类型和引用类型的区别"></a>值类型和引用类型的区别</h1><p>在Java中类型可分为两大类：值类型与引用类型。值类型就是基本数据类型（如int ,double 等），而引用类型，是指除了基本的变量类型之外的所有类型（如通过 class 定义的类型）。所有的类型在内存中都会分配一定的存储空间(形参在使用的时候也会分配存储空间,方法调用完成之后,这块存储空间自动消失), 基本的变量类型只有一块存储空间(分配在stack中), 而引用类型有两块存储空间(一块在stack中,一块在heap中)，在函数调用时Java是传值还是传引用，下面用图形与代码来解释：<br><img src="http://ovfkr5e4k.bkt.clouddn.com/%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B.png" alt="值类型和引用类型"></p>
+<h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><p>适配器（Adapter）模式：可以让接口不兼容而不能工作的那些类可以一起工作。<br>备忘录（Mementto）模式：在不破坏封装性的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态。这样以后就可将该对象恢复到原先保存的状态。</p>
+<h1 id="DML、DDL和DCL"><a href="#DML、DDL和DCL" class="headerlink" title="DML、DDL和DCL"></a>DML、DDL和DCL</h1><p>1）DML（data manipulation language，数据操纵语言）<br>就是我们最经常用到的 SELECT、UPDATE、INSERT、DELETE 主要用来对数据库的数据进行一些操作。<br>2）DDL（data definition language，数据库定义语言）<br>其实就是我们在创建表的时候用到的一些sql，比如CREATE、ALTER、DROP等。DDL主要是用在定义或改变表的结构、数据类型、表之间的链接和约束等初始化工作上。<br>3）DCL（data control language，数据库控制语言）<br>是用来设置或更改数据库用户或角色权限的语句，包括grant、deny、revoke等语句。这个比较少用到。</p>
+<h1 id="drop、truncate和delete的区别"><a href="#drop、truncate和delete的区别" class="headerlink" title="drop、truncate和delete的区别"></a>drop、truncate和delete的区别</h1><p>1.delete</p>
+<p>1) delete是DML，执行delete操作时，每次从表中删除一行，并且同时将该行的的删除操作记录在redo和undo表空间中以便进行回滚（rollback）和重做操作，但要注意表空间要足够大，需要手动提交（commit）操作才能生效，可以通过rollback撤消操作。<br>2) delete可根据条件删除表中满足条件的数据，如果不指定where子句，那么删除表中所有记录。<br>3) delete语句不影响表所占用的extent，高水线(high watermark)保持原位置不变。<br>2.truncate</p>
+<p>1) truncate是DDL，会隐式提交，所以，不能回滚，不会触发触发器。<br>2) truncate会删除表中所有记录，并且将重新设置高水线和所有的索引，缺省情况下将空间释放到minextents个extent，除非使用reuse storage，。不会记录日志，所以执行速度很快，但不能通过rollback撤消操作（如果一不小心把一个表truncate掉，也是可以恢复的，只是不能通过rollback来恢复）。<br>3) 对于外键（foreignkey）约束引用的表，也会照删不误，因此不能使用 truncate table，而应使用不带 where 子句的 delete 语句。<br>4) truncatetable不能用于参与了索引视图的表。<br>3.drop：</p>
+<p>1) drop是DDL，会隐式提交，所以，不能回滚，不会触发触发器。<br>2) drop语句删除表结构及所有数据，并将表所占用的空间全部释放。<br>3) drop语句将删除表的结构所依赖的约束，触发器，索引，依赖于该表的存储过程/函数将保留,但是变为invalid状态。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><span style="background-color:yellow">对于表来说，不再需要该表用drop；需要保留表，但要删除所有记录用truncate；删除部分记录用delete</span>。<br>1）在速度上，一般来说，drop&gt; truncate &gt; delete<br>2）Truncate删除所有行，如果遇到任何一行违反违约（外键约束），照删不误，但delete则会返回错误。<br>3）DELETE语句执行删除的过程是每次从表中删除一行，并且同时将该行的删除操作作为事务记录在日志中保存以便进行进行回滚操作。TRUNCATE TABLE 则一次性地从表中删除所有的数据并不把单独的删除操作记录记入日志保存，删除行是不能恢复的。并且在删除的过程中不会激活与表有关的删除触发器。执行速度快。</p>
+<h1 id="List集合扩容"><a href="#List集合扩容" class="headerlink" title="List集合扩容"></a>List集合扩容</h1><p>List集合的底层实现是数组结构，而数组的大小是不可改变的，因此当其容器内存不足时，需要进行扩容，扩容的方法就是重新分配一个新数组，然后复制元素到新数组中，再将元素添加到数组末位。<br>以ArrayList集合为例，通过分析ArrayList的源码，发现构造器有三个，分别是：无参、一个int型参数、一个集合泛型。默认数组大小的常量为10（<font color = "red">注意是默认，如果指定数组大小的创建，则没有扩充</font>）。其中的grow()方法判断加一个元素之后，数组大小是否超出当前数组的大小，若超出则扩容：int newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1); 表示新数组的长度=原数组的长度+原数组长度的一半。</p>
+<h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><p>1.List 元素是有序的、可重复<br>1）ArrayList 默认初始容量为10<br>线程不安全，查询速度快<br>底层数据结构是数组结构<br>加载因子为1：即当元素个数超过容量长度时，进行扩容<br>扩容增量：原容量的 0.5倍<br>如 ArrayList的容量为10，一次扩容后是容量为15<br>2） Vector：线程安全，但速度慢<br>底层数据结构是数组结构<br>加载因子为1：即当元素个数超过容量长度时，进行扩容<br>扩容增量：原容量的1倍<br>如 Vector的容量为10，一次扩容后是容量为20<br>2.Set(集) 元素无序的、不可重复。<br>1）HashSet：线程不安全，存取速度快<br>底层实现是一个HashMap（保存数据），实现Set接口<br>默认初始容量为16（为何是16，见下方对HashMap的描述）<br>加载因子为0.75：即当元素个数超过容量长度的0.75倍时，进行扩容<br>扩容增量：原容量的 1 倍<br>如 HashSet的容量为16，一次扩容后是容量为32<br>其实HashSet 的创建其实就是一个HashMap，Map是一个双列集合<br>2）HashMap：默认初始容量为16<br>为何是16：16是2^4，可以提高查询效率<br>加载因子为0.75：即当元素个数超过容量长度的0.75倍时，进行扩容<br>扩容增量：原容量的 1 倍<br>如 HashSet的容量为16，一次扩容后是容量为32 </p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">例：</span><br><span class="line">ArrayList <span class="built_in">list</span> = <span class="keyword">new</span> <span class="constructor">ArrayList(20)</span>;中的<span class="built_in">list</span>扩充几次?</span><br><span class="line">答：<span class="number">0</span>次。</span><br><span class="line">解析：    </span><br><span class="line">ArrayList <span class="built_in">list</span>=<span class="keyword">new</span> <span class="constructor">ArrayList()</span>; <span class="comment">//这种是默认创建大小为10的数组，每次扩容大小为1.5倍。</span></span><br><span class="line">ArrayList <span class="built_in">list</span>=<span class="keyword">new</span> <span class="constructor">ArrayList(20)</span>; <span class="comment">//这种是指定数组大小的创建，没有扩充。</span></span><br></pre></td></tr></table></figure>
+
+<p>GPRS是通用分组无线业务（General Packet Radio Service）的英文简称，是一种新的分组数据承载业务。GPRS与现有的GSM语音系统最根本的区别是，GSM是一种电路交换系统，而GPRS是一种分组交换系统。因此，GPRS特别适用于间断的、突发性的或频繁的、少量的数据传输，也适用于偶尔的大数据量传输。这一特点正适合大多数移动互联的应用</p>
+<h1 id="编程题"><a href="#编程题" class="headerlink" title="编程题"></a>编程题</h1><p>第一题</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">package Jdong;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 输入N个顶点，M条边的图，输入两顶点定义的边，</span></span><br><span class="line"><span class="comment"> * 输出是否可以构成多部图</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="symbol">Main</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> static String isCover(<span class="built_in">int</span>[][] edge, <span class="built_in">int</span> N) &#123;</span><br><span class="line">		String s = <span class="string">"Yes"</span>;</span><br><span class="line">		<span class="built_in">int</span>[] sum = new <span class="built_in">int</span>[N + <span class="number">1</span>];</span><br><span class="line">		<span class="comment">//边的下标都从1开始</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">1</span>; i &lt; N + <span class="number">1</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="built_in">int</span> j = <span class="number">1</span>; j &lt; N + <span class="number">1</span>; j++) &#123;</span><br><span class="line">				sum[i] += edge[i][j]; <span class="comment">//将每行的边加起来，表示为出度或入度</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">1</span>; i &lt; N + <span class="number">1</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="built_in">int</span> j = <span class="number">1</span>; j &lt; N + <span class="number">1</span>; j++) &#123;</span><br><span class="line">				<span class="keyword">if</span> (edge[i][j] == <span class="number">0</span>) &#123; <span class="comment">//如果顶点i、j之间没有边</span></span><br><span class="line">					<span class="keyword">if</span> (sum[j] != sum[i]) <span class="comment">//如果i的出度与j的出度不等，则不能构成</span></span><br><span class="line">						s = <span class="string">"No"</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> s;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> static <span class="built_in">void</span> main(String[] args) &#123;</span><br><span class="line">		Scanner <span class="keyword">in</span> = new Scanner(System.<span class="keyword">in</span>);</span><br><span class="line">		<span class="built_in">int</span> T = <span class="keyword">in</span>.nextInt(); <span class="comment">//需要进行判断的图的个数</span></span><br><span class="line">		<span class="keyword">while</span> (T &gt; <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="built_in">int</span> N = <span class="keyword">in</span>.nextInt();</span><br><span class="line">			<span class="built_in">int</span> M = <span class="keyword">in</span>.nextInt();</span><br><span class="line">			<span class="built_in">int</span> X, Y;</span><br><span class="line">			<span class="comment">////构建邻接矩阵edge，由于边的输入是从1开始的，因此邻接矩阵使用的下标是1~N</span></span><br><span class="line">			<span class="built_in">int</span>[][] edge = new <span class="built_in">int</span>[N + <span class="number">1</span>][N + <span class="number">1</span>];</span><br><span class="line">			<span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; M; i++) &#123;</span><br><span class="line">				X = <span class="keyword">in</span>.nextInt();</span><br><span class="line">				Y = <span class="keyword">in</span>.nextInt();</span><br><span class="line">				edge[X][Y] = <span class="number">1</span>; <span class="comment">//无向图，对称的</span></span><br><span class="line">				edge[Y][X] = <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			String s = isCover(edge, N);</span><br><span class="line">			System.<span class="keyword">out</span>.println(s);</span><br><span class="line">			T--;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第二题</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> Jdong;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 京东Java研发编程第二题</span></span><br><span class="line"><span class="comment"> * 判断有多少个合格产品：如果某个产品的三个指标分别为ai、bi、ci，</span></span><br><span class="line"><span class="comment"> * 若存在另一个产品使得aj&gt;ai、bj&gt;bi、cj&gt;ci则说明这个产品不合格，</span></span><br><span class="line"><span class="comment"> * 输入产品个数n，和产品的三个指标；输出不合格产品数。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">import</span> java.io.FileNotFoundException;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> Main2 &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) <span class="keyword">throws</span> FileNotFoundException &#123;</span><br><span class="line">        Scanner in = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">int</span> n = in.nextInt(); <span class="comment">//行数</span></span><br><span class="line">        <span class="keyword">int</span> m = in.nextInt(); <span class="comment">//列数</span></span><br><span class="line">        <span class="keyword">int</span> <span class="keyword">count</span> = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//定义每一列</span></span><br><span class="line">        <span class="keyword">int</span>[] a = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">        <span class="keyword">int</span>[] b = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">        <span class="keyword">int</span>[] c = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m; j++) &#123; <span class="comment">//对每行赋值</span></span><br><span class="line">            a[j] = in.nextInt();</span><br><span class="line">            b[j] = in.nextInt();</span><br><span class="line">            c[j] = in.nextInt();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 一层一层地开始判断</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> ai = a[i];</span><br><span class="line">            <span class="keyword">int</span> bi = b[i];</span><br><span class="line">            <span class="keyword">int</span> ci = c[i];</span><br><span class="line">          <span class="comment">//将第j行与第i行进行比较，这里i和j都是从0开始的，会有自己跟自己比较的情况，但对count的值没有影响。</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123; </span><br><span class="line">                <span class="keyword">int</span> aj = a[j];</span><br><span class="line">                <span class="keyword">int</span> bj = b[j];</span><br><span class="line">                <span class="keyword">int</span> cj = c[j];</span><br><span class="line">                <span class="keyword">if</span>(aj&gt;ai &amp;&amp; bj&gt;bi &amp;&amp; cj&gt;ci)&#123; </span><br><span class="line">                    <span class="keyword">count</span>++;</span><br><span class="line">                    <span class="keyword">break</span>; <span class="comment">//只要第i行不合格，就不必再比较下去了，则跳出内层for循环</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.<span class="keyword">println</span>(<span class="keyword">count</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>《深入理解Java虚拟机》<br><a href="http://www.cnblogs.com/luckygxf/p/4796955.html" target="_blank" rel="noopener">Java类的初始化顺序 （静态变量、静态初始化块、变量、初始…</a><br><a href="https://blog.csdn.net/pdcxs007/article/details/18628177" target="_blank" rel="noopener">Java静态成员初始化问题</a><br><a href="http://zanchenandme.blog.163.com/blog/static/1346881062009113022950767/" target="_blank" rel="noopener">什么是B/S模式？C/S模式？及它们的优缺点</a><br><a href="https://www.cnblogs.com/SilentCode/p/4858790.html" target="_blank" rel="noopener">深入理解Java引用类型</a><br><a href="https://blog.csdn.net/wujiaxian/article/details/40040121" target="_blank" rel="noopener">Java设计模式——接口型模式：适配器模式</a><br><a href="https://blog.csdn.net/timliang18601860/article/details/6746239" target="_blank" rel="noopener">java 设计模式 行为模式 -Memento(备忘录模式)</a><br><a href="https://blog.csdn.net/ws0513/article/details/49980547" target="_blank" rel="noopener">drop、truncate和delete的区别</a><br><a href="https://www.cnblogs.com/dato/p/7049343.html" target="_blank" rel="noopener">浅谈DML、DDL、DCL的区别</a><br><a href="https://blog.csdn.net/github_39500681/article/details/78061724" target="_blank" rel="noopener">集合扩容问题（ArrList为例，常用集合扩容机制）–JAVA 基础</a><br><a href="https://blog.csdn.net/caiwanxia1/article/details/52949802" target="_blank" rel="noopener">常用集合的默认初始容量和扩容的原因</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/08/Tech/Computer%20Network/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E4%B8%83%EF%BC%89%E2%80%94%E2%80%94%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="next" title="计算机网络（七）——计算机网络安全">
+                <i class="fa fa-chevron-left"></i> 计算机网络（七）——计算机网络安全
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/10/Tech/Java/Java%20VM/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%88%E5%9B%9B%EF%BC%89%E2%80%94%E2%80%94JVM%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/" rel="prev" title="Java虚拟机（四）——JVM类加载机制">
+                Java虚拟机（四）——JVM类加载机制 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="LichtMiao" />
+          <p class="site-author-name" itemprop="name">LichtMiao</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">186</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          <!-- 
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+           -->
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/LichtMiao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Miaomi4" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                    
+                      Twitter
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java类的初始化顺序"><span class="nav-number">1.</span> <span class="nav-text">Java类的初始化顺序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#B-S（brower-server）模式的优缺点"><span class="nav-number">2.</span> <span class="nav-text">B&#x2F;S（brower&#x2F;server）模式的优缺点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#值类型和引用类型的区别"><span class="nav-number">3.</span> <span class="nav-text">值类型和引用类型的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设计模式"><span class="nav-number">4.</span> <span class="nav-text">设计模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DML、DDL和DCL"><span class="nav-number">5.</span> <span class="nav-text">DML、DDL和DCL</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#drop、truncate和delete的区别"><span class="nav-number">6.</span> <span class="nav-text">drop、truncate和delete的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">6.1.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#List集合扩容"><span class="nav-number">7.</span> <span class="nav-text">List集合扩容</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#总结-1"><span class="nav-number">7.1.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编程题"><span class="nav-number">8.</span> <span class="nav-text">编程题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">9.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LichtMiao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+  Powered by <a>Hexo</a>
+</div>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+  <!-- 背景动画 -->
+  
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>

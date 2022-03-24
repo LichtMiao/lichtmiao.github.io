@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en.yml">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Learning, Life" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="LichtMiao's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="注意try块的使用：由于finally语句较臃肿，Java7允许try关键字后面跟一对圆括号，括号中声明或初始化那些必须在程序结束时显式关闭的资源。这些资源必须实现AutoCloseable接口或其子接口Closeable接口。AutoCloseable接口里的close()方法声明抛出了Exception，可以抛出任何异常；而其子接口Closeable接口里的close()方法声明抛出了IOEx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java基础（十一）——输入输出">
+<meta property="og:url" content="https://lichtmiao.github.io/2018/08/30/Tech/Java/Java%20Basis/Java%E5%9F%BA%E7%A1%80%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/index.html">
+<meta property="og:site_name" content="LichtMiao&#39;s Blog">
+<meta property="og:description" content="注意try块的使用：由于finally语句较臃肿，Java7允许try关键字后面跟一对圆括号，括号中声明或初始化那些必须在程序结束时显式关闭的资源。这些资源必须实现AutoCloseable接口或其子接口Closeable接口。AutoCloseable接口里的close()方法声明抛出了Exception，可以抛出任何异常；而其子接口Closeable接口里的close()方法声明抛出了IOEx">
+<meta property="og:image" content="http://ovfkr5e4k.bkt.clouddn.com/%E8%8A%82%E7%82%B9%E6%B5%81.jpg">
+<meta property="og:image" content="http://ovfkr5e4k.bkt.clouddn.com/%E5%A4%84%E7%90%86%E6%B5%81.jpg">
+<meta property="og:image" content="http://ovfkr5e4k.bkt.clouddn.com/Buffer%E8%AF%BB%E5%85%A5%E6%95%B0%E6%8D%AE%E5%90%8E%E7%9A%84%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
+<meta property="article:published_time" content="2018-08-30T02:50:01.000Z">
+<meta property="article:modified_time" content="2019-01-07T06:25:34.000Z">
+<meta property="article:author" content="LichtMiao">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://ovfkr5e4k.bkt.clouddn.com/%E8%8A%82%E7%82%B9%E6%B5%81.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.2',
+    sidebar: {"position":"right","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://lichtmiao.github.io/2018/08/30/Tech/Java/Java Basis/Java基础（十一）——输入输出/"/>
+
+
+
+
+
+<!-- 网页加载条 -->
+<script src="https://neveryu.github.io/js/src/pace.min.js"></script>
+  <title>Java基础（十一）——输入输出 | LichtMiao's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en.yml">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LichtMiao's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lichtmiao.github.io/2018/08/30/Tech/Java/Java%20Basis/Java%E5%9F%BA%E7%A1%80%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LichtMiao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LichtMiao's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java基础（十一）——输入输出</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-30T10:50:01+08:00">
+                2018-08-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/Java/Java-Basis/" itemprop="url" rel="index">
+                    <span itemprop="name">Java Basis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>注意try块的使用：由于finally语句较臃肿，Java7允许<font color="red">try关键字后面跟一对圆括号，括号中声明或初始化那些必须在程序结束时显式关闭的资源</font>。这些资源必须实现AutoCloseable接口或其子接口Closeable接口。<br>AutoCloseable接口里的close()方法声明抛出了Exception，可以抛出任何异常；而其子接口Closeable接口里的close()方法声明抛出了IOException，只能抛出IOException及其子类。<br>工厂类、工具类（factory class）</p>
+<p>Java的IO通过java.io包下的类和接口来支持，主要包括输入、输出两种IO流，每种输入、输出流又可分为字节流和字符流两大类。IO流使用了一种装饰器设计模式，它将IO流分成底层节点流和上层处理流。<br>java.nio及其子包下提供了一系列全新的API，也称NIO 2。<br>Java对象的序列化机制，可以报内存中Java对象转换成二进制字节流，这样就可以把Java对象存储到磁盘里，或在网络上传输Java对象。</p>
+<h1 id="File类"><a href="#File类" class="headerlink" title="File类"></a>File类</h1><h2 id="访问文件和目录"><a href="#访问文件和目录" class="headerlink" title="访问文件和目录"></a>访问文件和目录</h2><h2 id="文件过滤器"><a href="#文件过滤器" class="headerlink" title="文件过滤器"></a>文件过滤器</h2><p>File类的list()方法可以接收一个FilenameFile参数，可以只列出符合条件的文件。</p>
+<h1 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h1><p>java.io包中。<br>Java把不同的输入/输出源（如键盘、文件、网络连接等）抽象描述为流（stream）。<br>输入流主要由InputStream和Reader作为基类，输出流主要由OutputStream和Writer作为基类。<br>字节流（数据单位是字节（byte，8bit））主要由InputStream和OutputSteam作为基类，字符流（数据单位是字符（char，两个字节（16bit）））主要由Reader和Writer作为基类。<br>InputStream和Reader、OutputStream和Writer都是抽象类，无法直接创建实例。但它们分别有一个读取文件输入、输出流。以InputStream和Reader为例，用于读取文件的输入流是FileInputStream和FileReader，它们都是节点流，直接和指定文件关联。<br>从输入流中读取数据，抽象为使用一个竹筒到水管中取水。每个中文字符占两个字节。</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">FileInputStream fis = <span class="keyword">new</span> <span class="constructor">FileInputStream(“<span class="params">a</span>.<span class="params">java</span>”)</span>; <span class="comment">//创建字节输入流</span></span><br><span class="line">byte<span class="literal">[]</span> bbf = <span class="keyword">new</span> byte<span class="literal">[<span class="number">1024</span>]</span>; <span class="comment">//创建数组（竹筒），保存从输入流中读取的数据</span></span><br><span class="line"><span class="built_in">int</span> hasRead = <span class="number">0</span>; <span class="comment">//保存实际读取的字节数</span></span><br><span class="line"><span class="keyword">while</span>((hasRead = fis.read(bbf)) &gt; <span class="number">0</span>)&#123; <span class="comment">//读取文件的字节流，并保存在bbf数组中</span></span><br><span class="line">	<span class="keyword">new</span> <span class="constructor">String(<span class="params">bbf</span>, 0, <span class="params">hasRead</span>)</span>; <span class="comment">//将字节数组转换成String字符串，byte 1字节-&gt;char 2字节</span></span><br><span class="line">&#125;</span><br><span class="line">finally&#123;</span><br><span class="line">	fis.close<span class="literal">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中FileInputStream中的int read(byte[] b)方法：Reads up to b.length bytes of data from this input stream into an array of bytes. Return total number of bytes read into the buffer, or -1 if there is no more data because the end of the file has been reached<br><font color="red">与JDBC编程一样，程序里打开的IO资源不属于内存里的资源，垃圾回收机制无法回收它们，所以应当显式关闭打开的IO资源</font>。<br>Java7改写了所有的IO资源类，它们都实现了AutoCloseable接口，因此都可以通过自动关闭资源的try语句来关闭这些IO流。</p>
+<h1 id="输入输出流体系"><a href="#输入输出流体系" class="headerlink" title="输入输出流体系"></a>输入输出流体系</h1><p>上面介绍了4个基类访问文件的节点流的用法，使用起来繁琐，可借助处理流简化编程。<br>处理流的功能：<span style="background-color:yellow">使用处理流来包装节点流，</span>，隐藏底层设备上节点流的差异，并对外提供更方便的输入/输出方法，让我们只关注高级流的操作。<br>节点流：<br><img src="http://ovfkr5e4k.bkt.clouddn.com/%E8%8A%82%E7%82%B9%E6%B5%81.jpg" alt="节点流"><br>处理流：<br><img src="http://ovfkr5e4k.bkt.clouddn.com/%E5%A4%84%E7%90%86%E6%B5%81.jpg" alt="处理流"></p>
+<h2 id="处理流的用法"><a href="#处理流的用法" class="headerlink" title="处理流的用法"></a>处理流的用法</h2><p><font color="red">只需要在创建处理流时传入一个节点流作为构造参数</font>即可。<br>下面使用PrintStream处理流来包装OutputStream：</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PrintStreamTest</span>&#123;</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">String</span>[] args)</span></span>&#123;</span><br><span class="line">		<span class="keyword">try</span>(</span><br><span class="line">			<span class="comment">//创建文件字节输出流</span></span><br><span class="line">			FileOutputStream fos = <span class="keyword">new</span> FileOutputStream(“test.txt”);</span><br><span class="line">			PrintStream ps = <span class="keyword">new</span> PrintStream(fos))&#123;</span><br><span class="line">				ps.<span class="built_in">println</span>(“普通字符串”); <span class="comment">//使用PrintStream输出字符串</span></span><br><span class="line">				ps.<span class="built_in">println</span>(<span class="keyword">new</span> PrintStreamTest()); <span class="comment">//使用PrintStream输出对象</span></span><br><span class="line">		&#125; <span class="keyword">catch</span>(IOException ioe)&#123;</span><br><span class="line">			ioe.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>标准输出（Sytem.out）的类型就是PrintStream。<br>通常<font color="red">如果需要输出文本内容，都应该将输出流包装成PrintStream后进行输出</font>。</p>
+<h2 id="输入-输出流体系"><a href="#输入-输出流体系" class="headerlink" title="输入/输出流体系"></a>输入/输出流体系</h2><p>通常有一个规则：<font color="red">如果进行输入/输出的内容是二进制内容，应该考虑使用字节（byte）流；如果进行输入/输出的内容是文本内容，则应该考虑使用字符（char）流</font>。</p>
+<h2 id="转换流"><a href="#转换流" class="headerlink" title="转换流"></a>转换流</h2><p><font color="red">将字节流转换成字符流：InputStreamReader，OutputStreamWriter</font>。<br>System.in代表标准输入，即键盘输入，但这个标准输入流是InputStream类（字节流）的实例，使用不太方便，而且键盘输入的都是文本内容，所以可以<font color="red">使用InputStreamReader将其转换成字符输入流。将普通Reader包装成BufferedReader（处理流），利用readLiner()方法可以一次读取一行的内容</font>。</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> class KeyinTest&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args)&#123;</span><br><span class="line">		<span class="comment">//将System.in对象转换成Reader对象</span></span><br><span class="line">		<span class="keyword">try</span>(InputStreamReader reader = <span class="keyword">new</span> InputStreamReader(System.in);</span><br><span class="line">		<span class="comment">//将普通Reader包装成BufferedReader</span></span><br><span class="line">		<span class="keyword">BufferedReader</span> br = <span class="keyword">new</span> <span class="keyword">BufferedReader</span>(reader))&#123;</span><br><span class="line">			<span class="keyword">String</span> <span class="built_in">line</span> = <span class="keyword">null</span>;</span><br><span class="line">			<span class="comment">//采用循环方式逐行读取</span></span><br><span class="line">			<span class="keyword">while</span>((<span class="built_in">line</span> = br.readLine()) != <span class="keyword">null</span>)&#123;</span><br><span class="line">				<span class="keyword">if</span>(<span class="built_in">line</span>.equals(“<span class="built_in">exit</span>”);</span><br><span class="line">				System.exi(<span class="number">1</span>); <span class="comment">//非正常退出程序</span></span><br><span class="line">				System.out.<span class="built_in">println</span>(“输入内容为：” + <span class="built_in">line</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span>(IOException ioe)&#123;</span><br><span class="line">			ioe.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>BufferedReader具有缓冲功能，它可以逐行读取文本。以换行符为标识，如果没有读到换行符，则程序阻塞，等到读到换行符为止。<br>注意：<br>System.exit(int status)这个方法是用来结束当前正在运行中的java虚拟机。<br>System.exit(0)是正常退出程序，而System.exit(1)或者说非0表示非正常退出程序。</p>
+<h2 id="推回输入流"><a href="#推回输入流" class="headerlink" title="推回输入流"></a>推回输入流</h2><p>PushbackInputStream，PushbackReader。<br>这两个推回输入流都带有一个推回缓冲区，当程序调用两个推回输入流的unread()方法时，系统会把指定数组的内容退回到该缓冲区里。</p>
+<h2 id="重定向输入-输出流"><a href="#重定向输入-输出流" class="headerlink" title="重定向输入/输出流"></a>重定向输入/输出流</h2><p>Java的标准输入/输出通过System.in和System.out来代表，在默认情况下分别代表键盘和显示器。<br>//创建PrintStream（打印）输出流，将节点流包装成处理流<br>PrintStream ps = new PrintStream(new FileOutputStream(“out.tex”));<br>//将标准输出重定向到ps输出流<br>System.setOut(ps);</p>
+<h1 id="JVM读写其它进程的数据"><a href="#JVM读写其它进程的数据" class="headerlink" title="JVM读写其它进程的数据"></a>JVM读写其它进程的数据</h1><p>使用Runtime对象的exec()方法课可以运行平台上的其它程序，该方法产生一个Process对象，代表由该java程序启动的子进程。<br>让程序和其进程进行通信：</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//运行javac命令，返回运行该命令的子进程</span></span><br><span class="line">Process p = Runtime.getRuntime().exec(“javac”);</span><br><span class="line"><span class="comment">//以p进程的错误流创建BufferReader对象</span></span><br><span class="line"><span class="keyword">try</span>(</span><br><span class="line">	<span class="keyword">BufferedReader</span> br = <span class="keyword">new</span> <span class="keyword">BufferedReader</span>(<span class="keyword">new</span> </span><br><span class="line">		InputStreamReader(p.getErrorStream())))&#123;</span><br><span class="line">		<span class="keyword">String</span> buff = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">while</span>((buff = br.readLine()) != <span class="keyword">null</span>)&#123;</span><br><span class="line">			System.out.<span class="built_in">println</span>(buff);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>上面程序分析：<br>p.getErrorStream()：p进程的标准错误流输入<br>InputStreamReader：标准输入是文本输入，将文本转换成字符流<br>BufferedReader：将普通Reader包装成BufferedReader，利用readLiner()方法可以一次读取一行的内容。<br><font color="red">衡量输入输出总是站在本程序的角度</font>。</p>
+<h1 id="RandomAccessFile"><a href="#RandomAccessFile" class="headerlink" title="RandomAccessFile"></a>RandomAccessFile</h1><p>它与普通的输入/输出流不同的是，<font color="red">RadomAccessFile支持随机（任意更贴切）访问方式</font>，程序可以直接跳转到文件的任意地方来读写数据（允许文件自由地移动文件指针，任意访问文件的制定位置）。因此对于只访问文件的部分内容，使用RandomAccessFile更好。<br>如果程序需要向已存在的文件中追加内容，则应该使用RandomAccessFile。<br><font color="red">局限：只能读写文件，不能读写IO节点</font>。<br>创建RandomAccessFile对象需要制定mode参数：<br>（1）“r”：只读方式打开文件<br>（2）“rw”：读、写<br>（3）“rws”：相比于rw模式，对文件内容或元数据的每个更新都要同步写入底层存储设备。<br>（4）“rwd”：相比于rw模式，对文件内容的每个更新都要同步写入底层存储设备。<br>RandomAccessFile不能直接向文件中的指定位置添加内容，否则会覆盖原文件中的内容，需要先把插入点后面的内容放入缓冲区，等把需要的内容写入文件后，再将缓冲区中内容追加到文件后面。</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.RandomAccessFile;</span><br><span class="line"><span class="keyword">import</span> java.io.<span class="built_in">File</span>;</span><br><span class="line"><span class="keyword">import</span> java.io.FileInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.FileOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">*向指定文件、指定位置插入内容</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InsertContent</span>&#123;</span></span><br><span class="line">	<span class="comment">//定义insert()方法：文件名，插入点位置，插入内容</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">String</span> fileName</span></span></span><br><span class="line"><span class="function"><span class="params">		, <span class="keyword">long</span> pos, <span class="keyword">String</span> insertContent)</span> throws IOException</span>&#123;</span><br><span class="line">		<span class="built_in">File</span> tmp = <span class="built_in">File</span>.createTempFile(<span class="string">"tmp"</span>, null);<span class="comment">//创建临时文件</span></span><br><span class="line">		tmp.deleteOnExit();<span class="comment">//临时文件将在JVM退出时删除</span></span><br><span class="line">		</span><br><span class="line">		<span class="keyword">try</span>(</span><br><span class="line">			RandomAccessFile raf = <span class="keyword">new</span> RandomAccessFile(fileName, <span class="string">"rw"</span>);</span><br><span class="line">			<span class="comment">//使用临时文件来保存插入点后的数据</span></span><br><span class="line"><span class="comment">//创建tmp的字节输出流临时文件</span></span><br><span class="line">			FileOutputStream tmpOut = <span class="keyword">new</span> FileOutputStream(tmp);</span><br><span class="line">			FileInputStream tmpIn = <span class="keyword">new</span> FileInputStream(tmp);)&#123;</span><br><span class="line">			raf.<span class="built_in">seek</span>(pos);</span><br><span class="line">			<span class="comment">//----将插入点之后的内容读入到临时文件中保存-----//</span></span><br><span class="line">			<span class="keyword">byte</span>[] bbuf = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">64</span>];</span><br><span class="line">			<span class="keyword">int</span> hasRead = <span class="number">0</span>;</span><br><span class="line">			<span class="comment">//读取raf文件对象中的内容，并放在bbuf字节类型数组中</span></span><br><span class="line">			<span class="keyword">while</span>((hasRead = raf.<span class="built_in">read</span>(bbuf)) &gt; <span class="number">0</span>)&#123;</span><br><span class="line">				tmpOut.<span class="built_in">write</span>(bbuf, <span class="number">0</span>, hasRead);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//----插入内容----//</span></span><br><span class="line">			raf.<span class="built_in">seek</span>(pos);</span><br><span class="line">			raf.<span class="built_in">write</span>(insertContent.getBytes());</span><br><span class="line">			<span class="comment">//----追加临时文件中的内容----//</span></span><br><span class="line">			<span class="keyword">while</span>((hasRead = tmpIn.<span class="built_in">read</span>(bbuf)) &gt; <span class="number">0</span>)&#123;</span><br><span class="line">				raf.<span class="built_in">write</span>(bbuf, <span class="number">0</span>, hasRead);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">catch</span>(IOException ioe)&#123;ioe.printStackTrace();&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">String</span>[] args)</span> </span></span><br><span class="line"><span class="function">			throws Exception </span>&#123;</span><br><span class="line">			insert(<span class="string">"F:\\eclipsework\\Crazy-java\\src\\com\\Licht\\_15\\InsertContent.java"</span></span><br><span class="line">				, <span class="number">45</span>, <span class="string">"插入的内容\r\n"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="对象序列化（Serialize）"><a href="#对象序列化（Serialize）" class="headerlink" title="对象序列化（Serialize）"></a>对象序列化（Serialize）</h1><p>对象序列化机制允许<font color="red">把内存中的Java对象转换成平台无关的二进制流（字节序列）</font>，将对象保存到磁盘中，或允许在网络中直接传输对象。<br>对象的序列化（Serialize）指将一个Java对象写入IO流；对象的反序列化（Deserialize）则指从IO流中恢复该Java对象。<br>这个对象必须是可序列化的（serializable），它的类必须实现两个接口之一：<br>(1) Serializable 该接口是一个标记接口，只表明该类的实例是可序列化的，实现该接口无法实现任何方法。<br>(2) Externalizable（可外部化的）<br>所有可能在网络上传输的对象都应该是可序列化的。比如RMI（Remote Method Invoke，远程方法调用，是Java EE的基础）过程中的参数和返回值。</p>
+<h2 id="使用对象流实现序列化"><a href="#使用对象流实现序列化" class="headerlink" title="使用对象流实现序列化"></a>使用对象流实现序列化</h2><p>通常建议：程序创建的每个JavaBean类都实现Serializable。<br>1）    某个类实现Serializable接口；</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">implements</span> <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>2）    创建一个ObjectOutputStream，这个输出流是一个处理流，所以必须建立在其它节点流的基础上；</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ObjectOutputStream oos = <span class="keyword">new</span> <span class="constructor">ObjectOutputStream(<span class="params">new</span> FileOutputStream(“<span class="params">object</span>.<span class="params">txt</span>”)</span>);</span><br></pre></td></tr></table></figure>
+<p>3）    调用ObjectOutputStream对象的writeObject()方法输出可序列化对象；</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Person per = <span class="keyword">new</span> <span class="constructor">Person(“悟空”, 500)</span>;</span><br><span class="line">oos.write<span class="constructor">Object(<span class="params">per</span>)</span>; <span class="comment">//将per对象转换成字节序列并输出</span></span><br></pre></td></tr></table></figure>
+<p>如果希望从二进制中恢复Java对象，需要反序列化。<br>4）    创建一个ObjectInputStream，这个输入流是一个处理流，所以必须建立在其它节点流的基础上；</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ObjectInputStream oos = <span class="keyword">new</span> <span class="constructor">ObjectInputStream(<span class="params">new</span> FileInputStream(“<span class="params">object</span>.<span class="params">txt</span>”)</span>);</span><br></pre></td></tr></table></figure>
+<p>5）    调用ObjectInputStream对象的readObject()方法读取流中的对象；</p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Person</span> per = (<span class="keyword">Person</span>)ois.readObject(); //从输入流中读取一个对象，并强制转换成<span class="keyword">Person</span>类</span><br></pre></td></tr></table></figure>
+<p>反序列化读取的知识Java对象的数据，而不是Java类，因此采用<font color="red">反序列化恢复Java对象时，必须提供Java对象所属类的class文件</font>。</p>
+<h2 id="对象引用的序列化"><a href="#对象引用的序列化" class="headerlink" title="对象引用的序列化"></a>对象引用的序列化</h2><p>前面的Person类的两个成员变量分别是String类型和int类型，如果某个成员变量不是String或基本类型，而是引用类型，那么这个引用类必须是可序列化的。<br>如程序序列化一个Teacher对象时，该对象持有一个Person类对象的引用，为了在反序列化时可以正常恢复该Teacher对象，程序会顺带将Person对象也进行序列化，所以Person类也必须是可序列化的。<br>为了防止多次重复序列化一个对象，Java序列化机制采用了一种特殊的序列化算法：<br>(1) <font color="red">所有保存到磁盘中的对象都有一个序列化编号</font>。<br>(2) 当程序试图序列化一个对象时，程序会先检查该对象是否已经被序列化，如果在本次虚拟机中没有被序列化过，系统才会将该对象转换成字节序列并输出。<br>(3) 如果已经被序列化过，则程序直接输出一个序列化编号。<br>但这样也会出现一个问题：当程序再次调用writeObject()方法时，程序只是输出前面的序列化编号，<font color="red">即使后面该对象的实例变量值已经改变，改变的实例变量值也不会输出</font>。所以对于可变对象一定要注意。</p>
+<h2 id="自定义序列化"><a href="#自定义序列化" class="headerlink" title="自定义序列化"></a>自定义序列化</h2><p>当对某个对象进行序列化时，系统会自动把该对象的所有实例变量依次序列化，如果某个实例变量引用到另一个对象，则被引用对象也会被序列化。这种序列化会一直持续下去，称为递归序列化。<br>但在一些特殊场景下，不希望将实例变量序列化，或者某个实例变量的类型不应该实例化，则在不需要序列化的<font color="red">实例变量前加transient关键字</font>（短暂的，瞬时的）。<br>但这样也出现一个问题：被transient修饰的实例变量将完全隔离在序列化机制之外，导致使用反序列化恢复对象时，无法获得该实例变量的值。</p>
+<h2 id="另一种自定义序列化机制"><a href="#另一种自定义序列化机制" class="headerlink" title="另一种自定义序列化机制"></a>另一种自定义序列化机制</h2><p>完全有我们决定存储和恢复对象数据，必须实现Externalizable接口。</p>
+<h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><p>反序列化对象时需要提供该对象的class文件，如何保证两个class文件兼容？若不指定serialVersionUID类变量，不利于程序在不同JVM之间移植，因为不同编译器对该类变量的计算策略可能不同。<br>解决：为每个要序列化的类中添加<font color="red">private static final serialVersionUID</font>这个类变量，具体数值自己定义。</p>
+<h1 id="NIO（New-IO）"><a href="#NIO（New-IO）" class="headerlink" title="NIO（New IO）"></a>NIO（New IO）</h1><p>传统输入/输出是基于阻塞式的，通过字节移动来处理，即面向流的输入/输出系统一次只能处理一个字节，效率不高。<br>NIO采用<span style="background-color:yellow">内存映射</span>的方式，将文件或文件的一段区域映射到内存，这样就可以像访问内存一样访问文件了。<br>Channel（通道）和Buffer（缓冲）是NIO中两个核心对象。Channel是对传统输入/输出的模拟，不同之处是增加了<font color="red">map()方法进行数据映射，将Channel对应的部分或全部数据映射成Buffer</font>。Buffer是一个容器，本质是一个数组（类似于前面的“竹筒”）。程序不能直接访问Channel中的数据，Channel的读取必须通过Buffer交互。<br><span style="background-color:yellow">InuputStream/OutputStream&lt;-&gt;Channel&lt;-(map())-&gt;Buffer</span></p>
+<h2 id="使用Buffer"><a href="#使用Buffer" class="headerlink" title="使用Buffer"></a>使用Buffer</h2><p>import java.nio.ByteBuffer;<br>import java.nio.CharBuffer;<br>Buffer是一个抽象类，常用子类是ByteBuffer、CharBuffer。它没有构造器，通过static  Buffer allocate(int capacity) 来创建对象。<br><img src="http://ovfkr5e4k.bkt.clouddn.com/Buffer%E8%AF%BB%E5%85%A5%E6%95%B0%E6%8D%AE%E5%90%8E%E7%9A%84%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="Buffer读入数据后的示意图"><br>Buffer装入数据后，调用Buffer的flip()方法将limit设为position，目的是将没有数据的区域封印起来，避免程序从Buffer中去除null值。</p>
+<h2 id="使用Channel"><a href="#使用Channel" class="headerlink" title="使用Channel"></a>使用Channel</h2><p>import java.nio.channels.FileChannel;</p>
+<p>Java为Channel接口提供了DatagramChannel（UDP网络通信的Channel）、FileChannel、Pipe.SinkChannel、Pipe.SourceChannel（支持线程之间通信的管道Channel）、SelectableChannel、ServerSocketChannel、SoceketChannel（支持TCP网络通信的Channel）等实现类。<br>所有的Channel都不应该使用构造器来直接创建，而是通过传统的节点InputStream和OutputStream的getChannel()方法来返回对应的channel。<br>map()方法的方法签名为：MappedByteBuffer map(FileChannel.MapMode mode, long position, long size)</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.<span class="built_in">File</span>;</span><br><span class="line"><span class="keyword">import</span> java.io.FileInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.FileOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.nio.CharBuffer;</span><br><span class="line"><span class="keyword">import</span> java.nio.MappedByteBuffer;</span><br><span class="line"><span class="keyword">import</span> java.nio.channels.FileChannel;</span><br><span class="line"><span class="keyword">import</span> java.nio.charset.Charset;</span><br><span class="line"><span class="keyword">import</span> java.nio.charset.CharsetDecoder;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">*直接将FileChannel的全部数据映射成ByteBuffer</span></span><br><span class="line"><span class="comment">*然后通过FileChannel输出</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FileChannelTest</span>&#123;</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">String</span>[] args)</span></span>&#123;</span><br><span class="line">		<span class="built_in">File</span> f = <span class="keyword">new</span> <span class="built_in">File</span>(<span class="string">"F:\\eclipsework\\Crazy-java\\src\\com\\Licht\\_15\\FileChannelTest.java"</span>);</span><br><span class="line">		<span class="keyword">try</span>(FileChannel inChannel = <span class="keyword">new</span> FileInputStream(f).getChannel();</span><br><span class="line">			FileChannel outChannel = <span class="keyword">new</span> FileOutputStream(f).getChannel();)&#123;</span><br><span class="line">			MappedByteBuffer <span class="built_in">buffer</span> = inChannel.<span class="built_in">map</span>(FileChannel.MapMode.READ_ONLY, <span class="number">0</span>, f.length());</span><br><span class="line">			<span class="comment">//将ByreBuffer中的数据写入FileChannel中输出</span></span><br><span class="line">			outChannel.<span class="built_in">write</span>(<span class="built_in">buffer</span>);</span><br><span class="line">			<span class="built_in">buffer</span>.<span class="built_in">clear</span>(); <span class="comment">// 复原position、limit的位置</span></span><br><span class="line">			<span class="comment">/*---为了能打印文件，使用的Charset类和CharsetDecoder类</span></span><br><span class="line"><span class="comment">			将ByteBuffer转换成CharBuffer---*/</span></span><br><span class="line">			<span class="comment">//使用forName(字符集名称)创建GBK字符集对象</span></span><br><span class="line">			Charset charset = Charset.forName(<span class="string">"GBK"</span>);</span><br><span class="line">			<span class="comment">//创建解码器对象，使用解码器将ByteBuffer转换成CharBuffer</span></span><br><span class="line">			CharsetDecoder decoder = charset.newDecoder();</span><br><span class="line">			CharBuffer charBuffer = decoder.decode(<span class="built_in">buffer</span>);</span><br><span class="line">			System.out.<span class="built_in">println</span>(charBuffer);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">catch</span>(IOException ioe)&#123;ioe.printStackTrace();&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 利用Buffer和Channel传统方式，</span></span><br><span class="line"><span class="comment"> * 不使用map()映射</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">import</span> java.io.FileInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.nio.channels.FileChannel;</span><br><span class="line"><span class="keyword">import</span> java.nio.ByteBuffer;</span><br><span class="line"><span class="keyword">import</span> java.nio.CharBuffer;</span><br><span class="line"><span class="keyword">import</span> java.nio.charset.Charset;</span><br><span class="line"><span class="keyword">import</span> java.nio.charset.CharsetDecoder;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReadFile</span>&#123;</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">String</span>[] args)</span></span></span><br><span class="line"><span class="function">	throws IOException</span>&#123;</span><br><span class="line">		<span class="keyword">try</span>(FileInputStream fis = <span class="keyword">new</span> FileInputStream(<span class="string">"F:"</span> </span><br><span class="line">			+ <span class="string">"\\eclipsework\\Crazy-java\\src\\com\\Licht\\_15\\ReadFile.java"</span>);</span><br><span class="line">		FileChannel fcin = fis.getChannel();)&#123;</span><br><span class="line">			<span class="comment">//定义一个ByteBuffer对象，用于重复取水</span></span><br><span class="line">			ByteBuffer <span class="built_in">buffer</span> = ByteBuffer.allocate(<span class="number">256</span>);</span><br><span class="line">			<span class="keyword">while</span>(fcin.<span class="built_in">read</span>(<span class="built_in">buffer</span>) != <span class="number">-1</span>)&#123;</span><br><span class="line">				<span class="built_in">buffer</span>.flip();</span><br><span class="line">				Charset charset = Charset.forName(<span class="string">"GBK"</span>);</span><br><span class="line">				CharsetDecoder decoder = charset.newDecoder();</span><br><span class="line">				CharBuffer charBuffer = decoder.decode(<span class="built_in">buffer</span>);</span><br><span class="line">				System.out.<span class="built_in">println</span>(charBuffer);</span><br><span class="line">				<span class="built_in">buffer</span>.<span class="built_in">clear</span>();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="字符集和Charset"><a href="#字符集和Charset" class="headerlink" title="字符集和Charset"></a>字符集和Charset</h2><p>import java.nio.CharBuffer;s<br>import java.nio.charset.Charset;<br>import java.nio.charset.CharsetDecoder;</p>
+<p>获取Java所支持的全部字符集</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">sortedMap</span>&lt;<span class="keyword">String, </span>Charset&gt; <span class="meta">map</span> = Charset.avaliableCharsets()<span class="comment">;</span></span><br><span class="line"><span class="symbol">for</span>(<span class="keyword">String </span><span class="meta">alias</span> : <span class="meta">map</span>.keySet())&#123;</span><br><span class="line">	System.out.println(<span class="meta">alias</span> --- &gt;<span class="meta">map</span>.get(<span class="meta">alias</span>))<span class="comment">;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>keySet()方法获取map中所有key值，get(Object key)方法获取相应key值对应的value。<br>创建字符集对象forName(…)方法。字符集的创建、编解码操作步骤如下（以简体中文为例）：<br>1)创建字符集对象<br>Charset cn = Charset.forName(“GBK”);<br>2）char &lt;-&gt; byte, String &lt;-&gt; byte,<br>a）    只是进行简单的编、解码操作，CharBuffer和ByteBuffer都有方法直接转换<br>ByteBuffer encode(CharBuffer cb)<br>CharBuffer decode(ByteBuffer bb)<br>ByteBuffer encode(String str)<br>b）    若是进行较复杂的操作<br>获取字符集对象cn对应的编码器、解码器<br>CharsetEncoder cnEncoder = cn.newEncoder();<br>CharsetDecoder cnDecoder = cn.newDecoder();<br>3）创建CharBuffer对象<br>CharBuffer cbuff = CharBuffer.allocate(8);<br>4）将CharBuffer中的字符序列转换成字节序列<br>ByteBuffer bbuff = cnEncoder.encode(cbuff);<br>for (int i = 0; I &lt; bbuff.capacity(); i ++){<br>    bbuff.get(i);<br>}</p>
+<h2 id="文件锁"><a href="#文件锁" class="headerlink" title="文件锁"></a>文件锁</h2><p>可以有效地阻止多个进程并发修改同一个文件。<br>在NIO中，FileChannel提供的lock()/tryLock()方法返回文件锁FileLock对象，由FileLock执行文件锁定功能。<br>1）lock()、lock(long position, long size, boolean shared)：当试图锁定某个文件时，如果无法得到文件锁，程序将一直阻塞；<br>2）tryLock()、tryLock(long position, long size, boolean shared)：尝试锁定文件，当获得了文件锁，返回该文件锁，否则返回null。<br>其中shared参数为true是，表明该锁是一个共享锁，允许多个进程读取文件，但阻止其他进程获得对该文件的排他锁；false为排他锁，它将锁住对该文件的读写，lock()/tryLock()默认为排他锁。<br>FileChannel channel = new FileOutputStream(“a.txt”).getChannel();<br>FileLock lock = channel.tryLock(); //使用非阻塞方式对文件进行加锁<br>Thread.sleep(10000); //程序暂停10s，加锁的文件将阻止其他程序对其进行修改<br>lock.release(); //释放锁<br>缺陷：文件锁虽然可以控制并发访问，但对于高并发访问的情形，推荐使用数据库。</p>
+<h1 id="Java7的NIO-2"><a href="#Java7的NIO-2" class="headerlink" title="Java7的NIO.2"></a>Java7的NIO.2</h1><p>Java7对NIO进行了重大改进：<br>1）新增java.nio.file包及其子包（对文件IO和文件系统访问支持）。<br>2）新增java.nio.channels包下以Asynchronous开头的Channel接口和类（基于异步Channel的IO）。</p>
+<h2 id="Path、Paths、Files核心API"><a href="#Path、Paths、Files核心API" class="headerlink" title="Path、Paths、Files核心API"></a>Path、Paths、Files核心API</h2><p>import java.nio.file.Path;<br>import java.nio.file.Paths;<br>import java.nio.file.Files;</p>
+<p>为了弥补File类操作文件系统的不足，引入了Path接口，代表一个平台无关的平台路径。<br><font color="red">Files、Paths工具类</font>，Files包含大量工具方法，Paths包含两个返回Path的静态工厂方法。<br>早期File类不足，提供Files和Paths工具类，其中Files是一个操作文件的工具类；<font color="red">Paths返回Path类型</font>。<br>1）获取Path对象：Paths的get()方法<br>Path path = Paths.get(String first, String…more)<br>2）使用Java8新增的Stream API列出当前目录下所有文件和目录：<br>Files.list(Paths.get(“.”)).forEach(path -&gt; System.out.println(path);</p>
+<h2 id="使用FileVisitor遍历文件和目录"><a href="#使用FileVisitor遍历文件和目录" class="headerlink" title="使用FileVisitor遍历文件和目录"></a>使用FileVisitor遍历文件和目录</h2><p>以前遍历指定目录下的所有文件和子目录需要进行递归，较复杂且灵活性不高。Files类提供了如下方法来遍历文件和子目录：<br>walkFileTree(Path start, FileVisitor&lt;? super Path&gt; visitor)<br><font color="red">FileVisitor代表一个文件访问器</font>。遍历文件和目录会触发FileVisitor中相应的方法。可以通过继承SimpleFileVisitor（FileVisitor的实现类）来实现文件访问器，这需要根据需要选择性地重写（@Override）指定方法。</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.nio.<span class="keyword">file</span>.Files;</span><br><span class="line"><span class="keyword">import</span> java.nio.<span class="keyword">file</span>.Path;</span><br><span class="line"><span class="keyword">import</span> java.nio.<span class="keyword">file</span>.Paths;</span><br><span class="line"><span class="keyword">import</span> java.nio.<span class="keyword">file</span>.SimpleFileVisitor;</span><br><span class="line"><span class="keyword">import</span> java.nio.<span class="keyword">file</span>.FileVisitResult;</span><br><span class="line"><span class="keyword">import</span> java.nio.<span class="keyword">file</span>.attribute.BasicFileAttributes;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">*使用Visitor遍历文件和子目录</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> FileVisitorTest&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args)</span><br><span class="line">		<span class="keyword">throws</span> Exception&#123;</span><br><span class="line">			<span class="comment">//遍历F:\eclipsework\Crazy-java\src\com\Licht\_15目录下所有文件和子目录</span></span><br><span class="line">			Files.walkFileTree(Paths.get(<span class="string">"F:"</span>, <span class="string">"eclipsework"</span></span><br><span class="line">				, <span class="string">"Crazy-java"</span>, <span class="string">"src"</span>, <span class="string">"com"</span>, <span class="string">"Licht"</span>, <span class="string">"_15"</span>)</span><br><span class="line">				, <span class="keyword">new</span> SimpleFileVisitor&lt;Path&gt;()&#123; <span class="comment">//SimpleFileVisitor是FileVisitor的</span></span><br><span class="line"><span class="comment">//实现类</span></span><br><span class="line">				<span class="comment">//访问文件时触发该方法</span></span><br><span class="line">				@Override</span><br><span class="line">				<span class="keyword">public</span> FileVisitResult visitFile(Path <span class="keyword">file</span></span><br><span class="line">					, BasicFileAttributes attrs) <span class="keyword">throws</span> IOException&#123;</span><br><span class="line">					System.out.<span class="keyword">println</span>(<span class="string">"系统正在访问"</span> + <span class="keyword">file</span> + <span class="string">"文件"</span>);</span><br><span class="line">					<span class="keyword">if</span> (<span class="keyword">file</span>.endsWith(<span class="string">"FileVisitor.java"</span>))&#123; <span class="comment">//找到目标文件则亭子遍历</span></span><br><span class="line">						System.out.<span class="keyword">println</span>(<span class="string">"已找到目标文件"</span>);</span><br><span class="line">						<span class="keyword">return</span> FileVisitResult.TERMINATE; <span class="comment">//中止访问</span></span><br><span class="line">					&#125;</span><br><span class="line">					<span class="keyword">return</span> FileVisitResult.<span class="keyword">CONTINUE</span>; <span class="comment">//继续访问</span></span><br><span class="line">				&#125;</span><br><span class="line">				<span class="comment">//访问目录之前触发该方法</span></span><br><span class="line">				@Override</span><br><span class="line">				<span class="keyword">public</span> FileVisitResult preVisitDirectory(Path dir</span><br><span class="line">					, BasicFileAttributes attrs) <span class="keyword">throws</span> IOException&#123;</span><br><span class="line">					System.out.<span class="keyword">println</span>(<span class="string">"正在访问"</span> + dir + <span class="string">"路径"</span>);</span><br><span class="line">						<span class="keyword">return</span> FileVisitResult.<span class="keyword">CONTINUE</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="使用WatchService监控文件变化"><a href="#使用WatchService监控文件变化" class="headerlink" title="使用WatchService监控文件变化"></a>使用WatchService监控文件变化</h2><p>import java.nio.file.FileSystems;<br>import java.nio.file.WatchService;<br>import java.nio.file.StandardWatchEventKinds;<br>import java.nio.file.WatchKey;<br>import java.nio.file.WatchEvent;</p>
+<p>WatchService类的对象是操作系统原生的文件系统监控器。NIO.2的Path类提供如下方法来监听文件系统变化：<br>1）    获取当前OS平台下的文件系统监控器（文件系统的WatchService对象）<br>WatchService watchService = FileSystems.<font color="red">getDefault()</font>.newWatchService();<br>2）    register（注册）<br>register(WatchService watcher, WatchEvent.Kind&lt;?&gt;…events)<br>WatchService代表一个文件系统监听服务。用监听器watcher监听path路径下的events类型的事件。<br>3）    调用WatchService的如下方法获取被监听<font color="red">目录的文件变化事件</font>：<br>WatchKey poll(…)：获取下一个WathKey，如果没有就立即返回null。<br>WatchKey take()：获取下一个WathKey，如果没有就一直等待。<br>其中WatchKey表示WathService注册的监控对象的token（标记）。<br>WathcKey pollEvent()：检索并删除此watch key的所有未决事件，并<font color="red">返回已检索事件的列表</font>。</p>
+<h2 id="访问文件属性（Attribute）"><a href="#访问文件属性（Attribute）" class="headerlink" title="访问文件属性（Attribute）"></a>访问文件属性（Attribute）</h2><p>在java.nio.file.attribute包下，如<br>import java.nio.file.attribute.BasicFileAttributeView;<br>import java.nio.file.attribute.BasicFileAttributes;<br>import java.nio.file.attribute.FileOwnerAttributeView;<br>import java.nio.file.attribute.UserDefinedFileAttributeView;等<br>File类可以访问一些简单的文件属性（attribute，属性；归属），如文件的大小、修改时间、文件是否隐藏、是文件还是目录等。Java7的NIO.2在java.nio.file.attribute包下提供了大量的工具类，这些工具类主要分为两类：<br>1)***AttributeView：某种文件属性的“视图”，FileAttributeView是其它***AttributeView的父接口；<br>2)***Attributes：某种文件属性的集合，一般通过***AttributeView对象来获取。<br>具体常用方法：<br>（1）identify the required view(创建需要的view):<br>*** AttributeView  ***View = Files.getFileAttributeView(path, ***AttributeView.class);<br>（2）获取访问***属性的***FileAttributes（先确保能读取文件属性）：<br> ***FileAttributes  ***Attribs = ***View.readAttributes();<br>（3）访问***属性（如具体的创建时间、上次修改时间等）：<br> ***Attribs.creationTime().toMillis(); //访问文件的创建时间<br>…</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/30/Tech/Data%20Structures%20and%20Algorithms/%E9%80%92%E5%BD%92%E5%92%8C%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E2%80%94%E2%80%94%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/" rel="next" title="递归和动态规划——最长公共子序列">
+                <i class="fa fa-chevron-left"></i> 递归和动态规划——最长公共子序列
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/30/Tech/Data%20Structures%20and%20Algorithms/%E9%80%92%E5%BD%92%E5%92%8C%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E2%80%94%E2%80%94%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2/" rel="prev" title="递归和动态规划——最长公共子串">
+                递归和动态规划——最长公共子串 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="LichtMiao" />
+          <p class="site-author-name" itemprop="name">LichtMiao</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">186</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          <!-- 
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+           -->
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/LichtMiao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Miaomi4" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                    
+                      Twitter
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#File类"><span class="nav-number">1.</span> <span class="nav-text">File类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#访问文件和目录"><span class="nav-number">1.1.</span> <span class="nav-text">访问文件和目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件过滤器"><span class="nav-number">1.2.</span> <span class="nav-text">文件过滤器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IO流"><span class="nav-number">2.</span> <span class="nav-text">IO流</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#输入输出流体系"><span class="nav-number">3.</span> <span class="nav-text">输入输出流体系</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#处理流的用法"><span class="nav-number">3.1.</span> <span class="nav-text">处理流的用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入-输出流体系"><span class="nav-number">3.2.</span> <span class="nav-text">输入&#x2F;输出流体系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转换流"><span class="nav-number">3.3.</span> <span class="nav-text">转换流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推回输入流"><span class="nav-number">3.4.</span> <span class="nav-text">推回输入流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重定向输入-输出流"><span class="nav-number">3.5.</span> <span class="nav-text">重定向输入&#x2F;输出流</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JVM读写其它进程的数据"><span class="nav-number">4.</span> <span class="nav-text">JVM读写其它进程的数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RandomAccessFile"><span class="nav-number">5.</span> <span class="nav-text">RandomAccessFile</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对象序列化（Serialize）"><span class="nav-number">6.</span> <span class="nav-text">对象序列化（Serialize）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用对象流实现序列化"><span class="nav-number">6.1.</span> <span class="nav-text">使用对象流实现序列化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象引用的序列化"><span class="nav-number">6.2.</span> <span class="nav-text">对象引用的序列化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义序列化"><span class="nav-number">6.3.</span> <span class="nav-text">自定义序列化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#另一种自定义序列化机制"><span class="nav-number">6.4.</span> <span class="nav-text">另一种自定义序列化机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#版本"><span class="nav-number">6.5.</span> <span class="nav-text">版本</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NIO（New-IO）"><span class="nav-number">7.</span> <span class="nav-text">NIO（New IO）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Buffer"><span class="nav-number">7.1.</span> <span class="nav-text">使用Buffer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Channel"><span class="nav-number">7.2.</span> <span class="nav-text">使用Channel</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符集和Charset"><span class="nav-number">7.3.</span> <span class="nav-text">字符集和Charset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件锁"><span class="nav-number">7.4.</span> <span class="nav-text">文件锁</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java7的NIO-2"><span class="nav-number">8.</span> <span class="nav-text">Java7的NIO.2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Path、Paths、Files核心API"><span class="nav-number">8.1.</span> <span class="nav-text">Path、Paths、Files核心API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用FileVisitor遍历文件和目录"><span class="nav-number">8.2.</span> <span class="nav-text">使用FileVisitor遍历文件和目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用WatchService监控文件变化"><span class="nav-number">8.3.</span> <span class="nav-text">使用WatchService监控文件变化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问文件属性（Attribute）"><span class="nav-number">8.4.</span> <span class="nav-text">访问文件属性（Attribute）</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LichtMiao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+  Powered by <a>Hexo</a>
+</div>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+  <!-- 背景动画 -->
+  
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>

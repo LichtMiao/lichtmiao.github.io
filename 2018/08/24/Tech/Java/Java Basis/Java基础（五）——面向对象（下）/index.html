@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en.yml">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Learning, Life" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="LichtMiao's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="包装类：通过包装类可以把8种基本类型的值包装成对象使用。自动装箱（AutoBoxing），自动拆箱（AutoUnboxing）。final关键字可以用来修饰类、变量和方法：final类不能派生出子类，不允许为final变量赋值，子类不允许覆盖父类的方法。abstract定义抽象类，interface定义接口，抽象类和接口都是从多个子类中抽象出来的共同特征。而抽象类主要作为多个类的模板，而接口则定义">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java基础（五）——面向对象（下）">
+<meta property="og:url" content="https://lichtmiao.github.io/2018/08/24/Tech/Java/Java%20Basis/Java%E5%9F%BA%E7%A1%80%EF%BC%88%E4%BA%94%EF%BC%89%E2%80%94%E2%80%94%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B8%8B%EF%BC%89/index.html">
+<meta property="og:site_name" content="LichtMiao&#39;s Blog">
+<meta property="og:description" content="包装类：通过包装类可以把8种基本类型的值包装成对象使用。自动装箱（AutoBoxing），自动拆箱（AutoUnboxing）。final关键字可以用来修饰类、变量和方法：final类不能派生出子类，不允许为final变量赋值，子类不允许覆盖父类的方法。abstract定义抽象类，interface定义接口，抽象类和接口都是从多个子类中抽象出来的共同特征。而抽象类主要作为多个类的模板，而接口则定义">
+<meta property="article:published_time" content="2018-08-23T17:09:36.000Z">
+<meta property="article:modified_time" content="2019-01-21T09:10:00.000Z">
+<meta property="article:author" content="LichtMiao">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.2',
+    sidebar: {"position":"right","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://lichtmiao.github.io/2018/08/24/Tech/Java/Java Basis/Java基础（五）——面向对象（下）/"/>
+
+
+
+
+
+<!-- 网页加载条 -->
+<script src="https://neveryu.github.io/js/src/pace.min.js"></script>
+  <title>Java基础（五）——面向对象（下） | LichtMiao's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en.yml">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LichtMiao's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lichtmiao.github.io/2018/08/24/Tech/Java/Java%20Basis/Java%E5%9F%BA%E7%A1%80%EF%BC%88%E4%BA%94%EF%BC%89%E2%80%94%E2%80%94%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B8%8B%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LichtMiao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LichtMiao's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java基础（五）——面向对象（下）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-24T01:09:36+08:00">
+                2018-08-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/Java/Java-Basis/" itemprop="url" rel="index">
+                    <span itemprop="name">Java Basis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>包装类：通过包装类可以把8种基本类型的值包装成对象使用。自动装箱（AutoBoxing），自动拆箱（AutoUnboxing）。<br>final关键字可以用来修饰类、变量和方法：final类不能派生出子类，不允许为final变量赋值，子类不允许覆盖父类的方法。<br>abstract定义抽象类，interface定义接口，抽象类和接口都是从多个子类中抽象出来的共同特征。而抽象类主要作为多个类的模板，而接口则定义了多类应该遵守的规则。<br>Lambda表达式是java 8的重要更新。<br>enum关键字用于创建枚举类，枚举类是一种不能自由创建对象的类，在定义类时已经固定下来。特别适合定义像星期、行星、季节这样的类，它们能创建的实例是有限且确定的。</p>
+<h1 id="包装类（Wrapper-Class）"><a href="#包装类（Wrapper-Class）" class="headerlink" title="包装类（Wrapper Class）"></a>包装类（Wrapper Class）</h1><p>Java之所以提供这8种基本数据类型，主要是为了照顾程序员的传统习惯。但这8种基本数据类型不支持面向对象的编程机制，即没有成员变量、方法可以被调用。如所有引用类型的变量都继承了Object类，都可当成Object类型变量使用，但基本数据类型的变量就不可以。如果有个方法需要Object类型的参数，但实际需要的值却是2、3等数值，这可能就比较难处理。<br>基本数据类型的包装类除了int-Integer(-128~127)，char-Character例外，其它都是将首字母大写，即byte-Byte、short-Short、long-Long、float-Float、double-Double、boolean-Boolean。而这种转换依然有些繁琐，因此JDK 1.5提供了自动装箱（AutoBoxing）和自动拆箱（AutoUnboxing）功能，即可以将一个基本类型直接赋给对应包装类或Object类（Object类是所有类的父类，子类对象可以直接赋给父类变量），或反过来允许把包装类对象直接赋给一个对应的基本类型变量。</p>
+<p>类的强制类型转换只能发生在类之间：父类引用类型变量 instanceof 子类、接口<br>自动装箱和自动拆箱要注意类型匹配。包装类还可以实现基本类型变量和字符串之前的转换：<br>把字符串类型的值转换为数据类型的值的方法（即中间过程由数据类型的包装类过渡）：</p>
+<ul>
+<li>利用包装类提供的parse (String s)静态方法（除了Character类都提供了此方法）。<br>String intStr = “123”;<br>int it1 = Integer.parseInt(intStr);</li>
+<li>利用包装类提供的 (String s)构造器。</li>
+</ul>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> it2 = <span class="keyword">new</span> <span class="constructor">Integer(<span class="params">intStr</span>)</span>;</span><br></pre></td></tr></table></figure>
+<p>valueOf是Integer类的一个静态方法，将String类型转换为Integer类型。<br>把数据类型转换成字符串类型：将基本类型变量与””（双引号）进行连接运算。</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">String </span><span class="keyword">strInt </span>= <span class="number">5</span> + “”<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<p>toUpperCase()方法将字符串值转换成大写形式并返回。</p>
+<p>虽然包装类型的变量是引用数据类型，但包装类的实例可以与数值类型的值进行比较，这种比较是直接取出包装类实例所包装的数值来进行比较的。</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Integer a = new Integer(<span class="number">6</span>);</span><br><span class="line"><span class="comment">//输出true</span></span><br><span class="line">System.<span class="keyword">out</span>.println(“<span class="number">6</span>的包装类实例是否大于<span class="number">5.0</span>” + (a &gt; <span class="number">5.0</span>));</span><br></pre></td></tr></table></figure>
+<p>Java系统中java.lang.Integer类的源代码如下：系统把一个-128~127之间的整数自动装箱成Integer实例，并放入一个名为cache的数组中缓存起来。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> Integer[] cache = <span class="keyword">new</span> Integer[<span class="number">256</span>]; <span class="comment">//长度-(-128)+127+1</span></span><br><span class="line"><span class="keyword">static</span> &#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; cache.length; i++)</span><br><span class="line">	&#123;</span><br><span class="line">    	cache[i] = <span class="keyword">new</span> Integer(i<span class="number">-128</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Java7增强了包装类的功能，为所有包装类提供了静态方法compare(type val1, type val2)。<br>Java8为int和long型增加了无符号运算方法。如static String toUnsignedString(int/long i)：将int或long型整数转换成无符号整数对应的字符串。</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">byte b = -<span class="number">3</span>;</span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">System</span>.</span></span>out.println(“byte类型的-<span class="number">3</span>对应的无符号整数:” + <span class="module-access"><span class="module"><span class="identifier">Byte</span>.</span></span><span class="keyword">to</span><span class="constructor">UnsignedInt(<span class="params">b</span>)</span>);</span><br></pre></td></tr></table></figure>
+<p>无符号整数最大的特点是最高位不再被当成符号位，因此无符号整数不支持负数，其最小值为0。</p>
+<h1 id="toString-方法"><a href="#toString-方法" class="headerlink" title="toString()方法"></a>toString()方法</h1><p>toString()方法是一个自我描述方法，当直接打印该对象时，系统将会输出该对象的自我描述信息，用以告诉外界该对象所有的状态信息。toString()方法总是返回该对象实现类的“类名+@hashCode”值，不能真正实现自我描述功能，所以可以自定义类（需要进行toString()方法的重写）实现自我描述功能。</p>
+<p>打印a所引用的Apple对象，实际上输出的是Apple对象的toString()方法的返回值：</p>
+<h1 id="和equals-方法"><a href="#和equals-方法" class="headerlink" title="==和equals()方法"></a>==和equals()方法</h1><p>Java中测试两个变量是否相等有两种方法：==运算符和equals()方法。<br>==：若是基本类型变量，则值相等返回true；若是引用类型变量，必须有父子关系，且指向同一对象时，才返回true。<br>String “Hello” 与String s = new String(“Hello”)有什么不同呢？当使用”Hello”时，JVM使用常量池（constant pool）来管理这些字符；而使用new String(“Hello”)时，JVM先使用常量池来管理”Hello”直接量，再调用String类构造器来创建一个新的String对象，并保存在堆内存中。即new String(“Hello”)产生了两个字符串对象。<br>常量池（constant pool）：专门用于管理在编译时被确定，并保存在编译的.class文件中的一些数据。它包括了类、方法、接口中的常量，还包括字符串中的常量。常量池既不在堆中也不在栈中。java1.6之前，常量池在方法区（非堆）中，而在java1.7之后，常量池在java堆中。</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//MainApp.java  </span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainApp</span> &#123;</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">String</span>[] args)</span> </span>&#123;  </span><br><span class="line">        Animal animal = <span class="keyword">new</span> Animal(<span class="string">"Puppy"</span>);  </span><br><span class="line">        animal.printName();  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="comment">//Animal.java  </span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> &#123;</span>  </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">String</span> name;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Animal</span><span class="params">(<span class="keyword">String</span> name)</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">this</span>.name = name;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">printName</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="string">"Animal ["</span>+name+<span class="string">"]"</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>图 Java程序编译和运行的过程<br>equals()方法比较的是两个引用变量的对象的值是否相等（即并不要求是同一个对象，只要值相等分别所值指对象的值相等即可）。但Object默认提供的equals()只是比较对象的地址，即与==符号比较的结果完全相同。因此实际使用过程中常常需要重写equals()方法<br>但String类中的equals()方法的用法其实与==符号相同，因为String已经对它进行了重写，它也是判断引用变量所指的对象是否相同。<br>String类已经重写了Object类的equals()方法，String类判断两个字符串相等的标准是：只要两个方法包含的字符串序列相同，则返回true。<br>equals()方法是Object类提供的一个实例方法，因此所有引用变量都可以调用该方法来判断引用变量是否与另一个引用变量的值相等。</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> Person <span class="title">equals</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="comment">//…</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="类成员"><a href="#类成员" class="headerlink" title="类成员"></a>类成员</h1><p>类里可能出现的5种成员：初始化块、构造器、成员变量、方法、内部类（包括接口、枚举）。<br>但static可以修饰4种成员：初始化块、成员变量、方法、内部类（包括接口、枚举），以static修饰的就是类成员，不属于单个实例。<br>类变量属于整个类，当系统第一次准备使用该类时，系统会为该类变量分配内存空间，类变量开始生效，直到该类被卸载。</p>
+<h1 id="单例（Singleton）类"><a href="#单例（Singleton）类" class="headerlink" title="单例（Singleton）类"></a>单例（Singleton）类</h1><p>大部分的时候我们把构造器设定为public访问权限，允许任何类自由创建该类的对象。但在某些时候，允许其他类自由创建该类的对象没有任何意义，还可能会造成系统性能的下降（因频繁地创建对象、回收对象带来的系统开销问题）。<br>如果一个类只能创建一个实例，不允许自由创建该类的对象，则这个类称为单例类。为了避免其他类自由创建该类的实例，应当把该类的构造器用private修饰，此时构造器被隐藏。根据良好的封装原则：一旦把该类的构造器被隐藏，就需要提供一个public方法作为该类的访问点，用于创建该类对象，且该方法必须使用static修饰（因为调用该方法之前还不存在对象，因此调用该方法的只能是类）。<br>同时，类还必须缓存已经创建的对象，否则该类无法知道是否曾经创建过对象。为此该类需要使用一个成员变量来保存曾经创建的对象，因为该成员变量需要被上面的静态方法访问，所以该成员变量必须使用static修饰。</p>
+<h1 id="final修饰符"><a href="#final修饰符" class="headerlink" title="final修饰符"></a>final修饰符</h1><p>成员变量（即类变量和实例变量）是随类初始化或对象初始化而初始化的。当执行静态初始化块时，可以对类变量赋初值；当执行普通初始化块、构造器时，可以对实例变量赋初值。<br>final关键字可以修饰类、变量和方法，用于表示修饰的类、变量和方法不可改变。</p>
+<p>final成员变量：必须由程序员显式地指定初始值。<br>对final类变量：在类变量定义时赋值，或在静态初始化块中赋值；对final实例变量：在实例变量定义时赋值，或在普通初始化块中赋值，或在构造器中赋值；如</p>
+<p>final局部变量：系统不会对局部变量进行初始化，局部变量必须由程序员显式初始化。因此使用final局部变量时，既可以在定义时指定默认值，也可以不指定默认值，而是在后面的代码中对该局部变量赋值，但只能赋值一次。<br>final修饰的基本变量和引用变量的区别：当final修饰基本类型变量时，不能对基本变量重新赋值；但对引用类型变量而言，它保存的仅仅是一个引用，保证引用类型变量所引用的地址不改变，即引用类型变量不能被重新赋值，但可以改变这个引用类型变量所引用的对象的值。<br>宏变量：对于final变量来说，不管它是类变量、实例变量，还局部变量，只要满足下面三个条件，这个final变量就不再是一个变量，而是相当于一个直接量：</p>
+<ul>
+<li>使用final修饰符</li>
+<li>在定义该final变量时指定了初始值</li>
+<li>该初始值可以在编译时就被确定下来</li>
+</ul>
+<p>如果被赋的表达式只是基本的算术表达式或字符串连接运算，没有访问普通变量、调用方法，java编译器同样会把这种final变量当成“宏变量”处理。如</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">String </span><span class="built_in">s1</span> = <span class="string">"疯狂java"</span><span class="comment">;</span></span><br><span class="line"><span class="keyword">String </span><span class="keyword">str1 </span>= <span class="string">"疯狂"</span><span class="comment">;</span></span><br><span class="line"><span class="keyword">String </span><span class="keyword">str2 </span>= <span class="string">"java"</span><span class="comment">;</span></span><br><span class="line"><span class="keyword">String </span><span class="built_in">s3</span> = <span class="keyword">str1 </span>+ <span class="keyword">str2;</span></span><br><span class="line"><span class="keyword">System.out.println(s1 </span>== <span class="built_in">s3</span>)<span class="comment">;//输出false</span></span><br></pre></td></tr></table></figure>
+<p>上面程序由于str和str2只是普通变量，编译器不会执行宏替换，因此编译器无法在编译时确定s3的值，也就无法让s3指向字符串池中的“疯狂java”，因此s1==s3将输出false。为了输出true，只要让编译器可以对str1和str2变量执行宏替换，就能让编译器在编译阶段确定s3的值，可对定义的str1和str2使用final修饰即可。</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">String </span><span class="built_in">s1</span> = <span class="string">"疯狂java"</span><span class="comment">;</span></span><br><span class="line"><span class="symbol">final</span> <span class="keyword">String </span><span class="keyword">str1 </span>= <span class="string">"疯狂"</span><span class="comment">;</span></span><br><span class="line"><span class="symbol">final</span> <span class="keyword">String </span><span class="keyword">str2 </span>= <span class="string">"java"</span><span class="comment">;</span></span><br><span class="line"><span class="keyword">String </span><span class="built_in">s3</span> = <span class="keyword">str1 </span>+ <span class="keyword">str2;</span></span><br><span class="line"><span class="keyword">System.out.println(s1 </span>== <span class="built_in">s3</span>)<span class="comment">;//输出true</span></span><br></pre></td></tr></table></figure>
+<p>Java会使用常量池来管理曾经使用过的字符串直接量，直接量会被缓存到常量池中。<br>final方法：不希望子类重写父类的方法，则用final修饰该方法。Java的Object类中就有一个final方法：getClass()。但对于该类的toString()和equals()方法，允许重写，所以没有用final修饰。<br>若父类定义了一个private方法，因为它仅可以在当前类可见，子类无法访问该方法，即使该方法被final修饰，子类中也可以定义一个同名、同参、同返回值的方法，但这并不是子类对父类的重写，而是定义了一个新方法。<br>final修饰的方法仅仅是不能被重写，但可以被重载（即形参可以不同，形成不同的方法）。<br>final类：final修饰的类不可以有子类。如java.lang.Math类就是final类。当子类继承父类是，可以访问父类的内部数据，并可以通过重写父类方法类改变父类方法的实现细节，这可能导致不安全因素。因此，为了保证某个类不可被继承，可以使用final修饰这个类。<br>不可变（immutable）类：创建该类实例后，该实例的实例变量是不可改变的。8个包装类和java.lang.String类都是不可变类。如<br>Double d = new Double(6.5);<br>String str = new String(“Hello”);<br>上面程序创建了一个Double对象和一个Sring对象，并为这两个对象传入了参数，那么Double类和String类肯定需要实例变量来保存这两个参数，但程序无法修改这两个实例变量的值，因此Double类和String类没有提供修改它们的方法。<br>创建自定义的不可变类：</p>
+<ul>
+<li>使用private和final来修饰该类的成员变量</li>
+<li>提供带参构造器，用于根据传入参数来初始化类里的成员变量</li>
+<li>仅为该类的成员变量提供getter方法，不提供setter方法，因为普通方法无法修改final修饰的成员变量</li>
+<li>如果有必要，重写Object类的hashCode()和equals()方法。equals()方法根据关键成员变量判断两个对象是否相等。初次之外，还应保证两个用equals()判断为相等的对象的hashCode()也相等。</li>
+</ul>
+<p>可变类：大部分时候创建的类都是可变类，特别是JavaBean，它总是为其实例变量提供getter和setter方法。<br>前面我们知道，当使用final修饰引用变量时，仅表示这个引用类型变量不可被重新赋值，但引用类型变量所指向的对象依然可以改变。这就产生了一个问题，当创建不可变类时，它包含的成员变量的类型是可变的，那么其对象的成员变量的值依然是可变的，则这个可变类其实是失败的。<br>下面创建了一个不可变的Person类，但因为Person类中包含一个引用类型的成员变量name，而这个引用类型变量是可变类，（如果仍采用注销行里的代码，则Person类也变成了可变类），所以导致Person类也变成了可变类。所以需要在修改Person类中修改上述代码，尽量保留原来的Name类中的代码。</p>
+<p>Person类改写了设置name实例变量的方法，也改写了name的getter方法。当程序向Person构造器传入一个Name对象时，并不直接利用已有的Name对象（（即new的孙悟空）利用已有的Name对象有风险，因为这个已有的Name对象是可变的，如果程序改变了这个Name对象，将会导致Person对象也发生改变），而是重新创建一个Name对象来赋给Person对象的name实例变量。当Person对象返回name变量时，它并没有直接把name实例变量返回，直接返回name实例变量的值也可能导致它所引用的Name对象被修改。<br>缓存实例的不可变类：不可变类创建的实例状态不可更改，可以方便地被多个对象共享。对于需要多次使用相同的不可变类实例，则应该考虑缓存这种不可变类的实例。如果可能，应该将创建的不可变类的实例进行缓存。<br>缓存的实现有多种方式。下面使用数组作为缓存池，从而实现一个缓存实例的不可变类。</p>
+<h1 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h1><p>编写一个类时，通常会为该类定义一些方法，如一个Shape类中定义了计算周长的方法calPrimeter()，但不同的Shape子类对周长的计算方法是不一样的，即Shape类无法准确地直到其子类计算周长的方法。如何既能让Shape类中包含calpPrimeter()方法，又无需提供方法实现呢？使用抽象方法就可以满足该要求。<br>抽象类体现的是一种模板模式的设计，抽象类作为多个子类设计的通用模板，子类在抽象父类的基础上进行扩展、改造，但子类总体上会保留大致抽象父类的行为。<br>抽象方法和抽象类必须使用abstract修饰符来定义。抽象类不能用于创建实例，只能当作父类被其它子类继承。<br>抽象方法和抽象类的定义规则如下：</p>
+<ul>
+<li>抽象类使用abstract来修饰，抽象方法也必须使用abstract来修饰，抽象方法不能有方法体。</li>
+<li>抽象类不能被实例化（即无法使用new关键字来调用抽象类的构造器来创建抽象类的实例对象），即使抽象类中不包含抽象方法，也不能实例化对象。</li>
+<li>抽象类中可包含的成分：成员变量（即类变量和实例变量）、方法（普通方法和抽象方法都可以）、构造器（抽象类的构造器不能用于实例化对象，主要用于被其子类调用）、初始化块、内部类（接口、枚举）。</li>
+<li>含有抽象方法的类（三种情况：直接定义了一个抽象方法；或继承了一个抽象父类，但没有完全实现父类包含的抽象方法；或实现了一个接口，但没有完全实现接口包含的抽象方法）只能被定义为抽象类。</li>
+</ul>
+<p>定义抽象方法只需在普通方法上增加abstract修饰符，并把普通方法中的内容和括号全部删掉，并在方法后增加分号。<br>注意：抽象方法和空方法不是一个概念。如public abstract void test( );是一个抽象方法，public void test( ){ }是一个普通方法，只是方法体为空。<br>下面定义一个Shape抽象类：</p>
+<p>注意：static和abstract不能同时修饰一个方法，因为static表明方法属于类，通过类调用该方法，但调用一个没有方法体的方法肯定会出现错误，所以没有所谓的类（static）抽象（abstract）方法。<br>注意：abstract方法必须被某个子类重写才有意义，因此abstract方法不能定义为private权限（当前类访问权限）。<br>还有一种模板范例，抽象类的一个普通方法依赖于一个抽象方法。父类中可能包含需要调用其它方法的方法，这些被调方法可以由父类实现，也可以由子类实现（即被调方法是抽象类方法，需要子类实现）。</p>
+<h1 id="接口（interface）"><a href="#接口（interface）" class="headerlink" title="接口（interface）"></a>接口（interface）</h1><p>抽象类是从多个类中抽象出来的模板，如果这种抽象更彻底，可以得到一种更加特殊的“抽象类”——接口（interface）。接口中不能包含普通方法，接口中的所有方法都是抽象方法。<br>接口将规范和实现分离，接口里通常是定义一组公用的抽象方法。</p>
+<p>接口是一种规范，它只规定了某一批类需要遵守的规范，它不关心类里的具体实现细节，它只规定这批类里必须提供某些方法。类是一种具体实现体。同一个类的内部状态数据、各种方法的实现细节完全相同。<br>和类定义不同，类定义使用class关键字，而接口定义使用interface关键字。接口定义的语法如下：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[修饰符]<span class="built_in"> interface </span>接口名 extends 父接口1，父接口2…</span><br><span class="line">&#123;	</span><br><span class="line">	零到多个常量定义…</span><br><span class="line">	零到多个抽象方法定义<span class="built_in">..</span>.</span><br><span class="line">	零到多个内部类、接口、枚举定义…</span><br><span class="line">	零到多个默认方法或类方法定义…</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一个接口可以有多个父类接口，但接口只能继承接口，不能继承类。<br>由于接口定义的是一种规范，所以接口中不能包含构造器和初始化块定义。接口中的成员可以包含成员变量（只能是静态类或实例常量）、方法（只能是类方法、抽象方法或默认方法）、内部类（包括内部接口、枚举）定义。且它们都是public权限（public可以省略）。<br>接口中成员都是public权限（public可以省略）。</p>
+<ul>
+<li>对静态常量而言，它们都是public static final权限（static final可以省略）。</li>
+<li>接口里的普通方法都是抽象方法，abstract修饰。<br>类方法必须有static修饰。<br>默认方法必须有default修饰，由于没有static修饰，不能使用接口来直接调用，需要使用接口的实现类来调用默认方法。</li>
+<li>接口里的内部类默认是public static权限。</li>
+</ul>
+<h1 id="接口的继承"><a href="#接口的继承" class="headerlink" title="接口的继承"></a>接口的继承</h1><p>接口的继承与类继承不同，接口支持多继承，即一个接口可以继承多个直接父类接口。和类接口相似，子接口扩展某个父类接口。<br>接口不能用于创建对象，但接口可以用于声明引用类型变量，这个引用类型变量必须引用到其实现类的对象。<br>继承使用extends关键字，实现使用implements关键字。语法如下：</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[修饰符] <span class="class"><span class="keyword">class</span> 类名 (<span class="keyword">extends</span> 父类) <span class="keyword">implements</span> 接口1，接口2…</span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	类体部分</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="接口和抽象类"><a href="#接口和抽象类" class="headerlink" title="接口和抽象类"></a>接口和抽象类</h1><p>接口和抽象类的相似处：</p>
+<ul>
+<li>都不能被实例化，都位于继承树的顶端，用于被其它类实现或继承。</li>
+<li>都可以包含抽象方法，实现接口或继承抽象类的普通子类都必须实现这些方法。<br>接口和抽象类的不同：</li>
+<li>接口作为系统与外界的窗口，体现的是一种规范。当在一个程序中使用接口时，接口是多个模块间的耦合标准；当在多个程序间使用接口时，接口是多个程序之间的通信标准。</li>
+<li>抽象类作为系统中多个子类的共同父类，它所体现的是一种模板式设计。抽象类作为多个子类的抽象父类，可以被当成系统实现过程中的中间产品，这个中间产品已经实现了部分功能（那些已经提供实现的方法），但还不能当做最终产品。</li>
+</ul>
+<h1 id="面向接口编程"><a href="#面向接口编程" class="headerlink" title="面向接口编程"></a>面向接口编程</h1><p>接口体现的是一种规范和分离设计的哲学，很多软件架构设计理论都采用面向接口编程，而不是面向类编程。两种常用面向接口模式如下：</p>
+<h2 id="简单工厂模式"><a href="#简单工厂模式" class="headerlink" title="简单工厂模式"></a>简单工厂模式</h2><p>Computer类需要组合一个输出设备，让Computer类组合一个Output类型对象，实现Computer类和Printer类的完全分离。当Printer对象切换到BetterPrinter对象时，系统完全不受影响。</p>
+<p>如果系统需要将Printer改为BetterPrinter实现类，只需让BetterPrinter实现Output接口，并改变OutputFactory类中的getOutput方法</p>
+<p>通过这种方式，即可把所有生成Output对象的逻辑集中在OutputFactory工厂类中集中管理。</p>
+<h2 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h2><p>某个方法需要完成一个行为，但这个行为的具体实现无法确定，必须要等到执行该方法时才可以确定，将“处理行为”作为参数传入该方法。可以考虑使用一个接口Command来定义一个方法。</p>
+<p>定义处理数组的处理类，这个处理类中包含了一个process()方法，这个方法无法确定处理数组的具体处理行为，所以定义该方法时使用了一个Command参数。</p>
+<h1 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h1><p>大部分时候，类被定义成一个独立的程序单元。在某些情况下，会把一个类放在某一个内部，这个定义在其它类内部的类称为内部类（也称嵌套类），包含内部类的类也称外部类。<br>非静态内部类成员可以直接访问外部类的私有（private）数据，但反过来就不成立了。非静态内部类的成员只在非静态内部类范围内是可知的，并不能被外部类直接使用。如果外部类要访问非静态成员的内部，必须显式地创建非静态内部类对象来调用访问其实力成员。还有一个原因是可能创建了外部类对象，但此时内部类不一定创建，如果允许外部类访问非静态内部类对象，将导致编译错误。<br>内部类作为外部类的成员，可以使用private、protected、public修饰。<br>在外部类中使用非静态类时，与平时使用普通类没有什么差别。<br>如果外部类成员变量、内部类成员变量与内部类里方法的局部变量同名，则在内部类中，可以使用this.变量访问内部变量；通过外部类类名.this.变量访问外部类变量。如：</p>
+<p>根据静态成员不能访问非静态成员，外部类的静态方法（注意main()方法时静态类方法）、静态代码块不能访问非静态内部类，包括不能使用非静态内部类定义变量、创建实例等。<br>非静态内部类里不允许定义静态成员：静态方法、静态成员变量、静态初始化块。<br>静态内部类<br>如果用static修饰一个内部类，则这个内部类属于外部类本身，而不属于外部类的某个对象。也称类内部类，静态内部类。<br>静态内部类无法访问外类的实例成员。<br>如果为接口内部类指定访问控制符，则只能指定public访问控制符；如果定义接口内部类时省略访问控制符，则该内部类默认是public访问控制权限。</p>
+<h1 id="使用内部类"><a href="#使用内部类" class="headerlink" title="使用内部类"></a>使用内部类</h1><p>定义类的主要作用是定义变量、创建实例和作为父类被继承。</p>
+<ul>
+<li>声明变量：在外部类以外的地方定义内部类（包括静态和非静态两种）变量的语法如下：即需要内部类在外部类中的完整类名<br>OutClass.InnerClass varName</li>
+<li>由于非静态内部类的对象必须寄生在外部类的对象中，因此创建非静态内部类对象之前，必须先创建其外部类对象。在外部类以外的地方创建非静态内部类对象：<br>new OuterInstance.new InnnerConstructor()</li>
+<li>由于静态内部类是外部类类相关的，因此创建静态内部类对象时无须创建外部类对对象。（外部类非常像一个包空间。）在外部类以外的地方创建静态内部类实例：<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="type">OuterClass</span>.InnerConstructor()</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>不管是静态内部类还是非静态内部类，它们声明变量的语法一样；当创建内部类对象时语法不同，静态内部类只需要外部类即可调用构造器，非静态内部类需要外部类的对象来调用构造器。</p>
+<p>当创建一个子类时，子类构造器总会调用父类构造器，因此在创建非静态内部类的子类时，必须保证让子类构造器可以调用非静态内部类的构造器，调用非静态内部类的构造器时，必须存在一个外部类对象。如下定义了一个子类继承了Out类的非静态内部类In类：（其中Out类、In类来源于上个CreateInnerInstance.java）</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">SubClass</span> <span class="keyword">extends</span> <span class="title">Out</span>.<span class="title">In</span></span>&#123;</span><br><span class="line">	public <span class="type">SubClass</span>(<span class="type">Out</span> out)&#123;</span><br><span class="line">		<span class="comment">// 非静态内部类In类必须使用外部类Out类来调用，创建SubClass对象时，必须先创建一个Out对象，</span></span><br><span class="line">		<span class="comment">// out代表外部类对象，super代表调用（父类）In类构造器</span></span><br><span class="line">		out.<span class="keyword">super</span>(“<span class="type">Hello</span>”); 					</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>局部变量的上一级是方法，因此所有的局部变量都不能使用static修饰。因为局部变量的作用域是方法，因此其它程序单元永远不可能访问另一个方法中的局部成员，因此所有的局部变量都不能使用访问控制符修饰。</p>
+<h1 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h1><p>匿名内部类适合创建那种只使用一次的类，如前面介绍命令模式需要的Command对象。创建匿名内部类时会创建一个该类的实例，这个类定义立即消失，匿名内部类不能重复使用。</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="type"></span>实现接口() /父类构造器（实参列表）</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">//…</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>匿名内部类必须实现一个接口，或继承一个父类，但最多只能实现一个接口或继承一个父类。<br>匿名内部类由于没有类名，所以不能定义构造器。但可以定义初始化块。<br>由于创建匿名内部类时会立即创建实例对象，所以匿名内部类不能是抽象类。</p>
+<ul>
+<li>当通过实现接口来创建匿名内部类时，匿名内部类不能创建显示的构造器，只有一个隐式的无参构造器，故new接口名后的括号内不能传入参数值。</li>
+<li>当通过继承父类来创建匿名内部类时，匿名内部类将拥有和父类相似的构造器，则可能拥有相同的形参列表。如果有需要，可以重写父类中的普通方法。<br>局部内部类、匿名内部类访问局部变量时，自动用final修饰。</li>
+</ul>
+<h1 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a>Lambda表达式</h1><p>Lambda表达式支持将代码块作为方法参数，它允许使用一个更简洁的接口来创建只有一个抽象方法（这种接口被称为函数式接口）的实例。<br>Lambda表达式用简洁的语法来创建函数式接口的实例—&gt;避免了匿名内部类的繁琐。<br>Lambda表达式可以用来简化创建匿名内部类对象。Lambda表达式的结果就是被当成对象。<br>Lambda表达式有三部分组成：</p>
+<ul>
+<li>形参列表。形参列表允许省略形参类型。</li>
+<li>箭头 -&gt; </li>
+<li>代码块。若代码块只有一条语句，则可省略大括号；若代码块只有一条return语句，可以省略return关键字；若代码块中只有一条语句，还可以在代码块中使用方法引用和构造器引用。</li>
+</ul>
+<p>1.定义接口；2.Lambda表达式创建接口对象；3.调用接口对象 =&gt; 可将2.3.简化</p>
+<h2 id="引用类方法"><a href="#引用类方法" class="headerlink" title="引用类方法"></a>引用类方法</h2><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Interface Converter&#123;</span><br><span class="line">	Integer covert(String from);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//用Lambda表达式创建一个Converter（接口）对象</span></span><br><span class="line"><span class="comment">//代码只有一句Integer.valueOf(from);省略了花括号，由于表达式所实现的converter()方法需要返回值，</span></span><br><span class="line"><span class="comment">//Lambda表达式将会把这条代码的值作为返回值返回。</span></span><br><span class="line">Converter converter1 = from -&gt; <span class="module-access"><span class="module"><span class="identifier">Integer</span>.</span></span>value<span class="constructor">Of(<span class="params">from</span>)</span>;</span><br><span class="line"><span class="comment">//调用Converter的convert()方法，将字符串转换成整数</span></span><br><span class="line">Integer <span class="keyword">val</span> = converter1.convert(“<span class="number">99</span>”);</span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">System</span>.</span></span>out.println(<span class="keyword">val</span>);<span class="comment">//输出99</span></span><br></pre></td></tr></table></figure>
+<p>上面Lambda表达式的代码块只有一行调用类方法的代码，因此可用如下方法进行替换：</p>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Converter converter1 = <span class="built_in">Integer</span><span class="type">::valueOf</span>;</span><br></pre></td></tr></table></figure>
+<p>对于上面方法的引用，也就是调用Integer类的valueOf()方法来实现Converter函数式接口中的唯一抽象方法，当调用Converter接口中的唯一抽象方法时，调用参数将会传给Integer类的valueOf()方法。</p>
+<h2 id="应用特定对象的实例方法"><a href="#应用特定对象的实例方法" class="headerlink" title="应用特定对象的实例方法"></a>应用特定对象的实例方法</h2><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Converter converter2 = from -&gt; “fkit.org”.index<span class="constructor">Of(<span class="params">from</span>)</span>;</span><br><span class="line">Integer <span class="keyword">val</span> = converter2.convert(“it”);</span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">System</span>.</span></span>out.println(<span class="keyword">val</span>);<span class="comment">//输出2</span></span><br></pre></td></tr></table></figure>
+<p>上面Lambda表达式的代码块只有一行调用类方法的代码，因此可用如下方法进行替换：</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Converter converter2 = “fkit.org”.indexOf <span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<h2 id="引用某类对象的实例方法"><a href="#引用某类对象的实例方法" class="headerlink" title="引用某类对象的实例方法"></a>引用某类对象的实例方法</h2><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Interface MyTest&#123;</span><br><span class="line"><span class="comment">//该函数式接口包含一个test()抽象方法，</span></span><br><span class="line"><span class="comment">//负责根据String, int, int三个参数生成一个String返回值</span></span><br><span class="line">	<span class="keyword">String</span> test(<span class="keyword">String</span> a, <span class="built_in">int</span> b, <span class="built_in">int</span> c);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//使用Lambda表达式创建MyTest对象</span></span><br><span class="line">MyTest mt = (a, b, c) -&gt; a.substring(b, c);</span><br><span class="line"><span class="comment">//接下来程序就可以调用mt对象的test()方法</span></span><br><span class="line"><span class="keyword">String</span> <span class="built_in">str</span> = mt.test(“I love java”, <span class="number">2</span>, <span class="number">9</span>);</span><br><span class="line">System.out.<span class="built_in">println</span>(<span class="built_in">str</span>); <span class="comment">// 输出Iove ja输出的是从2到9之前的（不包括9）</span></span><br></pre></td></tr></table></figure>
+<p>上面Lambda表达式的代码块只有一行调用类方法的代码，因此可用如下方法进行替换：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">MyTest mt</span> = String :: substring;</span><br></pre></td></tr></table></figure>
+<h2 id="引用构造器"><a href="#引用构造器" class="headerlink" title="引用构造器"></a>引用构造器</h2><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Interface YourTest&#123;</span><br><span class="line">	<span class="function">JFrame <span class="title">win</span><span class="params">(<span class="keyword">String</span> title)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line">YourTest yt = (<span class="keyword">String</span> a) -&gt; <span class="keyword">new</span> JFrame(a);</span><br><span class="line">JFrame jf = yt.win(“我的窗口”);</span><br><span class="line">System.out.<span class="built_in">println</span>(jf);</span><br></pre></td></tr></table></figure>
+<p>上面Lambda表达式的代码块只有一行new JFrame(a);代码，因此可用如下方法进行替换：</p>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">YourTest yt = JFrame ::</span> <span class="keyword">new</span><span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<p>调用JFrame类的构造器来时先YourTest函数式接口中的唯一抽象类。</p>
+<p>上面较为繁琐，lambda表达式替换了new  ( ){ }这种繁琐的代码。Lambda表达式的代码块将会替代实现抽象方法的方法体，lambda表达式就相当于一个匿名方法。</p>
+<p>main函数调用eat()方法，调用该方法需要一个Eatable类型的参数，实际上调用的是Lambda表达式；调用drive()方法，调用该方法需要一个Fly类型的参数，实际上调用的是Lambda表达式；调用test()方法，调用该方法需要一个Addable类型的参数，实际上调用的是Lambda表达式。可见Lambda表达式可以被当成任意类型对象。<br>Lambda表达式的类型称为目标类型（target type），Lambda表达式的目标类型必须是函数式接口（functional interface）。函数式接口代表只包含一个抽象方法的接口，但它可包含多个默认方法、类方法。</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Ruannable接口（是java本身提供的一个函数式接口）只包含一个无参方法</span></span><br><span class="line"><span class="comment">//下面Lambda表达式创建了一个Runnable对象</span></span><br><span class="line">Runnable r = () -&gt; &#123;</span><br><span class="line">	<span class="keyword">for</span>(I = <span class="number">0</span>; i&lt; <span class="number">100</span>; I ++)&#123;</span><br><span class="line">		System.<span class="keyword">out</span>.prinln()；</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Java8在java.util.function包下预定义了大量函数式接口，典型的包括以下4种接口：</p>
+<ul>
+<li>Function，通常包含一个apply()抽象方法，该方法对参数进行处理、转换，返回一个新的值。</li>
+<li>Consumer，通常包含一个accept()抽象方法，该方法与apply()方法类似，但不会返回结果。</li>
+<li>Predicate，通常包含一个test()抽象方法，该方法对参数进行判断，返回一个boolean值。</li>
+<li>Supplier，通常包含一个getAs ()抽象方法，该方法不需要输入参数，按照某种逻辑返回一个值。</li>
+</ul>
+<p>Arrays类的有些方法需要Comparator、 Operator， Function等接口的实例，这些接口都是函数式接口，因此可以用Lambda表达式来调用Arrays类的方法。</p>
+<h1 id="枚举类（enumeration）"><a href="#枚举类（enumeration）" class="headerlink" title="枚举类（enumeration）"></a>枚举类（enumeration）</h1><p>一个类的实例是有限且固定的类，称为枚举类。<br>Java5新增的enum关键字，它与class、interface关键字的地位相同，所以定义枚举类。<br>枚举类与普通类的区别：</p>
+<ul>
+<li>枚举类可以实现一个或多个接口，使用enum定义的枚举类默认继承了java.lang.Enum类，而不是默认Object类，因此枚举不能显示地继承其它父类接口。其中java.lang.Enum类实现了java.lang.Serializable和java.lang.Comparable接口。</li>
+<li>用enum定义、非抽象的枚举类通常会使用final修饰，因此枚举类不能派生出子类。（final修饰的类不能被子类继承，protected修饰的类可以被同一包的其它类访问，也可以被不同包内的子类访问）</li>
+<li>枚举类的构造器只能使用private修饰（当前类访问权限）。</li>
+<li>枚举类的实例必须在枚举类的第一行显示列出，系统会自动添加public static final修饰符。</li>
+</ul>
+<p>要使用某个实例可用EnumClass.variable形式，如SeansonNum.SPRING。</p>
+<p>由于枚举类默认继承了java.lang.Enum类，所以枚举类可以直接使用java.lang.Enum类中所包含的方法。java.lang.Enum类中提供了如下几种方法：</p>
+<ul>
+<li>int compareTo(E o)：用于与指定枚举类对象比较顺序，如该枚举类对象位于指定枚举类对象之后，则返回正整数；。。。</li>
+<li>String name()：返回此枚举类实例的名称，但常用的是toStirng()方法，因为toString()方法返回更加友好的名称。</li>
+<li>String toString()：返回枚举常量的名称。比name()方法常用。<br>当程序使用System.out.println(s); 实际上输出的是改枚举值的toString()方法。</li>
+<li>int ordinal()：返回枚举类在声明中的索引值。</li>
+<li>public static &lt;T extends Enum<T>&gt; T valueOf(Class<T> enumType, String name)：静态方法，用于返回指定枚举类中指定名称的枚举值。</li>
+</ul>
+<p>枚举类的成员变量、方法和构造器<br>建议将枚举类的成员变量都设置成private final修饰。此时必须在构造器中为这些成员变量指定初始值（或在定义成员变量时指定默认值，或在定义初始化块时定义初始值，但这两种情况并不常见）。<br>构造器用private修饰。</p>
+<p>实现接口的枚举类：它与普通类一样，可实现一个或多个接口，需要实现该接口中的所有方法。<br>如果需要每个枚举值在调用接口里的方法时呈现出不同的行为方式，则可以让每个枚举值分别实现该方法，每个枚举值提供不同的实现方式。<br>并不是所有的枚举类都是用final修饰。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/23/Tech/Java/Java%20Basis/Java%E5%9F%BA%E7%A1%80%EF%BC%88%E5%9B%9B%EF%BC%89%E2%80%94%E2%80%94%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B8%8A%EF%BC%89/" rel="next" title="Java基础（四）——面向对象（上）">
+                <i class="fa fa-chevron-left"></i> Java基础（四）——面向对象（上）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/24/Tech/Design%20Pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%947%E4%B8%AA%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/" rel="prev" title="设计模式（三）——7个结构型模式">
+                设计模式（三）——7个结构型模式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="LichtMiao" />
+          <p class="site-author-name" itemprop="name">LichtMiao</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">186</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          <!-- 
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+           -->
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/LichtMiao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Miaomi4" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                    
+                      Twitter
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#包装类（Wrapper-Class）"><span class="nav-number">1.</span> <span class="nav-text">包装类（Wrapper Class）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#toString-方法"><span class="nav-number">2.</span> <span class="nav-text">toString()方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#和equals-方法"><span class="nav-number">3.</span> <span class="nav-text">&#x3D;&#x3D;和equals()方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类成员"><span class="nav-number">4.</span> <span class="nav-text">类成员</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#单例（Singleton）类"><span class="nav-number">5.</span> <span class="nav-text">单例（Singleton）类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#final修饰符"><span class="nav-number">6.</span> <span class="nav-text">final修饰符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#抽象类"><span class="nav-number">7.</span> <span class="nav-text">抽象类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#接口（interface）"><span class="nav-number">8.</span> <span class="nav-text">接口（interface）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#接口的继承"><span class="nav-number">9.</span> <span class="nav-text">接口的继承</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#接口和抽象类"><span class="nav-number">10.</span> <span class="nav-text">接口和抽象类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#面向接口编程"><span class="nav-number">11.</span> <span class="nav-text">面向接口编程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单工厂模式"><span class="nav-number">11.1.</span> <span class="nav-text">简单工厂模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令模式"><span class="nav-number">11.2.</span> <span class="nav-text">命令模式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内部类"><span class="nav-number">12.</span> <span class="nav-text">内部类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用内部类"><span class="nav-number">13.</span> <span class="nav-text">使用内部类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#匿名内部类"><span class="nav-number">14.</span> <span class="nav-text">匿名内部类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lambda表达式"><span class="nav-number">15.</span> <span class="nav-text">Lambda表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#引用类方法"><span class="nav-number">15.1.</span> <span class="nav-text">引用类方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用特定对象的实例方法"><span class="nav-number">15.2.</span> <span class="nav-text">应用特定对象的实例方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用某类对象的实例方法"><span class="nav-number">15.3.</span> <span class="nav-text">引用某类对象的实例方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用构造器"><span class="nav-number">15.4.</span> <span class="nav-text">引用构造器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#枚举类（enumeration）"><span class="nav-number">16.</span> <span class="nav-text">枚举类（enumeration）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LichtMiao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+  Powered by <a>Hexo</a>
+</div>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+  <!-- 背景动画 -->
+  
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>

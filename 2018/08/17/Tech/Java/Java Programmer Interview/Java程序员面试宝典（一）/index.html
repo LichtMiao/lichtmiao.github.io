@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en.yml">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Learning, Life" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="LichtMiao's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="1.    JRE与JDK的区别1）    JRE（Java runtime environment）：是Java程序的运行环境，与开发无关。既然要运行，必然有JVM（Java virtual machine，Java虚拟机），还包括所有Java类库的class文件，都在lib目录下，被打包成了jar文件。2）JDK（Java development kit）：是Java的开发工具包，JDK包含了">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java程序员面试宝典（一）">
+<meta property="og:url" content="https://lichtmiao.github.io/2018/08/17/Tech/Java/Java%20Programmer%20Interview/Java%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
+<meta property="og:site_name" content="LichtMiao&#39;s Blog">
+<meta property="og:description" content="1.    JRE与JDK的区别1）    JRE（Java runtime environment）：是Java程序的运行环境，与开发无关。既然要运行，必然有JVM（Java virtual machine，Java虚拟机），还包括所有Java类库的class文件，都在lib目录下，被打包成了jar文件。2）JDK（Java development kit）：是Java的开发工具包，JDK包含了">
+<meta property="og:image" content="http://ovfkr5e4k.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180821220201.png">
+<meta property="og:image" content="http://ovfkr5e4k.bkt.clouddn.com/Java%20Web%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%89%80%E9%9C%80%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png">
+<meta property="article:published_time" content="2018-08-17T14:13:25.000Z">
+<meta property="article:modified_time" content="2019-01-21T05:44:18.000Z">
+<meta property="article:author" content="LichtMiao">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://ovfkr5e4k.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180821220201.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.2',
+    sidebar: {"position":"right","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://lichtmiao.github.io/2018/08/17/Tech/Java/Java Programmer Interview/Java程序员面试宝典（一）/"/>
+
+
+
+
+
+<!-- 网页加载条 -->
+<script src="https://neveryu.github.io/js/src/pace.min.js"></script>
+  <title>Java程序员面试宝典（一） | LichtMiao's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en.yml">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LichtMiao's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lichtmiao.github.io/2018/08/17/Tech/Java/Java%20Programmer%20Interview/Java%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%EF%BC%88%E4%B8%80%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LichtMiao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LichtMiao's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java程序员面试宝典（一）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-17T22:13:25+08:00">
+                2018-08-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/Java/Java-Programmer-Interview/" itemprop="url" rel="index">
+                    <span itemprop="name">Java Programmer Interview</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-JRE与JDK的区别"><a href="#1-JRE与JDK的区别" class="headerlink" title="1.    JRE与JDK的区别"></a>1.    JRE与JDK的区别</h1><p>1）    JRE（Java runtime environment）：是Java程序的运行环境，与开发无关。既然要运行，必然有JVM（Java virtual machine，Java虚拟机），还包括所有Java类库的class文件，都在lib目录下，被打包成了jar文件。<br>2）JDK（Java development kit）：是Java的开发工具包，JDK包含了JRE，同时还包含了javac（将源代码编译为字节码.class文件），还包含了很多java程序调试和分析的工具：jconsole，jvisualvm等工具软件，还包含了java程序编写所需的文档和demo例子程序。<br>如果只需要运行java程序，只需安装JRE就可以了。如果需要编写java程序，需要安装JDK。</p>
+<h1 id="2-配置环境变量"><a href="#2-配置环境变量" class="headerlink" title="2.    配置环境变量"></a>2.    配置环境变量</h1><p>我只安装了JDK（JDK包含了JRE）。<br>用户变量：编辑Path：在最前面粘贴类库文件路径<br>D:\Software\Java\jdk1.8.0_31\bin；<br>系统变量：新建JAVA_HOME：jdk文件路径<br>D:\Software\Java\jdk1.8.0_31<br>新建CLASSPATH：类库文件路径，注意前面的点跟分号<br>.; D:\Software\Java\jdk1.8.0_31\lib<br>验证开发环境是否搭建成功：<br>打开cmd，输入javac回车没问题，输入java，回车也没问题。（javac命令用来将源文件编译成字节码，java命令运行Java程序。）</p>
+<h1 id="3-Path、JAVA-HOME、CLASSPATH的意义"><a href="#3-Path、JAVA-HOME、CLASSPATH的意义" class="headerlink" title="3.    Path、JAVA_HOME、CLASSPATH的意义"></a>3.    Path、JAVA_HOME、CLASSPATH的意义</h1><p>1）Path：将exe应用程序存在的目录写入Path环境变量中，就可以在任意目录下运行该exe应用程序；<br>2）JAVA_HOME：就是指定了jdk所在的文件路径。<br>3）CLASSPATH：指定类库文件的搜索路径。我的配置中有两个路径：点号代表当前目录，另一搜索目录是D:\Software\Java\jdk1.8.0_31\lib。</p>
+<h1 id="4-动态地指定类库的搜索路径：-cp或-classpath"><a href="#4-动态地指定类库的搜索路径：-cp或-classpath" class="headerlink" title="4.    动态地指定类库的搜索路径：-cp或-classpath"></a>4.    动态地指定类库的搜索路径：-cp或-classpath</h1><p>javac –cp D:\Software\Java\jdk1.8.0_31\lib\jconsol.jar HelloWorld.java<br>java –cp D:\Software\Java\jdk1.8.0_31\lib\jconsol.jar HelloWorld.java</p>
+<h1 id="5-jar文件"><a href="#5-jar文件" class="headerlink" title="5.    jar文件"></a>5.    jar文件</h1><p>jar文件是java程序打包后的格式文件，jar主要是方便程序的发布和部署。它一般保存有class文件、配置文件、manifest.mf文件（对jar包及其中的内容做一些设置）。<br>1）利用IDE工具打包：右击项目-export-<font color="red">runnable JAR file</font>, launch configuration选择入口的main方法的那个类，然后选择export destination。双击jar文件就可以运行。<br>2）利用dos打包jar文件：jar命令，常用的命令参数：-c创建一个jar包，-f指定jar包文件名，-v生成详细报告并输出至标准设备。</p>
+<h1 id="6-Java与C-的区别"><a href="#6-Java与C-的区别" class="headerlink" title="6.    Java与C++的区别"></a>6.    Java与C++的区别</h1><p>任何一门高级语言最终都会变成机器码（二进制）后，才能被计算机所识别。而Java程序或C++程序最终都会变成汇编，再运行。<br>像C、C++这类高级语言，它们的编译器直接将源码编译成计算机识别的机器码；而Java的跨平台特性，使得它多了一个中间步骤：编译器将Java源码编译成字节码，这些字节码可以在JVM中运行，而大多数操作系统都可安装JVM。</p>
+<h1 id="7-Java引用与C-指针的区别"><a href="#7-Java引用与C-指针的区别" class="headerlink" title="7.    Java引用与C++指针的区别"></a>7.    Java引用与C++指针的区别</h1><p>本质上，Java和C++都是想通过引用或指针，找到要操作的目标。<br>区别：<br>1）    初始值：Java引用的初始值为null；而C++指针是int型，如不初始化指针，那它的值就不固定，这很危险。<br>2）    计算：引用不可计算，只能被控制；而<strong>指针是内存地址，是int型</strong>，如++或–，所以经常用指针来代替数组下标。<br>3）    内存泄漏：Java引用不会产生内存泄漏；而C++容易产生内存泄漏。<br>4）    作为参数：Java的方法参数只是传值，引用作为参数使用时，函数内是引用参数的copy，所以在函数内交换两个引用是没有意义的，但在函数内改变一个引用参数的属性是有意义的，因为引用参数的copy和原引用参数所引用的是同一对象；而C++指针作为参数给函数用，实际上就是它所指的地址被函数操作。</p>
+<h1 id="8-Java的垃圾回收机制"><a href="#8-Java的垃圾回收机制" class="headerlink" title="8.    Java的垃圾回收机制"></a>8.    Java的垃圾回收机制</h1><p>运行时的数据存储区有堆（heap）和栈（stack）。<font color="red"><strong>栈中存放的是基本类型变量的值和引用类型变量的地址</strong></font>，这些数据的分配和释放都是系统自动完成的。堆的管理，不同语言的实现不同：C语言通过操作库函数malloc()和free()来实现；C++使用new和delete语句；Java内存数据的释放是由垃圾回收器自动进行的，数组和对象在没有引用变量指向它们时，就会变成垃圾，但仍占用内存，在一个不确定的时间被垃圾回收器回收。相对于C++，可以避免因忘记释放内存而造成的内存溢出错误。</p>
+<h1 id="9-Java-Web项目的生成、部署和配置"><a href="#9-Java-Web项目的生成、部署和配置" class="headerlink" title="9.    Java Web项目的生成、部署和配置"></a>9.    Java Web项目的生成、部署和配置</h1><p>Java Web开发指的是使用Java语言，并按照Java EE规范开发的Web应用程序，这些应用程序可以部署到任何符合该规范的Web容器中运行。</p>
+<p><img src="http://ovfkr5e4k.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180821220201.png" alt="javaweb应用程序目录结构"><br><img src="http://ovfkr5e4k.bkt.clouddn.com/Java%20Web%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%89%80%E9%9C%80%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png" alt="Java Web应用程序所需的目录结构"><br>web.xml文件定义了Servlet（<servlet>和<servlet-mapping>标签），过滤器（<filter>和<filter-mapping>标签），监听器（<listener>标签）和一些参数等信息。Web容器通过对该文件的配置控制整个Web应用程序的行为方式。<br>Servlet是符合一定规范的Java类，它存活在Web容器中，Servlet是服务器端处理HTTP请求的基本组成单元，包括JSP、过滤器在内的许多技术都基于Servlet实现。<br>Web应用程序也可用jar打包，不过文件后缀为War。</p>
+<h1 id="10-EJB（enterprise-java-bean）项目的生成和部署问题"><a href="#10-EJB（enterprise-java-bean）项目的生成和部署问题" class="headerlink" title="10.    EJB（enterprise java bean）项目的生成和部署问题"></a>10.    EJB（enterprise java bean）项目的生成和部署问题</h1><p>EJB是Java EE中的一条规范，它广泛应用于大型分布式项目中。</p>
+<h1 id="11-静态变量、实例变量、局部变量"><a href="#11-静态变量、实例变量、局部变量" class="headerlink" title="11.    静态变量、实例变量、局部变量"></a>11.    静态变量、实例变量、局部变量</h1><p>根据生成周期的不同可分为静态变量、实例变量和局部变量。<br>成员变量（field,字段、属性)包括：静态（类）变量，实例变量；<br>局部变量包括：方法里的变量；代码块中的变量。<br>1）    静态变量由static修饰，它的生存周期由类来决定，当类加载时它们就生成并初始化；<br>2）    实例变量是类中没有static修饰的变量，它的生存周期由对象决定，随着对象的加载生成并初始化，随着对象被垃圾回收器回收而消失；<br>3）    局部变量是定义在方法中的变量或参数，它随着方法的调用而创建，随着方法的执行完毕而消失。<br>静态变量通过类名.静态变量访问；实例变量通过实例.实例变量访问。<br>若要在方法中使用成员变量，可以用this关键字。</p>
+<h1 id="12-基本数据类型（8种）和引用数据类型两种大的数据类型"><a href="#12-基本数据类型（8种）和引用数据类型两种大的数据类型" class="headerlink" title="12.    基本数据类型（8种）和引用数据类型两种大的数据类型"></a>12.    基本数据类型（8种）和引用数据类型两种大的数据类型</h1><p>基本数据类型直接存放数据的值，而引用类型存放的是数据所在的地址。<br>Java中几乎所有要处理的东西都是对象，操作对象比操作基本类型更方便，而操作基本类型则更高效。由于基本数据类型存储的都是数据量比较小的数据。对数据量比较大的对象进行数据操作时，会影响效率，因此为所有操作对象的类型定义了一种引用类型（存的值是内存地址）的数据。</p>
+<h1 id="13-装箱（把基本数据类型包装成包装类）"><a href="#13-装箱（把基本数据类型包装成包装类）" class="headerlink" title="13.    装箱（把基本数据类型包装成包装类）"></a>13.    装箱（把基本数据类型包装成包装类）</h1><p>1）    使用new语句；<br>2）    调用包装类的静态方法valueOf()。<br>如</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> a = <span class="number">1</span>;</span><br><span class="line">Integer b = <span class="keyword">new</span> <span class="constructor">Integer(<span class="params">a</span>)</span>; <span class="comment">//装箱</span></span><br><span class="line">Integer c = <span class="module-access"><span class="module"><span class="identifier">Integer</span>.</span></span>value<span class="constructor">Of(<span class="params">a</span>)</span>; <span class="comment">//装箱</span></span><br><span class="line"><span class="built_in">int</span> d = b.<span class="built_in">int</span><span class="constructor">Value()</span>; <span class="comment">//调用包装类的intValue()方法可以拆箱</span></span><br></pre></td></tr></table></figure>
+<h1 id="14-自动装箱和自动拆箱"><a href="#14-自动装箱和自动拆箱" class="headerlink" title="14.    自动装箱和自动拆箱"></a>14.    自动装箱和自动拆箱</h1><p>从java 5.0开始有一种自动装箱（autoboxing）和自动拆箱（unboxing）功能，就可以不必显示转换，系统会自动按照需求进行数据类型转换。<br>自动装箱和拆箱是对基本数据类型及其包装类的相互自动转换，这个过程发生在编译阶段。<br>如</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Integer i = <span class="number">10</span>; <span class="comment">//自动装箱</span></span><br><span class="line"><span class="built_in">int</span> a = I; <span class="comment">//自动拆箱</span></span><br></pre></td></tr></table></figure>
+<h1 id="15-Java的main-方法"><a href="#15-Java的main-方法" class="headerlink" title="15.    Java的main()方法"></a>15.    Java的main()方法</h1><p>main()方法是程序的入口方法，它还接受外部参数（即通过命令提示符输入的参数），字符串数组参数args就是用来接受参数的，它是一个数组的形式，长度与输入参数的个数一致。</p>
+<h1 id="16-equals-与-的区别"><a href="#16-equals-与-的区别" class="headerlink" title="16.    equals()与==的区别"></a>16.    equals()与<font color="red">==</font>的区别</h1><p>默认情况下，它们的作用都是相同的，即在比较基本类型的时候，比较它们的实际值是否相等；在比较引用类型的时候，比较它们引用的地址是否相等（即<font color="red"> 是否引用的同一对象 </font>）。默认Object类下的equals()方法：</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (<span class="keyword">this</span> == obj); <span class="comment">//这个对象</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>所以通常需要重写（override）equals()方法，使它比较的是实际值是否相等（即我们通常认为的值相等），equals()方法是java.lang.Object的方法，可以被重写（override），也可自定义方法来判断两个对象是否相等。<br><strong>而String类的equals()方法已经被重写，比较的是两个字符串序列是否完全相同</strong>。</p>
+<h1 id="17-提供3种循环结构"><a href="#17-提供3种循环结构" class="headerlink" title="17.    提供3种循环结构"></a>17.    提供3种循环结构</h1><p>for适合确定循环次数；while适合单条件循环；do…while适合执行某代码之后再循环。</p>
+<h1 id="18-Java只有一个三元运算符"><a href="#18-Java只有一个三元运算符" class="headerlink" title="18.    Java只有一个三元运算符"></a>18.    Java只有一个三元运算符</h1><p>即条件表达式？表达式1：表达式2。条件表达式是一个布尔表达式，只能返回true或false，如果返回true则执行表达式1，返回false则执行表达式2。<br>三元运算符不是必须的，它可以被if和else语句替代，它最大的作用是减少了代码量。</p>
+<h1 id="19-Java中的注释"><a href="#19-Java中的注释" class="headerlink" title="19.    Java中的注释"></a>19.    Java中的注释</h1><p>1）行注释//和块注释/*…*/；<br>2）文档注释/**…*/：用来生成API文档；<br>3）Annotation：与其他注释的本质区别是，它会进入到编译层，并对程序结果产生影响，它用来代替XML提供JPA、Spring等框架的配置信息。</p>
+<h1 id="20-类和对象有什么区别"><a href="#20-类和对象有什么区别" class="headerlink" title="20.    类和对象有什么区别"></a>20.    类和对象有什么区别</h1><p>1）类代表了一种抽象集合，它里面的各种属性和方法代表了每个类实例的特定数据和操作。在类中定义属性和方法。JVM对类只加载一次，对它的静态成员也只加载一次。<br>类的构造器是一种特殊的方法，它不能被程序员显式调用，只能在创建对象时由系统自动调用。<br>2）对象是某一特定抽象（即类）的实例，它必须属于某一个类，对象都用new关键字或类名来创建。<br>简而言之，类是抽象，对象是类的实现。</p>
+<h1 id="21-如何使用继承（extends）重写（override）代码"><a href="#21-如何使用继承（extends）重写（override）代码" class="headerlink" title="21.    如何使用继承（extends）重写（override）代码"></a>21.    如何使用<font color="red">继承（extends）</font>重写（override）代码</h1><p>Java的继承是<strong>单继承</strong>，即子类只能继承一个父类。子类拥有父类<strong>除了私有成员</strong>以外的所有成员变量和成员方法。若需要对父类方法进行重写（override，即方法覆盖），定义一个名字、参数、返回值完全相同的方法，实现多态。<br>Java程序中，所有类都继承自java.lang.Object类，它有9个方法：clone()、equals()、finalize()、getClass()、hashCode()、notify()、notifyAll()、toString()、wait()，则所有的Java类都包含这9个方法。</p>
+<h1 id="22-多态"><a href="#22-多态" class="headerlink" title="22.    多态"></a>22.    <font color="red">多态</font></h1><p>子类继承父类，重写方法。通过将子类对象引用直接赋值给父类对象引用变量，当运行时调用该引用类型的方法时，其方法总是表现出子类的特征。访问属性时，会得到父类属性（编译时类型），但方法调用的是子类方法（运行时类型）。</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//同样是人，亚洲人和欧洲人眼睛颜色这个方法不同）</span></span><br><span class="line">Man asiaMan = <span class="keyword">new</span> <span class="type">AsiaMan</span>();	</span><br><span class="line">Man euroMan = <span class="keyword">new</span> <span class="type">EuroMan</span>();</span><br></pre></td></tr></table></figure>
+<p>asiaMan和euroMan都是Man类型，但他们的实现不同，表现出来的形态也就不同，这就是多态。</p>
+<h1 id="23-重载（overload）"><a href="#23-重载（overload）" class="headerlink" title="23.    重载（overload）"></a>23.    重载（overload）</h1><p>创建一个方法名相同，但参数列表不同的方法。</p>
+<h1 id="24-Java中静态成员的特点"><a href="#24-Java中静态成员的特点" class="headerlink" title="24.    Java中静态成员的特点"></a>24.    Java中静态成员的特点</h1><p>静态成员是static修饰的成员，它属于一个类所有，这个类的所有实例可以共享它们。<br>特点：在类加载时，就进行创建和初始化或执行代码；对一个类来说，都只有一份；类的所有实例都可以访问到它们。<br>主要包括：<br>1）    静态变量：被static修饰的成员变量，在类加载时执行创建和初始化。因为它的唯一性，通常用于对象的数据记录，如单例模式下想引用保存。<br>2）    静态代码块：被static修饰，在类加载时被调用。被{ }括起来的代码，可以使用静态变量和方法。<br>3）    静态方法：被static修饰，直接通过类名访问，（也可通过对象访问）。</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StaticTest</span>&#123;</span></span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> a; <span class="comment">//类加载时，系统初始化为1</span></span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">staticTest</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.<span class="built_in">print</span>(<span class="string">"静态方法"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">static</span> &#123;</span><br><span class="line">		System.out.<span class="built_in">print</span>(<span class="string">"静态代码块"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">String</span>[] args)</span></span>&#123;</span><br><span class="line">		System.out.<span class="built_in">println</span>(a);</span><br><span class="line">		StaticTest obj = <span class="keyword">new</span> StaticTest(); <span class="comment">//先执行这句</span></span><br><span class="line">		obj.staticTest();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输出：</span><br><span class="line">静态代码块</span><br><span class="line"><span class="keyword">a</span></span><br><span class="line">静态方法</span><br></pre></td></tr></table></figure>
+<p>执行上述代码，被动引用类字段：JVM会先加载StaticTest类（主类）到内存，然后创建变量a并执行初始化，再执行静态代码块。静态方法需要显式调用。</p>
+<h1 id="25-Java子类如何为父类传递参数"><a href="#25-Java子类如何为父类传递参数" class="headerlink" title="25.    Java子类如何为父类传递参数"></a>25.    Java子类如何为父类传递参数</h1><p>super用于访问父类成员，可以用于调用被子类重写的父类成员方法，也可以用来调用父类的构造器。<br>所有的类在没有提供其他的构造方法（也叫构造器）的时候，都会使用系统提供的默认的构造方法。若父类和子类都使用默认的构造方法，那么子类可以不必显示的调用super()，系统会隐式地调用父类的默认构造方法；但若父类中有需要传入参数的构造方法，那么子类就必须为父类传入这些参数。<br>例：<font color="red"> 无论子类中定义的无参还是有参的构造方法，都需要为父类的有参构造方法传入参数 </font>。</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//父类构造方法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span>(<span class="params">int a</span>)</span>&#123;</span><br><span class="line"><span class="keyword">this</span>.a = a;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//子类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span> <span class="keyword">extends</span> <span class="title">Base</span></span>&#123;</span><br><span class="line">	<span class="type">Child</span>()&#123;</span><br><span class="line">		<span class="keyword">super</span>(<span class="number">100</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">Child</span>(int a)&#123;</span><br><span class="line">	<span class="keyword">super</span>(a);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="26-接口和抽象类的区别"><a href="#26-接口和抽象类的区别" class="headerlink" title="26.    接口和抽象类的区别"></a>26.    接口和抽象类的区别</h1><p>接口和抽象类都包含了一些不完整的信息，都是不能具体地描述一个对象的类型，需要实现类进行具体实现。<br>1）抽象类（abstract class）：包含抽象方法的类。通过abstract class定义。不可以被实例化，抽象类表示一种继承关系，使用extends关键字。一个类只能继承一个父类。<br>2）接口（interface）：所有东西都是抽象的，即所有方法都是抽象的，它也可以包含静态变量，但都是final变量。通过interface定义。不可以被实例化，可以被实现（implements）。一个类可以实现多个接口。</p>
+<h1 id="27-内部类的实质"><a href="#27-内部类的实质" class="headerlink" title="27.    内部类的实质"></a>27.    内部类的实质</h1><p>内部类生存在其它类的内部。内部类的分类：<br>1）    静态内部类：<font color="red"> 在外部类加载的时候，静态内部类也随之加载</font>。其完整类名为包名.外部类.内部类。编译后的class文件后缀为<strong>Outer$Inner.class</strong>。静态内部类对于外部类来说，仅仅是包含关系，缩小了命名空间，<font color="red"> 它们是两个独立的类 </font>，JVM也不知道它们两个有包含关系。<br>2）    成员内部类：此时的内部类需要等外部类创建了对象后才被加到JVM中，<font color="red"> 先有外部类实例才有内部类实例（因此成员内部类不能有static方法或变量）</font>，它属于外部类的某个实例，因此<font color="red">可以访问外部类的任意成员</font>。创建成员内部类的语法：先创建外部类的实例，然后用此实例调用new语句。</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Outer</span> o = <span class="built_in">new</span> <span class="keyword">Outer</span>();</span><br><span class="line"><span class="keyword">Outer</span>.<span class="keyword">Inner</span> I = o.<span class="built_in">new</span> <span class="keyword">Inner</span>();</span><br></pre></td></tr></table></figure>
+<p>对于成员内部类的构造方法，系统会为它们自动加上一个外部类的参数和外部类的成员变量。成员内部类的本质构造方法：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Inner(Outer o)&#123;</span><br><span class="line">	<span class="keyword">this</span>.o = o;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当内部类访问外部成员时，则是通过自动添加的外部类变量进行访问。<br>3）    局部内部类：只在定义它的方法内部有效。不能使用static关键字，只能使用final和abstract关键字，仅可访问外部类<font color="red"> 带final关键字的局部变量</font>，但可以访问<font color="red"> 任意外部类对象的成员变量</font>。局部内部类定义在static方法里就相当于静态内部类；定义在普通方法里就相当于成员内部类。<br>4）    匿名内部类：局部内部类（存在于方法里）没有名字，则它就是一个匿名内部类。匿名内部类的工作原理相当于局部内部类，只是它没有具体名字，也不能被外部类直接使用。匿名内部类编译后的class文件的命名是按匿名内部类的的排列顺序进行的，如<strong>Outer$1.class</strong>。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">abc</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">new</span> Inner()&#123;</span><br><span class="line">	   …</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="28-包"><a href="#28-包" class="headerlink" title="28.    包"></a>28.    包</h1><p>包可以有效防止重名。当需要把一个类定义在某个包下的时候，使用package关键字。当需要使用其它包下的类的时候，使用import关键字。</p>
+<h1 id="29-4种访问控制符"><a href="#29-4种访问控制符" class="headerlink" title="29.    4种访问控制符"></a>29.    4种访问控制符</h1><p>private、<em>default</em>、protected、public。</p>
+<style>
+table th:first-of-type {
+    width: 100px;
+}
+</style>
+
+<table>
+<thead>
+<tr>
+<th align="center">访问控制符</th>
+<th>具体控制范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">private</td>
+<td><font color="red">当前类访问</font>权限。用于<font color="red">修饰成员变量最合适</font>，将成员变量隐藏在该类的内部。</td>
+</tr>
+<tr>
+<td align="center"><em>default</em></td>
+<td><font color="red">包访问</font>权限。默认即什么访问控制符都不加，被default修饰的成员或外部类只能被相同包下的其它类访问。</td>
+</tr>
+<tr>
+<td align="center">protected</td>
+<td><font color="red">子类访问</font>权限。被protected修饰的成员既可以被同一包内的其它类访问，也可以被不同包的子类访问。通常情况下，如果<font color="red">使用protected来修饰一个方法</font>，通常是希望其<font color="red">子类</font>来<font color="red">重写</font>这个方法。</td>
+</tr>
+<tr>
+<td align="center">public</td>
+<td>公共访问权限。可以被所有类访问，不管是不是在同一个包中，不管是否具有父子继承关系。</td>
+</tr>
+<tr>
+<td align="center"># 30.    int和Integer的区别 #</td>
+<td></td>
+</tr>
+<tr>
+<td align="center">1）int型</td>
+<td></td>
+</tr>
+<tr>
+<td align="center">int是8种基础数据类型中的一种，基础数据类型保存在栈内存（虚拟机栈）中。<font color="red"><b>int型数据占4个字节（32位）</b></font>，取值范围：-2^31~2^31-1。第1位是正负符号位（0表示正，1表示负），后面31位表示数值。</td>
+<td></td>
+</tr>
+<tr>
+<td align="center">2）    Integer是int的包装类，在参数传递的时候，传递的是它所代表的对象的一个引用。</td>
+<td></td>
+</tr>
+<tr>
+<td align="center">注意：所有数字在计算机中都是以二进制存在的，<font color="red">计算机是以补码的形式保存所有的整数</font>。所以<font color="red">原码即是补码除最高位外，其它位取反，减1得到的</font>。</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><font color="red">反码</font>：最高位（符号位）保持不变，对原码按位取反。</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><font color="red">补码</font>：正数的补码与原码完全相同；负数的补码是其反码加1。</td>
+<td></td>
+</tr>
+<tr>
+<td align="center">八进制以0开头，十六进制以0x开头。它们虽然用得不多，八进制可以用来表示掩码，十六进制用来表示颜色。</td>
+<td></td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/16/Tech/Computer%20Network/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E4%BA%94%EF%BC%89%E2%80%94%E2%80%94%E5%BA%94%E7%94%A8%E5%B1%82/" rel="next" title="计算机网络（五）——应用层">
+                <i class="fa fa-chevron-left"></i> 计算机网络（五）——应用层
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/18/Tech/Java/Java%20VM/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E4%B8%8E%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA%E5%BC%82%E5%B8%B8/" rel="prev" title="Java虚拟机（一）——Java内存区域与内存溢出异常">
+                Java虚拟机（一）——Java内存区域与内存溢出异常 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="LichtMiao" />
+          <p class="site-author-name" itemprop="name">LichtMiao</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">186</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          <!-- 
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+           -->
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/LichtMiao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Miaomi4" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                    
+                      Twitter
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-JRE与JDK的区别"><span class="nav-number">1.</span> <span class="nav-text">1.    JRE与JDK的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-配置环境变量"><span class="nav-number">2.</span> <span class="nav-text">2.    配置环境变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Path、JAVA-HOME、CLASSPATH的意义"><span class="nav-number">3.</span> <span class="nav-text">3.    Path、JAVA_HOME、CLASSPATH的意义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-动态地指定类库的搜索路径：-cp或-classpath"><span class="nav-number">4.</span> <span class="nav-text">4.    动态地指定类库的搜索路径：-cp或-classpath</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-jar文件"><span class="nav-number">5.</span> <span class="nav-text">5.    jar文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-Java与C-的区别"><span class="nav-number">6.</span> <span class="nav-text">6.    Java与C++的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-Java引用与C-指针的区别"><span class="nav-number">7.</span> <span class="nav-text">7.    Java引用与C++指针的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-Java的垃圾回收机制"><span class="nav-number">8.</span> <span class="nav-text">8.    Java的垃圾回收机制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9-Java-Web项目的生成、部署和配置"><span class="nav-number">9.</span> <span class="nav-text">9.    Java Web项目的生成、部署和配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#10-EJB（enterprise-java-bean）项目的生成和部署问题"><span class="nav-number">10.</span> <span class="nav-text">10.    EJB（enterprise java bean）项目的生成和部署问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#11-静态变量、实例变量、局部变量"><span class="nav-number">11.</span> <span class="nav-text">11.    静态变量、实例变量、局部变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#12-基本数据类型（8种）和引用数据类型两种大的数据类型"><span class="nav-number">12.</span> <span class="nav-text">12.    基本数据类型（8种）和引用数据类型两种大的数据类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#13-装箱（把基本数据类型包装成包装类）"><span class="nav-number">13.</span> <span class="nav-text">13.    装箱（把基本数据类型包装成包装类）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#14-自动装箱和自动拆箱"><span class="nav-number">14.</span> <span class="nav-text">14.    自动装箱和自动拆箱</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#15-Java的main-方法"><span class="nav-number">15.</span> <span class="nav-text">15.    Java的main()方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#16-equals-与-的区别"><span class="nav-number">16.</span> <span class="nav-text">16.    equals()与&#x3D;&#x3D;的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#17-提供3种循环结构"><span class="nav-number">17.</span> <span class="nav-text">17.    提供3种循环结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#18-Java只有一个三元运算符"><span class="nav-number">18.</span> <span class="nav-text">18.    Java只有一个三元运算符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#19-Java中的注释"><span class="nav-number">19.</span> <span class="nav-text">19.    Java中的注释</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#20-类和对象有什么区别"><span class="nav-number">20.</span> <span class="nav-text">20.    类和对象有什么区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#21-如何使用继承（extends）重写（override）代码"><span class="nav-number">21.</span> <span class="nav-text">21.    如何使用继承（extends）重写（override）代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#22-多态"><span class="nav-number">22.</span> <span class="nav-text">22.    多态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#23-重载（overload）"><span class="nav-number">23.</span> <span class="nav-text">23.    重载（overload）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#24-Java中静态成员的特点"><span class="nav-number">24.</span> <span class="nav-text">24.    Java中静态成员的特点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#25-Java子类如何为父类传递参数"><span class="nav-number">25.</span> <span class="nav-text">25.    Java子类如何为父类传递参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#26-接口和抽象类的区别"><span class="nav-number">26.</span> <span class="nav-text">26.    接口和抽象类的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#27-内部类的实质"><span class="nav-number">27.</span> <span class="nav-text">27.    内部类的实质</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#28-包"><span class="nav-number">28.</span> <span class="nav-text">28.    包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#29-4种访问控制符"><span class="nav-number">29.</span> <span class="nav-text">29.    4种访问控制符</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LichtMiao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+  Powered by <a>Hexo</a>
+</div>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+  <!-- 背景动画 -->
+  
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>

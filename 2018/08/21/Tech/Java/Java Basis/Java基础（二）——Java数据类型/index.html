@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en.yml">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Learning, Life" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="LichtMiao's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="面向功能和面向对象的区别面向结构化（面向功能）如C、Basic、Pascal等，最小程序设计单元是函数，将功能细分，主函数调用其它函数。自顶向下的设计模式，需要考虑每个模块需要分解成哪些子模块。 面向对象C++、java、C#、Ruby等，最小程序设计单元是类，这些类可以生成系统中的多个对象，而这些对象则直接映像成客观世界的各种事物。类定义&#x3D;成员变量+方法。使用类、继承、封装、消息等概念进行程序设">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java基础（二）——Java数据类型">
+<meta property="og:url" content="https://lichtmiao.github.io/2018/08/21/Tech/Java/Java%20Basis/Java%E5%9F%BA%E7%A1%80%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94Java%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/index.html">
+<meta property="og:site_name" content="LichtMiao&#39;s Blog">
+<meta property="og:description" content="面向功能和面向对象的区别面向结构化（面向功能）如C、Basic、Pascal等，最小程序设计单元是函数，将功能细分，主函数调用其它函数。自顶向下的设计模式，需要考虑每个模块需要分解成哪些子模块。 面向对象C++、java、C#、Ruby等，最小程序设计单元是类，这些类可以生成系统中的多个对象，而这些对象则直接映像成客观世界的各种事物。类定义&#x3D;成员变量+方法。使用类、继承、封装、消息等概念进行程序设">
+<meta property="article:published_time" content="2018-08-21T11:19:38.000Z">
+<meta property="article:modified_time" content="2019-01-07T06:26:14.000Z">
+<meta property="article:author" content="LichtMiao">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.2',
+    sidebar: {"position":"right","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://lichtmiao.github.io/2018/08/21/Tech/Java/Java Basis/Java基础（二）——Java数据类型/"/>
+
+
+
+
+
+<!-- 网页加载条 -->
+<script src="https://neveryu.github.io/js/src/pace.min.js"></script>
+  <title>Java基础（二）——Java数据类型 | LichtMiao's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en.yml">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LichtMiao's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lichtmiao.github.io/2018/08/21/Tech/Java/Java%20Basis/Java%E5%9F%BA%E7%A1%80%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94Java%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LichtMiao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LichtMiao's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java基础（二）——Java数据类型</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-21T19:19:38+08:00">
+                2018-08-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/Java/Java-Basis/" itemprop="url" rel="index">
+                    <span itemprop="name">Java Basis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="面向功能和面向对象的区别"><a href="#面向功能和面向对象的区别" class="headerlink" title="面向功能和面向对象的区别"></a>面向功能和面向对象的区别</h1><h2 id="面向结构化（面向功能）"><a href="#面向结构化（面向功能）" class="headerlink" title="面向结构化（面向功能）"></a>面向结构化（面向功能）</h2><p>如C、Basic、Pascal等，最小程序设计单元是函数，将功能细分，主函数调用其它函数。自顶向下的设计模式，需要考虑每个模块需要分解成哪些子模块。</p>
+<h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><p>C++、java、C#、Ruby等，最小程序设计单元是类，这些类可以生成系统中的多个对象，而这些对象则直接映像成客观世界的各种事物。类定义=成员变量+方法。使用类、继承、封装、消息等概念进行程序设计，直接强调以现实中的事物（即对象）为中心来思考，认识问题，并根据这些事物的本质特点，将它们抽象为系统中的类，作为系统的基本构成单元。<br>面向对象的方式由OOA（面向对象分析）、OOD（面向对象设计）、OOP（面向对象编程）三个本分有机组成。其中OOA和OOD结构需要使用一种方式来描述并记录，目前业界统一使用UML（统一建模语言）来描述并记录OOA（面向对象分析）和OOD（面向对象设计）的结果。<br>UML（统一建模语言）介绍<br>OOA（面向对象分析）：对目标系统进行分析，建立分析模型，并将之文档化；<br>OOD（面向对象设计）：对OOA的结果进行细化，得出设计模型；<br>OOA和OOD的分析、设计结果需要统一的符号来描述、交流并记录 -&gt; UML作为建模语言。<br><a href="https://docs.oracle.com/javase/9/docs/api/overview-summary.html" target="_blank" rel="noopener">Java API文档</a><br>(Application Programming Intererence, 应用程序编程接口)</p>
+<h1 id="Java语言特点"><a href="#Java语言特点" class="headerlink" title="Java语言特点"></a>Java语言特点</h1><p>Java语言是面向对象编程（Object-Oriented Programming，OOP），java程序的基本组成单元是类（class），一个应用程序由若干类组成，package为类所在的包，类中又可包括属性和方法（java中的子程序称为方法）两部分。每个Java程序都必须包含一个main()方法，有main()方法的类称为主类。<br>Java语言是纯粹的面向对象的语言，这体现在java支持面向对象的三种基本特征：封装（encapsulation）、继承（inheritance）、多态（polymorphism）。Java最小单位是类，整个java程序由一个一个类组成。封装：将对象的实现细节隐藏起来，然后通过一些公用方法暴露该对象的功能；继承：当子类继承父类后，子类作为一种特殊的父类，将直接获得父类的属性和方法；多态：子类对象可以直接赋给父类变量，但运行时依然保留子类的特征，这意味着同一类型的对象在执行同一方法时，可能表现出多种行为特征。</p>
+<h1 id="Java主类结构"><a href="#Java主类结构" class="headerlink" title="Java主类结构"></a>Java主类结构</h1><h2 id="包声明"><a href="#包声明" class="headerlink" title="包声明"></a>包声明</h2><p>一个java应用程序由若干类组成，上图是名为First的类，package Number声明该类所在的包。</p>
+<h2 id="声明全局（成员）变量和局部变量"><a href="#声明全局（成员）变量和局部变量" class="headerlink" title="声明全局（成员）变量和局部变量"></a>声明全局（成员）变量和局部变量</h2><p>通常将类的属性称为类的全局（成员）变量，将方法中的属性称为局部变量。全局变量的声明在类体中，局部变量声明在方法中。上图s1是全局变量，s2是局部变量。<br>1）    成员变量：在整个类中都有效。类的成员变量又可分为：静态变量，实例变量。静态变量的有效范围可以跨类，甚至可以到达整个应用程序。对于静态变量，除了可以在定义它的类中存取，还能直接以“类名.静态变量”的方式在其它类中使用。<br>class var{<br>int x=45; //实例变量<br>static int y =90;//静态变量<br>}<br>2）    局部变量：在类的方法体中定义的变量，只在当前代码块中有效。局部变量可与成员变量的名字相同。但此时成员变量将会被隐藏，即这个成员变量在此方法中暂时失效。</p>
+<p>3）    主方法main()：main()是类体中的主方法，是程序开始执行的位置，它从“{”开始在“}”结束。Java中的main()方法必须声明为public static void，public权限修饰符、static静态修饰符、void返回值修饰符。String[] args是main()的参数，是一个字符串类型的数组。<br>4）    导入API（应用程序接口）类库<br>可通过import关键字导入相关的类。在JDK的API（应用程序接口）中提供了130多个包，如java.awt、java.io等。可通过JDK的API文档查看这些类。API文档主要包括类的集成结构、类的应用、成员变量表、构造方法等，并对每个变量的使用作了详细阐述。<br>Java applet是通过网络动态下载的小程序。<br>程序的移植（项目的导入导出）：右击项目-&gt;Properties-&gt;查看项目的路径，空白处右击-&gt;Import-&gt;General-Existing Projects into Workspace</p>
+<h1 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h1><p>Java是强类型（strongly type）语言：所有变量必须先声明后引用；指定类型变量只接受类型与之匹配的值。 </p>
+<h2 id="整型"><a href="#整型" class="headerlink" title="整型"></a>整型</h2><p>有三种表示形式：十进制、八进制（必须以0开头）、十六进制（必须以0X或0x开头）<br>根据在内存中所占的大小，分为四种类型：byte、short、int、long<br>byte：8位 -128<del>127,（对原始二进制进行操作）<br>short：16位 -32768</del>32767（节约内存）<br>int：32位 -2147483648~2147483647（常用的整型，）<br>long：64位 如100L，100l<br>注意：对于long类型，若赋给的值超过了int范围，则需要在数字后面加L或l，表示该整数为长整型，如long num=2147483650L。</p>
+<h2 id="浮点型：有小数部分的数字"><a href="#浮点型：有小数部分的数字" class="headerlink" title="浮点型：有小数部分的数字"></a>浮点型：有小数部分的数字</h2><p>float：32位（若想使用float类型，需要在小数后添加F或f）<br>double：64位（常用，Java类库中默认都看作double类型）<br>如<br>float f1=13.23f;<br>double d1=456.12;<br>注意：只有浮点类型的数才可以使用科学计数法，如5.12e2表示 ，int型不能使用科学计数法，如512e2表示的是浮点型数据。<br>三个特殊的浮点类型：正无穷：POSITIVE_INFINITY(double类或float类，如正数除以0)、负无穷：NEGATIVE_INFINITY(double类或float类，如负数除以0)、非数：NaN(double类或float类，如对一个负数开方得到非数)。只有浮点数除以0才可以得到正无穷或负无穷，因为java会把0自动当成浮点数0.0来处理，整数除以0将抛出异常。</p>
+<h2 id="字符型"><a href="#字符型" class="headerlink" title="字符型"></a>字符型</h2><p>chart型：16位Unicode字符集作为编码方式，0~65535（可以对char进行运算，对应ASCII和Unicode的运算）。’s’表示一个字符（char），”s”表示一个字符串（String）。（Unicode被设计成支持世界上所有书面语言的字符，因此java程序支持各种语言的字符。所谓字符集，就是给所有字符编号所组成的集合，当计算机需要保存某个字符时，只需要将该字符编号，然后将编号转换成二进制。）<br>转义字符：以\开头</p>
+<h2 id="boolean型：表示true或false的值"><a href="#boolean型：表示true或false的值" class="headerlink" title="boolean型：表示true或false的值"></a>boolean型：表示true或false的值</h2><p>通常用在流程控制中作为判断条件。<br>注意：所有数字在计算机中都是以二进制存在的，计算机是以补码的形式保存所有的整数。所以原码即是补码除去最高位后，取反，减1得到的。可以在数值中使用下划线，方面数值的阅读。<br>反码：最高位（符号位）保持不变，对原码按位取反。<br>补码：正数的补码与原码完全相同；负数的补码是其反码加1。</p>
+<h1 id="引用数据类型"><a href="#引用数据类型" class="headerlink" title="引用数据类型"></a>引用数据类型</h1><p>包括类、接口、数组、null类型。引用数据类型就是对一个对象的引用，对象包括实例和数组两种。事实上引用数据类型就是一个指针，只是java中不再使用指针这个说法。空引用只能转成引用数据类型，不能转成基本数据类型。</p>
+<h1 id="基本类型的类型转换"><a href="#基本类型的类型转换" class="headerlink" title="基本类型的类型转换"></a>基本类型的类型转换</h1><p>自动类型转换：将范围较小的数值或变量直接赋值给范围较大的变量。</p>
+<p>强制类型转换：将上图从右往左转换。容易造成溢出，使数据丢失。<br>如内存中数据32位int型-&gt;8位byte型，只留数据的低八位，将高位去掉，最左边是符号位，再将这第七位取反码，再减1，从而得到原码形式。</p>
+<p>通常情况下，字符串不能转换为基本类型，但通过基本类型的包装类可以实现。如将字符串转换为int型：<br>String a = “45”;<br>//使用Integer的一个方法将字符串转换为int型<br>int iValue = Integer.parseInt(a);<br>java为8种基本类型都提供了对应的包装类：byte-&gt;Byte, short-&gt;Short, int-&gt;Int, long-&gt;Long, float-&gt;Float, double-&gt;Double, char-&gt;Character, boolean-&gt;Boolean。8个包装类都提供了静态方法 将字符串转换成基本类型。（parse解析）</p>
+<h1 id="变量与常量"><a href="#变量与常量" class="headerlink" title="变量与常量"></a>变量与常量</h1><h2 id="标识符和关键字"><a href="#标识符和关键字" class="headerlink" title="标识符和关键字"></a>标识符和关键字</h2><p>标识符用来表示类名、变量名、方法名、数组名、文件名的有效字符序列。<br>常见关键字：</p>
+<p>常量语法：final 常量=值；（常量名一般使用大写）</p>
+<h2 id="声明变量"><a href="#声明变量" class="headerlink" title="声明变量"></a>声明变量</h2><p>系统内存可分为三个区域：系统区（OS）、程序区（programming）、数据区（data）。当程序执行时，程序代码会加载到programming区，数据暂时存储在data区。</p>
+<h2 id="声明常量"><a href="#声明常量" class="headerlink" title="声明常量"></a>声明常量</h2><p>常量在整个程序中只能被赋值一次，除了制定数据类型外，还需通过final关键字进行限定，常量名称通常为大写：<br>final 数据类型 常量名称[=值]<br>注意：当定义的final变量为全局变量，这需要定义时赋初值。</p>
+<h2 id="变量的有效范围"><a href="#变量的有效范围" class="headerlink" title="变量的有效范围"></a>变量的有效范围</h2><p>变量被定义出来后指示被暂存在内存中，等到程序执行到某一个点后，该变量就会被释放。根据程序的有效访问代码的区域，分为全局（成员）变量和局部变量。</p>
+<h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1><h2 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h2><h2 id="按位运算符"><a href="#按位运算符" class="headerlink" title="按位运算符"></a>按位运算符</h2><p>与&amp;、或|、取反~、异或^（不同则为1）、左移&lt;&lt;、右移&gt;&gt;、无符号右移&gt;&gt;&gt;（左移n位：乘以2的n次方，右移n位：除以2的n次方）</p>
+<h2 id="关系运算符（relational-operator）"><a href="#关系运算符（relational-operator）" class="headerlink" title="关系运算符（relational operator）"></a>关系运算符（relational operator）</h2><h2 id="逻辑运算符（logical-perator）"><a href="#逻辑运算符（logical-perator）" class="headerlink" title="逻辑运算符（logical perator）"></a>逻辑运算符（logical perator）</h2><p>对于&amp;&amp;，只要左边为false，则右边不会再计算；但&amp;无论左边真假，右边都会计算。<br>对于||，只要左边诶true，则右边就不会再计算；但|无论左边真假，右边都会计算。<br>逻辑运算符的操作数必须是boolean类型。</p>
+<h2 id="三元运算符"><a href="#三元运算符" class="headerlink" title="三元运算符"></a>三元运算符</h2><p>条件？值1：值2  若条件为true则表达式取值1，否则取值2.<br>%是求模运算符，返回整数除法的余数。</p>
+<h2 id="赋值运算符（assignment-operator）"><a href="#赋值运算符（assignment-operator）" class="headerlink" title="赋值运算符（assignment operator）"></a>赋值运算符（assignment operator）</h2><p>表达式（expression）可包含运算符、变量、字面量。当一个表达式中混入不同的数据类型char、byte、short，都会转换为同一类型int。它们本来的类型不变，只是表达式的类型发生了改变。当一个操作数是long型，整个表达式提升为long，当一个操作数是float型，整个表达式提升为float，当一个操作数是double型，整个表达式提升为double型。</p>
+<p>评估真假的表达式：布尔表达式（Boolean expression）<br>关系运算符（relation operator）<br>循环控制变量（loop control variable）<br>分隔符（seperator）<br>ASCII（American Standard Code for Information Interchange，美国信息交换标准代码）<br>十进制（decimal），二进制以0b或0B开头八进制（octal）以0开头，十六进制（hexadecimal）以0x或0X开头。<br>转义序列（escape sequence）<br>radius半径，volume体积<br>运算符（operator）<br>代码块（code block）：一对花括号内实现代码块。块定义作用域，作用域定义对象的可见性和生命周期。在块内，变量可以在任何地方声明，块退出时销毁变量。<br>前缀（prefix）后缀（postfix）<br>array数组<br>fraction分数<br>\t水平制表符，使各列对齐</p>
+<p>代码注释：//单行注释，/* <em>/多行注释，/*</em> */文档注释<br>在开发中定义类、方法时，可以先添加文档注释，然后使用javadoc工具生成自己的API文档，但默认只处理public、protected修饰的类、成员变量、方法、接口、构造器、内部类之前的文档注释。</p>
+<h1 id="提取文档注释生成API文档"><a href="#提取文档注释生成API文档" class="headerlink" title="提取文档注释生成API文档"></a>提取文档注释生成API文档</h1><h2 id="不使用IDE工具"><a href="#不使用IDE工具" class="headerlink" title="不使用IDE工具"></a>不使用IDE工具</h2><p>javadoc 选项 java源文件|包<br>java命令可以对源文件、包生成API文档，java源文件可以支持通配符，如*.java代表当前路径下的所有java源文件。javadoc的常用选项：<br>-d<directory>：指定一个路径，用于将生成的API文档放到该指定目录下；<br>-windowtitle<text>：指定一个字符串，用于设置API文档的浏览器窗口标题；<br>-doctilte<html-code>：指定一个HTML格式的文本，用于指定概述页面的标题；（只有对处于多个包下的源文件生成API文档时才有概述页面）<br>-header<html-code>：指定一个HTML格式的文本，包含每个页面的页眉。</p>
+<h2 id="使用eclipse生成API"><a href="#使用eclipse生成API" class="headerlink" title="使用eclipse生成API"></a>使用eclipse生成API</h2><p>默认在工程下生成doc文件，访问index.html查看：</p>
+<p>添加包描述：</p>
+<p>编码规范：每条语句要独占一行，一条命令要以分号结束；声明变量时，尽管是相同数据类型，也应该分行，便于添加注释，对于局部变量，应在声明时初始化；关键方法要多加注释。</p>
+<p>Import别人的java文件<br>新建与别人项目名相同的项目，将别人的src拖到新建的src当中。如别人导出的文件是这样的：</p>
+<p>在eclipse中新建项目awesom-java-leetcode-master，（直接将别人的src拖到新建的项目里，其实我没有这一步，因为我直接将别人的项目放到了我的eclipse工作文件夹下，新建了项目工程后，eclipse默认将源代码导入）。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/21/Tech/Java/Java%20Programmer%20Interview/Java%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%EF%BC%88%E5%9B%9B%EF%BC%89/" rel="next" title="Java程序员面试宝典（四）">
+                <i class="fa fa-chevron-left"></i> Java程序员面试宝典（四）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/21/Tech/Java/Java%20Programmer%20Interview/Java%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%EF%BC%88%E4%BA%94%EF%BC%89/" rel="prev" title="Java程序员面试宝典（五）">
+                Java程序员面试宝典（五） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="LichtMiao" />
+          <p class="site-author-name" itemprop="name">LichtMiao</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">186</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          <!-- 
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+           -->
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/LichtMiao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Miaomi4" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                    
+                      Twitter
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#面向功能和面向对象的区别"><span class="nav-number">1.</span> <span class="nav-text">面向功能和面向对象的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#面向结构化（面向功能）"><span class="nav-number">1.1.</span> <span class="nav-text">面向结构化（面向功能）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象"><span class="nav-number">1.2.</span> <span class="nav-text">面向对象</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java语言特点"><span class="nav-number">2.</span> <span class="nav-text">Java语言特点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java主类结构"><span class="nav-number">3.</span> <span class="nav-text">Java主类结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#包声明"><span class="nav-number">3.1.</span> <span class="nav-text">包声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#声明全局（成员）变量和局部变量"><span class="nav-number">3.2.</span> <span class="nav-text">声明全局（成员）变量和局部变量</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本数据类型"><span class="nav-number">4.</span> <span class="nav-text">基本数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#整型"><span class="nav-number">4.1.</span> <span class="nav-text">整型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浮点型：有小数部分的数字"><span class="nav-number">4.2.</span> <span class="nav-text">浮点型：有小数部分的数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符型"><span class="nav-number">4.3.</span> <span class="nav-text">字符型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#boolean型：表示true或false的值"><span class="nav-number">4.4.</span> <span class="nav-text">boolean型：表示true或false的值</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#引用数据类型"><span class="nav-number">5.</span> <span class="nav-text">引用数据类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本类型的类型转换"><span class="nav-number">6.</span> <span class="nav-text">基本类型的类型转换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变量与常量"><span class="nav-number">7.</span> <span class="nav-text">变量与常量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#标识符和关键字"><span class="nav-number">7.1.</span> <span class="nav-text">标识符和关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#声明变量"><span class="nav-number">7.2.</span> <span class="nav-text">声明变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#声明常量"><span class="nav-number">7.3.</span> <span class="nav-text">声明常量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量的有效范围"><span class="nav-number">7.4.</span> <span class="nav-text">变量的有效范围</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#运算符"><span class="nav-number">8.</span> <span class="nav-text">运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#算术运算符"><span class="nav-number">8.1.</span> <span class="nav-text">算术运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#按位运算符"><span class="nav-number">8.2.</span> <span class="nav-text">按位运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关系运算符（relational-operator）"><span class="nav-number">8.3.</span> <span class="nav-text">关系运算符（relational operator）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逻辑运算符（logical-perator）"><span class="nav-number">8.4.</span> <span class="nav-text">逻辑运算符（logical perator）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三元运算符"><span class="nav-number">8.5.</span> <span class="nav-text">三元运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#赋值运算符（assignment-operator）"><span class="nav-number">8.6.</span> <span class="nav-text">赋值运算符（assignment operator）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#提取文档注释生成API文档"><span class="nav-number">9.</span> <span class="nav-text">提取文档注释生成API文档</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#不使用IDE工具"><span class="nav-number">9.1.</span> <span class="nav-text">不使用IDE工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用eclipse生成API"><span class="nav-number">9.2.</span> <span class="nav-text">使用eclipse生成API</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LichtMiao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+  Powered by <a>Hexo</a>
+</div>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+  <!-- 背景动画 -->
+  
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>

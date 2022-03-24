@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en.yml">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Learning, Life" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="LichtMiao's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="IP地址与物理地址的关系；传统分类的IP地址（包括子网掩码）和无分类域间路由选择CIDR；ICMP和IGMP；路由选择协议（RIP、OSPF，EGP）的工作原理；网际协议IPv6。多个网络通过路由器互联成互联网。网络层传输的数据单位是分组（数据报，IP数据报）（packet），中继为路由器。 路由器的构成网络层的主要工作是：路由器的分组转发。互联网的核心是网际协议IP。当主机A要向主机B发送数据报">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络（三）——网络层">
+<meta property="og:url" content="https://lichtmiao.github.io/2018/08/14/Tech/Computer%20Network/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E7%BD%91%E7%BB%9C%E5%B1%82/index.html">
+<meta property="og:site_name" content="LichtMiao&#39;s Blog">
+<meta property="og:description" content="IP地址与物理地址的关系；传统分类的IP地址（包括子网掩码）和无分类域间路由选择CIDR；ICMP和IGMP；路由选择协议（RIP、OSPF，EGP）的工作原理；网际协议IPv6。多个网络通过路由器互联成互联网。网络层传输的数据单位是分组（数据报，IP数据报）（packet），中继为路由器。 路由器的构成网络层的主要工作是：路由器的分组转发。互联网的核心是网际协议IP。当主机A要向主机B发送数据报">
+<meta property="og:image" content="https://user-images.githubusercontent.com/26324355/50731322-c5a4e800-119c-11e9-9d59-e0ce8eb3c667.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/26324355/50731323-cdfd2300-119c-11e9-9a4b-55c93f67a1cb.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/26324355/50731346-3815c800-119d-11e9-86b5-81b1ba104b82.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/26324355/50731334-ef5e0f00-119c-11e9-99de-e8f7316be758.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/26324355/50731342-19afcc80-119d-11e9-9948-c3e653504901.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/26324355/50731339-0ef53780-119d-11e9-9227-519df8996054.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/26324355/50731349-49f76b00-119d-11e9-917d-12ff2c4c61d0.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/26324355/50731353-5aa7e100-119d-11e9-8d87-e11834994903.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/26324355/50731356-71e6ce80-119d-11e9-913e-412ccb20b09b.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/26324355/50731358-82974480-119d-11e9-8e3c-049a4489690b.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/26324355/50731360-8fb43380-119d-11e9-8e98-e21d2c5cc461.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/26324355/50731361-993d9b80-119d-11e9-8ad7-6e1366a58068.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/26324355/50731363-a6f32100-119d-11e9-980e-4d9db24c54f7.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/26324355/50731368-bf633b80-119d-11e9-9baa-46bb25da17f2.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/26324355/50731371-cab66700-119d-11e9-848a-90f2c8494068.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/26324355/50731374-d6099280-119d-11e9-9381-9bf17e3a0fde.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/26324355/50731376-e28deb00-119d-11e9-9908-4ec8caa9b4af.png">
+<meta property="article:published_time" content="2018-08-14T02:18:49.000Z">
+<meta property="article:modified_time" content="2019-01-07T05:52:10.000Z">
+<meta property="article:author" content="LichtMiao">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/26324355/50731322-c5a4e800-119c-11e9-9d59-e0ce8eb3c667.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.2',
+    sidebar: {"position":"right","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://lichtmiao.github.io/2018/08/14/Tech/Computer Network/计算机网络（三）——网络层/"/>
+
+
+
+
+
+<!-- 网页加载条 -->
+<script src="https://neveryu.github.io/js/src/pace.min.js"></script>
+  <title>计算机网络（三）——网络层 | LichtMiao's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en.yml">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LichtMiao's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lichtmiao.github.io/2018/08/14/Tech/Computer%20Network/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E7%BD%91%E7%BB%9C%E5%B1%82/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LichtMiao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LichtMiao's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">计算机网络（三）——网络层</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-14T10:18:49+08:00">
+                2018-08-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/Computer-Network/" itemprop="url" rel="index">
+                    <span itemprop="name">Computer Network</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>IP地址与物理地址的关系；传统分类的IP地址（包括子网掩码）和无分类域间路由选择CIDR；<br>ICMP和IGMP；路由选择协议（RIP、OSPF，EGP）的工作原理；网际协议IPv6。<br>多个网络通过路由器互联成互联网。<br>网络层传输的数据单位是分组（数据报，IP数据报）（packet），中继为路由器。</p>
+<h1 id="路由器的构成"><a href="#路由器的构成" class="headerlink" title="路由器的构成"></a>路由器的构成</h1><p>网络层的主要工作是：路由器的分组转发。互联网的核心是网际协议IP。<br>当主机A要向主机B发送数据报时，先检查B是否与A在同一网络上，如果是，就直接交付给B，而不需要通过路由器；如果不是，就间接交付：需要某个路由按照路由转发表指出的路由将数据报发送给下一个路由器。路由器至少有两个不同的IP地址。<br><img src="https://user-images.githubusercontent.com/26324355/50731322-c5a4e800-119c-11e9-9d59-e0ce8eb3c667.png" alt="典型的路由器结构"></p>
+<p>路由器的结构可分为路由选择部分和分组转发部分<br>1）    路由选择部分<br>控制部分，核心是路由选择处理机。根据所选择的路由选择协议构造路由转发表（forwarding table，路由表、转发表不特定区分），同时定期和相邻路由器交换路由信息；路由处理机从分组首部提取目的地址，查找路由表。<br>2）    分组转发部分<br>根据路由转发表对分组进行处理，将输入端口进入的分组从一个合适的输出端口转发出去。输入端口的查找转发是重要功能。<br>分组在路由器的输入端口和输出端口都可能在队列中排队等待。若分组处理的速度赶不上分组进入队列的速度，队列满产生溢出，发生分组丢弃。</p>
+<h1 id="路由转发分组的步骤"><a href="#路由转发分组的步骤" class="headerlink" title="路由转发分组的步骤"></a>路由转发分组的步骤</h1><p>IP地址指出了连接到某个网络的某个主机，路由表中的信息为目的网络地址、下一跳地址（没有划分子网的情况下）。<br>1）    按所要找到目的IP地址的net-id把目的网络找到；<br>2）    分组到达网络后按host-id直接将数据交付给目的主机。</p>
+<h1 id="因特网的网际IP协议"><a href="#因特网的网际IP协议" class="headerlink" title="因特网的网际IP协议"></a>因特网的网际IP协议</h1><p>与IP协议配套的还有ARP（地址解析协议，address resolution protocol）、RARP（reverse address resolution protocol，逆地址解析协议）、ICMP（因特网控制报文协议，Internet control message protocol）、IGMP（因特网组管理协议，Internet group management protocol）。TCP/IP体系中的网络层常被称为网际层（internet layer），或IP层。</p>
+<p>它们与IP协议的关系：IP协议经常要使用ARP和RARP，而ICMP和IGMP它们要使用IP协议。<br>ARP：解决同一局域网上的主机或路由器的IP地址与物理地址的映射；<br>RARP：根据物理地址获取IP地址，这种主机一般是无盘工作站。<br>ICMP：它作为IP数据报的数据，提高IP数据报交付成功的机会，允许主机或路由器报告差错情况和提供有关异常情况的报告。<br>IGMP：用于帮助一个多播路由器识别加入到多播组的成员主机。<br><img src="https://user-images.githubusercontent.com/26324355/50731323-cdfd2300-119c-11e9-9a4b-55c93f67a1cb.png" alt="网际协议IP及其配套协议"></p>
+<h1 id="IP地址（32bit）的编址"><a href="#IP地址（32bit）的编址" class="headerlink" title="IP地址（32bit）的编址"></a>IP地址（32bit）的编址</h1><p>1）    分类的IP地址；<br>各类网络的差异很大，有的网络的主机多，有的少，分类可以更好的满足不同用户的需求。使用点分十进制记法（dotted decimal notation），当某个单位申请到了一个IP地址，实际上只是申请到了一个net-id，具体的host-id需要自行分配，只需要做到该范围内无重复主机即可；<br><img src="https://user-images.githubusercontent.com/26324355/50731346-3815c800-119d-11e9-86b5-81b1ba104b82.png" alt="IP地址中的网络号和主机号"><br><img src="https://user-images.githubusercontent.com/26324355/50731334-ef5e0f00-119c-11e9-99de-e8f7316be758.png" alt="IP地址及私有地址"></p>
+<p>D类是多播地址，E类留给今后使用。<br>常用的A、B、C类地址：<br>A类：net-id一个字节，net-id全为0的IP地址是保留地址，表示本网络；net-id为127（01111111）是保留地址，作为本地软件环回测试本主机用。host-id全0（127.0.0.0）表示本主机所连接的单个网络地址；host-id全1（127.255.255.255）表示该网络上的所有主机。A类地址占整个IP地址的50%。<br>B类net-id两个字节，占整个IP地址的25%。<br>C类net-id三个字节，占整个IP地址的12.5%。</p>
+<p>一般不使用的特殊IP地址：<br><img src="https://user-images.githubusercontent.com/26324355/50731342-19afcc80-119d-11e9-9948-c3e653504901.png" alt="一般不使用的特殊IP地址"><br>2）    划分子网（subnetting）；<br>（1）    划分子网的思路<br>划分子网是单位内部的事，对外仍表现为没有划分子网的网络；<br>将两级IP地址划分为三级IP地址，从host-id中借用若干比特作为子网号subnet-id：IP地址::=网络号,子网号,主机号；<br>凡是从其它单位发送给本单位的IP数据报，仍然是根据net-id找到本单位的路由，但路由器在接收到IP数据报后，再按net-id和subnet-id找到目的子网，最后将IP数据报交付给目的主机。<br>（2）    子网掩码（subnet mask）<br>上述是所有子网上的主机与外界通信都必须经过路由器，比较低效。如何让主机直接通过本子网上的路由与外界通信？<br><img src="https://user-images.githubusercontent.com/26324355/50731339-0ef53780-119d-11e9-9227-519df8996054.png" alt="IP地址的各字段及其子网掩码"><br>如上图，子网掩码中的1对应net-id和subnet-id，0对应host-id。<br>将IP地址与子网掩码相与，得到子网地址（即将IP地址的host-id置为0）。<br>由于因特网规定所有网络都必须有一个子网掩码，所以对没有划分子网的网络，使用默认子网掩码（即net-id全为1，host-id全为0）。A类地址的默认子网掩码是255.0.0.0；B类地址的默认子网掩码是255.255.0.0；C类地址的默认子网掩码是255.255.255.0。<br>若路由器连接在两个网络上，则应该有两个子网掩码。<br>例：对B类地址，若子网掩码255.255.192.0，子网比特号为2，则子网数22-2=2，主机数2^(6+8)=16382。<br><strong>无分类域间路由CIDR（Classless Inter-Domain Routing）</strong>：允许子网号全为1或全为0。<br>（3）    使用子网掩码的分组转发<br>首先注意，数据报首部只有源地址和目标地址，并没有子网掩码的信息。<br>路由表中的信息为：<strong>目的网络地址、子网掩码、下一跳地址</strong>。<br><img src="https://user-images.githubusercontent.com/26324355/50731349-49f76b00-119d-11e9-917d-12ff2c4c61d0.png" alt="划分子网后分组转发举例"><br>a.    收到数据报提取首部的目的IP地址；<br>b.    主机先判断是直接交付还是间接交付<br>主机A将目标IP地址与自己的子网掩码相与，若结果等于A的网络地址，则说明目的主机与A在同一个子网中，可以直接交付；<br>若不在同一网络，则应当间接交付，将分组交给本子网上的一个路由器进行转发。<br>c.    路由器收到分组如何查找转发表<br>对路由表，逐行比较网络地址是否与目的IP地址匹配。将第一行的子网掩码与目的IP地址相与，结果是目的IP，则匹配成功。<br>若路由表中有默认路由，则将数据报发送给路由表中指定的默认路由器。<br>d.    否则报告转发分组出错。<br>（4）    无分类域间路由（CIDR，classless inter-domain routering，即无分类编址）<br>a.    CIDR特点<br>消除了传统A、B、C类地址以及划分子网的概念，使用各种长度的网络前缀（network-prefix）来代替分类地址中的网络号和子网号：<font color="red">IP地址::=网络前缀+主机号</font>。在IP地址后面加斜线“/”表示网络前缀所占的比特数。如128.14.46.34/20表示网络前缀为20 bit，后面12 bit表示主机号。<br>CIDR将网络前缀相同的连续IP地址组成CIDR地址块，由地址块的起始位置和地址块的地址数来定义。如128.14.32.0/20表示网络前缀20 bit，主机号12 bit，所以地址数为212。<br>一个CIDR块可以表示很多地址，因此路由表中可以利用CIDR块来查找目标网络，这种地址聚合叫路由聚合（router aggregation），也叫构成超网（suppernetting）。<br>b.    最长前缀匹配（longest-prefix matching）<br>路由表中的选项应为：<strong>网络前缀，下一跳地址</strong>。缩短了路由表中的项目数。但这样匹配到的结果可能不止一个，应该从匹配结果中选择具有最长网络前缀的路由，因为网络前缀越长，地址块就越小，路由就越具体。<br>为了进行有效的查找，利用唯一前缀（unique prefix）构造二叉线索（binary trie）。<a href="https://blog.csdn.net/beiyetengqing/article/details/7856113" target="_blank" rel="noopener">Trie (prefix tree) 实现 (Java)</a></p>
+<h1 id="ARP和RARP协议"><a href="#ARP和RARP协议" class="headerlink" title="ARP和RARP协议"></a>ARP和RARP协议</h1><p>IP地址不能直接用来通信，因为IP地址只是主机在抽象网络上的地址，将网络层中的数据报传给数据链路层，变成MAC帧才能发送到实际网络上。<br>ARP是解决同一局域网上主机或路由器IP地址和MAC地址映射的问题。</p>
+<p>在网络层中，IP地址放在IP数据报的首部 -&gt; IP数据报被封装在MAC帧中 -&gt; 在数据链路层，MAC地址放在MAC帧的首部。<br>每个主机都有一个ARP高速缓存（ARP cache），里面有所有的局域网上的各主机和路由器的IP地址到硬件地址的映射表。有生存时间。<br>一个局域网内若在A中查不到主机B的IP地址，可能是主机B刚入网，或主机A刚加电，其高速缓存区还是空的。它将自动运行ARP，查找B的硬件地址。</p>
+<h1 id="IP数据报的格式"><a href="#IP数据报的格式" class="headerlink" title="IP数据报的格式"></a>IP数据报的格式</h1><p>在TCP/IP标准中，各种数据格式常以32bit（4字节）为单位描述。IP是无连接服务的。<br>数据报的总长度不能超过链路层协议的MTU（最大传输单元）值，若过常则需要分片（片偏移字段，以8字节为偏移单位）。<br><img src="https://user-images.githubusercontent.com/26324355/50731353-5aa7e100-119d-11e9-8d87-e11834994903.png" alt="IP数据报的格式"><br>总长度字段为16 bit，因此数据报的最大长度为216-1=65535字节（64 KB）。<br>协议字段：占8 bit，指出数据报携带的是何种协议，以便使目的主机的IP层知道应该将数据部分上交给哪个处理过程。在IP数据报协议字段中，TCP的协议号为6，而UDP的协议号为17。<br><img src="https://user-images.githubusercontent.com/26324355/50731356-71e6ce80-119d-11e9-913e-412ccb20b09b.png" alt="IP数据报常用格式和相应的协议字段"><br>首部检验和字段：只校验数据报首部，不包括数据部分。为了减小计算检验的工作量，不使用CRC校验，用更简单的方法：<br>在发送端：将IP数据报分成很多16 bit的序列，将检验和字段置0。用反码算术运算将所有16 bit相加，将和的反码写入检验和字段。<br>接收端：将数据报首部的所有16 bit再反码相加一次，将和取反码，即得出接收端检验和的结果，为0。</p>
+<h1 id="IP地址（32-bit）与硬件地址（48-bit）的区别"><a href="#IP地址（32-bit）与硬件地址（48-bit）的区别" class="headerlink" title="IP地址（32 bit）与硬件地址（48 bit）的区别"></a>IP地址（32 bit）与硬件地址（48 bit）的区别</h1><p>硬件地址由于已经固化在网卡上，因此常将硬件地址称为物理地址。因局域网中的MAC帧中的源地址和目的地址都是硬件地址，因此硬件地址又被称为MAC地址。<br><img src="https://user-images.githubusercontent.com/26324355/50731358-82974480-119d-11e9-8e3c-049a4489690b.png" alt="IP地址与硬件地址的区别"><br>IP地址是网络层和以上各层使用的地址；而物理地址是数据链路层和物理层使用的地址。<br>1）IP数据报经过路由器在不同的网络间转发，它的首部始终存的只有源地址IP和目标地址IP。路由器只根据目标地址IP进行路由选择。<br>2）MAC帧在不同的网络上传输时，源地址和目标地址要发生变化。这是由于MAC帧首部存放的是硬件地址，当从主机到路由器，MAC帧首部存放的是源硬件地址和目标硬件地址，当路由器接收到此MAC帧后，转发时需要改变MAC帧首部的源硬件地址和目标硬件地址。</p>
+<p>主机或路由是怎么知道当前MAC帧的首部应当放入什么样的硬件地址？使用ARP解决同一局域网中主机或路由器的IP地址和硬件地址的映射问题。而且这种操作是自动的，不需要我们插手。<br>为什么不直接使用硬件地址呢？因为各种网络使用不同的硬件地址，相互通行需要进行非常复杂的硬件地址转换，一旦主机或路由器的网卡坏掉了，它们就不能知道对方的硬件地址；而连接到因特网的主机都使用统一的IP地址，它是独立于主机或路由器的硬件地址的。</p>
+<h1 id="ICMP（因特网控制报文协议）"><a href="#ICMP（因特网控制报文协议）" class="headerlink" title="ICMP（因特网控制报文协议）"></a>ICMP（因特网控制报文协议）</h1><p>为了提高因特网报文交付成功的机会，允许主机或路由报告差错和提供有关异常的报告，网际层使用了ICMP。<br>1）    ICMP报文有两种：ICMP差错报告报文和ICMP询问报文。<br><img src="https://user-images.githubusercontent.com/26324355/50731360-8fb43380-119d-11e9-8e98-e21d2c5cc461.png" alt="典型字段的值与ICMP报文类型的关系"><br>（1）ICMP差错报文共有5种<br>a. 终点不可达；<br>b. 源站抑制；（流量控制）当路由器或目的主机因为拥塞而丢弃数据报<br>c. 时间超过；<br>d. 参数问题；<br>e. 改变路由（重定向）。一开始一般在主机中路由表中设置一个默认路由器的IP地址，不管数据报要发送到哪个IP地址，都先将数据报传到网络上这个默认路由器。如果默认路由器发现发送到某个目的地址的数据报不是最佳路径，则通过改变路由报文告诉主机，并在主机路由表中增加一项：到某某的目的地址应该经过路由器R而不是默认路由器。<br><img src="https://user-images.githubusercontent.com/26324355/50731361-993d9b80-119d-11e9-8ad7-6e1366a58068.png" alt="ICMP差错报告报文"><br>ICMP差错报告报文的组成：将收到的需要进行抄错报告的IP数据报的首部和前8个字节（是为了得到传输层的端口号（对TCP和UDP）以及传输层报文的发送序列（对TCP））提取出来，作为ICMP报文的数据部分；再加上相应的ICMP差错报文的前8个字节；最后加上IP数据报首部。<br>ICMP差错报文作为IP数据报的数据部分，加上首部，构成ICMP报文。</p>
+<p>（2）ICMP询问报文共有4种<br>a. 回送请求和回答；这种询问报文用来测试目的站是否可达以及了解其有关状态。如应用层的PING（packet Internet groper）用来测试两个主机之间的联通性，PING是应用层直接使用网络层ICMP的一个例子。<br>b. 时间戳请求和回答；用来进行时钟同步和时间测量。<br>c. 掩码地址请求和回答；向子网掩码服务器得到某个接口的地址掩码。<br>d. 路由询问和通告。了解本网络上的路由器是否正常工作。</p>
+<h1 id="因特网组管理协议IGMP"><a href="#因特网组管理协议IGMP" class="headerlink" title="因特网组管理协议IGMP"></a>因特网组管理协议IGMP</h1><p>IP多播（multicast）：主机发送一个数据报，在路由器处复制成多份。能够运行多播协议的路由器叫多播路由器（multicast router）。IP多播的特点：IP使用D类地址支持多播，只能用于目的地址，不能用于源地址。<br>IGMP是在多播环境下使用的网际层协议。用于帮助一个多播路由器识别加入到多播组的成员主机。<br>隧道技术：当多播数据报在传输过程中遇到不运行多播软件的路由器或网络时，需要将多播数据报再次封装，使之成为向单一目的站发送的单播（unicast）数据报。</p>
+<h1 id="因特网路由选择协议"><a href="#因特网路由选择协议" class="headerlink" title="因特网路由选择协议"></a>因特网路由选择协议</h1><p>使用动态的（自适应的）、分层次的路由选择。将互联网划分为很多小的自治系统（autonomous system，AS），自治系统有权决定在本系统内采用何种路由协议。<br>可将因特网的路由选择协议分为：<br>1）    内部网关协议（IGP，interior gateway protocol）<br>内部网关协议是在一个自治系统中将一个数据报如何有效地从源站传送到目的站。RIP和OSPF都是分布式路由选择协议，它们共同的特点是每一个路由器都要不断地和其它路由器交换路由信息。<br>（1）    路由信息协议（RIP，routing information protocol）<br>a.    RIP是基于距离向量的路由选择协议。不断和相邻路由器交换路由信息更新其路由表，使得从每一个路由器到每一个目的网络的路由都是最短的（跳数最少）（最终路由表中搜集到所有网络的最短跳数路由信息）。到某个网络的距离是多少，以及下一跳是哪个路由器。RIP允许一条路径最多15个路由器，16即相当于不可达。<br>b.    特点：<br>仅和相邻路由器交换全部路由表；按固定时间交换。<br>c.    <span style="background-color:yellow">距离向量算法：Bellman-Ford算法（Ford-Fulkerson算法</span>）。设X是A-&gt;B最短路径上的一个点，将路径拆成A-&gt;X和X-&gt;B，则每段路径也分别是A到X和X到B的最短路径。<br>RIP协议中各路由器中的路由表项目：目的网络，本路由器到该目的网络的最短距离，下一跳路由器。<br>RIP协议是在网络层转发IP数据报，使用传输层的UDP进行传送。<br>d.    优缺点：简单，开销小；最多15条，适合小型网络，好消息传播得快，坏消息传播得慢。<br>（2）    开放最短路径优先（OSPF，open shortest path first）<br>a.    OSPF使用分布式链路状态协议（link state protocol），不像RIP那样基于距离向量协议。<br>b.    特点（RIP与OSPF的区别）：<br>洪泛法（flooding）交换链路状态信息，向本自治系统的所有路由器发送信息。而RIP只向自己相邻的路由器发送信息；（洪泛法：路由器通过所有输出端口向所有相邻路由器发送信息，而这些相邻路由器又将此信息发送给它们相邻的路由器。）<br>发送的信息是与本路由器相邻的所有路由器的链路状态，包括度量（时间、费用、时延、带宽等）。而RIP只发送到网络的距离和下一跳路由器。<br>只有链路状态发生变化时，才用洪泛法向所有路由器发送此信息。而RIP不管网络拓扑是否变化，都定期与相邻路由器交换路由信息。<br>最终所有路由器都能建立一个链路状态数据库（link-state database），即全网的拓扑结构图RIP直到到所有网络的距离和到下一跳路由器，但却不知道全网拓扑图。<br>RIP收敛得慢，而OSPF收敛得快。<br>OSPF用IP数据报传送。而RIP用UDP传送。<br>c.    <span style="background-color:yellow">Dijkstra最短路径算法</span>：计算一个节点到所有其它节点的最短距离。<br>OSPF只是协议的名字，事实上所有的自治系统内部使用的路由协议都是要寻找一条最短路径。<br>为了使OSPF能够用于很大规模的自治系统（AS），将AS再划分为小的区域（area）。为了使每一个区域都能和其它区域进行通信，OSPF使用层次结构的区域划分。主干区域（backbone area）0.0.0.0，主干区域内的路由器叫主干路由器，其它区域的为区域边界路由器（area border router）。<br>d.    OSPF有5种分组类型<br><img src="https://user-images.githubusercontent.com/26324355/50731363-a6f32100-119d-11e9-980e-4d9db24c54f7.png" alt="OSPF基本操作"></p>
+<p>类型1，问候分组：发现和维持邻站可达性；<br>类型2，数据库描述分组：向邻站给出链路状态数据库中所有项目的摘要信息；<br>类型3，链路状态请求<br>类型4，链路状态更新<br>类型5，链路状态确认<br>可以利用有向图表示该数据库链路状态信息。OSPF规定网络到路由器的代价为0。主机不运行OSPF协议。找出以某个路由器为根的最短路径树（Dijkstra算法）。<br>2）    外部网关协议（EGP， external gateway protocol），或边界网关协议（external gateway protocol）<br>外部网关协议是不同的自治系统的路由器之间交换路由器信息的一种协议。自治系统间找最佳路由是不可能的，最可能交换可达性。<br>a.    BGP使用<span style="background-color:yellow">路径向量（path vector）路由选择协议</span>。它力求找到一条能够到达目的网络且比较好的路径。<br>b.    特点：<br>每一个BGP边界路由器（自治系统的发言人）除了需要运行BGP协议外，还需要运行自治系统内的内部网关协议，如RIP或OSPF协议。<br>BGP开始时与邻站交换路由信息，以后只在发生变化时更新。<br>BGP解决了RIP坏消息传播得慢的问题。当发生故障，BGP发言人可以从不止一个邻站获取路由信息，因而可以很快选出新路由。而RIP不能指出哪些邻站到目的站的路由是独立的。</p>
+<h1 id="VPN（虚拟专用网）和NAT（网络地址转换）"><a href="#VPN（虚拟专用网）和NAT（网络地址转换）" class="headerlink" title="VPN（虚拟专用网）和NAT（网络地址转换）"></a>VPN（虚拟专用网）和NAT（网络地址转换）</h1><p>出于安全问题，计算机仅使用本机构有效的IP地址（即<font color="red">本地地址</font>），而不用向因特网申请全球唯一的IP地址（即全球地址）。提出了专用地址（private address），只能用于一个机构的内部通信，不能与因特网上的主机进行通信。采用这样的专用IP地址的互连网络叫专用网。<br><img src="https://user-images.githubusercontent.com/26324355/50731368-bf633b80-119d-11e9-9baa-46bb25da17f2.png" alt="专用地址"><font face="黑体"><center>专用地址</center></font><br>有时需要不同地点的专用网之间进行通信，可利用因特网来连接分散在各地的本地网络，这样的专用网叫虚拟专用网（VPN，virtual private network）。此时的VPN依然和真实的专用网一样。<br>为了安全，在内部数据发送到路由器时需要加密，目的网络路由器接收到数据报后解密。网络上的所有路由器都不知道内部数据报的内容，这也体现了隧道技术。<br>若专用网本地主机已经分配到了IP地址，但又想和因特网上的主机进行通信（而不需要加密），可以在路由器上安装NAT（网络地址转换）软件-&gt;NAT路由器。它至少有一个全球IP地址，所有想要与外界通信的本地主机都需要通过NAT路由器将本地地址转换为IP才能和因特网通信，映射内容存在NAT转换表中。</p>
+<h1 id="下一代网际协议IPv6（IPng-128-bit）"><a href="#下一代网际协议IPv6（IPng-128-bit）" class="headerlink" title="下一代网际协议IPv6（IPng, 128 bit）"></a>下一代网际协议<font color="red">IPv6（IPng, 128 bit）</font></h1><p>解决IPv4即将耗尽的问题：<br>无分类编址CIDR，使IP地址分配更合理；利用NAT节省全球IP地址；使用更大地址空间的IP协议-&gt;IPv6。</p>
+<p><img src="https://user-images.githubusercontent.com/26324355/50731371-cab66700-119d-11e9-848a-90f2c8494068.png" alt="IPv4与IPv6首部格式的区别"><br><img src="https://user-images.githubusercontent.com/26324355/50731374-d6099280-119d-11e9-9381-9bf17e3a0fde.png" alt="具有扩展首部的IPv6数据报的形式"></p>
+<p>IPv6的ICMP叫ICMPv6，并将其报文分为两类：差错报文和提供信息的报文。<br><img src="https://user-images.githubusercontent.com/26324355/50731376-e28deb00-119d-11e9-9908-4ec8caa9b4af.png" alt="ICMPv6差错报文"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/14/Tech/Computer%20Network/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/" rel="next" title="计算机网络（二）——数据链路层">
+                <i class="fa fa-chevron-left"></i> 计算机网络（二）——数据链路层
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/14/Tech/Computer%20Network/TCP%E7%9A%84%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/" rel="prev" title="TCP的三次握手和四次挥手">
+                TCP的三次握手和四次挥手 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="LichtMiao" />
+          <p class="site-author-name" itemprop="name">LichtMiao</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">186</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          <!-- 
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+           -->
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/LichtMiao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Miaomi4" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                    
+                      Twitter
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#路由器的构成"><span class="nav-number">1.</span> <span class="nav-text">路由器的构成</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#路由转发分组的步骤"><span class="nav-number">2.</span> <span class="nav-text">路由转发分组的步骤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#因特网的网际IP协议"><span class="nav-number">3.</span> <span class="nav-text">因特网的网际IP协议</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IP地址（32bit）的编址"><span class="nav-number">4.</span> <span class="nav-text">IP地址（32bit）的编址</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ARP和RARP协议"><span class="nav-number">5.</span> <span class="nav-text">ARP和RARP协议</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IP数据报的格式"><span class="nav-number">6.</span> <span class="nav-text">IP数据报的格式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IP地址（32-bit）与硬件地址（48-bit）的区别"><span class="nav-number">7.</span> <span class="nav-text">IP地址（32 bit）与硬件地址（48 bit）的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ICMP（因特网控制报文协议）"><span class="nav-number">8.</span> <span class="nav-text">ICMP（因特网控制报文协议）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#因特网组管理协议IGMP"><span class="nav-number">9.</span> <span class="nav-text">因特网组管理协议IGMP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#因特网路由选择协议"><span class="nav-number">10.</span> <span class="nav-text">因特网路由选择协议</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#VPN（虚拟专用网）和NAT（网络地址转换）"><span class="nav-number">11.</span> <span class="nav-text">VPN（虚拟专用网）和NAT（网络地址转换）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#下一代网际协议IPv6（IPng-128-bit）"><span class="nav-number">12.</span> <span class="nav-text">下一代网际协议IPv6（IPng, 128 bit）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LichtMiao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+  Powered by <a>Hexo</a>
+</div>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+  <!-- 背景动画 -->
+  
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>

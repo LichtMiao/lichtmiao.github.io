@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en.yml">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Learning, Life" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="LichtMiao's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="JDK开发环境搭建（JDK包含了JRE，可以只安装JDK）安装JDK配置环境变量用户变量：编辑Path：在最前面粘贴jdk文件路径 1D:\Software\Java\jdk1.8.0_31\bin； 系统变量：新建JAVA_HOME：jdk文件路径 1D:\Software\Java\jdk1.8.0_31 新建CLASSPATH：类库文件路径，前面加点跟分号 1.; D:\Software\J">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java基础（一）——JDK开发环境和Eclipse开发工具">
+<meta property="og:url" content="https://lichtmiao.github.io/2018/08/20/Tech/Java/Java%20Basis/Java%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94JDK%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%92%8CEclipse%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/index.html">
+<meta property="og:site_name" content="LichtMiao&#39;s Blog">
+<meta property="og:description" content="JDK开发环境搭建（JDK包含了JRE，可以只安装JDK）安装JDK配置环境变量用户变量：编辑Path：在最前面粘贴jdk文件路径 1D:\Software\Java\jdk1.8.0_31\bin； 系统变量：新建JAVA_HOME：jdk文件路径 1D:\Software\Java\jdk1.8.0_31 新建CLASSPATH：类库文件路径，前面加点跟分号 1.; D:\Software\J">
+<meta property="article:published_time" content="2018-08-20T10:00:33.000Z">
+<meta property="article:modified_time" content="2019-01-07T06:11:18.000Z">
+<meta property="article:author" content="LichtMiao">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.2',
+    sidebar: {"position":"right","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://lichtmiao.github.io/2018/08/20/Tech/Java/Java Basis/Java基础（一）——JDK开发环境和Eclipse开发工具/"/>
+
+
+
+
+
+<!-- 网页加载条 -->
+<script src="https://neveryu.github.io/js/src/pace.min.js"></script>
+  <title>Java基础（一）——JDK开发环境和Eclipse开发工具 | LichtMiao's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en.yml">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LichtMiao's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lichtmiao.github.io/2018/08/20/Tech/Java/Java%20Basis/Java%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94JDK%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%92%8CEclipse%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LichtMiao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LichtMiao's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java基础（一）——JDK开发环境和Eclipse开发工具</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-20T18:00:33+08:00">
+                2018-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/Java/Java-Basis/" itemprop="url" rel="index">
+                    <span itemprop="name">Java Basis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="JDK开发环境搭建（JDK包含了JRE，可以只安装JDK）"><a href="#JDK开发环境搭建（JDK包含了JRE，可以只安装JDK）" class="headerlink" title="JDK开发环境搭建（JDK包含了JRE，可以只安装JDK）"></a>JDK开发环境搭建（JDK包含了JRE，可以只安装JDK）</h1><h2 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h2><h2 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h2><p>用户变量：编辑Path：在最前面粘贴jdk文件路径</p>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:<span class="symbol">\S</span>oftware<span class="symbol">\J</span>ava<span class="symbol">\j</span>dk1.8.0_31<span class="symbol">\b</span>in；</span><br></pre></td></tr></table></figure>
+<p>系统变量：新建JAVA_HOME：jdk文件路径</p>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:<span class="symbol">\S</span>oftware<span class="symbol">\J</span>ava<span class="symbol">\j</span>dk1.8.0_31</span><br></pre></td></tr></table></figure>
+<p>新建CLASSPATH：类库文件路径，前面加点跟分号</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.; <span class="symbol">D:</span>\Software\Java\jdk1.<span class="number">8.0_31</span>\<span class="class"><span class="keyword">lib</span></span></span><br></pre></td></tr></table></figure>
+<p>验证开发环境是否搭建成功：<br>打开cmd，输入java回车没问题，输入javac，回车也没问题。</p>
+<h1 id="配置环境变量的解读"><a href="#配置环境变量的解读" class="headerlink" title="配置环境变量的解读"></a>配置环境变量的解读</h1><p>系统变量就是系统中设置的变量，用户变量就是根据用户需要可自定义的变量，两者都是变量只是权限不一样，一个是系统级的，一个是用户级的。用户变量可按需要随意定义，只要不和系统变量产生交叉。系统变量则不可由用户随便更改。</p>
+<h2 id="Path"><a href="#Path" class="headerlink" title="Path"></a>Path</h2><p>一般情况下，如果我们想在Dos命令行某个exe的应用程序，则首先要切换到该exe文件所在的目录，然后才能运行。但如果我们将该exe应用程序所在的目录写入到Path环境变量中，就可以在任意目录下直接运行该exe应用程序，这就是Path的功能。即当通过Dos命令行运行我们输入的应用程序时，系统会先在当前目录下找目标文件，如果找不到，就会去Path中记录的路径去找。而Java的JDK中，其bin目录下就有许多工具，这些工具都是exe文件，比如常见的javac.exe和java.exe。所以，如果我们想在系统的任何目录下都能调用这些工具，就需要将javac.exe所在的目录(即bin目录)，添加到系统环境变量Path中。</p>
+<h2 id="CLASSPATH"><a href="#CLASSPATH" class="headerlink" title="CLASSPATH"></a>CLASSPATH</h2><p>指定类库文件搜索路径。我的配置中，一个是点号（.）代表当前目录，另一个是D:\Software\Java\jdk1.8.0_31\lib</p>
+<h1 id="IDE、JRE、JDK"><a href="#IDE、JRE、JDK" class="headerlink" title="IDE、JRE、JDK"></a>IDE、JRE、JDK</h1><h2 id="IDE（Integrated-Development-Environment，集成开发环境）"><a href="#IDE（Integrated-Development-Environment，集成开发环境）" class="headerlink" title="IDE（Integrated Development Environment，集成开发环境）"></a>IDE（Integrated Development Environment，集成开发环境）</h2><p>如eclipse开发工具。在项目开发过程中必须使用大型IDE集成开发工具来编写java程序，这样可以避免编码错误、方便管理项目结构，且其代码辅助功能可以快速录入程序代码。</p>
+<h2 id="JRE（Java-Runtime-Environment，Java运行时环境）"><a href="#JRE（Java-Runtime-Environment，Java运行时环境）" class="headerlink" title="JRE（Java Runtime Environment，Java运行时环境）"></a>JRE（Java Runtime Environment，Java运行时环境）</h2><p>包含了java虚拟机，java基础类库。是使用java语言编写的程序运行所需要的软件环境，是提供给想运行java程序的用户使用的。</p>
+<h2 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h2><p>JDK顾名思义是java开发工具包，是程序员使用java语言编写java程序所需的开发工具包，是提供给程序员使用的。JDK包含了JRE，同时还包含了编译java源码的编译器javac，还包含了很多java程序调试和分析的工具：jconsole，jvisualvm等工具软件，还包含了java程序编写所需的文档和demo例子程序。如果你需要运行java程序，只需安装JRE就可以了。如果你需要编写java程序，需要安装JDK。</p>
+<h1 id="Eclipse版本"><a href="#Eclipse版本" class="headerlink" title="Eclipse版本"></a>Eclipse版本</h1><p>可直接上官网下载<a href="http://www.eclipse.org/downloads/，绿色软件，无需安装直接打开就可以用。" target="_blank" rel="noopener">http://www.eclipse.org/downloads/，绿色软件，无需安装直接打开就可以用。</a></p>
+<h2 id="按应用范围分为3个版本"><a href="#按应用范围分为3个版本" class="headerlink" title="按应用范围分为3个版本"></a>按应用范围分为3个版本</h2><p>Java SE（Standard Edition，标准版本）：主要用于桌面应用程序的开发，包含java语言基础、JDBC数据库操作、I/O输入输出、网络通信、多线程等技术；<br>Java EE：是java2的企业版，主要用于开发企业级分布式的网络程序，如电子商务网站和ERP系统，其核心为EJB；Eclipse IDE for Java EE Development（包含Web开发）；<br>Java ME：主要用于嵌入式系统开发，如掌上电脑、收集等移动通信电子设备，现在大部分收集厂商所生产的手机都支持java技术。</p>
+<h2 id="eclipse经常用到的是以下五个版本"><a href="#eclipse经常用到的是以下五个版本" class="headerlink" title="eclipse经常用到的是以下五个版本"></a>eclipse经常用到的是以下五个版本</h2><p>1）    Eclipse Classic：是Eclipse的经典版本，没有安装任何插件，纯净版，需要什么插件可以自己安装；<br>2）    Eclipse IDE for Java Developers：适用于Java开发，集成CVS，Git，XML编辑器，Mylyn, Maven integration和WindowBuilder等插件；<br>3）    Eclipse IDE for Java EE Developers：集成了Java ee开发常用插件，方便动态web网站开发。适合Java web开发者使用。集成了XML编辑器、数据库查看工具，提供jsp可视化编辑器。Eclipse IDE for Java EE Developer完全包含Eclipse IDE for Java Developers，它们都可以进行Java SE的开发；<br>4）    Eclipse IDE for C/C++ Developers：适用于C/C++开发；<br>5）    Eclipse for Mobile Developers：适用于Java手机开发<br>6）    Eclipse for RCP/Plug-in Developers：用于RCP和插件开发</p>
+<h1 id="Eclipse介绍"><a href="#Eclipse介绍" class="headerlink" title="Eclipse介绍"></a>Eclipse介绍</h1><h2 id="菜单栏"><a href="#菜单栏" class="headerlink" title="菜单栏"></a>菜单栏</h2><p>file文件、edit编辑、source源代码、refactor重构、navigate浏览/导航、search搜索、project项目、run运行、Windows窗口</p>
+<h2 id="File文件"><a href="#File文件" class="headerlink" title="File文件"></a>File文件</h2><p>refresh刷新：刷新所选元素的内容<br>Switch workspace切换工作空间：切换工作空间到其它位置，将导致eclipse重启</p>
+<h2 id="edit编辑"><a href="#edit编辑" class="headerlink" title="edit编辑"></a>edit编辑</h2><p>expanding selection to将选择范围扩展到：将编辑内容的范围扩大到外层元素、下一个元素、上一个元素或恢复上一次选择的元素<br>find/replace查找/替换<br>add bookmarks添加书签<br>add task添加任务<br>smart insert mode灵活插入方式：切换插入方式。当禁用时，将禁止自动缩进、添加右方括号等功能<br>content assist内容辅助：当前光标位置打开内容辅助对话框<br>work completion内容补全：补全当前编辑器中正在输入的文字<br>quick fix快速修正：如果光标位于问题代码附近，则打开一个解决方案对话框</p>
+<h2 id="source源代码"><a href="#source源代码" class="headerlink" title="source源代码"></a>source源代码</h2><p>主要是与代码编写相关的命令，用于辅助编程<br>toggle comment切换注释：注释或取消注释当前选择的所有行<br>add block comment添加块注释：从当前选择的多行代码周围添加块注释<br>remove block comment去除块注释：从当前选择的多行代码中去除块注释<br>correct indentation更正缩进：更正当前选择的代码行的缩进<br>format格式：使用代码格式化程序来格式化当前java代码<br>organize imports组织导入：导入当前所使用的类包Ctrl+shift+O<br>override/implement methods覆盖/实现方法：使用向导覆盖或实现接口中的方法<br>generate Getters and Setters生成Getters和Setters：使用向导创建成员变量的get<strong><em>()和set</em></strong>()方法<br>generate hashCode() and equals()：打开“生成hashcode()和equals()”对话框<br>generate constructor using fields使用字段生成构造函数：添加构造函数，这些构造函数初始化当前选择的字段。可用于类型、字段或类型中文本的选择<br>generate constructors from superclass从超类中生成构造函数：对于当前选择的类型，按照超类中的定义添加构造函数<br>surround with包围方式：使用代码模板包围所选语句<br>externalize string外部化字符串：打开“将字符串外部化”向导，此向导允许通过使用语句访问属性文件来替换代码中的所有字符串</p>
+<h2 id="refactor重构"><a href="#refactor重构" class="headerlink" title="refactor重构"></a>refactor重构</h2><p>eclipse中最关键的菜单，包括对项目重构的相关命令。<br>Rename重命名：重命名所选java元素<br>Move移动：移动所选java元素<br>Extract method抽取方法：创建一个包含当前所选语句或表达式的新方法，并相关地引用<br>Extract local variable抽取局部变量：创建为当前所选择表达式制定的新变量，并将选择替换为对新变量的引用<br>Extract constant抽取常量：从所选表达式创建静态终态字段并替换字段引用，并且可以选择重写同一表达式的其它出现位置<br>Inline内联：直接插入局部变量、方法或常量<br>Convert local variable to field将局部变量转换为字段：如果该变量是在创建时初始化的，则将把初始化移至新字段的声明或类的构造函数<br>Convert anonymous class to nested将匿名类转换为嵌套类：将匿名内部类转换为成员类<br>Extract superclass抽取超类：从一组同类型中抽取公共超类<br>Extract interface抽取接口：根据当前类的方法创建接口，并使该类实现这个接口<br>Encapsulate field包括字段：将对变量的所有引用替换为get<strong><em>()和set</em></strong>()方法<br>History历史记录：浏览工作空间重构历史记录，并提供用于从重构历史记录中删除重构的选项 </p>
+<h2 id="Project项目"><a href="#Project项目" class="headerlink" title="Project项目"></a>Project项目</h2><p>用于管理eclipse中的项目，可以实现项目的打开与关闭、自动构建等操作。</p>
+<h2 id="Run运行"><a href="#Run运行" class="headerlink" title="Run运行"></a>Run运行</h2><p>和程序运行和调试相关的各种操作，同时还能保存运行和调试的记录。</p>
+<h2 id="Windows窗口"><a href="#Windows窗口" class="headerlink" title="Windows窗口"></a>Windows窗口</h2><p>用于显示、隐藏或处理eclipse中各种视图、透视图和操作。</p>
+<h2 id="包资源管理器视图"><a href="#包资源管理器视图" class="headerlink" title="包资源管理器视图"></a>包资源管理器视图</h2><h2 id="控制台视图"><a href="#控制台视图" class="headerlink" title="控制台视图"></a>控制台视图</h2><p>显示输出结果和运行时的异常信息（runtime exception），在学习swing程序设计之前，必须使用控制台实现与程序的交互，例如为方便某个方法的调试，方法执行前后分别输出“方法开始”和“方法结束”信息。</p>
+<h1 id="第一个Java程序"><a href="#第一个Java程序" class="headerlink" title="第一个Java程序"></a>第一个Java程序</h1><p>第一个java程序：可以使用任何一个文本编辑器来编写程序的源代码，然后使用JDK搭配工具进行编译和运行。简单的java程序可以用文本编辑器开发：</p>
+<h2 id="输入程序"><a href="#输入程序" class="headerlink" title="输入程序"></a>输入程序</h2><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">example</span>&#123;</span>  </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">String</span>[] args)</span></span>&#123;    </span><br><span class="line">		.out.pintln(“My first Java”);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中，<br>类名必须与文件名完全相同，关键词class声明一个新定义的类，example是类名。<br>public是访问修饰符，决定程序的哪些部分能够访问类的成员。public类外的代码可以访问类成员，private阻止类外定义的代码使用成员。<br>必须将main()方法声明为public，因为它需要example外的代码执行。<br>关键字static使得main()方法可以独立于任意对象运行。<br>形参名为args，类型为String的对象数组。</p>
+<h2 id="编译程序"><a href="#编译程序" class="headerlink" title="编译程序"></a>编译程序</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">javac</span> <span class="selector-tag">example</span><span class="selector-class">.java</span></span><br></pre></td></tr></table></figure>
+<h2 id="运行程序"><a href="#运行程序" class="headerlink" title="运行程序"></a>运行程序</h2><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">java example</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="使用eclipse（IDE开发工具）编写和编译java代码"><a href="#使用eclipse（IDE开发工具）编写和编译java代码" class="headerlink" title="使用eclipse（IDE开发工具）编写和编译java代码"></a>使用eclipse（IDE开发工具）编写和编译java代码</h1><h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><p>eclipse中有很多项目，其中java project是用于管理和编写java程序。</p>
+<h2 id="创建类"><a href="#创建类" class="headerlink" title="创建类"></a>创建类</h2><p>package中可以输入想使用的包名，默认为空<br>Name中输入类名<br>选择public static void main(String[] args)复选框，在创建类文件时，会自动为该类添加main()方法，使该类成为可以运行的主类。</p>
+<h2 id="编写java代码"><a href="#编写java代码" class="headerlink" title="编写java代码"></a>编写java代码</h2><p>Eclipse的强大之处在于它的强大的代码辅助功能，在编写程序代码时，可以自动补全关键字：Ctrl+Alt+/，代码辅助菜单：当输入“.”操作符时，编辑器会自动弹出代码辅助菜单，也可在输入部分文字之后使用Alt+/调出代码辅助菜单，完成关键语法的辅助功能。<br>注意：System.out.println()方法快捷键：输入“syso”，然后Alt+/<br>技巧：将光标移动到java编辑器的错误代码位置，按Ctrl+l可以激活代码修正菜单，从中选择合适的修正方法。<br>4.    运行java程序：run</p>
+<p>输出的空格符只会在“”内有作用。<br>加号使得var1的值显示在字符串后面。<br>print和println的使用方法类似，只是在每次调用时，都不输出新行，println调用了变量var2本身。Syestem.out.println()；可以输出空行。</p>
+<h1 id="调试程序"><a href="#调试程序" class="headerlink" title="调试程序"></a>调试程序</h1><p>使用eclipse中内置的java调试器需要设置程序断点，然后使用单步调试分别执行程序代码的每一行。</p>
+<h2 id="在觉得可能有错的地方设置断点"><a href="#在觉得可能有错的地方设置断点" class="headerlink" title="在觉得可能有错的地方设置断点"></a>在觉得可能有错的地方设置断点</h2><p>Java调试器每次遇到程序断点时，都会将当前线程挂起，即暂停当前程序的运行。在编辑器中显示行号的位置处右击-toggle breakpoint添加断点，再次选择则删除断点。</p>
+<h2 id="以调试方式运行java程序"><a href="#以调试方式运行java程序" class="headerlink" title="以调试方式运行java程序"></a>以调试方式运行java程序</h2><p>Debug as-java application，调试器将在该断点处挂起当前线程，使程序停止。如果是Web程序，需要将Tomcat或Apache服务器以Debug模式启动。这是因为标准的Start模式，不能进入预先设置的断点。</p>
+<h2 id="执行完程序，程序调试"><a href="#执行完程序，程序调试" class="headerlink" title="执行完程序，程序调试"></a>执行完程序，程序调试</h2><p>可以通过调试视图工具栏上的按钮，执行相应的调试操作。</p>
+<p>单步跳入：F5，将跳入调用方法或对象的内部单步执行程序并暂挂线程。<br>单步跳过；F6，运行单独的一行程序代码，但是不进入调用方法的内部，然后跳到下一个可执行点并暂挂线程。（不停地执行单步跳过操作，会每次一行执行程序代码，直到程序结束或等待用户操作。）<br>4.    为Eclipse添加反编译插件，更好的调试。</p>
+<h1 id="查看Java源码"><a href="#查看Java源码" class="headerlink" title="查看Java源码"></a>查看Java源码</h1><p>一般来说，我们的项目或多或少的都会引用一些外部jar包，如果可以查看jar包的源代码，对于我们的调试可以说是事半功倍。<br>1.下载并安装jad.exe。将jad.exe解压到程序目录（可以放置任意目录），例如：C:\Program Files\Jad\jad.exe。<br>2.安装jadclipse插件。下载并解压net.sf.jadclipse_3.3.0.jar，将其拷贝到eclipse\plugins目录下，重新启动eclipse。<br>3.配置jadclipse。在eclipse窗口下，点击Window &gt; Preferences &gt; Java &gt; JadClipse &gt; Path to Decompiler。<br>（设置jad的绝对路径，例如 C:\Program Files\Jad\jad.exe)<br>可将Use Eclipse code formatter(overrides Jad formatting instructions)选项打勾，这样可以与Ctrl+Shif+F格式化出来的代码样式一致。</p>
+<p>执行完这几个步骤，再在导入自jar包的类或者方法上点击查看，就可以查看源代码了，如果不能，参考下面的解决办法：<br>多数情况下，是eclipse未能自动将JadClipse Class File Viewer设置成class文件的缺省打开方式。<br>在Eclipse的Windows-&gt;Perference-&gt;General-&gt;Editors-&gt;File Associations中修改“<em>.class”和“</em>.class without source”默认关联的编辑器为“JadClipse Class File Viewer”。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/19/Tech/Java/Java%20Programmer%20Interview/Java%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%EF%BC%88%E4%B8%89%EF%BC%89/" rel="next" title="Java程序员面试宝典（三）">
+                <i class="fa fa-chevron-left"></i> Java程序员面试宝典（三）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/21/Tech/Java/Java%20Programmer%20Interview/Java%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%EF%BC%88%E5%9B%9B%EF%BC%89/" rel="prev" title="Java程序员面试宝典（四）">
+                Java程序员面试宝典（四） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="LichtMiao" />
+          <p class="site-author-name" itemprop="name">LichtMiao</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">186</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          <!-- 
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+           -->
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/LichtMiao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Miaomi4" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                    
+                      Twitter
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JDK开发环境搭建（JDK包含了JRE，可以只安装JDK）"><span class="nav-number">1.</span> <span class="nav-text">JDK开发环境搭建（JDK包含了JRE，可以只安装JDK）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装JDK"><span class="nav-number">1.1.</span> <span class="nav-text">安装JDK</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置环境变量"><span class="nav-number">1.2.</span> <span class="nav-text">配置环境变量</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置环境变量的解读"><span class="nav-number">2.</span> <span class="nav-text">配置环境变量的解读</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Path"><span class="nav-number">2.1.</span> <span class="nav-text">Path</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CLASSPATH"><span class="nav-number">2.2.</span> <span class="nav-text">CLASSPATH</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IDE、JRE、JDK"><span class="nav-number">3.</span> <span class="nav-text">IDE、JRE、JDK</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IDE（Integrated-Development-Environment，集成开发环境）"><span class="nav-number">3.1.</span> <span class="nav-text">IDE（Integrated Development Environment，集成开发环境）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JRE（Java-Runtime-Environment，Java运行时环境）"><span class="nav-number">3.2.</span> <span class="nav-text">JRE（Java Runtime Environment，Java运行时环境）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JDK"><span class="nav-number">3.3.</span> <span class="nav-text">JDK</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Eclipse版本"><span class="nav-number">4.</span> <span class="nav-text">Eclipse版本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#按应用范围分为3个版本"><span class="nav-number">4.1.</span> <span class="nav-text">按应用范围分为3个版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#eclipse经常用到的是以下五个版本"><span class="nav-number">4.2.</span> <span class="nav-text">eclipse经常用到的是以下五个版本</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Eclipse介绍"><span class="nav-number">5.</span> <span class="nav-text">Eclipse介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#菜单栏"><span class="nav-number">5.1.</span> <span class="nav-text">菜单栏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#File文件"><span class="nav-number">5.2.</span> <span class="nav-text">File文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#edit编辑"><span class="nav-number">5.3.</span> <span class="nav-text">edit编辑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#source源代码"><span class="nav-number">5.4.</span> <span class="nav-text">source源代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#refactor重构"><span class="nav-number">5.5.</span> <span class="nav-text">refactor重构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Project项目"><span class="nav-number">5.6.</span> <span class="nav-text">Project项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Run运行"><span class="nav-number">5.7.</span> <span class="nav-text">Run运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows窗口"><span class="nav-number">5.8.</span> <span class="nav-text">Windows窗口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包资源管理器视图"><span class="nav-number">5.9.</span> <span class="nav-text">包资源管理器视图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#控制台视图"><span class="nav-number">5.10.</span> <span class="nav-text">控制台视图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第一个Java程序"><span class="nav-number">6.</span> <span class="nav-text">第一个Java程序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#输入程序"><span class="nav-number">6.1.</span> <span class="nav-text">输入程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译程序"><span class="nav-number">6.2.</span> <span class="nav-text">编译程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行程序"><span class="nav-number">6.3.</span> <span class="nav-text">运行程序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用eclipse（IDE开发工具）编写和编译java代码"><span class="nav-number">7.</span> <span class="nav-text">使用eclipse（IDE开发工具）编写和编译java代码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建项目"><span class="nav-number">7.1.</span> <span class="nav-text">创建项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建类"><span class="nav-number">7.2.</span> <span class="nav-text">创建类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写java代码"><span class="nav-number">7.3.</span> <span class="nav-text">编写java代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#调试程序"><span class="nav-number">8.</span> <span class="nav-text">调试程序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在觉得可能有错的地方设置断点"><span class="nav-number">8.1.</span> <span class="nav-text">在觉得可能有错的地方设置断点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#以调试方式运行java程序"><span class="nav-number">8.2.</span> <span class="nav-text">以调试方式运行java程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行完程序，程序调试"><span class="nav-number">8.3.</span> <span class="nav-text">执行完程序，程序调试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查看Java源码"><span class="nav-number">9.</span> <span class="nav-text">查看Java源码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LichtMiao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+  Powered by <a>Hexo</a>
+</div>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+  <!-- 背景动画 -->
+  
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>

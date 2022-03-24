@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en.yml">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Learning, Life" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="LichtMiao's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="81.    用TCP通信模型创建Web服务器ISS、Apache、Tomcat等服务器软件可以用来创建Web站点，负责接收客户端浏览器的HTTP请求，其基本原理是采用TCP通信模型。HTTP是应用层协议，它基于TCP协议，它的底层通信原理遵循TCP通信模型，但HTTP还定义了一些其他的Web通信规范。如HTTP的状态200表示请求成功，返回的HTML语言的文本等。服务器端Web应用的默认端口是8">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java程序员面试宝典（四）">
+<meta property="og:url" content="https://lichtmiao.github.io/2018/08/21/Tech/Java/Java%20Programmer%20Interview/Java%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%EF%BC%88%E5%9B%9B%EF%BC%89/index.html">
+<meta property="og:site_name" content="LichtMiao&#39;s Blog">
+<meta property="og:description" content="81.    用TCP通信模型创建Web服务器ISS、Apache、Tomcat等服务器软件可以用来创建Web站点，负责接收客户端浏览器的HTTP请求，其基本原理是采用TCP通信模型。HTTP是应用层协议，它基于TCP协议，它的底层通信原理遵循TCP通信模型，但HTTP还定义了一些其他的Web通信规范。如HTTP的状态200表示请求成功，返回的HTML语言的文本等。服务器端Web应用的默认端口是8">
+<meta property="og:image" content="http://ovfkr5e4k.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180821163339.png">
+<meta property="article:published_time" content="2018-08-21T02:16:52.000Z">
+<meta property="article:modified_time" content="2019-01-21T05:44:50.000Z">
+<meta property="article:author" content="LichtMiao">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://ovfkr5e4k.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180821163339.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.2',
+    sidebar: {"position":"right","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://lichtmiao.github.io/2018/08/21/Tech/Java/Java Programmer Interview/Java程序员面试宝典（四）/"/>
+
+
+
+
+
+<!-- 网页加载条 -->
+<script src="https://neveryu.github.io/js/src/pace.min.js"></script>
+  <title>Java程序员面试宝典（四） | LichtMiao's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en.yml">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LichtMiao's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lichtmiao.github.io/2018/08/21/Tech/Java/Java%20Programmer%20Interview/Java%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%EF%BC%88%E5%9B%9B%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LichtMiao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LichtMiao's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java程序员面试宝典（四）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-21T10:16:52+08:00">
+                2018-08-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/Java/Java-Programmer-Interview/" itemprop="url" rel="index">
+                    <span itemprop="name">Java Programmer Interview</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="81-用TCP通信模型创建Web服务器"><a href="#81-用TCP通信模型创建Web服务器" class="headerlink" title="81.    用TCP通信模型创建Web服务器"></a>81.    用TCP通信模型创建Web服务器</h1><p>ISS、Apache、Tomcat等服务器软件可以用来创建Web站点，负责接收客户端浏览器的HTTP请求，其基本原理是采用TCP通信模型。<br>HTTP是应用层协议，它基于TCP协议，它的底层通信原理遵循TCP通信模型，但HTTP还定义了一些其他的Web通信规范。<br>如HTTP的状态200表示请求成功，返回的HTML语言的文本等。<br>服务器端Web应用的默认端口是80，也可修改。</p>
+<h1 id="82-利用UDP通信模型创建即时聊天软件"><a href="#82-利用UDP通信模型创建即时聊天软件" class="headerlink" title="82.    利用UDP通信模型创建即时聊天软件"></a>82.    利用UDP通信模型创建即时聊天软件</h1><p>QQ、MSN等聊天工具对安全的要求不高，一般采用UDP通信模型，UDP的通信是点对点的，不存在谁是服务器，谁是客户端，因此UDP的多线程模型就不用主线程来监听请求了，只需要在线程中分别用DatagramPacket通信即可。<br>可以创建一个发送消息的线程类和接收消息的线程类。发送消息的线程类主要是监听用户的输入，并通过DatagramPacket类的send()方法把数据发给其他的用户；而接收消息的线程类循环调用DatagramPacket类的receive()方法，接收其他用户发来的数据，并打印在屏幕上。</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 定义两个线程类，一个用于接收ReceiveThread，一个用于发送SendThread</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Chat</span> &#123;</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">String</span>[] args)</span> throws Exception </span>&#123;</span><br><span class="line">		<span class="comment">//agrs格式：本用户的接收端口、发送端口、对方的接收端口。传入的是String类型</span></span><br><span class="line">		<span class="comment">//启动接收线程</span></span><br><span class="line">		<span class="keyword">new</span> ReceiveThread(Integer.<span class="built_in">parseInt</span>(args[<span class="number">0</span>])).start();</span><br><span class="line">		<span class="comment">//启动发送线程</span></span><br><span class="line">		<span class="keyword">new</span> SendThread(Integer.<span class="built_in">parseInt</span>(args[<span class="number">1</span>]), </span><br><span class="line">				Integer.<span class="built_in">parseInt</span>(args[<span class="number">2</span>])).start();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 接收线程</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">import</span> java.net.DatagramPacket;</span><br><span class="line"><span class="keyword">import</span> java.net.DatagramSocket;</span><br><span class="line"><span class="keyword">import</span> java.net.SocketException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReceiveThread</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> DatagramSocket ds;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">ReceiveThread</span><span class="params">(<span class="keyword">int</span> port)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 初始化根据端口号创建DatagramSocket对象</span></span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">		<span class="keyword">try</span>&#123;</span><br><span class="line">			<span class="keyword">this</span>.ds = <span class="keyword">new</span> DatagramSocket(port);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (SocketException se)&#123;</span><br><span class="line">			se.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span>&#123;</span><br><span class="line">			<span class="keyword">byte</span>[] buff = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line">			DatagramPacket dp = <span class="keyword">new</span> DatagramPacket(buff, <span class="number">1024</span>); <span class="comment">//创建数据报对象</span></span><br><span class="line">			<span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">				ds.receive(dp);</span><br><span class="line">				String str = <span class="keyword">new</span> String(dp.getData(), <span class="number">0</span>, dp.getLength());</span><br><span class="line">				<span class="comment">//dp.getData()得到的是byte[]数组中的数据</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 发送线程</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">import</span> java.io.<span class="keyword">BufferedReader</span>;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"><span class="keyword">import</span> java.net.DatagramPacket;</span><br><span class="line"><span class="keyword">import</span> java.net.DatagramSocket;</span><br><span class="line"><span class="keyword">import</span> java.net.InetAddress;</span><br><span class="line"><span class="keyword">import</span> java.net.SocketException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> class SendThread extends Thread &#123;</span><br><span class="line">	<span class="keyword">private</span> DatagramSocket ds;</span><br><span class="line">	<span class="keyword">private</span> <span class="built_in">int</span> sendPort;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> SendThread(<span class="built_in">int</span> port, <span class="built_in">int</span> sendPort) &#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">		<span class="keyword">this</span>.sendPort = sendPort;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="keyword">this</span>.ds = <span class="keyword">new</span> DatagramSocket(port);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (SocketException se) &#123;</span><br><span class="line">			se.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> run() &#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">// 循环接收用户输入</span></span><br><span class="line">			<span class="keyword">BufferedReader</span> br = <span class="keyword">new</span> <span class="keyword">BufferedReader</span>(<span class="keyword">new</span> InputStreamReader(System.in));</span><br><span class="line">			<span class="keyword">String</span> <span class="built_in">str</span> = <span class="keyword">null</span>;</span><br><span class="line">			<span class="keyword">while</span> ((<span class="built_in">str</span> = br.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">				<span class="comment">// 创建DatagramPacket对象</span></span><br><span class="line">				DatagramPacket dp = <span class="keyword">new</span> DatagramPacket(<span class="built_in">str</span>.getBytes(), <span class="number">0</span>, <span class="built_in">str</span>.length(),</span><br><span class="line">						InetAddress.getByName(<span class="string">"localhost"</span>), sendPort);</span><br><span class="line">				ds.send(dp);</span><br><span class="line">				System.out.<span class="built_in">println</span>(<span class="string">"send："</span> + <span class="built_in">str</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (IOException ioe) &#123;</span><br><span class="line">			ioe.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">			ds.close();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行上面聊天程序时，需要打开两个应用程序，一个发送消息，可以在另一个上看到消息。</p>
+<h1 id="83-使用Java访问Web站点"><a href="#83-使用Java访问Web站点" class="headerlink" title="83.    使用Java访问Web站点"></a>83.    使用Java访问Web站点</h1><p>网络爬虫软件用于搜索引擎抓取网页，原理就是模拟浏览器挨个去访问Web站点，得到站点网址的映射。<br>URL又被称为网络地址，它唯一标识了网络上的资源。通过java.net.URL类访问网络资源。<br>java.net.HttpURLConnetction类是代表HTTP网络连接的类，由URL类的opentConnetion()方法获得HttpURLConnection对象。HttpURLConnetction可以模拟一个浏览器。发出请求时，设置各种请求头参数、请求参数，传输请求数据；收到响应结果时，获得响应头数据getHeaderFields()和响应内容getInputStream()。</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">URL url = <span class="keyword">new</span> URL(“http:<span class="comment">//www.baidu.com”);</span></span><br><span class="line">HttpURLConnection conn = (HttpURLConnection) url.openConnection(); <span class="comment">//创建对象</span></span><br><span class="line">conn.connection(); <span class="comment">//打开连接</span></span><br><span class="line"><span class="comment">//打印请求响应的头部</span></span><br><span class="line">Map&lt;<span class="keyword">String</span>, List&lt;<span class="keyword">String</span>&gt;) header = conn.getHeaderFields();</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">String</span> <span class="built_in">key</span> : header.keySet()) &#123;</span><br><span class="line">	System.out.<span class="built_in">println</span>(<span class="built_in">key</span> + “header.<span class="built_in">get</span>(<span class="built_in">key</span>));</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//打印响应内容</span></span><br><span class="line"><span class="keyword">BufferedReader</span> br = <span class="keyword">new</span> <span class="keyword">BufferedReader</span>(<span class="keyword">new</span> InputStreamReader(</span><br><span class="line">conn.getInputStream(), “UTF<span class="number">-8</span>”));</span><br><span class="line"><span class="keyword">String</span> <span class="built_in">str</span> = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">while</span>((<span class="built_in">str</span> == br.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">	System.out.<span class="built_in">println</span>(<span class="built_in">str</span>);</span><br><span class="line">&#125;</span><br><span class="line">conn.disconnect(); <span class="comment">//断开连接</span></span><br></pre></td></tr></table></figure>
+<p>上面得到头部信息：采用Map类型的key-value格式；得到响应信息：调用连接的getInputStream()方法。</p>
+<h1 id="84-Java对数据的支持"><a href="#84-Java对数据的支持" class="headerlink" title="84.    Java对数据的支持"></a>84.    Java对数据的支持</h1><p>具体请见<a href="https://lichtmiao.github.io/2018/08/12/2-%E5%88%9B%E5%BB%BA%E4%B8%8E%E6%9F%A5%E8%AF%A2/">Mysql-2.创建与查询</a><br>SQL是结构化的查询语言（structured query language），是专门用于和数据库通信的计算机语言。<br>1）查询<br>SELETC &lt;列名&gt; FROM &lt;表名/视图&gt;<br>WHERE &lt;筛选条件&gt; ORDER BY &lt;列名&gt; &lt;ASC/DESC&gt;<br>2）更改<br>插入一行：INSERT INTO t_user VALUES (‘zhangsan’, 30, ‘male’);<br>插入行的一部分：INSERT INTO t_user (name, age) VALUES (‘zhangsan’, 30);<br>插入某些查询结果到表：INSERT INTO t_user SELECT *;<br>UPDATE是对行的某些行或列进行更新。<br>UPDATE t_user SET gender=’famale’ WHERE name=‘zhangsan’;<br>DELETE删除行<br>DELETE FROM t_user WHERE name=’zhangsan’;</p>
+<h1 id="85-JDBC的工作原理"><a href="#85-JDBC的工作原理" class="headerlink" title="85.    JDBC的工作原理"></a>85.    JDBC的工作原理</h1><p>Mysql驱动程序的jar包，对于普通的Java程序将jar包放在类搜索路径（CLASSPATH）下；对于Java Web程序将jar包放在WEB_INF/lib文件夹中。<br>JDBC采用一种<span style="background-color:yellow">驱动模式</span>的设计，提供了两套接口：开发者使用的API和数据库厂商使用的SPI，充分地体现了面向接口编程的好处。<br>开发者无需关系数据库的连接和调用，值需要使用JDK中提供的标准API编程即可。</p>
+<h1 id="86-JDBC操作数据库的步骤"><a href="#86-JDBC操作数据库的步骤" class="headerlink" title="86.    JDBC操作数据库的步骤"></a>86.    JDBC操作数据库的步骤</h1><p>Java提供的关于JDBC的操作接口和类，主要在java.sql和javax.sql包下。<br>1）    加载驱动程序。具体请见<a href="https://lichtmiao.github.io/2018/08/12/1-JDBC%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/">Mysql-1.JDBC连接数据库</a><br>Class.forName(“数据库驱动的完成类名”); //通过反射得到Class对象<br>Mysql的驱动类名为com.mysql.fabric.jdbc.FabricMySQLDriver<br>2）    获取数据库连接<br>Connection con = DriverManager.getConnection(“数据库地址”, “用户名”, “密码”);<br>Mysql的数据库地址格式为：jdbc:mysql://localhost:3306/db_bank<br>3）    要执行的SQL语句<br>增、删、改：<br>String sql1 = “INSERT INTO t_student VALUES (?, ?, ?);<br>查询：<br>String sql2 = “SELECT * FROM t_student”;<br>4）创建会话<span style="background-color:yellow">PreparedStatement（预编译会话）</span><br>接口PreparedStatement继承了Statement。<br>PreparedStatement pstat = conn.prepareStatement(sql1);<br>5）执行SQL语句<br>增、删、改：具体请见<a href="https://lichtmiao.github.io/2018/08/12/3-PreparedStatement%E6%8E%A5%E5%8F%A3%E5%92%8CCallableStatement%E6%8E%A5%E5%8F%A3/">Mysql-3.PreparedStatement接口和CallableStatement接口</a><br>pstat.setString(1, student.getName()); //对第1列设置值其中传入的参数是根据类对象的构造函数决定的，如pstat.setString(1, name);<br>pstat.setInt(2, getAge());<br>pstat.setString(3, getGender());<br>int rst1 = pstat.executeUpdate(sql1); //操作了几条数据就返回几<br>查询：具体请见<a href="https://lichtmiao.github.io/2018/08/12/4-resultSet%E7%BB%93%E6%9E%9C%E9%9B%86%E3%80%81%E8%8E%B7%E5%8F%96%E5%85%83%E6%95%B0%E6%8D%AE/">Mysql-4.ResultSet结果集、获取元数据</a><br>ResultSet rst2 = pstat.executeQury(sql2); //返回结果集<br>while(rst2.next()){  //<font color="red">ResultSet类的next()方法遍历一行</font><br>    String name = rst2.getString(“name”); //获取第一列（name）属性的值<br>    int age = rst2.getInt(“age”);<br>    String gender = rst2.getString(“gender”);<br>    System.out.println(“名字：” + name + “年龄：” + age + “性别：” + gender);<br>}<br>6）    关闭连接<br>rst1.close(); //先关结果集<br>rst2.close();<br>stat.close(); //关闭会话<br>conn.close(); //关闭连接</p>
+<h1 id="87-如何使用JDBC事务"><a href="#87-如何使用JDBC事务" class="headerlink" title="87.    如何使用JDBC事务"></a>87.    如何使用JDBC事务</h1><p>具体请见<a href="https://lichtmiao.github.io/2018/08/12/6-JDBC%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/">Mysql-6.JDBC事务处理</a>。一个逻辑单位被称为事务，必须具备ACID（原子性（atomicity）、一致性（consistency）、隔离性或独立性（isolation）、持久性（durability））4个属性。<br><strong>原子性</strong>：事务必须是原子工作单元，对于数据的修改，要么全部执行，要不全部不执行。<br><strong>一致性</strong>：在事务完成时，必须使所有的数据都保持一致状态。如A银行转账扣款100元，则B银行的账号一定增加100元。<br><strong>隔离性</strong>：并发事务所做的修改必须与其他并发事务所做的修改隔离。如A和B同时为C转账，一定不能同时对C的余额进行修改。<br><strong>持久性</strong>：事务完成后，它对系统的影响是永久的。该修改即使出现致命的系统故障也会一直保持。<br>事务的结果只能有两种形式：提交和回滚（rollback）。若操作完全成功则提交，产生永久性的修改（JDBC默认自动提交）；若操作不完全成功则回滚，恢复到事务开始前的状态。<br>（1）关闭自动提交事务，连接的自动提交事务属性设置为false。</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Connection conn = <span class="module-access"><span class="module"><span class="identifier">DriverManager</span>.</span></span>get<span class="constructor">Connection(“数据库地址”, “用户名”,”密码”)</span>;</span><br><span class="line">conn.set<span class="constructor">AutoCommit(<span class="params">false</span>)</span>;</span><br></pre></td></tr></table></figure>
+<p>（2）捕获（try…catch）执行代码，如果执行过程顺利则提交；一旦发生异常就回滚（rollback）事务。</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">	Connction conn = <span class="module-access"><span class="module"><span class="identifier">DriverManager</span>.</span></span>get<span class="constructor">Connection(“数据库地址”, “用户名”,”密码”)</span>;</span><br><span class="line">	conn.set<span class="constructor">AutoCommit(<span class="params">false</span>)</span>;</span><br><span class="line">	PreparedStatement pstat = conn.prepare<span class="constructor">Statement(<span class="params">sql</span>)</span>;</span><br><span class="line">	pstat.set<span class="constructor">String(1, <span class="params">name</span>)</span>;</span><br><span class="line">	pstat.set<span class="constructor">Int(2, <span class="params">age</span>)</span>;</span><br><span class="line">	pstat.set<span class="constructor">String(3, <span class="params">gender</span>)</span>;</span><br><span class="line">	ptat.execute<span class="constructor">Updata()</span>;</span><br><span class="line">	conn.commit<span class="literal">()</span>; <span class="comment">//提交事务</span></span><br><span class="line">&#125; catch(Exception e)&#123;</span><br><span class="line">	e.print<span class="constructor">StackTrace()</span>;</span><br><span class="line">	conn.rollback<span class="literal">()</span>; <span class="comment">//回滚事务</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>（3）关闭连接<br>一般放在finally块中。</p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">finally&#123;</span><br><span class="line">	<span class="keyword">if</span> (pstat != <span class="built_in">null</span>)&#123;</span><br><span class="line">	pstat.close()</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (conn != <span class="built_in">null</span>)&#123;</span><br><span class="line">	conn.close();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="88-如何使用JDBC实现数据访问对象层"><a href="#88-如何使用JDBC实现数据访问对象层" class="headerlink" title="88.    如何使用JDBC实现数据访问对象层"></a>88.    如何使用JDBC实现数据访问对象层</h1><p>DAO（data access object，数据访问对象层）做的主要工作就是把数据包装成对象和把对象拆分成数据。增、删、改、查是DAO实现的基本操作。</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> &#123;</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">long</span> id;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">String</span> name;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">String</span> gender;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		super();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(<span class="keyword">long</span> id, <span class="keyword">String</span> name, <span class="keyword">String</span> gender)</span> </span>&#123;</span><br><span class="line">		super();</span><br><span class="line">		<span class="keyword">this</span>.id = id;</span><br><span class="line">		<span class="keyword">this</span>.name = name; </span><br><span class="line">		<span class="keyword">this</span>.gender = gender;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> id;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">long</span> id)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.id = id;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">String</span> <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(<span class="keyword">String</span> name)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.name = name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">String</span> <span class="title">getGender</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> gender;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setGender</span><span class="params">(<span class="keyword">String</span> gender)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.gender = gender;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"><span class="meta-keyword">import</span> java.sql.Connection;</span></span><br><span class="line"><span class="meta"><span class="meta-keyword">import</span> java.sql.DriverManager;</span></span><br><span class="line"><span class="meta"><span class="meta-keyword">import</span> java.sql.PreparedStatement;</span></span><br><span class="line"><span class="meta"><span class="meta-keyword">import</span> java.sql.ResultSet;</span></span><br><span class="line"><span class="meta"><span class="meta-keyword">import</span> java.sql.SQLException;</span></span><br><span class="line"><span class="meta"><span class="meta-keyword">import</span> java.sql.Statement;</span></span><br><span class="line"><span class="meta"><span class="meta-keyword">import</span> java.util.ArrayList;</span></span><br><span class="line"><span class="meta"><span class="meta-keyword">import</span> java.util.List;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JDBCDao</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> String jdbcName = <span class="string">"com.mysql.fabric.jdbc.FabricMySQLDriver"</span>; <span class="comment">// 驱动名称</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> String dbUrl = <span class="string">"jdbc:mysql://localhost:3306/db_bank"</span>;<span class="comment">// 数据库地址</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> String dbUserName = <span class="string">"root"</span>; <span class="comment">// 数据库用户名</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> String dbPassword = <span class="string">"123456"</span>; <span class="comment">// 数据库密码</span></span><br><span class="line">	<span class="comment">// 加载驱动</span></span><br><span class="line">	<span class="keyword">static</span>&#123;</span><br><span class="line">		<span class="keyword">try</span>&#123;</span><br><span class="line">			Class.forName(jdbcName);</span><br><span class="line">		&#125; <span class="keyword">catch</span>(ClassNotFoundException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//获取连接</span></span><br><span class="line">	<span class="keyword">private</span> Connection getConn() &#123;</span><br><span class="line">		<span class="keyword">try</span>&#123;</span><br><span class="line">			<span class="keyword">return</span> DriverManager.getConnection(dbUrl, dbUserName, dbPassword);</span><br><span class="line">		&#125; <span class="keyword">catch</span>(SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 释放资源</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">void</span> close(ResultSet rs, Statement ps, Connection conn) &#123;</span><br><span class="line">		<span class="keyword">if</span> (rs != <span class="literal">null</span>) &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				rs.close();</span><br><span class="line">			&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">				<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (ps != <span class="literal">null</span>) &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				ps.close();</span><br><span class="line">			&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">				<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (conn != <span class="literal">null</span>) &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				conn.close();</span><br><span class="line">			&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">				<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//用Id获取用户对象</span></span><br><span class="line">	<span class="keyword">public</span> User getUserById(long id) &#123;</span><br><span class="line">		Connection conn = <span class="literal">null</span>;</span><br><span class="line">		ResultSet rs = <span class="literal">null</span>;</span><br><span class="line">		PreparedStatement ps = <span class="literal">null</span>;</span><br><span class="line">		String sql = <span class="string">"SELCTE * FROM t_user WHERE id = ?"</span>;</span><br><span class="line">		<span class="keyword">try</span>&#123;</span><br><span class="line">			conn = <span class="keyword">this</span>.getConn();</span><br><span class="line">			ps = conn.prepareStatement(sql);</span><br><span class="line">			ps.setLong(<span class="number">1</span>, id);</span><br><span class="line">			rs = ps.executeQuery();</span><br><span class="line">			<span class="keyword">if</span>(rs.next()) &#123;</span><br><span class="line">				<span class="comment">//如果这个用户存在，则直接构建并返回</span></span><br><span class="line">				User user = <span class="keyword">new</span> User(rs.getLong(<span class="string">"id"</span>), rs.getString(<span class="string">"name"</span>), rs.getString(<span class="string">"gender"</span>));</span><br><span class="line">				<span class="keyword">return</span> user;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">			<span class="keyword">this</span>.close(rs, ps, conn);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//查询所有用户</span></span><br><span class="line">	<span class="keyword">public</span> List&lt;User&gt; getAllUsers() &#123;</span><br><span class="line">		<span class="comment">//集合是用于存储其它对象的对象</span></span><br><span class="line">		<span class="comment">//将所有的用户对象存放到List类型的集合中</span></span><br><span class="line">		List&lt;User&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;(); </span><br><span class="line">		Connection conn = <span class="literal">null</span>;</span><br><span class="line">		ResultSet rs = <span class="literal">null</span>;</span><br><span class="line">		PreparedStatement ps = <span class="literal">null</span>;</span><br><span class="line">		String sql = <span class="string">"SELCTE * FROM t_user"</span>;</span><br><span class="line">		<span class="keyword">try</span>&#123;</span><br><span class="line">			conn = <span class="keyword">this</span>.getConn();</span><br><span class="line">			ps = conn.prepareStatement(sql);</span><br><span class="line">			rs = ps.executeQuery();</span><br><span class="line">			<span class="comment">//循环添加所有用户</span></span><br><span class="line">			<span class="keyword">while</span> (rs.next()) &#123;</span><br><span class="line">				User user = <span class="keyword">new</span> User(rs.getLong(<span class="string">"id"</span>), rs.getString(<span class="string">"name"</span>), rs.getString(<span class="string">"gender"</span>));</span><br><span class="line">				list.add(user);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">			<span class="keyword">this</span>.close(rs, ps, conn);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 修改用户数据</span></span><br><span class="line"><span class="comment">	 * @param user 需要修改的用户 </span></span><br><span class="line"><span class="comment">	 * @return 用户对象</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">public</span> User updateUser(User user) &#123;</span><br><span class="line">		Connection conn = <span class="literal">null</span>;</span><br><span class="line">		PreparedStatement ps = <span class="literal">null</span>;</span><br><span class="line">		String sql = <span class="string">"UPDATE t_user SET id=?, name=?,gender=?"</span>;</span><br><span class="line">		<span class="keyword">try</span>&#123;</span><br><span class="line">			conn = <span class="keyword">this</span>.getConn();</span><br><span class="line">			conn.setAutoCommit(<span class="literal">false</span>); <span class="comment">//设置自动提交为false</span></span><br><span class="line">			ps = conn.prepareStatement(sql);</span><br><span class="line">			ps.setLong(<span class="number">1</span>, user.getId());</span><br><span class="line">			ps.setString(<span class="number">2</span>, user.getName());</span><br><span class="line">			ps.setString(<span class="number">3</span>, user.getGender());</span><br><span class="line">			int rst = ps.executeUpdate();</span><br><span class="line">			<span class="keyword">if</span> (rst &gt; <span class="number">0</span>) &#123;</span><br><span class="line">				<span class="keyword">return</span> user;</span><br><span class="line">			&#125;</span><br><span class="line">			conn.commit(); <span class="comment">//如果修改成功，提交事务</span></span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">			<span class="keyword">try</span>&#123;</span><br><span class="line">				conn.rollback(); <span class="comment">//如果出错，则回滚视乎</span></span><br><span class="line">			&#125; <span class="keyword">catch</span> (SQLException se) &#123;</span><br><span class="line">				se.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">			<span class="keyword">this</span>.close(<span class="literal">null</span>, ps, conn);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//根据Id删除用户</span></span><br><span class="line">	…</span><br><span class="line">	<span class="comment">//插入用户数据</span></span><br><span class="line">	…</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="89-如何使用连接池"><a href="#89-如何使用连接池" class="headerlink" title="89.    如何使用连接池"></a>89.    如何使用连接池</h1><p>若操作数据库的程序比较多，频繁地创建数据库和建立连接是非常耗费资源的，因此提出了数据库连接技术。<br>数据库连接池中装的是数据库的连接（Connection），当需要连接数据库时，只需要从池子中取出即可。当调用Connection.close()方法时，连接就返回到池子，但并没有真正与数据库断开连接。当连接不够时，它会创建一些连接；当连接太多时，会自动关闭一些不必要的连接。<br><img src="http://ovfkr5e4k.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180821163339.png" alt="数据库连接池工作原理"><br>数据库连接池往往作为一个单独的程序模块进行运行，由他来维护这些连接。开发者可以配置它的一些属性，最大活动连接数、最大空闲连接数、连接超时等。它与传统的JDBC提供连接的方式不太一样，<font color="red">必须使用数据源（Data Source）的形式获取连接，数据源对象往往是以JNDI（Java Naming and Directory Interface，Java命名与目录接口）的形式提供给开发者</font>。数据连接池提供商对连接池的实现各不相同，但它们都必须实现javax.sql.DataSource接口，开发者只需要面向这些接口编程就好了。传统JDBC通过驱动管理器（DriverManager）来获取连接；而连接池则需要用数据源（DataSource）来获取。<br>1）创建JDNI初始化上下文对象<br>InitialContext cxt = new InitialContext();<br>2）通过JNDI上下文获取到的数据源<br>DataSource ds = (DataSource) cxt.lookup(“数据源在JNDI上的路径”);<br>3）通过数据源获取到对象<br>Connection conn = ds.getConnection();</p>
+<h1 id="90-如何使用可滚动的结果集"><a href="#90-如何使用可滚动的结果集" class="headerlink" title="90.    如何使用可滚动的结果集"></a>90.    如何使用可滚动的结果集</h1><p>一般来说，使用ResultSet类的next()方法可以迭代地遍历结果集中的所有的行（可理解为上下移动），但有时希望结果集可以前后移动。JDBC从JDBC2.0开始支持<font color="red">可滚动</font>的结果集（ResultS），可以在结果上前后移动，并且可以跳转到结果集中的任何位置。<br>在创建会话对象的时候进行指定：<br><span style="background-color:yellow">PreparedStatement pstat = conn.prepareStatement (sql, type, concurrency);</span><br>其中<br>1）type用来设置是否为可滚动结果集，它为ResultSet的静态变量：<br>TYPE_FORWARD_ONLY：结果集不能滚动。<br>TYPE_SCROLL_INSENSITIVE：结果集可以滚动，但对数据库变化不敏感，数据库查询生成结果集后发生了变化，结果集不发生变化。<br>TYPE_SCROLL_SENSITIVE：结果集可以滚动，但对数据库变化敏感。<br>2）concurrency用于指定是否为可更新的结果集，它也为ResultSet的静态变量。<br>直接在查询结果里修改数据，并同步到数据库。<br>CONCUR_READ_ONLY：结果集不能用于更新数据库。<br>CONCUR_UPDATABLE：结果集可以用于更新数据库。<br>实际上，数据库驱动可能无法支持可滚动或可更新结果集的请求。通过DatabaseMetaData类中的boolean SupportsResultSetType(int type)和boolean SupportsResultSetConcurrency(int type, int concurrency)可以知道某个数据库究竟支持哪些结果集类型以及那些模式。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/20/Tech/Java/Java%20Basis/Java%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94JDK%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%92%8CEclipse%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" rel="next" title="Java基础（一）——JDK开发环境和Eclipse开发工具">
+                <i class="fa fa-chevron-left"></i> Java基础（一）——JDK开发环境和Eclipse开发工具
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/21/Tech/Java/Java%20Basis/Java%E5%9F%BA%E7%A1%80%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94Java%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" rel="prev" title="Java基础（二）——Java数据类型">
+                Java基础（二）——Java数据类型 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="LichtMiao" />
+          <p class="site-author-name" itemprop="name">LichtMiao</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">186</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          <!-- 
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+           -->
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/LichtMiao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Miaomi4" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                    
+                      Twitter
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#81-用TCP通信模型创建Web服务器"><span class="nav-number">1.</span> <span class="nav-text">81.    用TCP通信模型创建Web服务器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#82-利用UDP通信模型创建即时聊天软件"><span class="nav-number">2.</span> <span class="nav-text">82.    利用UDP通信模型创建即时聊天软件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#83-使用Java访问Web站点"><span class="nav-number">3.</span> <span class="nav-text">83.    使用Java访问Web站点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#84-Java对数据的支持"><span class="nav-number">4.</span> <span class="nav-text">84.    Java对数据的支持</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#85-JDBC的工作原理"><span class="nav-number">5.</span> <span class="nav-text">85.    JDBC的工作原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#86-JDBC操作数据库的步骤"><span class="nav-number">6.</span> <span class="nav-text">86.    JDBC操作数据库的步骤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#87-如何使用JDBC事务"><span class="nav-number">7.</span> <span class="nav-text">87.    如何使用JDBC事务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#88-如何使用JDBC实现数据访问对象层"><span class="nav-number">8.</span> <span class="nav-text">88.    如何使用JDBC实现数据访问对象层</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#89-如何使用连接池"><span class="nav-number">9.</span> <span class="nav-text">89.    如何使用连接池</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#90-如何使用可滚动的结果集"><span class="nav-number">10.</span> <span class="nav-text">90.    如何使用可滚动的结果集</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LichtMiao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+  Powered by <a>Hexo</a>
+</div>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+  <!-- 背景动画 -->
+  
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>

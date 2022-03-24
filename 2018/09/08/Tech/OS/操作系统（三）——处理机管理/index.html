@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en.yml">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Learning, Life" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="LichtMiao's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="在多道程序环境下，主存中有着多个进程，其数目往往多于处理机数目。这就要求系统能按某种算法，动态地把处理机分配给就绪队列中的一个进程，使之执行。分配处理机的任务是由处理机调度程序完成的。 处理机调度的层次高级调度高级调度(High Level Scheduling)又称为作业调度或长程调度(LongTerm Scheduling)。高级调度是根据某种算法，把外存上处于后备队列中的那些作业调入内存。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统（三）——处理机管理">
+<meta property="og:url" content="https://lichtmiao.github.io/2018/09/08/Tech/OS/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E5%A4%84%E7%90%86%E6%9C%BA%E7%AE%A1%E7%90%86/index.html">
+<meta property="og:site_name" content="LichtMiao&#39;s Blog">
+<meta property="og:description" content="在多道程序环境下，主存中有着多个进程，其数目往往多于处理机数目。这就要求系统能按某种算法，动态地把处理机分配给就绪队列中的一个进程，使之执行。分配处理机的任务是由处理机调度程序完成的。 处理机调度的层次高级调度高级调度(High Level Scheduling)又称为作业调度或长程调度(LongTerm Scheduling)。高级调度是根据某种算法，把外存上处于后备队列中的那些作业调入内存。">
+<meta property="article:published_time" content="2018-09-08T05:28:55.000Z">
+<meta property="article:modified_time" content="2019-01-21T03:43:12.000Z">
+<meta property="article:author" content="LichtMiao">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.2',
+    sidebar: {"position":"right","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://lichtmiao.github.io/2018/09/08/Tech/OS/操作系统（三）——处理机管理/"/>
+
+
+
+
+
+<!-- 网页加载条 -->
+<script src="https://neveryu.github.io/js/src/pace.min.js"></script>
+  <title>操作系统（三）——处理机管理 | LichtMiao's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en.yml">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LichtMiao's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lichtmiao.github.io/2018/09/08/Tech/OS/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E5%A4%84%E7%90%86%E6%9C%BA%E7%AE%A1%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LichtMiao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LichtMiao's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">操作系统（三）——处理机管理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-08T13:28:55+08:00">
+                2018-09-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/OS/" itemprop="url" rel="index">
+                    <span itemprop="name">OS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在多道程序环境下，主存中有着多个进程，其数目往往多于处理机数目。这就要求系统能按某种算法，动态地把处理机分配给就绪队列中的一个进程，使之执行。分配处理机的任务是由处理机调度程序完成的。</p>
+<h1 id="处理机调度的层次"><a href="#处理机调度的层次" class="headerlink" title="处理机调度的层次"></a>处理机调度的层次</h1><h2 id="高级调度"><a href="#高级调度" class="headerlink" title="高级调度"></a>高级调度</h2><p>高级调度(High Level Scheduling)又称为作业调度或长程调度(LongTerm Scheduling)。<br><span style = "background-color:yellow">高级调度是根据某种算法，把外存上处于后备队列中的那些作业调入内存</span>。</p>
+<h3 id="作业（job）"><a href="#作业（job）" class="headerlink" title="作业（job）"></a>作业（job）</h3><p>作业是一个比程序更为广泛的概念，它不仅包含了通常的程序和数据，而且还应配有一份作业说明书，系统根据该说明书来对程序的运行进行控制。在批处理系统中，是以作业为基本单位从外存调入内存的。</p>
+<h3 id="作业控制块（JCB，job-control-block）"><a href="#作业控制块（JCB，job-control-block）" class="headerlink" title="作业控制块（JCB，job control block）"></a>作业控制块（JCB，job control block）</h3><p>为了管理和调度作业，在多道批处理系统中为每个作业设置了一个作业控制块，如同进程控制块是进程在系统中存在的标志一样，它是作业在系统中存在的标志，其中保存了系统对作业进行管理和调度所需的全部信息。每当作业进入系统时，系统便为每个作业建立一个JCB，根据作业类型将它插入相应的后备队列中。</p>
+<h3 id="作业调度"><a href="#作业调度" class="headerlink" title="作业调度"></a>作业调度</h3><p>作业调度的主要功能是根据作业控制块中的信息，审查系统能否满足用户作业的资源需求，以及按照一定的算法，从外存的后备队列中选取某些作业调入内存，并为它们创建进程、分配必要的资源。然后再将新创建的进程插入就绪队列，准备执行。</p>
+<h2 id="低级调度"><a href="#低级调度" class="headerlink" title="低级调度"></a>低级调度</h2><p>通常也把低级调度(Low Level Scheduling)称为进程调度或短程调度(ShortTerm Scheduling)，它所<span style = "background-color:yellow">调度的对象是进程(或内核级线程)</span>。进程调度是最基本的一种调度，在多道批处理、分时和实时三种类型的OS中，都必须配置这级调度。</p>
+<h3 id="进程调度的三个基本机制"><a href="#进程调度的三个基本机制" class="headerlink" title="进程调度的三个基本机制"></a>进程调度的三个基本机制</h3><p>排队器、分派器（分配程序）、上下文切换机制。</p>
+<h3 id="进程调度的方式"><a href="#进程调度的方式" class="headerlink" title="进程调度的方式"></a>进程调度的方式</h3><p>（1）非抢占方式（nonpreemptive mode）<br>a.    定义：一旦把处理机分配给某个进程，无论该进程要运行多长时间，都不会因为其他原因而被抢占正在运行进程的处理机。直至该进程完成，自愿释放处理机。<br>b．优缺点：优点是实现简单，系统开销小，适用于大多数的批处理系统环境。但它难以满足紧急任务的要求——立即执行。<br>（2）抢占方式（preemptive mode）<br>a.    定义：根据某种原则去暂停某个正在执行的进程，将已分配给该进程的处理机重新分配给另一进程。<br>b.    优缺点：优点是，可以防止一个长进程长时间占用处理机，能为大多数进程提供更公平的服务，特别是能满足对响应时间有着较严格要求的实时任务的需求。但抢占方式比非抢占方式调度所需付出的开销较大。<br>c.    抢占调度方式遵循的原则</p>
+<ul>
+<li>优先权原则。通常是对一些重要的和紧急的作业赋予较高的优先权。</li>
+<li>短作业(进程)优先原则。短作业(进程)可以抢占当前较长作业(进程)的处理机。</li>
+<li>时间片原则。各进程按时间片轮流运行，当一个时间片用完后，便停止该进程的执行而重新进行调度。</li>
+</ul>
+<h2 id="中级调度"><a href="#中级调度" class="headerlink" title="中级调度"></a>中级调度</h2><p>中级调度(Intermediate Level Scheduling)又称中程调度(Medium-Term Scheduling)。中级调度就是存储器管理中的对换功能。</p>
+<h1 id="调度队列模型和调度准则"><a href="#调度队列模型和调度准则" class="headerlink" title="调度队列模型和调度准则"></a>调度队列模型和调度准则</h1><h2 id="调度队列模型"><a href="#调度队列模型" class="headerlink" title="调度队列模型"></a>调度队列模型</h2><h3 id="仅有进程调度的调度队列模型"><a href="#仅有进程调度的调度队列模型" class="headerlink" title="仅有进程调度的调度队列模型"></a>仅有进程调度的调度队列模型</h3><h3 id="具有高级和低级调度的调度队列模型"><a href="#具有高级和低级调度的调度队列模型" class="headerlink" title="具有高级和低级调度的调度队列模型"></a>具有高级和低级调度的调度队列模型</h3><p>在批处理系统中，一般作业调度和进程调度都存在，<font color="red">作业调度按照一定的作业调度算法，从外存的后备队列中选择一批作业调入内存，并为他们创建进程，送入就绪队列；而进程调度按照进程调度算法，选择一个进程，将处理机分配给该进程</font>。</p>
+<p>就绪队列的形式：在批处理系统中，最常用的是最高优先权优先调度算法，相应地，最常用的就绪队列形式就是优先权队列。其实可以是队列形式，也可以是无序链表形式。</p>
+<h3 id="同时具有三级调度的调度队列模型"><a href="#同时具有三级调度的调度队列模型" class="headerlink" title="同时具有三级调度的调度队列模型"></a>同时具有三级调度的调度队列模型</h3><h2 id="调度算法"><a href="#调度算法" class="headerlink" title="调度算法"></a>调度算法</h2><p>在OS中调度的实质是一种资源分配，因而调度算法是指：根据系统的资源分配策略所规定的资源分配算法。<br>批处理系统中，为了照顾为数众多的短作业，应采用短作业优先的调度算法；又如在分时系统中，为了保证系统具有合理的响应时间，应采用轮转法进行调度。</p>
+<h3 id="FCFS（first-come-first-service，先来先服务）"><a href="#FCFS（first-come-first-service，先来先服务）" class="headerlink" title="FCFS（first come first service，先来先服务）"></a><span style="background-color:yellow"><b>FCFS（first come first service，先来先服务）</b></span></h3><p>FCFS既可用于作业调度，也可用于进程调度。FCFS比较利于长作业（或进程），而不利于短作业（或进程）。<br>缺点：由下面的带权周转时间的公式也可以看出，对于短作业（或进程），其服务时间比较短，则其带权周转时间就会很大，这是不能容忍的。</p>
+<h3 id="短作业（或进程）（SJ-P-F，short-job（process）-first）优先"><a href="#短作业（或进程）（SJ-P-F，short-job（process）-first）优先" class="headerlink" title="短作业（或进程）（SJ(P)F，short job（process） first）优先"></a><span style="background-color:yellow"><b>短作业（或进程）（SJ(P)F，short job（process） first）优先</b></span></h3><p>SJ(P)F是指对短作业或短进程优先调度的算法，这里的“短”是估计的运行时间最短。<br>缺点：<br>该算法能有效降低短作业（或进程）的等待时间，但对长作业（或进程）不利。更可能导致长作业长期不会被调用；由于短作业（或进程）只是根据用户提供的估计运行时间而定，但估计也不一定准确。</p>
+<h3 id="高优先权优先（FPF，first-priority-fist）调度算法"><a href="#高优先权优先（FPF，first-priority-fist）调度算法" class="headerlink" title="高优先权优先（FPF，first priority fist）调度算法"></a><span style="background-color:yellow"><b>高优先权优先（FPF，first priority fist）调度算法</b></span></h3><p>当把该算法用于作业调度时，系统将从后备队列中选择若干个优先权最高的作业装入内存。当用于进程调度时，该算法是把处理机分配给就绪队列中优先权最高的进程。<br>（1）    优先权调度算法的类型<br>a.    <strong>非抢占式优先权算法</strong>：主要用于<font color="red">批处理系统</font>中，和对实时性要求不严的实时系统中。<br>b.    <strong>抢占式优先权算法</strong>：主要用于<font color="red">比较严格的实时系统</font>中，和对性能要求较高的批处理和分时系统中。<br>（2）    优先权类型<br>a.    静态优先权：在创建进程时确定的，且在进程的整个运行期间保持不变。<br>确定静态优先权的依据：</p>
+<ul>
+<li>系统进程(如接收进程、对换进程、磁盘I/O 进程)的优先权高于一般用户进程的优先权。</li>
+<li>对估计的运行时间和内存需求量少的进程应赋予较高的优先权。</li>
+</ul>
+<p>b.    动态优先权：在创建进程时所赋予的优先权，是可以随进程的推进或随其等待时间的增加而改变的，以便获得更好的调度性能。</p>
+<h3 id="高响应比优先调度算法"><a href="#高响应比优先调度算法" class="headerlink" title="高响应比优先调度算法"></a>高响应比优先调度算法</h3><p>在批处理系统中，短作业优先算法是一种比较好的算法，其主要的不足之处是长作业的运行得不到保证。如果我们能为每个作业引入动态优先权，并使作业的优先级随着等待时间的增加而以速率a 提高，则长作业在等待一定的时间后，必然有机会分配到处理机。</p>
+<p>$$<br>优先权 = \frac{周转时间}{服务时间} = \frac{等待时间+服务时间}{服务时间} = \frac{响应时间}{服务时间} = 响应比<br>$$</p>
+<p>由上式可以看出：</p>
+<ul>
+<li>如果作业的等待时间相同，则要求服务的时间愈短，其优先权愈高，因而该算法有利于短作业。</li>
+<li>当要求服务的时间相同时，作业的优先权决定于其等待时间，等待时间愈长，其优先权愈高，因而它实现的是先来先服务。</li>
+<li>对于长作业，作业的优先级可以随等待时间的增加而提高，当其等待时间足够长时，其优先级便可升到很高，从而也可获得处理机。</li>
+</ul>
+<p>简言之，该算法既照顾了短作业，又考虑了作业到达的先后次序，不会使长作业长期得不到服务。</p>
+<h3 id="基于时间片的轮转调度算法"><a href="#基于时间片的轮转调度算法" class="headerlink" title="基于时间片的轮转调度算法"></a><span style="background-color:yellow"><b>基于时间片的轮转调度算法</b></span></h3><p>在<font color="red">分时系统</font>中，为保证能及时响应用户的请求，必须采用<font color="red">基于时间片的轮转式</font>进程调度算法。<br>（1）    时间片轮法（round robin，RR）<br>a.    基本原理：在早期的时间片轮转法中，系统将所有的就绪进程按先来先服务的原则排成一个队列，每次调度时，把CPU 分配给队首进程，并令其执行一个时间片。时间片的大小从几ms 到几百ms。当执行的时间片用完时，由一个计时器发出时钟中断请求，调度程序便据此信号来停止该进程的执行，并将它送往就绪队列的末尾；然后，再把处理机分配给就绪队列中新的队首进程，同时也让它执行一个时间片。使得系统能在给定的时间内响应所有用户的请求。<br>b.    时间片大小的确定：当时间片太小，将有利于短作业，但频换切换开销大；如果时间片太长，使得每个进程都能在一个事件片内完成，则时间片轮转算法退化为先来先服务调度算法。<br>时间片大小最好是一个时间片略大于一次典型交互所需要的时间。<br>c. 例：进程A、B、C、D需要运行的时间分别为20ms、10 ms、15 ms、5 ms，均在0时刻到达。到达的先后次序为A、B、C、D。如果时间片分别为1ms和5ms，计算各个进程的带权周转时间和平均带权周转时间。<br>解：采用时间片轮转法进行调度，算法的性能指标如下：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>进程名</th>
+<th>到达时间</th>
+<th>运行时间</th>
+<th>开始时间</th>
+<th>完成时间</th>
+<th>周转时间</th>
+<th>带权周转时间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>时间片=1</td>
+<td>A</td>
+<td>0</td>
+<td>20</td>
+<td>0</td>
+<td>50</td>
+<td>50</td>
+<td>2.5</td>
+</tr>
+<tr>
+<td></td>
+<td>B</td>
+<td>0</td>
+<td>10</td>
+<td>1</td>
+<td>34</td>
+<td>34</td>
+<td>3.4</td>
+</tr>
+<tr>
+<td></td>
+<td>C</td>
+<td>0</td>
+<td>15</td>
+<td>2</td>
+<td>45</td>
+<td>45</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td></td>
+<td>D</td>
+<td>0</td>
+<td>5</td>
+<td>3</td>
+<td>20</td>
+<td>20</td>
+<td>4.0</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>平均周转时间=37.25</td>
+<td>平均带权周转时间=3.225</td>
+</tr>
+<tr>
+<td>时间片=5</td>
+<td>A</td>
+<td>0</td>
+<td>20</td>
+<td>0</td>
+<td>50</td>
+<td>50</td>
+<td>2.5</td>
+</tr>
+<tr>
+<td></td>
+<td>B</td>
+<td>0</td>
+<td>10</td>
+<td>5</td>
+<td>30</td>
+<td>30</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td></td>
+<td>C</td>
+<td>0</td>
+<td>15</td>
+<td>10</td>
+<td>45</td>
+<td>45</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td></td>
+<td>D</td>
+<td>0</td>
+<td>5</td>
+<td>15</td>
+<td>20</td>
+<td>20</td>
+<td>4.0</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>平均周转时间=36.25</td>
+<td>平均带权周转时间=3.125</td>
+</tr>
+</tbody></table>
+<p>（2）    <span style="background-color:yellow"><b>多级反馈队列调度算法</b></span><br>前面介绍的各种用作进程调度的算法都有一定的局限性。如短进程优先的调度算法，仅照顾了短进程而忽略了长进程，而且如果并未指明进程的长度，则短进程优先和基于进程长度的抢占式调度算法都将无法使用。而<font color="red">多级反馈队列调度算法则不必事先知道各种进程所需的执行时间</font>，而且还可以满足各种类型进程的需要，因而它是目前被公认的一种较好的进程调度算法。<br>a.    实施过程</p>
+<ul>
+<li>设置多个就绪队列，并为各个队列赋予不同的优先级，第一个就绪队列的优先级最高，后面的队列优先级逐个降低。赋予各个队列中进程执行时间片的大小也各不相同，在优先权越高的就绪队列中，时间片越小。</li>
+<li>当一个新进程进入内存后，首先将它放入第一队列的末尾，按FCFS原则排队等待调度。当轮到该进程执行时，如它能在该时间片内完成，便可准备撤离系统；如果它在一个时间片结束时尚未完成，调度程序便将该进程转入第二队列的末尾，再同样地按FCFS原则等待调度执行。即将长作业分解为短作业，以此类推。</li>
+<li>仅当第一队列空闲时，调度程序才调度第二队列中的进程运行；仅当第1～(i-1)队列均空时，才会调度第i队列中的进程运行。</li>
+</ul>
+<p>b.    多级反馈队列调度算法性能：多级反馈队列调度算法具有较好的性能，能很好地满足各种类型用户的需要。</p>
+<ul>
+<li>终端型作业用户。由于终端型作业用户所提交的作业大多属于交互型作业，作业通常较小。</li>
+<li>短批处理作业用户。对于很短的批处理型作业，开始时像终端型作业一样，如果仅在第一队列中执行一个时间片即可完成，便可获得与终端型作业一样的响应时间。对于稍长的作业，通常也只需在第二队列和第三队列各执行一个时间片即可完成，其周转时间仍然较短。</li>
+<li>长批处理作业用户。对于长作业，它将依次在第1，2，…，n 个队列中运行，然后再按轮转方式运行，用户不必担心其作业长期得不到处理。</li>
+</ul>
+<h2 id="实时调度"><a href="#实时调度" class="headerlink" title="实时调度"></a>实时调度</h2><p>前面介绍的多种算法不能很好地满足实时系统对调度的要求，因此引入了实时调度。<br><strong>硬实时任务和软实时任务</strong>：硬实时任务指必须满足最后期限的限制，否则会给系统带来不可接受的破坏或者致命错误。软实时任务也有一个与之关联的最后期限，并希望能满足这个期限的要求，但这并不是强制的，即使超过了最后期限，调度和完成这个任务仍然是有意义的。</p>
+<h3 id="实现实时调度的条件"><a href="#实现实时调度的条件" class="headerlink" title="实现实时调度的条件"></a>实现实时调度的条件</h3><p>(1) 提供必要的信息。如就绪时间、开始截止时间和完成截止时间、处理时间、资源要求、优先级。<br>(2) 系统处理能力强。在实时系统中，通常都有着多个实时任务。若处理机的处理能力不够强，则有可能因处理机忙不过来而使某些实时任务不能得到及时处理，从而导致发生难以预料的后果。<br>(3) 采用抢占式调用机制。在含有硬实时任务的实时系统中，广泛采用抢占机制。当一个优先权更高的任务到达时，允许将当前任务暂时挂起，而令高优先权任务立即投入运行，这样便可满足该硬实时任务对截止时间的要求。但这种调度机制比较复杂。<br>(4) 具有快速切换机制。</p>
+<h3 id="常用的两种种实时调度算法"><a href="#常用的两种种实时调度算法" class="headerlink" title="常用的两种种实时调度算法"></a>常用的两种种实时调度算法</h3><p>(1) <span style="background-color:yellow"><b>最早截止时间优先（earlist deadline first，EDF）算法</b></span><br>根据任务的<font color="red">开始截止时间</font>来确定任务的优先级。开始截止时间愈早，其优先级愈高。<br>该算法既可用于抢占式调度，也可用于非抢占式调度方式中。</p>
+<ul>
+<li>非抢占式调度方式用于非周期实时任务。</li>
+<li>抢占调度方式用于周期实时任务。</li>
+</ul>
+<p>(2) <span style="background-color:yellow"><b>最低松弛度优先（least laxity first，LLF）算法</b></span><br>根据<font color="red">任务紧急(或松弛)的程度</font>，来确定任务的优先级。任务的紧急程度愈高，为该任务所赋予的优先级就愈高，以使之优先执行。松弛程度就是说该任务为了在给定某个时间前必须完成，至少需要在哪个时间点开始执行，因此松弛度低的任务排在队列前面。<br>该算法主要用于抢占调度方式中。</p>
+<h2 id="产生死锁的原因和必要条件"><a href="#产生死锁的原因和必要条件" class="headerlink" title="产生死锁的原因和必要条件"></a>产生死锁的原因和必要条件</h2><p>死锁(Deadlock)，是指多个进程在运行过程中因争夺资源而造成的一种僵局(DeadlyEmbrace)，当进程处于这种僵持状态时，若无外力作用，它们都将无法再向前推进。</p>
+<h3 id="产生死锁的原因"><a href="#产生死锁的原因" class="headerlink" title="产生死锁的原因"></a>产生死锁的原因</h3><p>（1）    竞争资源<br>当系统中供多个进程共享的资源如打印机、公用队列等，其数目不足以满足各个进程的需要时，会引起各个进程对资源的竞争而产生死锁。<br>（2）    进程间推进顺序非法。<br>进程在运行过程中，请求和释放资源的顺序不当，也同样会导致产生进程死锁。如前面的wait和signal操作。<br>可剥夺资源和不可剥夺资源：可剥夺资源是指，某进程在获得这类资源后，该资源可以再被其他进程或系统剥夺。CPU和主存均属于可剥夺性资源。不可剥夺性资源是指，当系统把这类资源分配给某进程后，再不能强行收回，只能在进程用完后自行释放，如磁带机、打印机等。</p>
+<h3 id="产生死锁的必要条件"><a href="#产生死锁的必要条件" class="headerlink" title="产生死锁的必要条件"></a><span style="background-color:yellow"><b>产生死锁的必要条件</b></span></h3><p>（1）<strong><font color="red">互斥条件</font></strong>：在一段时间内某资源只由一个进程占用。如果此时还有其它进程请求该资源，则请求者只能等待，直至占有该资源的进程用毕释放。<br>（2）<strong><font color="red">请求和保持条件</font></strong>：指进程已经保持了至少一个资源，但又提出了新的资源请求，而该资源又已被其它进程占有，此时请求进程阻塞，但又对自己已获得的其它资源保持不放。<br>（3）<strong><font color="red">不剥夺条件</font></strong>：指进程已获得的资源，在未使用完之前，不能被剥夺，只能在使用完时由自己释放。<br>（4）<strong><font color="red">环路等待条件</font></strong>：指在发生死锁时，必然存在一个进程——资源的环形链，即进程集合{P0，P1，P2，…，Pn}中的P0正在等待一个P1占用的资源； P1正在等待P2占用的资源，……，Pn正在等待已被P0占用的资源。</p>
+<h3 id="处理死锁的基本方法"><a href="#处理死锁的基本方法" class="headerlink" title="处理死锁的基本方法"></a><span style="background-color:yellow"><b>处理死锁的基本方法</b></span></h3><p>（1）<strong><font color="red">预防死锁</font></strong>。<font color="red">破坏产生死锁的四个必要条件2、3、4中的任意一个或多个</font>（条件1是设备的固有属性决定的，应该加以保证），来预防发生死锁.<br>（2）<strong><font color="red">避免死锁</font></strong>。在资源的动态分配过程中，用某种方法去<font color="red">防止系统进入不安全状态</font>，从而避免发生死锁。<br>a. 安全状态：是指系统能按某种进程顺序(P1，P2，…，Pn)(称〈P1，P2，…，Pn〉序列为安全序列)，来为每个进程Pi分配其所需资源，直至满足每个进程对资源的最大需求，使每个进程都可顺利地完成。如果系统无法找到这样一个安全序列，则称系统处于不安全状态。<br>b．不安全状态转为进入死锁状态；但只要系统处于安全状态，系统便可避免进入死锁状态。<br>c. 安全状态序列例题：在当前时刻存在一个下次给进程分配资源的序列，使得下次分配的时候，能满足每个进程的资源需求。<br>d. <span style="background-color:yellow"><b>利用银行家算法避免死锁</b></span>。</p>
+<p>（3）<strong><font color="red">检测和解除死锁</font></strong>。允许系统在运行过程中发生死锁。但可通过系统所设置的检测机构，及时地检测出死锁的发生，并精确地确定与死锁有关的进程和资源；然后，须将进程从死锁状态中解脱出来。常用的实施方法是撤消或挂起一些进程，以便回收一些资源，再将这些资源分配给已处于阻塞状态的进程，使之转为就绪状态，以继续运行。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/07/Tech/OS/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/" rel="next" title="操作系统（二）——进程管理">
+                <i class="fa fa-chevron-left"></i> 操作系统（二）——进程管理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/08/Life/Test%20and%20Interview/%E7%BD%91%E6%98%93%E6%9C%89%E9%81%93%E6%B5%8B%E5%BC%80/" rel="prev" title="网易有道测开">
+                网易有道测开 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="LichtMiao" />
+          <p class="site-author-name" itemprop="name">LichtMiao</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">186</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          <!-- 
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+           -->
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/LichtMiao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Miaomi4" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                    
+                      Twitter
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#处理机调度的层次"><span class="nav-number">1.</span> <span class="nav-text">处理机调度的层次</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#高级调度"><span class="nav-number">1.1.</span> <span class="nav-text">高级调度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#作业（job）"><span class="nav-number">1.1.1.</span> <span class="nav-text">作业（job）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作业控制块（JCB，job-control-block）"><span class="nav-number">1.1.2.</span> <span class="nav-text">作业控制块（JCB，job control block）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作业调度"><span class="nav-number">1.1.3.</span> <span class="nav-text">作业调度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#低级调度"><span class="nav-number">1.2.</span> <span class="nav-text">低级调度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#进程调度的三个基本机制"><span class="nav-number">1.2.1.</span> <span class="nav-text">进程调度的三个基本机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程调度的方式"><span class="nav-number">1.2.2.</span> <span class="nav-text">进程调度的方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中级调度"><span class="nav-number">1.3.</span> <span class="nav-text">中级调度</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#调度队列模型和调度准则"><span class="nav-number">2.</span> <span class="nav-text">调度队列模型和调度准则</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#调度队列模型"><span class="nav-number">2.1.</span> <span class="nav-text">调度队列模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#仅有进程调度的调度队列模型"><span class="nav-number">2.1.1.</span> <span class="nav-text">仅有进程调度的调度队列模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#具有高级和低级调度的调度队列模型"><span class="nav-number">2.1.2.</span> <span class="nav-text">具有高级和低级调度的调度队列模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同时具有三级调度的调度队列模型"><span class="nav-number">2.1.3.</span> <span class="nav-text">同时具有三级调度的调度队列模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调度算法"><span class="nav-number">2.2.</span> <span class="nav-text">调度算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#FCFS（first-come-first-service，先来先服务）"><span class="nav-number">2.2.1.</span> <span class="nav-text">FCFS（first come first service，先来先服务）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#短作业（或进程）（SJ-P-F，short-job（process）-first）优先"><span class="nav-number">2.2.2.</span> <span class="nav-text">短作业（或进程）（SJ(P)F，short job（process） first）优先</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高优先权优先（FPF，first-priority-fist）调度算法"><span class="nav-number">2.2.3.</span> <span class="nav-text">高优先权优先（FPF，first priority fist）调度算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高响应比优先调度算法"><span class="nav-number">2.2.4.</span> <span class="nav-text">高响应比优先调度算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于时间片的轮转调度算法"><span class="nav-number">2.2.5.</span> <span class="nav-text">基于时间片的轮转调度算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实时调度"><span class="nav-number">2.3.</span> <span class="nav-text">实时调度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实现实时调度的条件"><span class="nav-number">2.3.1.</span> <span class="nav-text">实现实时调度的条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用的两种种实时调度算法"><span class="nav-number">2.3.2.</span> <span class="nav-text">常用的两种种实时调度算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#产生死锁的原因和必要条件"><span class="nav-number">2.4.</span> <span class="nav-text">产生死锁的原因和必要条件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#产生死锁的原因"><span class="nav-number">2.4.1.</span> <span class="nav-text">产生死锁的原因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#产生死锁的必要条件"><span class="nav-number">2.4.2.</span> <span class="nav-text">产生死锁的必要条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理死锁的基本方法"><span class="nav-number">2.4.3.</span> <span class="nav-text">处理死锁的基本方法</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LichtMiao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+  Powered by <a>Hexo</a>
+</div>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+  <!-- 背景动画 -->
+  
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>

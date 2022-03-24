@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en.yml">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Learning, Life" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="LichtMiao's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="Mysql数据类型简介整数类型（分有符号和无符号类型：signed、unsigned）TINYINT、SMALLINT、MEDIUMINT、INT、BIGIN 浮点数类型、定点数类型（分有符号和无符号类型：signed、unsigned）FLOAT、DOUBBLE、DECIMAL(M, D)：M表示数据的总长度（但不包括小数点），D表示小数位。例如123.45可表示为decimal(5,2)，存入">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL语句（一）——创建与查询">
+<meta property="og:url" content="https://lichtmiao.github.io/2018/08/12/Tech/Database/SQL%E8%AF%AD%E5%8F%A5%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E5%88%9B%E5%BB%BA%E4%B8%8E%E6%9F%A5%E8%AF%A2/index.html">
+<meta property="og:site_name" content="LichtMiao&#39;s Blog">
+<meta property="og:description" content="Mysql数据类型简介整数类型（分有符号和无符号类型：signed、unsigned）TINYINT、SMALLINT、MEDIUMINT、INT、BIGIN 浮点数类型、定点数类型（分有符号和无符号类型：signed、unsigned）FLOAT、DOUBBLE、DECIMAL(M, D)：M表示数据的总长度（但不包括小数点），D表示小数位。例如123.45可表示为decimal(5,2)，存入">
+<meta property="article:published_time" content="2018-08-11T16:26:00.000Z">
+<meta property="article:modified_time" content="2019-01-07T06:03:56.000Z">
+<meta property="article:author" content="LichtMiao">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.2',
+    sidebar: {"position":"right","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://lichtmiao.github.io/2018/08/12/Tech/Database/SQL语句（一）——创建与查询/"/>
+
+
+
+
+
+<!-- 网页加载条 -->
+<script src="https://neveryu.github.io/js/src/pace.min.js"></script>
+  <title>SQL语句（一）——创建与查询 | LichtMiao's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en.yml">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LichtMiao's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lichtmiao.github.io/2018/08/12/Tech/Database/SQL%E8%AF%AD%E5%8F%A5%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E5%88%9B%E5%BB%BA%E4%B8%8E%E6%9F%A5%E8%AF%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LichtMiao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LichtMiao's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SQL语句（一）——创建与查询</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-12T00:26:00+08:00">
+                2018-08-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/Database/" itemprop="url" rel="index">
+                    <span itemprop="name">Database</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Mysql数据类型简介"><a href="#Mysql数据类型简介" class="headerlink" title="Mysql数据类型简介"></a>Mysql数据类型简介</h1><h2 id="整数类型（分有符号和无符号类型：signed、unsigned）"><a href="#整数类型（分有符号和无符号类型：signed、unsigned）" class="headerlink" title="整数类型（分有符号和无符号类型：signed、unsigned）"></a>整数类型（分有符号和无符号类型：signed、unsigned）</h2><p>TINYINT、SMALLINT、MEDIUMINT、INT、BIGIN</p>
+<h2 id="浮点数类型、定点数类型（分有符号和无符号类型：signed、unsigned）"><a href="#浮点数类型、定点数类型（分有符号和无符号类型：signed、unsigned）" class="headerlink" title="浮点数类型、定点数类型（分有符号和无符号类型：signed、unsigned）"></a>浮点数类型、定点数类型（分有符号和无符号类型：signed、unsigned）</h2><p>FLOAT、DOUBBLE、DECIMAL(M, D)：M表示数据的总长度（但不包括小数点），D表示小数位。例如123.45可表示为decimal(5,2)，存入数据的时候，按四舍五入计算。<br>FLOAT、DOUBLE 和 DECIMAL 都可以指定列宽，例如 DECIMAL(18, 9) 表示总共 18 位，取 9 位存储小数部分，剩下 9 位存储整数部分。</p>
+<h2 id="日期与时间类型"><a href="#日期与时间类型" class="headerlink" title="日期与时间类型"></a>日期与时间类型</h2><p>YEAR、DATE、TIME、DATETIME、TIMESTAMP（另一种类型的时间，时间范围不一样）<br>DATA、TIME与时区无关，能够保存从 1001 年到 9999 年的日期和时间，精度为秒，使用 8 字节的存储空间。<br>TIMESTAMP和时区有关，和 UNIX 时间戳相同，也就是说一个时间戳在不同的时区所代表的具体时间是不同的。保存从 1970 年 1 月 1 日午夜（格林威治时间）以来的秒数，使用 4 个字节，只能表示从 1970 年 到 2038 年。<br>应该尽量使用 TIMESTAMP，因为它比 DATETIME 空间效率更高。</p>
+<h2 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h2><p>CHAR（固定长度字符串）、VARCHAR（可变长度字符串）、TEXT、ENUM（枚举类型）、SET（集合类型）<br>VARCHAR 这种变长类型能够节省空间，因为只需要存储必要的内容。但是在执行 UPDATE 时可能会使行变得比原来长，当超出一个页所能容纳的大小时，就要执行额外的操作。MyISAM 会将行拆成不同的片段存储，而 InnoDB 则需要分裂页来使行放进页内。</p>
+<h2 id="二进制类型"><a href="#二进制类型" class="headerlink" title="二进制类型"></a>二进制类型</h2><p>BINARY(M)：字节数为M定长二进制字符串、VARBINARY(M)：变长、BIT(M)、TINYBLOB、BLOB、MEDIUMBLOB、LONGBLOB</p>
+<h1 id="数据库的基本操作"><a href="#数据库的基本操作" class="headerlink" title="数据库的基本操作"></a>数据库的基本操作</h1><p>数据库（Database）：按照数据结构来组织、存储和管理数据的仓库。<br>实际开发用SQLyog图形界面进行数据库操作。<br>快捷键：<br>Mysql：键盘上下键可以切换已经使用过的命令。<br>SQLyog：选中root@localhost，按F5刷新。</p>
+<h2 id="显示所有数据库"><a href="#显示所有数据库" class="headerlink" title="显示所有数据库"></a>显示所有数据库</h2><p>SHOW DATABASES; //注意有分号结尾</p>
+<h2 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h2><p>1）CREATE DATABASE 数据库名; //一般数据库名的规范为 db_***，文件的扩展名为.sql<br>SQLyog：选中root@localhost，按F5刷新，发现新数据库创建成功。<br>2）创建数据库：选中root@localhost，右键 -&gt; 创建数据库。</p>
+<h2 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h2><p>1）DROP DATABASE 数据库名<br>2）除数据库：选中需要删除的数据库，右键 -&gt; 更多操作 -&gt; 删除数据库。</p>
+<h2 id="使用数据库"><a href="#使用数据库" class="headerlink" title="使用数据库"></a>使用数据库</h2><p>在当前数据库下创建表等一系列操作需要先使用语句：<br>USE 数据库名</p>
+<h1 id="表的基本操作"><a href="#表的基本操作" class="headerlink" title="表的基本操作"></a>表的基本操作</h1><p>先切换到需要进行操作的数据库下面：<br>USE 数据库名<br>属性（字段）的具体内容叫记录。其它的操作字符叫关键字。</p>
+<h2 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h2><p>表是数据库存储数据的基本单位，一个表包含若干字段或记录。<br>语法：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">CREATE</span> <span class="selector-tag">TABLE</span> 表名 (属性名 数据类型 <span class="selector-attr">[完整性约束条件]</span>,</span><br><span class="line">属性名 数据类型 <span class="selector-attr">[完整性约束条件]</span>,</span><br><span class="line">…</span><br><span class="line">属性名 数据类型 <span class="selector-attr">[完整性约束条件]</span>);</span><br></pre></td></tr></table></figure>
+<p>约束条件    说明<br>PRIMARY KEY    标识该属性为该表的主键，可以唯一标识对应的记录<br>FOREIGN KEY    标识该属性为该表的外键，与表的主键关联<br>NOT NULL    标识该属性不能为空<br>UNIQUE    标识该属性的值是唯一的<br>AUTO_INCREMENT    标识该属性的值自动加一（通常与主键一起使用）<br>DEFAULT    为该属性设置默认值<br>例：主表t_booktype（1对多）副表t_book</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> t_booktype(</span><br><span class="line">	<span class="keyword">id</span> <span class="built_in">INT</span> PRIMARY <span class="keyword">KEY</span> AUTO_INCREMENT,</span><br><span class="line">	bookTypeName <span class="built_in">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">	bookTypeDesc <span class="built_in">VARCHAR</span>(<span class="number">200</span>)</span><br><span class="line">);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> t_bookType (<span class="string">`id`</span>, <span class="string">`bookTypeName`</span>) <span class="keyword">VALUES</span> (<span class="string">'1'</span>, <span class="string">'运动类'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> t_bookType (<span class="string">`id`</span>, <span class="string">`bookTypeName`</span>) <span class="keyword">VALUES</span> (<span class="string">'2'</span>, <span class="string">'工科类'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> t_bookType (<span class="string">`id`</span>, <span class="string">`bookTypeName`</span>) <span class="keyword">VALUES</span> (<span class="string">'3'</span>, <span class="string">'文科类'</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> t_book(</span><br><span class="line"><span class="keyword">id</span> <span class="built_in">INT</span> PRIMARY <span class="keyword">KEY</span> AUTO_INCREMENT,</span><br><span class="line">bookName <span class="built_in">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">author <span class="built_in">VARCHAR</span>(<span class="number">10</span>),</span><br><span class="line">price <span class="built_in">DECIMAL</span>(<span class="number">6</span>,<span class="number">2</span>), //定位</span><br><span class="line">bookTypeId <span class="built_in">INT</span>, //这个属性与t_booktype的<span class="keyword">id</span>关联。这是为了约束限制，确保数据一致性</span><br><span class="line"><span class="keyword">CONSTRAINT</span> <span class="string">`fk`</span> <span class="keyword">FOREIGN</span> <span class="keyword">KEY</span> (<span class="string">`bookTypeId`</span>) <span class="keyword">REFERENCES</span> t_booktype (<span class="string">`id`</span>)</span><br><span class="line">); //注意是上句号，用于非值的标注，可以省略；但值的单引号不可省略</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> t_book (<span class="string">`id`</span>, <span class="string">`bookName`</span>, <span class="string">`author`</span>, <span class="string">`price`</span>, <span class="string">`bookTypeId`</span>) <span class="keyword">VALUES</span> (<span class="string">'1'</span>, <span class="string">'数学'</span>, <span class="string">'张三'</span>, <span class="string">'50'</span>, <span class="string">'2'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> t_book (<span class="string">`id`</span>, <span class="string">`bookName`</span>, <span class="string">`author`</span>, <span class="string">`price`</span>, <span class="string">`bookTypeId`</span>) <span class="keyword">VALUES</span> (<span class="string">'2'</span>, <span class="string">'语文'</span>, <span class="string">'李四'</span>, <span class="string">'45'</span>, <span class="string">'3'</span>);</span><br></pre></td></tr></table></figure>
+<p>1）查看当前表中的数据<br>右键当前表 -&gt; 更改表（改变表）<br>2）创建外键关联<br>外键（foreign key）：是为了约束属性，确保数据的一致性。<br>编辑 -&gt; 新建架构设计器，将需要进行外键关联的表拖进来。将需要约束的source table中的属性拖到target table相应的属性中，建立外键关联。</p>
+<h2 id="查看表结构"><a href="#查看表结构" class="headerlink" title="查看表结构"></a>查看表结构</h2><p>1）查看表基本结构（表的基本结构，用SQLyog直接右键 -&gt; 更改表查看结构）<br>DESCRIBE(或简写为DESC) 表名;<br>2）查看表详细结构（创建表的详细命令语句）<br>SHOW CREATE TABLE 表名;</p>
+<h2 id="修改表（ALTER只是对属性的修改，对具体的行上面的数据没有帮助）"><a href="#修改表（ALTER只是对属性的修改，对具体的行上面的数据没有帮助）" class="headerlink" title="修改表（ALTER只是对属性的修改，对具体的行上面的数据没有帮助）"></a>修改表（ALTER只是对属性的修改，对具体的行上面的数据没有帮助）</h2><p>1）修改表名：ALTER 旧表名 RENAME 新表名;<br>2）修改属性（字段）：ALTER TABLE 表名 CHANGE 旧属性 新属性 新数据类型;<br>3）增加字段：ALTER TABLE 表名 ADD 属性1 数据类型 [完整性约束] [FIRST或AFTER 属性2]; //在第一个位置添加或在某个属性后添加。而用工具添加都是在当前行之前添加<br>4）删除字段：ALTER TABLE 表名 DROP 属性名;</p>
+<h2 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h2><p>DROP TABLE 表名;<br>对于有外键关联的主表和副表，不能直接删除主表，需要先删除副表才能删除主表。</p>
+<h1 id="查询数据"><a href="#查询数据" class="headerlink" title="查询数据"></a>查询数据</h1><p>query /‘kwɪərɪ/查询<br>先创建一个表，并插入一些字段和属性。</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> TABLE t_student(</span><br><span class="line">	id INT, //注意此处没有默认加<span class="number">1</span>，因此第二项的id应当手动设置为<span class="number">2</span>。注意不可单独设置AUTO_INCREMENT关键字，因为它必须与<span class="keyword">PRIMARY</span> <span class="keyword">KEY</span>同时使用。</span><br><span class="line">	stuName VARCHAR(<span class="number">60</span>),</span><br><span class="line">	age INT,</span><br><span class="line">	sex VARCHAR(<span class="number">30</span>),</span><br><span class="line">	gradeName VARCHAR(<span class="number">60</span>)</span><br><span class="line">);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="symbol">`t_student`</span> (<span class="symbol">`id`</span>, <span class="symbol">`stuName`</span>, <span class="symbol">`age`</span>, <span class="symbol">`sex`</span>, <span class="symbol">`gradeName`</span>) <span class="keyword">VALUES</span> (‘<span class="number">1</span>’, ‘张三’, ‘<span class="number">23</span>’, ‘男’, ‘一年级’); //注意关键字使用上句号，而字符串是用单引号。由于Word的格式问题，可能造成在Mysql命令窗口中单引号格式错误，最好重新在命令窗口修改。</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="symbol">`t_student`</span> (<span class="symbol">`id`</span>, <span class="symbol">`stuName`</span>, <span class="symbol">`age`</span>, <span class="symbol">`sex`</span>, <span class="symbol">`gradeName`</span>) <span class="keyword">VALUES</span> (‘<span class="number">2</span>’, ‘李四’, ‘<span class="number">23</span>’, ‘男’, ‘二年级’);</span><br></pre></td></tr></table></figure>
+<p>出错：1366 incorrect String<br>解决：此处是编码错误，这是由于我安装Mysql时将其默认编码设置为了uft-8编码，但不知为什么Mysql依然不支持中文字符集？SHOW FULL COLUMNS FROM t_student; 查询当前表所有字符的属性。<br>方法1）我们将所有的中文换成英文，就不会出错了。<br>方法2）找到Mysql的安装目录下的my.ini文件，修改default-character-set=GBK，但是需要注意，这里设成GBK之后在页面里面也需要设成GBK，否则会出现编码不一致，会出现乱码。<br>查询只需要在SQLyog的查询（query）框内，输入以下要查询的代码，里面的查询语句可以不用删除，需要让哪行执行，只需要将光标放在该命令行或选中某些命令行，点查询按钮（或F6快捷键）。</p>
+<h2 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h2><p>建立了表结构后，需要通过Mysql输入插入数据的命令，或在SQLyog查询界面直接输入命令。注意：属性是用上句号括起来的；而属性的值是用单引号括起来的（因为它是字符串）。</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 表名 (<span class="symbol">`属性1`</span>,<span class="symbol">`属性2`</span>,<span class="symbol">`属性3`</span>) <span class="keyword">VALUES</span> (‘值<span class="number">1</span>’, ‘值<span class="number">2</span>’, ‘值<span class="number">3</span>’);</span><br><span class="line">如</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> t_student (<span class="symbol">`id`</span>,<span class="symbol">`stuName`</span>,<span class="symbol">`age`</span>) <span class="keyword">VALUES</span> (‘<span class="number">1</span>’, ‘张三’, ‘<span class="number">20</span>’);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> t_student (<span class="symbol">`id`</span>,<span class="symbol">`stuName`</span>,<span class="symbol">`age`</span>) <span class="keyword">VALUES</span> (‘<span class="number">2</span>’, ‘李四’, ‘<span class="number">21</span>’);</span><br></pre></td></tr></table></figure>
+<h2 id="单表查询"><a href="#单表查询" class="headerlink" title="单表查询"></a>单表查询</h2><p>1）查询所有属性（字段）<br>SELECT * FROM 表名;<br>2）查询指定字段<br>SELECT 字段1, 字段2, … FROM 表名;<br>3）where条件查询<br>SELECT字段1, 字段2, … FROM 表名 WHERE 条件表达式; //表达式比如只需要查询id=2的字段属性，或age&gt;8的字段属性。<br>SELECT 字段1, 字段2, … FROM 表名 WHERE 条件表达式1 AND条件表达式2;<br>SELECT 字段1, 字段2, … FROM 表名 WHERE 条件表达式1 OR条件表达式2;<br>4）带IN关键字查询<br>SELECT 字段1, 字段2, … FROM 表名 WHERE 字段 [NOT] IN (元素1, 元素2, 元素3);<br>5）带between and的范围查询<br>SELECT 字段1, 字段2, … FROM 表名 WHERE 字段 [NOT] BETWEEN 取值1 AND 取值2;<br>6）模糊查询<br>SELECT 字段1, 字段2, … FROM 表名 WHERE 字段 LIKE ‘元素字符串%’; //%可加在字符串的任意位置，它表示查询任意字符<br>SELECT 字段1, 字段2, … FROM 表名 WHERE 字段 LIKE ‘元素字符串_’; //_表示查询单个字符<br>7）空值查询<br>SELECT 字段1, 字段2, … FROM 表名 WHERE 字段 IS [NOT] NULL;<br>8）distinct去重复查询 //distinct明显的，不同的<br>SELECT DISTINCT 字段 FROM 表名;<br>9）对查询结果排序<br>SELECT 字段1, 字段2 FROM 表名 ORDER BY 属性名 [ASC|DESC]; //默认是升序ascent|descent<br>10）    group by分组查询<br>SELECT * FROM 表名GROUP BY 属性名 [HAVING 条件表达式][WITH ROLLUP];<br>（1）单独使用没意义；<br>（2）与GROUP_CONCAT()一起使用； //concat合并<br>注意格式是[属性],函数格式，属性与函数之间是逗号连接。<br>//查每个年级所有学生姓名<br>//关键：年级,GROUP_CONCAT(学生姓名)<br>SELECT gradeName,GROUP_CONCAT(stuName) FROM t_student GROUP BY stuName;<br>（3）与聚合函数COUNT()一起使用；<br>//查询每个年级的学生总数<br>//关键：年级,COUNT(学生姓名)<br>SELECT gradeName,COUNT(stuName) FROM t_student GROUP BY gradeName;<br>（4）与HAVING一起使用（对查询结果的筛选）；<br>（5）与WITH ROLLUP一起使用（对上面查询的结果最后加入一个总和行。如果是int类型，直接求和；如果是文本内容，它将筛选后的文本内容全部列出）。 //rollup归纳<br>11）    LIMIT分页查询<br>SELECT 字段1, 字段2 FROM 表名 LIMIT 初始位置, 记录数;<br>//10条数据分两页进行查询，每页5条数据<br>SELECT * FROM t_student LIMIT 0, 5; //初始位置从0开始<br>SELECT * FROM t_student LIMIT 5, 5; //初始位置从5开始</p>
+<h2 id="使用聚合函数查询"><a href="#使用聚合函数查询" class="headerlink" title="使用聚合函数查询"></a>使用聚合函数查询</h2><p>聚合函数经常与GROUP BY一起以后使用（一起使用时，一般是根据属性分组,聚合函数的格式）。<br>1）COUNT()：用来统计记录的条数。<br>（1）单独使用：<br>//统计表中的所有数据<br>SELECT COUNT(*) AS total FROM t_student; //其中AS total是为count取了别名total<br>（2）与GROUP BY使用<br>//统计每个学生考了几门课程，统计相同名字出现的次数<br>SELECT stuName,COUNT(*) FROM t_student GROUP BY stuName;<br>2）SUN()：用来求和。<br>//求出张三的总分<br>SELECT stuName,SUM(score) FROM t_student WHERE stuName = “张三”;<br>//求每个学生的总分<br>SELECT stuName,SUM(score) FROM t_student GROUP BY stuName;<br>3）AVG()：求平均值的函数。<br>4）MAX()<br>//求出张三的最高分<br>SELECT stuName,MAX(score) FROM t_student WHERE stuName = “张三”;<br>//求每个学生某门课程的最高分<br>SELECT stuName,MAX (score) FROM t_student GROUP BY stuName;<br>5）MIN();</p>
+<h2 id="连接查询（笛卡尔积）"><a href="#连接查询（笛卡尔积）" class="headerlink" title="连接查询（笛卡尔积）"></a>连接查询（笛卡尔积）</h2><p>连接查询是将两个或两个以上的表按照某个条件连接起来，从中选取需要的数据。<br>SELECT *FROME t_book, t_booktype; //具体属性值进行的笛卡尔乘积，注意两个表之间用逗号给开。<br>1）内连接查询<br>内连接查询是一种常见的连接查询。<br>例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> <span class="keyword">DATABASE</span> db_book;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> t_booktype(</span><br><span class="line">	<span class="keyword">id</span> <span class="built_in">INT</span> PRIMARY <span class="keyword">KEY</span> AUTO_INCREMENT,</span><br><span class="line">	bookTypeName <span class="built_in">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">	bookTypeDesc <span class="built_in">VARCHAR</span>(<span class="number">200</span>)</span><br><span class="line">);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> t_bookType (<span class="keyword">id</span>, bookTypeName) <span class="keyword">VALUES</span> (<span class="string">'1'</span>, <span class="string">'运动类'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> t_bookType (<span class="keyword">id</span>, bookTypeName) <span class="keyword">VALUES</span> (<span class="string">'2'</span>, <span class="string">'工科类'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> t_bookType (<span class="keyword">id</span>, bookTypeName) <span class="keyword">VALUES</span> (<span class="string">'3'</span>, <span class="string">'文科类'</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> t_book(</span><br><span class="line"><span class="keyword">id</span> <span class="built_in">INT</span> PRIMARY <span class="keyword">KEY</span> AUTO_INCREMENT,</span><br><span class="line">bookName <span class="built_in">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">author <span class="built_in">VARCHAR</span>(<span class="number">10</span>),</span><br><span class="line">price <span class="built_in">DECIMAL</span>(<span class="number">6</span>,<span class="number">2</span>), </span><br><span class="line">bookTypeId <span class="built_in">INT</span>, </span><br><span class="line"><span class="keyword">CONSTRAINT</span> fk <span class="keyword">FOREIGN</span> <span class="keyword">KEY</span> (bookTypeId) <span class="keyword">REFERENCES</span> t_booktype (<span class="keyword">id</span>)); </span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> t_book (<span class="keyword">id</span>, bookName, author, price, bookTypeId) <span class="keyword">VALUES</span> (<span class="string">'1'</span>, <span class="string">'数学'</span>, <span class="string">'张三'</span>, <span class="string">'50'</span>, <span class="string">'2'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> t_book (<span class="keyword">id</span>, bookName, author, price, bookTypeId) <span class="keyword">VALUES</span> (<span class="string">'2'</span>, <span class="string">'语文'</span>, <span class="string">'李四'</span>, <span class="string">'45'</span>, <span class="string">'3'</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> t_pricelevel(</span><br><span class="line"><span class="keyword">id</span> <span class="built_in">INT</span>,</span><br><span class="line">priceLevel <span class="built_in">INT</span>,</span><br><span class="line">price <span class="built_in">FLOAT</span>,</span><br><span class="line">description <span class="built_in">VARCHAR</span>(<span class="number">300</span>));</span><br></pre></td></tr></table></figure>
+<p>//t_booktype和有外键的t_book，将t_book表的bookTypeId查出来<br>SELECT * TABLE t_book, t_booktype WHERE t_book.bookTypeId = t_booktype.id;<br>//或只查询需要的字段<br>SELECT tb.bookName, tb.author, tby.bookTypeName TABLE t_book tb, t_booktype tby WHERE tb.bookTypeId = tby.id; //提倡用别名代替表名，这样能更清楚地显示。t_book别名tb，t_booktype别名tby<br>2）外连接查询<br>可以查出某张表的全部信息。内连接只将符合要求的查询给列出，若想要即使在不符合要求时，也需要将所有的信息罗列出，就需要用外连接。<br>SELECT 属性名列表 FROM 表名1 LEFT|RIGHT JOIN 表名2 ON 表名1.属性1 = 表名2.属性2;<br>（1）左连接查询<br>可查询出”表名1”的所有记录，而”表名2”中只能查出匹配记录。<br>SELECT * FROM t_book tb LEFT JOIN t_booktype tby ON tb.bookTypeId = tby.id; //书名一定要列出，没找到bookType没关系，用NULL代替<br>（2）右连接查询<br>可查询出”表名2”的所有记录，而”表名1”中只能查出匹配记录。<br>3）多条件连接查询<br>SELECT tb.bookName, tb.author, tby.bookTypeName TABLE t_book tb, t_booktype tby WHERE tb.bookTypeId = tby.id AND tb.price &gt; 70; //就是在原来的where语句之后跟多多个条件查询语句</p>
+<h2 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h2><p>1）带[NOT] IN关键字<br>一个查询语句的条件可能落在另一个SELECT语句的查询结果当中。<br>SELECT * FROM t_book bookTypeId IN (SELECT id FROM t_booktype);<br>2）带比较运算符<br>SELECT * FROM t_book WHERE price &gt;= (SELECT * FROM t_priceLevel WHERE priceLevel = 1);<br>3）带exists关键字<br>如果子查询查询到记录，则进行外层查询，否则不执行外层查询。<br>//如果bookType存在则返回查询<br>SELECT * FROM t_book WHERE EXISTS (SELECT * FROM t_booktype);<br>4）带any关键字<br>any表示满足其中任一条件。<br>SELECT * FROM t_book WHERE price &gt;= ANY (SELECT price FROM t_pricelevel);<br>5）带all关键字<br>all表示满足所有情况。</p>
+<h2 id="合并查询结果"><a href="#合并查询结果" class="headerlink" title="合并查询结果"></a>合并查询结果</h2><p>union关键字，将所有查询结果合并到一起，然后去掉相同的记录。<br>union all关键字，则不会去掉系统记录。<br>SELECT id FROM t_book UNION SELECT id FROM t_bookType; //将两个表的id合并<br>SELECT id FROM t_book UNION ALL SELECT id FROM t_bookType; //将两个表的id合并</p>
+<h2 id="为表和字段取别名"><a href="#为表和字段取别名" class="headerlink" title="为表和字段取别名"></a>为表和字段取别名</h2><p>格式：表名 表别名<br>格式：属性名 [AS] 别名 //加上as能更清楚地区分表与属性。</p>
+<h1 id="插入、更新和删除数据"><a href="#插入、更新和删除数据" class="headerlink" title="插入、更新和删除数据"></a>插入、更新和删除数据</h1><h2 id="插入数据-1"><a href="#插入数据-1" class="headerlink" title="插入数据"></a>插入数据</h2><p>1）INSERT INTO 表名 VALUES (值1, ..,值n);<br>2）INSERT INTO 表名 (属性1, 属性2,…) VALUES (取值1, 取值2);<br>3）同时插入多条数据<br>INSERT INTO 表名 [(属性列表)] VALUES (取值列表1), (取值列表2);<br>例：<br>INSERT INTO t_book (id, bookName, price, bookTypeId) VALUES ()<br>(‘1’, ‘数学’, ‘50’, ‘1’), (‘2’, ‘语文’, ‘45’, ‘3’);</p>
+<h2 id="更新（修改）数据"><a href="#更新（修改）数据" class="headerlink" title="更新（修改）数据"></a>更新（修改）数据</h2><p>UPDATE 表名<br>    SET 属性1 = 取值1, 属性2 = 取值2<br>    WHERE 条件表达式;<br>UPDATE t_book SET bookName = “语文”, price = 60 WHERE id = 2;</p>
+<h2 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h2><p>DELETE FROM 表名 [WHERE 条件表达式];</p>
+<h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><p>索引是由数据库表中一列或多列组合而成，其作用是提高对表中数据的查询速度。<br>优缺点：<font color="red">提高查询速度</font>；创建和维护索引的时间增加了。<br>索引是在存储引擎层实现的，而不是在服务器层实现的，所以不同存储引擎具有不同的索引类型和实现。<br>导入数据库：右击root@localhost –&gt; 从SQL转储文件导入数据库。<br>SELECT COUNT(*) FROM t_book; //查询一共有多少条数据</p>
+<h2 id="按需添加索引"><a href="#按需添加索引" class="headerlink" title="按需添加索引"></a>按需添加索引</h2><p>//若需要按bookName查询<br>SELECT * FROM t_book WHERE bookName = ‘语文’; //当有多条数据时，查询时间可能几百ms<br>我们可以对bookName属性添加索引：<br>右击需要添加索引的表 -&gt; 管理索引(F7) , 对bookName添加索引。其中有全文索引（fulltext）、唯一性索引（unique）、主键（primary key，所有索引的主键只有一个）。</p>
+<h2 id="索引的分类"><a href="#索引的分类" class="headerlink" title="索引的分类"></a>索引的分类</h2><p>1）普通索引：可以创建在任何类型数据中；<br>2）唯一性索引（unique）：限制该索引的值必须是唯一的；（主键默认就是唯一性索引）<br>3）全文索引（fulltext）：只能创建在char，varchar，text类型的字段上。主要作用是提高查询较大字符串的速度，Mysql默认引擎不支持，只有MyISAM引擎支持；<br>1）单列索引：在单个字段上创建索引；<br>2）多列索引：在表的多个字段上创建一个索引；<br>3）空间索引（spatial）：只能建立在空间数据类型上，这样可以提高系统获取空间数据的效率。</p>
+<h2 id="创建索引"><a href="#创建索引" class="headerlink" title="创建索引"></a>创建索引</h2><p>1）在创建表的时候创建索引<br>（1）单列索引：在单个字段上创建索引；</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> t_user1(</span><br><span class="line">	<span class="keyword">id</span> <span class="built_in">INT</span>,</span><br><span class="line">	userName <span class="built_in">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">	<span class="keyword">PASSWORD</span> <span class="built_in">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">	<span class="keyword">INDEX</span> index_userName(userName) // index_userName是自己设定的别名，可以不加</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>（2）多列索引：在表的多个字段上创建一个索引；</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> t_user1(</span><br><span class="line">	<span class="keyword">id</span> <span class="built_in">INT</span>,</span><br><span class="line">	userName <span class="built_in">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">	<span class="keyword">PASSWORD</span> <span class="built_in">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">	<span class="keyword">INDEX</span> index_userName_Password(username, <span class="keyword">PASSWORD</span>) // index_userName是自己设定的别名，可以不加</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>2）在已经存在的表上创建索引<br>CREATE [UNIQUE|FULLTEXT|SPATIAL] INDEX 索引名<br>ON 表名 (属性名 [(长度)] [ASC|DESC]);<br>3）用alter语句创建索引<br>ALTER TABLE 表名 ADD INDEX 索引名<br>(属性名 [(长度)] [ASC|DESC]); </p>
+<h2 id="删除索引"><a href="#删除索引" class="headerlink" title="删除索引"></a>删除索引</h2><p>1）DROP INDEX 索引名 ON 表名;<br>2）ALTER TABLE 表名 DROP INDEX 索引名;</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/12/Tech/Database/MySQL%E2%80%94%E2%80%94Mysql-SQLyog%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" rel="next" title="MySQL——Mysql+SQLyog安装配置">
+                <i class="fa fa-chevron-left"></i> MySQL——Mysql+SQLyog安装配置
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/12/Tech/Database/SQL%E8%AF%AD%E5%8F%A5%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E8%A7%86%E5%9B%BE%E4%B8%8E%E8%A7%A6%E5%8F%91%E5%99%A8/" rel="prev" title="SQL语句（二）——视图与触发器">
+                SQL语句（二）——视图与触发器 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="LichtMiao" />
+          <p class="site-author-name" itemprop="name">LichtMiao</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">186</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          <!-- 
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+           -->
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/LichtMiao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Miaomi4" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                    
+                      Twitter
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Mysql数据类型简介"><span class="nav-number">1.</span> <span class="nav-text">Mysql数据类型简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#整数类型（分有符号和无符号类型：signed、unsigned）"><span class="nav-number">1.1.</span> <span class="nav-text">整数类型（分有符号和无符号类型：signed、unsigned）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浮点数类型、定点数类型（分有符号和无符号类型：signed、unsigned）"><span class="nav-number">1.2.</span> <span class="nav-text">浮点数类型、定点数类型（分有符号和无符号类型：signed、unsigned）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日期与时间类型"><span class="nav-number">1.3.</span> <span class="nav-text">日期与时间类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串类型"><span class="nav-number">1.4.</span> <span class="nav-text">字符串类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二进制类型"><span class="nav-number">1.5.</span> <span class="nav-text">二进制类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据库的基本操作"><span class="nav-number">2.</span> <span class="nav-text">数据库的基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#显示所有数据库"><span class="nav-number">2.1.</span> <span class="nav-text">显示所有数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建数据库"><span class="nav-number">2.2.</span> <span class="nav-text">创建数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除数据库"><span class="nav-number">2.3.</span> <span class="nav-text">删除数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用数据库"><span class="nav-number">2.4.</span> <span class="nav-text">使用数据库</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#表的基本操作"><span class="nav-number">3.</span> <span class="nav-text">表的基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建表"><span class="nav-number">3.1.</span> <span class="nav-text">创建表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看表结构"><span class="nav-number">3.2.</span> <span class="nav-text">查看表结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改表（ALTER只是对属性的修改，对具体的行上面的数据没有帮助）"><span class="nav-number">3.3.</span> <span class="nav-text">修改表（ALTER只是对属性的修改，对具体的行上面的数据没有帮助）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除表"><span class="nav-number">3.4.</span> <span class="nav-text">删除表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询数据"><span class="nav-number">4.</span> <span class="nav-text">查询数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#插入数据"><span class="nav-number">4.1.</span> <span class="nav-text">插入数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单表查询"><span class="nav-number">4.2.</span> <span class="nav-text">单表查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用聚合函数查询"><span class="nav-number">4.3.</span> <span class="nav-text">使用聚合函数查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连接查询（笛卡尔积）"><span class="nav-number">4.4.</span> <span class="nav-text">连接查询（笛卡尔积）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子查询"><span class="nav-number">4.5.</span> <span class="nav-text">子查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合并查询结果"><span class="nav-number">4.6.</span> <span class="nav-text">合并查询结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为表和字段取别名"><span class="nav-number">4.7.</span> <span class="nav-text">为表和字段取别名</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#插入、更新和删除数据"><span class="nav-number">5.</span> <span class="nav-text">插入、更新和删除数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#插入数据-1"><span class="nav-number">5.1.</span> <span class="nav-text">插入数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新（修改）数据"><span class="nav-number">5.2.</span> <span class="nav-text">更新（修改）数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除数据"><span class="nav-number">5.3.</span> <span class="nav-text">删除数据</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#索引"><span class="nav-number">6.</span> <span class="nav-text">索引</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#按需添加索引"><span class="nav-number">6.1.</span> <span class="nav-text">按需添加索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引的分类"><span class="nav-number">6.2.</span> <span class="nav-text">索引的分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建索引"><span class="nav-number">6.3.</span> <span class="nav-text">创建索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除索引"><span class="nav-number">6.4.</span> <span class="nav-text">删除索引</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LichtMiao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+  Powered by <a>Hexo</a>
+</div>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+  <!-- 背景动画 -->
+  
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>

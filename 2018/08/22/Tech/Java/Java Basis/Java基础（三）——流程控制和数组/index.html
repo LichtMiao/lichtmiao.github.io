@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en.yml">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Learning, Life" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="LichtMiao's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="三目运算符：（expression）? x1 ：x2 &#x2F;&#x2F;表达式为真则执行x1，否则执行x2else本来就是对if的取反。为避免出现错误，总把范围较小的条件放在前面处理。switch中case标签的代码块的开始和结束节点非常清晰，可以不加方括号。当所有case都不符合时，执行default代码块。如果将case代码块中的break语句都注释掉，则只要找到符合的case后面的语句都会执行，这是由sw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java基础（三）——流程控制和数组">
+<meta property="og:url" content="https://lichtmiao.github.io/2018/08/22/Tech/Java/Java%20Basis/Java%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E5%92%8C%E6%95%B0%E7%BB%84/index.html">
+<meta property="og:site_name" content="LichtMiao&#39;s Blog">
+<meta property="og:description" content="三目运算符：（expression）? x1 ：x2 &#x2F;&#x2F;表达式为真则执行x1，否则执行x2else本来就是对if的取反。为避免出现错误，总把范围较小的条件放在前面处理。switch中case标签的代码块的开始和结束节点非常清晰，可以不加方括号。当所有case都不符合时，执行default代码块。如果将case代码块中的break语句都注释掉，则只要找到符合的case后面的语句都会执行，这是由sw">
+<meta property="article:published_time" content="2018-08-22T15:06:36.000Z">
+<meta property="article:modified_time" content="2019-01-21T08:20:20.000Z">
+<meta property="article:author" content="LichtMiao">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.2',
+    sidebar: {"position":"right","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://lichtmiao.github.io/2018/08/22/Tech/Java/Java Basis/Java基础（三）——流程控制和数组/"/>
+
+
+
+
+
+<!-- 网页加载条 -->
+<script src="https://neveryu.github.io/js/src/pace.min.js"></script>
+  <title>Java基础（三）——流程控制和数组 | LichtMiao's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en.yml">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LichtMiao's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lichtmiao.github.io/2018/08/22/Tech/Java/Java%20Basis/Java%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E5%92%8C%E6%95%B0%E7%BB%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LichtMiao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LichtMiao's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java基础（三）——流程控制和数组</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-22T23:06:36+08:00">
+                2018-08-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/Java/Java-Basis/" itemprop="url" rel="index">
+                    <span itemprop="name">Java Basis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>三目运算符：<code>（expression）? x1 ：x2 //表达式为真则执行x1，否则执行x2</code><br>else本来就是对if的取反。为避免出现错误，总把范围较小的条件放在前面处理。<br>switch中case标签的代码块的开始和结束节点非常清晰，可以不加方括号。当所有case都不符合时，执行default代码块。<br>如果将case代码块中的break语句都注释掉，则只要找到符合的case后面的语句都会执行，这是由switch语句的运行流程决定的。switch语句会先求出expression表达式的值，然后与case标签后面的值相比较，一旦遇到相等的值，程序就开始执行case后面的代码，不再判断与后面的case、default标签后的条件是否匹配，除非遇到break；才结束。<br>循环结构：在反复执行循环体时，需要在合适的时候把循环条件变为假，结束循环，否则会形成死循环。</p>
+<h1 id="while"><a href="#while" class="headerlink" title="while"></a>while</h1><p>先判断后循环</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">init_statement</span>]</span><br><span class="line"><span class="keyword">while</span>(test_expression)</span><br><span class="line">&#123;</span><br><span class="line">	statement;</span><br><span class="line">	[<span class="meta">iteration_statement</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="do-while"><a href="#do-while" class="headerlink" title="do-while"></a>do-while</h1><p>先循环后判断是否为真，为真则进入下一次循环</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">init_statemnt</span>]</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">&#123;</span><br><span class="line">	statement;</span><br><span class="line">	[<span class="meta">iteration_statement</span>]</span><br><span class="line">&#125;<span class="keyword">while</span>(expression);</span><br></pre></td></tr></table></figure>
+
+<h1 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h1><p>每次执行循环前，先判断test_expression条件是否为真，为真则执行循环体，循环体结束后执行iteration_statement循环迭代语句。值得注意的是，for循环的循环迭代语句并没有与循环体放在一起，所以即使在执行循环体遇到continue语句，结束本次循环，循环迭代语句依然会得到执行。</p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for(<span class="comment">[init_statement]</span>; <span class="comment">[test_expression]</span>; <span class="comment">[iteration_statement]</span>)</span><br><span class="line">&#123;</span><br><span class="line">	statement;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将for循环的初始语句放在循环之前定义的作用：可扩大初始化语句中定义的变量的作用域。在for循环里定义的变量，作用域只能在循环内有效，for循环终止后，这些变量将不可访问。若要在循环体之外使用这个变量i的值，可以在循环体内定义一个额外变量保存这个循环变量的值。</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> tmp = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++)</span><br><span class="line">&#123;</span><br><span class="line">	System.<span class="keyword">out</span>.println(i);</span><br><span class="line">	tmp = i;  <span class="comment">//使用tmp保存循环变量i的值</span></span><br><span class="line">&#125;</span><br><span class="line">...<span class="comment">//此处（循环体之外）还可通过tmp变量来访问i变量的值。</span></span><br></pre></td></tr></table></figure>
+<p>控制循环结构：continue和break来控制循环结构，return可以结束整个方法，即结束一次循环。<br><font color="red">break语句可以结束其所在的循环，注意只是结束离它最近的循环</font>，外面的循环一般情况下不会结束：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="built_in">i</span> = <span class="number">0</span>; <span class="built_in">i</span> &lt; <span class="number">5</span>; <span class="built_in">i</span>++)</span><br><span class="line">&#123;</span><br><span class="line">	System.out.println(“<span class="built_in">i</span>的值是”+ <span class="built_in">i</span>);</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">i</span>==<span class="number">2</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>break语句也可以结束其外层循环，需要用标签标识外层循环：注意标签要用在break所在循环的外层循环前才有意义。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">outer:</span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">i</span> = <span class="number">0</span>; <span class="built_in">i</span>&lt;<span class="number">5</span>; <span class="built_in">i</span>++)</span><br><span class="line">&#123;</span><br><span class="line">	System.out.println(“<span class="built_in">i</span>的值是”+ <span class="built_in">i</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="built_in">j</span>=<span class="number">0</span>; <span class="built_in">j</span>&lt;<span class="number">4</span>; <span class="built_in">j</span>++)</span><br><span class="line">	&#123;</span><br><span class="line">		&#123;System.out.println(“<span class="built_in">i</span>的值为”+<span class="built_in">i</span>+”<span class="built_in">j</span>的值为+”<span class="built_in">j</span>”);</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">i</span>==<span class="number">2</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">break</span> outer;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><font color="red">continue语句忽略本次循环后面的语句，然后进行下一次循环</font>：注意continue放在单次循环的最后一行是没有意义的，因为它没有忽略任何语句。</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>（<span class="built_in">int</span> i=<span class="number">0</span>; i&lt;<span class="number">5</span>; i++）</span><br><span class="line">&#123;</span><br><span class="line">	System.<span class="keyword">out</span>.println(“i的值是” + i);</span><br><span class="line">	<span class="keyword">if</span>(i == <span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">continue</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	System.<span class="keyword">out</span>.println(“<span class="keyword">continue</span>后面的语句”);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>continue语句也可以结束其外层循环，需要用标签标识外层循环。<br><font color="red">return语句不是专门用于结束循环的，return的功能是结束一个方法</font>。Java中大部分循环都在方法中执行，一旦循环体执行到return语句，return语句就会结束该方法，循环自然也结束。</p>
+<p>一个数组只能存储一种类型的数据。Java是面向对象的语言，类与类之间可以支持继承关系，这样可能产生一个数组里可以存放多种数据类型的假象。如有一个水果数组，要求数组中每个元素都是水果，实际上数组元素可以是苹果，香蕉等。<br>一旦数组的初始化完成，数组在内存中所占的空间将被固定下来，因此数组的长度将不可改变。<br>Java的数组既可以存储基本数据类型，也可以存储引用类型的数据。<br>数组也是一种数据类型，他本是是一种引用类型。如<font color="red">int是一个基本类型，int[]也是数据类型，但它是一种引用类型</font>。创建int[]类型的对象就是创建数组，需要使用创建数组的语法。<br>推荐使用的定义数组的语法：type[] arrayName;  //定义一个变量，变量类型是type[]，变量名是arrayName。<br>数组是一种引用类型的变量，因此使用它定义一个变量时，仅仅表示定义了一个引用变量（即定义了一个指针），这个引用变量还未分配内存。需初始化才能分配内存。注意定义数组不能指定数组的长度。<br>数组的初始化new：java语言中数组先初始化，才能使用。</p>
+<p>(1) 静态初始化：显式地指定每个数组元素的初始值</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">type</span>[] <span class="title">arrayName</span></span>; <span class="comment">//定义type[]数组类型的变量arrayName</span></span><br><span class="line">arrayName = <span class="keyword">new</span> <span class="class"><span class="keyword">type</span>[]</span>&#123;element1, element2,…&#125;; <span class="comment">//静态初始化变量arrayName</span></span><br></pre></td></tr></table></figure>
+<p>实际开发过程中更习惯将数组定义和初始化同时完成，以下是简化形式：=&gt;</p>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span>[] arrayName = &#123;element1, element2,…&#125;;</span><br></pre></td></tr></table></figure>
+<p>(2) 动态初始化：只指定数组的长度</p>
+<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">type</span>[] <span class="title">arrayName</span>;</span></span><br><span class="line">arrayName = <span class="keyword">new</span> <span class="class"><span class="keyword">type</span>[<span class="title">length</span>];</span></span><br></pre></td></tr></table></figure>
+<p>简化形式：=&gt;</p>
+<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数组的定义和初始化同时完成，初始化时元素的类型可以是定义的数组元素类型的子类</span></span><br><span class="line"><span class="class"><span class="keyword">type</span>[] <span class="title">arrayName</span> </span>= <span class="keyword">new</span> <span class="class"><span class="keyword">type</span>[<span class="title">length</span>];</span></span><br></pre></td></tr></table></figure>
+<p>又如</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>[] books = <span class="keyword">new</span> <span class="built_in">String</span>[<span class="number">4</span>];</span><br></pre></td></tr></table></figure>
+<p>其中可分别写成定义+初始化：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>[] books; <span class="comment">//定义一个Objectt[]数组类型的变量books</span></span><br><span class="line">books = <span class="keyword">new</span> <span class="built_in">String</span>[<span class="number">4</span>];<span class="comment">//初始化的元素类型String是Object的子类</span></span><br></pre></td></tr></table></figure>
+<p>动态初始化时，系统将按如下规则分配初始值：</p>
+<ul>
+<li>整数类型：0</li>
+<li>浮点类型：0.0</li>
+<li><font color="red">字符类型：’\u0000’，Java中，字符型并不是用ASCII码来存储的，而是用16位的Unicode字符集来存储</font></li>
+<li><font color="red">布尔类型：false</font></li>
+<li><font color="red">引用类型（<strong>类、接口和数组</strong>）：null</font></li>
+</ul>
+<p>访问数组元素：数组引用变量后跟方括号，括号里是索引值，这样就可以访问数组元素了。访问到数组元素后就可以把数组元素当成普通变量来使用。Java数组索引是从0开始，最后一个数组元素的索引值 = 数组长度-1。<br>超过索引范围编译不会出现问题，但运行时会出现异常：<br>java.lang.ArrayIndexOutOfBoundsException:N（数组索引越界异常，N为导致越界的索引）<br>所有数组都提供了length属性，通过这个属性可以访问到数组长度。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(int <span class="built_in">i</span> = <span class="number">0</span>; <span class="built_in">i</span> &lt; books.<span class="built_in">length</span>; <span class="built_in">i</span>++)</span><br><span class="line">…</span><br></pre></td></tr></table></figure>
+
+<h1 id="foreach循环"><a href="#foreach循环" class="headerlink" title="foreach循环"></a>foreach循环</h1><p>无需获得数组或集合的长度，无需根据索引来访问数组元素和集合元素，<font color="red">foreach循环自动遍历数组或集合的每个元素。它无需循环条件，无需迭代条件，这些部分将由系统自动完成</font>。语法如下：<br>//type是数组元素或集合元素的类型，variableName是形参名，为循环变量，foreach循环将自动将数组元素、集合元素依次赋给该变量。（注意：不要对循环变量赋值，容易有歧义，这只是临时变量，给它赋值并不能改变数组元素的值）</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">foreach</span><span class="params">(type variableNme: array/collection)</span></span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// variableName自动迭代访问每个元素</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>数组类型是一种引用类型，数组变量其实是一个引用，这个引用指向真实的内存。通常无法直接访问堆内存中的数组元素，只能通过引用变量访问数组对象本身。<font color="red">数组变量（栈区）和数组元素（堆区）在内存中是分开存放的。实际数组对象被存储在堆（heap）内存中；如果引用该数组对象的数组引用变量是一个局部变量，那么它存储在栈（stack）内存中。</font><br>为什么有栈内存和堆内存之分：<br>当一个方法执行时，这个方法会建立自己的内存栈，在这个方法中定义的变量将会逐个放入这块内存栈中，随着方法的执行结束，这个内存栈也将销毁。即所有在方法中定义的局部变量都会放入这个栈内存中；在程序中创建一个（方法的）对象时，这个对象将被保存到堆内存（运行时的数据区）中，以便反复使用（因为对象的创建成本较大）。<font color="red">堆内存中的元素不会随方法的结束而销毁，即使方法结束，堆内存中的对象还可能被另一个引用变量引用（在方法的参数传递中很常见），则这个对象依然不会被销毁。只有当一个对象没有任何引用变量引用它时，系统的垃圾回收器才会在适当的时候回收它。</font></p>
+<p>如果堆内存中数组不再有任何变量指向自己，则这个数组将成为垃圾，该数组所占的内存将会被系统的垃圾回收机制回收。因此，<font color="red">为了让垃圾回收机制回收一个数组所占的内存空间，可以将该数组变量赋值为null</font>，这样解切断了数组引用变量和实际数组之间的引用关系，实际数组也成了垃圾。</p>
+<p>以上讨论的是基本类型数组的初始化，还用一种是引用类型数组，引用类型数组的数组元素都是引用，它指向另一块内存，该内存中存储了有效数据。<br>定义一个Person类（所有类都是引用类型）：new是实例化的意思，表示建立变量与对象之间的关系。</p>
+<p>定义一个Person[]数组（Person[]类是引用类型数组），动态初始化这个数组，并为这个数组的每个元素赋值。</p>
+<p>没有多维数组，java语言里提供了支持多维数组的语法，但从数组的底层机制上来看，没有多维数组。Java语言里数组类型是引用类型，因此数组变量其实是一个引用，这个引用指向真实的内存。而数组元素也可以是引用，如果数组元素的引用再次指向真实的数组内存，这种形式看上去就像多维数组。<br>定义并初始化“多维数组”：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//动态初始化二维数组。定义一个数组变量b，这个数组变量指向一个长度为3的数组，默认值是null。这个数组的每个元素又是一个数组类型，它们各自指向长度为4的type[]数组类型，每个数组元素的值为0。</span><br><span class="line">int[<span class="string"></span>][<span class="symbol"></span>] b = new int[<span class="string">3</span>][<span class="symbol">4</span>];</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">String</span>[][] str1 = <span class="keyword">new</span> <span class="keyword">String</span>[][]&#123;<span class="keyword">new</span> <span class="keyword">String</span>[<span class="number">3</span>], <span class="keyword">new</span> <span class="keyword">String</span>[]&#123;“hello”&#125;&#125;;<span class="comment">//静态初始化二维数组</span></span><br><span class="line"><span class="comment">//简化的静态初始化二维数组。String[3]表示定义了一个String[]类型引用，长度为3，String[]&#123;“hello”&#125;表示定义了一个String[]类型引用，指向Hello。</span></span><br><span class="line"><span class="keyword">String</span>[][] str2 = &#123;<span class="keyword">new</span> <span class="keyword">String</span>[<span class="number">3</span>], <span class="keyword">new</span> <span class="keyword">String</span>[]&#123;“hello”&#125;&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>静态初始化二维数组时，二维数组的每个数组元素都是一维数组，因此必须指定多个一维数组作为二维数组的初始化值。</p>
+<p>Java8增强的工具类：<span style="background-color:yellow"><b>Arrays</b></span><br>Arrays类中包含一些static修饰的方法，可以直接操作数组（static修饰的方法可以直接通过类名调用）：导入类使用java.util.Arrays类，调用时使用Arrays. binarySearch( type[] a, type key)<br>int binarySearch(type[] a, type key)：使用二分法查找key元素值在a中出现的索引，<span style="background-color:yellow">用二分法查找之前必须保证a是升序排列</span>。如果a中不包含key元素值，则返回负数。Arrary. binarySearch(a, 2, 4, 1)<br>Int binarySearch(type[] a, int fromIndex, int toIndex, type key)：与上面类似，但只搜索索引从fromIndex到toIndex的元素。<br>type[] copyOf(type[] original, int length)：将original数组复制成新的数组，新数组长度为length。<br>type[] copyOfRange(type[] original, int from, int to)<br>boolean equals(type[] a, type[] b)<br>void fill(type[] a, type val)：对数组a赋值为val。<br>void fill(type[] a, int fromIndex, int toIndex, type val)<br>void sort(type[] a)：对数组排序<br>void sort(type[] a, int fromIndex, int toIndex)<br>String toString(type[] a)：将数组转换成字符串<br>Java8为Arrays类增加了一些工具方法，如并发支持利用CPU的并行处理能力来提高性能。<br>.split()分成两部分<br>Integer.parseInt()将字符串转换成十进制数字<br>BufferedReader br = new BufferedReader(new InputStreamReader(System.in));//从键盘获取字符<br>br.readLine()读入一串字符<br>System.out.print();和Syestem.out.println();用来输出，<br>System.in.read()用来从键盘输入。<br>字符以整数形式返回，因此如果要给其赋char型，必须使用强制类型转换。<strong>默认控制台的输入是行缓冲的（line buffered），缓冲区存储一整行文本，因此在输入字符后敲击回车键才能将文本送入程序</strong>。<br>有时System.in.read()的行缓冲会带来一些烦恼，当按ENTER键时，会往输入流输入回车符和转化符，在一些系统中，只会输入转换符，另外，在读取字符前，后面的字符不断追加到前面的缓冲中，对于一些应用，需要在下次输入前通过读取字符来移除他们。<br>因为使用了System.in.read()，所以程序必须指定抛出异常的语句throws java.io.IOException。<br>这行代码对处理输入错误是必要的。<br>嵌套的if（nested if）</p>
+<h1 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h1><p>switch表达式可以使char、byte、short、int或枚举类型，从JDK7起，可以用String类型。statement squence<br>switch没有break时，会继续执行下一个case。还有空的case省略多个case子句在共享代码时很常见。<br>快捷方式，自动补全：输入main后，Alt+/，输入syso后，Alt+/</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(i)&#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">	<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">	<span class="keyword">case</span> <span class="number">2</span>:System.<span class="keyword">out</span>.println(<span class="string">"i is 0,1 or 2"</span>);</span><br><span class="line">	<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">default</span>:System.<span class="keyword">out</span>.println(i <span class="keyword">is</span> <span class="number">3</span> <span class="keyword">or</span> more);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>for(x = 100; x &gt; 0;x -= 5) //每次递减5<br>无限循环：for(; ;) {…}可以通过break终止循环。<br>for(i = 1;i &lt; 5;sum += i++)其中的求和运算等于sum+=i;i++;<br>与for一样，while也在循环开始时检验条件表达式，如果条件为假则不执行，消除了在循环开始前执行单独测试的需要。</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Compute integer powers of 2(power幂）</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="symbol">Power</span> &#123;</span><br><span class="line"><span class="keyword">public</span> static <span class="built_in">void</span> main(String[] args)&#123;</span><br><span class="line">	<span class="built_in">int</span> i,e,result;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">		result=<span class="number">1</span>;</span><br><span class="line">		e=i;</span><br><span class="line">		<span class="keyword">while</span>(e&gt;<span class="number">0</span>)&#123;  <span class="comment">//while只在e大于0时执行，因此在for循环的第一次迭代中，e为0不执行</span></span><br><span class="line">			result*=<span class="number">2</span>;</span><br><span class="line">			e--;</span><br><span class="line">		&#125;</span><br><span class="line">		System.<span class="keyword">out</span>.println(<span class="string">"2 to the "</span> + i + <span class="string">" power is "</span> + result);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>与for、while循环不同，do-while循环在每次循环结束时测试条件，这意味着do-while循环总是至少执行一次。循环不断重复，直到用户做出有效反应。</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">package cha_three;</span><br><span class="line">//guess the letter game</span><br><span class="line"><span class="built_in">public</span> <span class="keyword">class</span> Guess2 &#123;</span><br><span class="line">	<span class="built_in">public</span> static <span class="type">void</span> main(String[] args)</span><br><span class="line">		throws java.io.IOException&#123;</span><br><span class="line">		<span class="type">char</span> ch,ignore,answer=<span class="string">'k'</span>;	</span><br><span class="line">		<span class="keyword">do</span>&#123;</span><br><span class="line">			<span class="keyword">System</span>.<span class="keyword">out</span>.println("Thinking a letter between a to z");</span><br><span class="line">			<span class="keyword">System</span>.<span class="keyword">out</span>.println("Can you guess it: ");</span><br><span class="line">			ch=(<span class="type">char</span>)<span class="keyword">System</span>.<span class="keyword">in</span>.<span class="keyword">read</span>();</span><br><span class="line">			<span class="keyword">do</span>&#123;</span><br><span class="line">				ignore=(<span class="type">char</span>)<span class="keyword">System</span>.<span class="keyword">in</span>.<span class="keyword">read</span>();</span><br><span class="line">			&#125;<span class="keyword">while</span>(ignore!=<span class="string">'\n'</span>);//这个循环通过不断读取输入来丢弃多余的字符，直到行尾 */</span><br><span class="line">			<span class="keyword">if</span>(ch==answer) <span class="keyword">System</span>.<span class="keyword">out</span>.println("Right");</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="keyword">System</span>.<span class="keyword">out</span>.print("Sorry,you are ");</span><br><span class="line">				<span class="keyword">if</span>(ch&lt;answer) <span class="keyword">System</span>.<span class="keyword">out</span>.println("too low");</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">System</span>.<span class="keyword">out</span>.println("too high");</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;<span class="keyword">while</span>(ch!=answer);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*控制条输入是行缓冲的，必须在字符发送前按回车键，按回车键会生成一个回车符和换行符序列。这些字符会加在缓冲区中，</span></span><br><span class="line"><span class="comment"> * 另外，如果在按回车键前输入的字符多余一个，它们也会存储在输入缓冲区中。</span></span><br><span class="line"><span class="comment">do&#123;</span></span><br><span class="line"><span class="comment">ignore=(char)System.in.read();</span></span><br><span class="line"><span class="comment">&#125;while(ignore!='\n');//这个循环通过不断读取输入来丢弃多余的字符，直到行尾 </span></span><br><span class="line"><span class="comment">如果不丢弃这些字符，它们也会送至程序，这是不希望看到的。*/</span></span><br></pre></td></tr></table></figure>
+
+<p>Java中没有goto语句，可以使用break构造成类似goto的用法:break label;<br>continue有选择地跳过剩下的任何代码和对循环控制条件的判断强迫开始下次循环。<br>break是跳出整个层的循环，continue是结束整个层的这一次循环。</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">//The finished Java <span class="keyword">statement</span> Help <span class="keyword">system</span> that processes multiple requests.</span><br><span class="line">//使用无限循环，允许用户多次请求获得帮助</span><br><span class="line"><span class="built_in">public</span> <span class="keyword">class</span> Help3 &#123;</span><br><span class="line">	<span class="built_in">public</span> static <span class="type">void</span> main(String[] args)</span><br><span class="line">		throws java.io.IOException&#123;</span><br><span class="line">		<span class="type">char</span> choice,ignore;</span><br><span class="line">		<span class="keyword">for</span>(; ;)&#123;</span><br><span class="line">			<span class="keyword">do</span>&#123;</span><br><span class="line">				<span class="keyword">System</span>.<span class="keyword">out</span>.println("Help on:");	</span><br><span class="line">				<span class="keyword">System</span>.<span class="keyword">out</span>.println("1.if");	</span><br><span class="line">				<span class="keyword">System</span>.<span class="keyword">out</span>.println("2.swicth");	</span><br><span class="line">				<span class="keyword">System</span>.<span class="keyword">out</span>.println("3.for");	</span><br><span class="line">				<span class="keyword">System</span>.<span class="keyword">out</span>.println("4.while");	</span><br><span class="line">				<span class="keyword">System</span>.<span class="keyword">out</span>.println("5.do-while");</span><br><span class="line">				<span class="keyword">System</span>.<span class="keyword">out</span>.println("6.break");</span><br><span class="line">				<span class="keyword">System</span>.<span class="keyword">out</span>.println("7.continue");</span><br><span class="line">				<span class="keyword">System</span>.<span class="keyword">out</span>.println("Choose one(q to quit):"); //quit离开；停止</span><br><span class="line">				choice=(<span class="type">char</span>)<span class="keyword">System</span>.<span class="keyword">in</span>.<span class="keyword">read</span>();</span><br><span class="line">		    	<span class="keyword">do</span>&#123;</span><br><span class="line">				    ignore=(<span class="type">char</span>)<span class="keyword">System</span>.<span class="keyword">in</span>.<span class="keyword">read</span>();</span><br><span class="line">		   		&#125;<span class="keyword">while</span>(ignore!=<span class="string">'\n'</span>);	</span><br><span class="line">			&#125;<span class="keyword">while</span>(choice&lt;<span class="string">'1'</span>|choice&gt;<span class="string">'7'</span>&amp; choice!=<span class="string">'q'</span>);//外层循环一直进行，直到用户输入q作为用户菜单选择。</span><br><span class="line">			<span class="keyword">if</span>(choice==<span class="string">'q'</span>) break; //结束整个无限循环</span><br><span class="line">			<span class="keyword">System</span>.<span class="keyword">out</span>.println();</span><br><span class="line">			switch(choice)&#123;</span><br><span class="line">			<span class="keyword">case</span> <span class="string">'1'</span>:<span class="keyword">System</span>.<span class="keyword">out</span>.println("1.The if:");</span><br><span class="line">		         	<span class="keyword">System</span>.<span class="keyword">out</span>.println("if(condition) statement;");</span><br><span class="line">		        	 <span class="keyword">System</span>.<span class="keyword">out</span>.print("else statement;");</span><br><span class="line">		        	 break;</span><br><span class="line">			<span class="keyword">case</span> <span class="string">'2'</span>:<span class="keyword">System</span>.<span class="keyword">out</span>.println("2.The switch");</span><br><span class="line">		         	<span class="keyword">System</span>.<span class="keyword">out</span>.println("switch(expression)&#123; ");</span><br><span class="line">		        	 <span class="keyword">System</span>.<span class="keyword">out</span>.println("case contant: statement squence; \n break; \n case ... ;\n &#125;");</span><br><span class="line">		        	 break;</span><br><span class="line">			<span class="keyword">case</span> <span class="string">'3'</span>:<span class="keyword">System</span>.<span class="keyword">out</span>.println("3.The for");</span><br><span class="line">		        	 <span class="keyword">System</span>.<span class="keyword">out</span>.println("for(init;condition;iteration) \n statement;");</span><br><span class="line">		        	 break;</span><br><span class="line">			<span class="keyword">case</span> <span class="string">'4'</span>:<span class="keyword">System</span>.<span class="keyword">out</span>.println("4.The while");</span><br><span class="line">		        	 <span class="keyword">System</span>.<span class="keyword">out</span>.println("while(condition)&#123; \n statment; \n &#125;");</span><br><span class="line">		        	 break;</span><br><span class="line">			<span class="keyword">case</span> <span class="string">'5'</span>:<span class="keyword">System</span>.<span class="keyword">out</span>.println("5.The do-while");</span><br><span class="line">		        	 <span class="keyword">System</span>.<span class="keyword">out</span>.println("do&#123; \n statement; \n&#125;while(condition);");</span><br><span class="line">		        	 break;</span><br><span class="line">			<span class="keyword">case</span> <span class="string">'6'</span>:<span class="keyword">System</span>.<span class="keyword">out</span>.println("6.The break");</span><br><span class="line">                	 <span class="keyword">System</span>.<span class="keyword">out</span>.println("break; or break label;");</span><br><span class="line">                	 break;</span><br><span class="line">			<span class="keyword">case</span> <span class="string">'7'</span>:<span class="keyword">System</span>.<span class="keyword">out</span>.println("7.The continue");</span><br><span class="line">                	 <span class="keyword">System</span>.<span class="keyword">out</span>.println("continue;or continue label;");</span><br><span class="line">                	 break;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;<span class="keyword">System</span>.<span class="keyword">out</span>.println("You have quitted the Help.");</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/21/Tech/Java/Java%20Programmer%20Interview/Java%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%EF%BC%88%E4%BA%94%EF%BC%89/" rel="next" title="Java程序员面试宝典（五）">
+                <i class="fa fa-chevron-left"></i> Java程序员面试宝典（五）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/23/Tech/Design%20Pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/" rel="prev" title="设计模式（一）——面向对象设计原则">
+                设计模式（一）——面向对象设计原则 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="LichtMiao" />
+          <p class="site-author-name" itemprop="name">LichtMiao</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">186</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          <!-- 
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+           -->
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/LichtMiao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Miaomi4" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                    
+                      Twitter
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#while"><span class="nav-number">1.</span> <span class="nav-text">while</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#do-while"><span class="nav-number">2.</span> <span class="nav-text">do-while</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#for循环"><span class="nav-number">3.</span> <span class="nav-text">for循环</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#foreach循环"><span class="nav-number">4.</span> <span class="nav-text">foreach循环</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#switch"><span class="nav-number">5.</span> <span class="nav-text">switch</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LichtMiao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+  Powered by <a>Hexo</a>
+</div>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+  <!-- 背景动画 -->
+  
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>
