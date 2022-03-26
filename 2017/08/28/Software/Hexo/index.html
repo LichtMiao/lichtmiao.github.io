@@ -256,7 +256,7 @@
             
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
             
-            Search
+            検索
           </a>
         </li>
       
@@ -341,7 +341,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">投稿日</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-28T00:00:53+08:00">
                 2017-08-28
@@ -514,9 +514,12 @@
 <p>（4）部署代理，以下4个代理都打开<br>浏览器socks proxy设置为127.0.0.1：1080（不知道有没有影响）</p>
 <figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">设置ss</span><br><span class="line">git <span class="keyword">config</span> --<span class="keyword">global</span> http<span class="variable">.proxy</span> 'socks5:<span class="comment">//127.0.0.1:1080'</span></span><br><span class="line">git <span class="keyword">config</span> --<span class="keyword">global</span> https<span class="variable">.proxy</span> 'socks5:<span class="comment">//127.0.0.1:1080'</span></span><br><span class="line"></span><br><span class="line">设置代理</span><br><span class="line">git <span class="keyword">config</span> --<span class="keyword">global</span> https<span class="variable">.proxy</span> http:<span class="comment">//127.0.0.1:1080</span></span><br><span class="line">git <span class="keyword">config</span> --<span class="keyword">global</span> https<span class="variable">.proxy</span> https:<span class="comment">//127.0.0.1:1080</span></span><br><span class="line"></span><br><span class="line">取消代理</span><br><span class="line">git <span class="keyword">config</span> --<span class="keyword">global</span> --unset http<span class="variable">.proxy</span></span><br><span class="line">git <span class="keyword">config</span> --<span class="keyword">global</span> --unset https<span class="variable">.proxy</span></span><br></pre></td></tr></table></figure>
 <ol start="8">
-<li><a href="https://blog.csdn.net/Candle_light/article/details/114992784" target="_blank" rel="noopener">重新生成SSH，并部署</a></li>
-</ol>
+<li><p><a href="https://blog.csdn.net/Candle_light/article/details/114992784" target="_blank" rel="noopener">重新生成SSH，并部署</a></p>
+</li>
+<li><p>默认hexo的表格都是等宽、文字居左，markdown无法覆盖hexo表格样式，无法自适应调整表格宽度，<br>(1)修改表格宽度为自适应：<br>themes/next/source/css/_common/scaffolding/tables.styl 中<code> table-layout: fixed;</code>修改为<code>table-layout: auto;</code>。<br>（2）修改表格中文字对齐方式为自适应：<br>themes/next/source/css/_variables/base.styl中<code>$table-content-alignment        = left</code>修改为<br><code>$table-content-alignment        = auto</code></p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://hexo.io/zh-cn/docs/plugins" target="_blank" rel="noopener">Hexo官方文档</a><br><a href="http://theme-next.iissnan.com/theme-settings.html" target="_blank" rel="noopener">NexT使用文档</a><br><a href="https://zhuanlan.zhihu.com/p/26625249" target="_blank" rel="noopener">GitHub+Hexo 搭建个人网站详细教程</a><br><a href="https://linghucong.js.org/2016/04/15/2016-04-15-hexo-github-pages-blog/" target="_blank" rel="noopener">手把手教你使用Hexo + Github Pages搭建个人独立博客</a><br><a href="https://neveryu.github.io/2016/09/30/hexo-next-two/" target="_blank" rel="noopener">Hexo-NexT搭建个人博客（二）</a><br><a href="http://michael728.github.io/2015/11/30/hexo-next-optimize/" target="_blank" rel="noopener">hexo之next主题优化整理</a><br><a href="http://www.jianshu.com/p/06c0fb6f8b4d" target="_blank" rel="noopener">最简单的Hexo搭建博客教程</a><br><a href="https://segmentfault.com/a/1190000003880479" target="_blank" rel="noopener">搭建Hexo博客」简明教程</a><br><a href="http://opiece.me/2015/04/09/hexo-guide/" target="_blank" rel="noopener">使用Hexo搭建个人博客(基于hexo3.0)</a><br><a href="http://blog.csdn.net/gdutxiaoxu/article/details/53576018" target="_blank" rel="noopener">手把手教你用Hexo+Github 搭建属于自己的博客</a><br><a href="http://blog.fens.me/hexo-blog-github/" target="_blank" rel="noopener">Hexo在github上构建免费的Web应用</a><br><a href="http://www.tuicool.com/articles/ueI7naV" target="_blank" rel="noopener">简洁轻便的博客平台: Hexo详解</a><br><a href="https://www.jianshu.com/p/bff1b1845ac9" target="_blank" rel="noopener">Hexo 一篇文章多个 categories</a><br><a href="https://www.titanjun.top/2018/05/07/NexT%E4%B8%BB%E9%A2%98%E5%A6%82%E4%BD%95%E6%8F%90%E9%AB%98%E6%96%87%E7%AB%A0%E9%A2%9C%E5%80%BC/" target="_blank" rel="noopener">NexT主题如何提高文章颜值</a></p>
+</li>
+</ol>
 
       
     </div>
@@ -609,10 +612,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            見出し
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            概要
           </li>
         </ul>
       
@@ -635,7 +638,7 @@
               <a href="/archives">
             
                 <span class="site-state-item-count">187</span>
-                <span class="site-state-item-name">posts</span>
+                <span class="site-state-item-name">ポスト</span>
               </a>
             </div>
           
@@ -646,7 +649,7 @@
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
                 <span class="site-state-item-count">29</span>
-                <span class="site-state-item-name">categories</span>
+                <span class="site-state-item-name">カテゴリ</span>
               </a>
             </div>
           
@@ -657,7 +660,7 @@
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">7</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">タグ</span>
               
             </div>
            -->
